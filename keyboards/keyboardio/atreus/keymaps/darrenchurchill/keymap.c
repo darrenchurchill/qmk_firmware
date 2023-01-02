@@ -24,24 +24,24 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
-    KC_Q,         KC_W,        KC_E,        KC_R,        KC_T,                                   KC_Y,   KC_U,            KC_I,        KC_O,        KC_P,
-    LCTL_T(KC_A), ALT_T(KC_S), SFT_T(KC_D), GUI_T(KC_F), KC_G,                                   KC_H,   GUI_T(KC_J),     SFT_T(KC_K), ALT_T(KC_L), CTL_T(KC_SCLN),
-    KC_Z,         KC_X,        KC_C,        KC_V,        KC_B,    KC_GRV,         KC_BSLS,       KC_N,   KC_M,            KC_COMM,     KC_DOT,      KC_SLSH,
-    KC_LCTL,      KC_LALT,     KC_LGUI,     MO(_LW),     KC_BSPC, SFT_T(KC_ESC),  SFT_T(KC_ENT), KC_SPC, LT(_RS, KC_TAB), KC_QUOT,     KC_MINS,     HYPR_T(KC_ENT)
+    KC_Q,         KC_W,        KC_E,        KC_R,        KC_T,                                         KC_Y,            KC_U,        KC_I,        KC_O,        KC_P,
+    LCTL_T(KC_A), ALT_T(KC_S), SFT_T(KC_D), GUI_T(KC_F), LT(_LW, KC_G),                                LT(_LW, KC_H),   GUI_T(KC_J), SFT_T(KC_K), ALT_T(KC_L), CTL_T(KC_SCLN),
+    KC_Z,         KC_X,        KC_C,        KC_V,        KC_B,          KC_ESC,         KC_ENT,        KC_N,            KC_M,        KC_COMM,     KC_DOT,      KC_SLSH,
+    KC_GRV,       KC_LCTL,     KC_LALT,     KC_LGUI,     MO(_LW),       SFT_T(KC_BSPC), SFT_T(KC_SPC), LT(_RS, KC_TAB), KC_QUOT,     KC_MINS,     KC_EQUAL,    KC_BSLS
     ),
 
   [_LW] = LAYOUT( /* [> Lower <] */
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,     KC_8,     KC_9,    KC_0,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR,  KC_ASTR,  KC_LPRN, KC_RPRN,
-    KC_LCBR, KC_RCBR, KC_UNDS, KC_PLUS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MINUS, KC_EQUAL, KC_LBRC, KC_RBRC,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, CW_TOGG
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+    KC_TRNS, KC_TRNS, CW_TOGG, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC,
+    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_TRNS, KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DQUO, KC_UNDS, KC_PLUS, CW_TOGG
     ),
 
   [_RS] = LAYOUT( /* [> Raise <] */
     KC_TRNS, KC_TRNS, KC_KB_VOLUME_UP,   KC_TRNS, KC_TRNS,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,   KC_TRNS,
     KC_TRNS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, KC_TRNS,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_MUTE,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, SGUI(KC_LBRC), SGUI(KC_RBRC), KC_TRNS,  KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,       KC_TRNS,  KC_MPLY
+    KC_TRNS, KC_TRNS, KC_MUTE,           KC_TRNS, QK_BOOT, QK_RBT,  KC_TRNS, KC_TRNS, SGUI(KC_LBRC), SGUI(KC_RBRC), KC_TRNS,  KC_TRNS,
+    NK_ON,   NK_OFF,  KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,       KC_TRNS,  KC_MPLY
     )
 };
 
