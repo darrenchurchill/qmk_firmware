@@ -24,10 +24,10 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
-    KC_Q,         KC_W,        KC_E,        KC_R,        KC_T,                                         KC_Y,            KC_U,        KC_I,        KC_O,        KC_P,
-    LCTL_T(KC_A), ALT_T(KC_S), SFT_T(KC_D), GUI_T(KC_F), KC_G,                                         KC_H,            GUI_T(KC_J), SFT_T(KC_K), ALT_T(KC_L), CTL_T(KC_SCLN),
-    KC_Z,         KC_X,        KC_C,        KC_V,        KC_B,          KC_ESC,         KC_ENT,        KC_N,            KC_M,        KC_COMM,     KC_DOT,      KC_SLSH,
-    KC_GRV,       KC_LCTL,     KC_LALT,     KC_LGUI,     MO(_LW),       SFT_T(KC_BSPC), SFT_T(KC_SPC), LT(_RS, KC_TAB), KC_QUOT,     KC_MINS,     KC_EQUAL,    KC_BSLS
+    KC_Q,         KC_W,        KC_E,        KC_R,        KC_T,                                   KC_Y,            KC_U,        KC_I,           KC_O,          KC_P,
+    KC_A,         KC_S,        KC_D,        KC_F,        KC_G,                                   KC_H,            KC_J,        KC_K,           KC_L,          KC_SCLN,
+    LCTL_T(KC_Z), ALT_T(KC_X), SFT_T(KC_C), GUI_T(KC_V), KC_B,    KC_ESC,         KC_ENT,        KC_N,            GUI_T(KC_M), SFT_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_SLSH),
+    KC_GRV,       KC_LCTL,     KC_LALT,     KC_LGUI,     MO(_LW), SFT_T(KC_BSPC), SFT_T(KC_SPC), LT(_RS, KC_TAB), KC_QUOT,     KC_MINS,        KC_EQUAL,      KC_BSLS
     ),
 
   [_LW] = LAYOUT( /* [> Lower <] */
