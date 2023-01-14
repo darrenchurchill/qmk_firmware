@@ -24,16 +24,16 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
-    KC_Q,         KC_W,        KC_E,        KC_R,        KC_T,                                   KC_Y,            KC_U,        KC_I,           KC_O,          KC_P,
-    KC_A,         KC_S,        KC_D,        KC_F,        KC_G,                                   KC_H,            KC_J,        KC_K,           KC_L,          KC_SCLN,
-    LCTL_T(KC_Z), ALT_T(KC_X), SFT_T(KC_C), GUI_T(KC_V), KC_B,    KC_ESC,         KC_ENT,        KC_N,            GUI_T(KC_M), SFT_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_SLSH),
-    KC_GRV,       KC_LCTL,     KC_LALT,     KC_LGUI,     MO(_LW), SFT_T(KC_BSPC), SFT_T(KC_SPC), LT(_RS, KC_TAB), KC_QUOT,     KC_MINS,        KC_EQUAL,      KC_BSLS
+    KC_Q,          KC_W,        KC_E,        KC_R,        KC_T,                             KC_Y,   KC_U,        KC_I,           KC_O,          KC_P,
+    KC_A,          KC_S,        KC_D,        KC_F,        KC_G,                             KC_H,   KC_J,        KC_K,           KC_L,          KC_SCLN,
+    LCTL_T(KC_Z),  ALT_T(KC_X), SFT_T(KC_C), GUI_T(KC_V), KC_B,    HYPR_T(KC_ESC), KC_ENT,  KC_N,   GUI_T(KC_M), SFT_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_SLSH),
+    CTL_T(KC_GRV), KC_LALT,     KC_TAB,      MO(_LW),     KC_BSPC, KC_LGUI,        KC_LSFT, KC_SPC, MO(_RS),     KC_ENT,         KC_GRV,        KC_BSLS
     ),
 
   [_LW] = LAYOUT( /* [> Lower <] */
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,
-    KC_QUOT, KC_DQUO, KC_LCBR, KC_LPRN, KC_LBRC,                   KC_UNDS, KC_4,    KC_5,    KC_6,    KC_MINS,
-    KC_CIRC, KC_AMPR, KC_RCBR, KC_RPRN, KC_RBRC, KC_TRNS, KC_TRNS, KC_0,    KC_1,    KC_2,    KC_3,    KC_EQUAL,
+    KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_CIRC,                   KC_UNDS, KC_4,    KC_5,    KC_6,    KC_MINS,
+    KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_AMPR, KC_TRNS, KC_TRNS, KC_0,    KC_1,    KC_2,    KC_3,    KC_EQUAL,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_GRV,  KC_TILD, KC_PIPE, KC_TRNS
     ),
 
@@ -47,4 +47,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
 
+};
+
+// Initialize variable holding the binary
+// representation of active modifiers.
+uint8_t mod_state;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Store the current modifier state in the variable for later reference
+    mod_state = get_mods();
+    switch (keycode) {
+
+    case KC_BSPC:
+        {
+        // Initialize a boolean variable that keeps track
+        // of the delete key status: registered or not?
+        static bool delkey_registered;
+        if (record->event.pressed) {
+            // Detect the activation of either shift keys
+            if (mod_state & MOD_MASK_SHIFT) {
+                // First temporarily canceling both shifts so that
+                // shift isn't applied to the KC_DEL keycode
+                del_mods(MOD_MASK_SHIFT);
+                register_code(KC_DEL);
+                // Update the boolean variable to reflect the status of KC_DEL
+                delkey_registered = true;
+                // Reapplying modifier state so that the held shift key(s)
+                // still work even after having tapped the Backspace/Delete key.
+                set_mods(mod_state);
+                return false;
+            }
+        } else { // on release of KC_BSPC
+            // In case KC_DEL is still being sent even after the release of KC_BSPC
+            if (delkey_registered) {
+                unregister_code(KC_DEL);
+                delkey_registered = false;
+                return false;
+            }
+        }
+        // Let QMK process the KC_BSPC keycode as usual outside of shift
+        return true;
+    }
+
+    }
+    return true;
 };
