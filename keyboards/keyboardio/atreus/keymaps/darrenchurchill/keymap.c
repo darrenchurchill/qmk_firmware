@@ -38,10 +38,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
   [_RS] = LAYOUT( /* [> Raise <] */
-    KC_MUTE, KC_TRNS, KC_KB_VOLUME_UP,   KC_TRNS, KC_TRNS,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,   KC_MPLY,
-    KC_TRNS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, KC_TRNS,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, QK_BOOT, QK_RBT,  KC_DEL,  KC_TRNS, SGUI(KC_LBRC), SGUI(KC_RBRC), KC_TRNS,  KC_TRNS,
-    CW_TOGG, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,       KC_TRNS,  KC_TRNS
+    KC_MUTE, KC_TRNS, KC_KB_VOLUME_UP,   KC_TRNS, KC_TRNS,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
+    KC_TRNS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, KC_TRNS,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, QK_BOOT, QK_RBT,  KC_DEL,  KC_TRNS, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
+    CW_TOGG, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS
     )
 };
 
