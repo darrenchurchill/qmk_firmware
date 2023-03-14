@@ -33,15 +33,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LW] = LAYOUT( /* [> Lower <] */
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_UNDS, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN,
-    KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, KC_TRNS, KC_TRNS, KC_PLUS, KC_MINS, KC_EQUAL,KC_LCBR, KC_RCBR,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______, _______, KC_PLUS, KC_MINS, KC_EQUAL,KC_LCBR, KC_RCBR,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
   [_RS] = LAYOUT( /* [> Raise <] */
-    KC_MUTE, KC_TRNS, KC_KB_VOLUME_UP,   KC_TRNS, KC_TRNS,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
-    KC_TRNS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, KC_TRNS,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, QK_BOOT, QK_RBT,  KC_DEL,  KC_TRNS, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
-    CW_TOGG, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS
+    KC_MUTE, _______, KC_KB_VOLUME_UP,   _______, _______,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
+    _______, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______,
+    _______, _______, _______,           _______, QK_BOOT, QK_RBT,  KC_DEL,  _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
+    CW_TOGG, _______, _______,           _______, _______, _______, _______, _______, _______,       _______,       _______,       _______
     )
 };
 
