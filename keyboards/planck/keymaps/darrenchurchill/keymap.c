@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #ifdef AUDIO_ENABLE
-#include "muse.h"
+#    include "muse.h"
 #endif
 #include "eeprom.h"
 
@@ -21,20 +21,19 @@
 #define BP_NDSH_MAC ALGR(KC_8)
 #define SE_SECT_MAC ALGR(KC_6)
 
-
 enum tap_dance_codes {
-  DANCE_0,
+    DANCE_0,
 };
 
 enum planck_layers {
-  _BASE,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
-  _LAYER4,
-  _LAYER5,
-  _LAYER6,
-  _LAYER7,
+    _BASE,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
+    _LAYER4,
+    _LAYER5,
+    _LAYER6,
+    _LAYER7,
 };
 
 #define LOWER MO(_LOWER)
@@ -99,12 +98,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-
-
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
-  rgb_matrix_enable();
+    rgb_matrix_enable();
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
@@ -160,63 +157,64 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 };
 
 void set_layer_color(int layer) {
-  for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
-    HSV hsv = {
-      .h = pgm_read_byte(&ledmap[layer][i][0]),
-      .s = pgm_read_byte(&ledmap[layer][i][1]),
-      .v = pgm_read_byte(&ledmap[layer][i][2]),
-    };
-    if (!hsv.h && !hsv.s && !hsv.v) {
-        rgb_matrix_set_color( i, 0, 0, 0 );
-    } else {
-        RGB rgb = hsv_to_rgb( hsv );
-        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+    for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+        HSV hsv = {
+            .h = pgm_read_byte(&ledmap[layer][i][0]),
+            .s = pgm_read_byte(&ledmap[layer][i][1]),
+            .v = pgm_read_byte(&ledmap[layer][i][2]),
+        };
+        if (!hsv.h && !hsv.s && !hsv.v) {
+            rgb_matrix_set_color(i, 0, 0, 0);
+        } else {
+            RGB   rgb = hsv_to_rgb(hsv);
+            float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
+        }
     }
-  }
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (!keyboard_config.rgb_matrix_enable) {
-      return false;
-  }
-  if (keyboard_config.disable_layer_led) { return false; }
-  switch (biton32(layer_state)) {
-    case 0:
-      set_layer_color(0);
-      break;
-    case 1:
-      set_layer_color(1);
-      break;
-    case 2:
-      set_layer_color(2);
-      break;
-    case 4:
-      set_layer_color(4);
-      break;
-    case 5:
-      set_layer_color(5);
-      break;
-    case 6:
-      set_layer_color(6);
-      break;
-    case 7:
-      set_layer_color(7);
-      break;
-   default:
-    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-      rgb_matrix_set_color_all(0, 0, 0);
-    break;
-  }
-  return true;
+    if (!keyboard_config.rgb_matrix_enable) {
+        return false;
+    }
+    if (keyboard_config.disable_layer_led) {
+        return false;
+    }
+    switch (biton32(layer_state)) {
+        case 0:
+            set_layer_color(0);
+            break;
+        case 1:
+            set_layer_color(1);
+            break;
+        case 2:
+            set_layer_color(2);
+            break;
+        case 4:
+            set_layer_color(4);
+            break;
+        case 5:
+            set_layer_color(5);
+            break;
+        case 6:
+            set_layer_color(6);
+            break;
+        case 7:
+            set_layer_color(7);
+            break;
+        default:
+            if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
+            break;
+    }
+    return true;
 }
 
 #ifdef AUDIO_ENABLE
-bool muse_mode = false;
-uint8_t last_muse_note = 0;
-uint16_t muse_counter = 0;
-uint8_t muse_offset = 70;
-uint16_t muse_tempo = 50;
+bool     muse_mode      = false;
+uint8_t  last_muse_note = 0;
+uint16_t muse_counter   = 0;
+uint8_t  muse_offset    = 70;
+uint16_t muse_tempo     = 50;
 
 void encoder_update(bool clockwise) {
     if (muse_mode) {
@@ -228,34 +226,34 @@ void encoder_update(bool clockwise) {
             }
         } else {
             if (clockwise) {
-                muse_tempo+=1;
+                muse_tempo += 1;
             } else {
-                muse_tempo-=1;
+                muse_tempo -= 1;
             }
         }
     } else {
         if (clockwise) {
-        #ifdef MOUSEKEY_ENABLE
+#    ifdef MOUSEKEY_ENABLE
             register_code(KC_MS_WH_DOWN);
             unregister_code(KC_MS_WH_DOWN);
-        #else
+#    else
             register_code(KC_PGDN);
             unregister_code(KC_PGDN);
-        #endif
+#    endif
         } else {
-        #ifdef MOUSEKEY_ENABLE
+#    ifdef MOUSEKEY_ENABLE
             register_code(KC_MS_WH_UP);
             unregister_code(KC_MS_WH_UP);
-        #else
+#    else
             register_code(KC_PGUP);
             unregister_code(KC_PGUP);
-        #endif
+#    endif
         }
     }
 }
 
 void matrix_scan_user(void) {
-#ifdef AUDIO_ENABLE
+#    ifdef AUDIO_ENABLE
     if (muse_mode) {
         if (muse_counter == 0) {
             uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
@@ -267,16 +265,16 @@ void matrix_scan_user(void) {
         }
         muse_counter = (muse_counter + 1) % muse_tempo;
     }
-#endif
+#    endif
 }
 
 bool music_mask_user(uint16_t keycode) {
     switch (keycode) {
-    case RAISE:
-    case LOWER:
-        return false;
-    default:
-        return true;
+        case RAISE:
+        case LOWER:
+            return false;
+        default:
+            return true;
     }
 }
 #endif
@@ -285,9 +283,8 @@ uint16_t layer_state_set_user(uint16_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-
 typedef struct {
-    bool is_press_action;
+    bool    is_press_action;
     uint8_t step;
 } tap;
 
@@ -306,16 +303,20 @@ uint8_t dance_step(tap_dance_state_t *state);
 
 uint8_t dance_step(tap_dance_state_t *state) {
     if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return SINGLE_TAP;
-        else return SINGLE_HOLD;
+        if (state->interrupted || !state->pressed)
+            return SINGLE_TAP;
+        else
+            return SINGLE_HOLD;
     } else if (state->count == 2) {
-        if (state->interrupted) return DOUBLE_SINGLE_TAP;
-        else if (state->pressed) return DOUBLE_HOLD;
-        else return DOUBLE_TAP;
+        if (state->interrupted)
+            return DOUBLE_SINGLE_TAP;
+        else if (state->pressed)
+            return DOUBLE_HOLD;
+        else
+            return DOUBLE_TAP;
     }
     return MORE_TAPS;
 }
-
 
 void dance_0_finished(tap_dance_state_t *state, void *user_data);
 void dance_0_reset(tap_dance_state_t *state, void *user_data);
@@ -323,14 +324,15 @@ void dance_0_reset(tap_dance_state_t *state, void *user_data);
 void dance_0_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[0].step = dance_step(state);
     switch (dance_state[0].step) {
-        case DOUBLE_TAP: layer_move(7); break;
+        case DOUBLE_TAP:
+            layer_move(7);
+            break;
     }
 }
 
 void dance_0_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
-    switch (dance_state[0].step) {
-    }
+    switch (dance_state[0].step) {}
     dance_state[0].step = 0;
 }
 
