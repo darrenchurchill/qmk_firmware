@@ -16,8 +16,11 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 225
 
+// TODO: figure out if RGB_DISABLE_TIMEOUT applies to anything on this board
 #undef RGB_DISABLE_TIMEOUT
 #define RGB_DISABLE_TIMEOUT 300000
+#undef RGB_MATRIX_TIMEOUT
+#define RGB_MATRIX_TIMEOUT 5 * 60 * 1000 // min * sec/min * ms/sec
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #undef MOUSEKEY_WHEEL_DELAY
