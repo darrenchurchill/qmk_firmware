@@ -13,6 +13,10 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 #define ORYX_CONFIGURATOR
+#define PLANCK_EZ_LED_LOWER 1 // Lower
+#define PLANCK_EZ_LED_RAISE 2 // Raise
+#define PLANCK_EZ_LED_ADJUST 4 // KB_LED (my version of "adjust")
+
 #undef TAPPING_TERM
 #define TAPPING_TERM 225
 
