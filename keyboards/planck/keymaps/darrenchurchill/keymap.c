@@ -102,55 +102,93 @@ void keyboard_post_init_user(void) {
     rgb_matrix_enable();
 }
 
-// TODO: Create color variables or macros
+// See color.h for example HSV and RGB macro definitions
+#define HSV_ON              HSV_WHITE
+
+#define HSV_CTL             3, 252, 255    // Carolina Reaper red
+#define HSV_ALT             218, 219, 209  // Magentella purple
+#define HSV_SFT             35, 252, 255   // Inca Yellow yellow
+#define HSV_GUI             139, 218, 208  // Hu Lan Blue blue
+
+#define HSV_LYR             53, 255, 255   // French Lime green
+#define HSV_LYR_ESC         16, 252, 255   // Safety Orange orange
+
+#define HSV_BSPC            0, 245, 245    // Assassin's Red red
+#define HSV_CAPS            41, 255, 255   // Cadmium yellow
+#define HSV_QUOT            151, 140, 149  // Queen Blue blue
+#define HSV_NUM             89, 243, 150   // Green Gardens green
+#define HSV_SYM             196, 219, 209  // Lilac Spring purple
+#define HSV_BRKT            152, 255, 255  // Blue Sparkle blue
+
+#define HSV_MUTE            HSV_CTL
+#define HSV_PLAY            148, 245, 230  // Blue Cola blue
+#define HSV_VOL             91, 243, 139   // Emerald green
+#define HSV_PRV_NXT         HSV_SYM
+
+#define HSV_PG              69, 253, 143   // Planter green
+#define HSV_ARROW           163, 253, 255  // Blinking Blue blue
+#define HSV_PNTAB           164, 218, 204  // Blue blue
+#define HSV_PNTAB_LINUX     11, 219, 233   // Ubuntu orange
+#define HSV_MS              37, 246, 235   // Golden Crescent yellow
+#define HSV_MS_WHEEL        HSV_GUI
+
+#define HSV_TOGGLE          HSV_RED
+#define HSV_ANIM            187, 242, 221  // Space Opera purple
+#define HSV_RESET           77, 211, 255   // Alien Parasite green
+#define HSV_KB_HUE          HSV_GUI
+#define HSV_KB_BRT          HSV_WHITE
+#define HSV_KB_SAT          HSV_RESET
+
+#define HSV_FN              HSV_LYR
+
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BASE] = {
-        {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {196,219,209}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255},
-        {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {151,140,149}, {151,140,149}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255},
-        {3,252,255}, {218,219,209}, {35,252,255}, {139,218,208}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {139,218,208}, {35,252,255}, {218,219,209}, {3,252,255},
-        {3,252,255}, {218,219,209}, {0,0,255}, {139,218,208}, {53,255,255}, {0,245,245}, {0,0,255}, {53,255,255}, {0,0,255}, {53,255,255}, {3,252,255}
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},   {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT}, {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT}, {HSV_ON},  {HSV_GUI}, {HSV_LYR}, {HSV_BSPC},             {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_LYR}, {HSV_CTL}
     },
 
     [_LOWER] = {
-        {89,243,150}, {89,243,150}, {89,243,150}, {89,243,150}, {89,243,150}, {0,0,0}, {0,0,0}, {89,243,150}, {89,243,150}, {89,243,150}, {89,243,150}, {89,243,150},
-        {196,219,209}, {196,219,209}, {196,219,209}, {196,219,209}, {196,219,209}, {0,0,0}, {0,0,0}, {196,219,209}, {152,255,255}, {152,255,255}, {152,255,255}, {152,255,255},
-        {196,219,209}, {196,219,209}, {196,219,209}, {196,219,209}, {196,219,209}, {0,0,0}, {0,0,0}, {196,219,209}, {196,219,209}, {196,219,209}, {152,255,255}, {152,255,255},
-        {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {16,252,255}, {0,0,0}, {196,219,209}, {0,0,0}
+        {HSV_NUM}, {HSV_NUM},     {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_NUM},  {HSV_NUM},  {HSV_NUM},  {HSV_NUM},
+        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT},
+        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM},  {HSV_SYM},  {HSV_BRKT}, {HSV_BRKT},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_LYR},  {HSV_OFF},  {HSV_SYM},  {HSV_OFF}
     },
 
     [_RAISE] = {
-        {0,255,255}, {41,255,255}, {91,243,139}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {69,253,143}, {69,253,143}, {69,253,143}, {69,253,143}, {148,245,230},
-        {41,255,255}, {200,218,204}, {91,243,139}, {200,218,204}, {0,0,0}, {0,0,0}, {0,245,245}, {163,253,255}, {163,253,255}, {163,253,255}, {163,253,255}, {0,0,0},
-        {3,252,255}, {218,219,209}, {35,252,255}, {139,218,208}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {164,218,204}, {164,218,204}, {11,219,233}, {11,219,233},
-        {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}
+        {HSV_MUTE}, {HSV_CAPS},    {HSV_VOL}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},          {HSV_PLAY},
+        {HSV_CAPS}, {HSV_PRV_NXT}, {HSV_VOL}, {HSV_PRV_NXT}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW},       {HSV_OFF},
+        {HSV_CTL},  {HSV_ALT},     {HSV_SFT}, {HSV_GUI},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_PNTAB_LINUX}, {HSV_PNTAB_LINUX},
+        {HSV_OFF},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},     {HSV_LYR}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},         {HSV_OFF}
     },
 
     [_MOUSE] = {
-        {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {37,246,235}, {37,246,235}, {37,246,235}, {37,246,235}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {37,246,235}, {37,246,235}, {0,0,0}, {0,0,0}, {139,218,208}, {139,218,208}, {139,218,208}, {139,218,208}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-        {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_MS},       {HSV_MS},       {HSV_MS},       {HSV_MS},       {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_MS},  {HSV_MS},  {HSV_OFF}, {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},      {HSV_OFF},      {HSV_OFF},      {HSV_OFF},      {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF},      {HSV_OFF},      {HSV_OFF},      {HSV_OFF},      {HSV_OFF}
     },
 
     [_KB_LED] = {
-        {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {139,218,208}, {139,218,208}, {0,0,0}, {0,255,255},
-        {0,0,0}, {187,242,221}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,255}, {0,0,0}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {77,211,255}, {77,211,255}, {0,0,0}, {0,0,0},
-        {77,211,255}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {187,242,221}, {187,242,221}
+        {HSV_TOGGLE}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_TOGGLE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_KB_HUE}, {HSV_KB_HUE}, {HSV_OFF},  {HSV_TOGGLE},
+        {HSV_OFF},    {HSV_ANIM},    {HSV_OFF}, {HSV_OFF}, {HSV_OFF},    {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_KB_BRT}, {HSV_KB_BRT}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF},    {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},    {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_KB_SAT}, {HSV_KB_SAT}, {HSV_OFF},  {HSV_OFF},
+        {HSV_RESET},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},    {HSV_OFF},            {HSV_OFF}, {HSV_OFF},    {HSV_OFF},    {HSV_ANIM}, {HSV_ANIM}
     },
 
     [_FN] = {
-        {53,255,255}, {53,255,255}, {53,255,255}, {53,255,255}, {53,255,255}, {0,0,0}, {0,0,0}, {53,255,255}, {53,255,255}, {53,255,255}, {53,255,255}, {53,255,255},
-        {53,255,255}, {53,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-        {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}
+        {HSV_FN},  {HSV_FN},      {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
+        {HSV_FN},  {HSV_FN},      {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
     },
 
     [_LAYERS] = {
-        {0,0,0}, {0,0,0}, {0,0,0}, {77,211,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {77,211,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {77,211,255}, {77,211,255}, {0,0,0},
-        {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {77,211,255}, {0,0,0}, {0,0,0}, {0,0,0},
-        {0,0,0}, {16,252,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_LYR}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
     },
 
 };
