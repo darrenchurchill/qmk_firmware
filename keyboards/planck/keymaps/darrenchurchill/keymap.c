@@ -4,6 +4,7 @@
 #endif
 #include "eeprom.h"
 
+// TODO: Review these macros and delete unwanted ones
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -42,6 +43,11 @@ enum planck_layers {
 #define KB_LED MO(_KB_LED)
 #define FN MO(_FN)
 #define LAYERS MO(_LAYERS)
+
+// You can use macros to define "base" Raise layouts that can differ only in
+// the keys you want to switch between Mac/Linux
+// Something like this:
+// https://github.com/qmk/qmk_firmware/blob/14e14e9ab8420bf15929d07da389a08a6d79fe3c/keyboards/moonlander/keymaps/drashna/keymap.c#L26
 
 // TODO: Rename and reorganize layers
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
