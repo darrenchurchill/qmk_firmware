@@ -53,9 +53,9 @@ enum planck_layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
     KC_Q,           KC_W,           KC_E,         KC_R,         KC_T,  KC_GRV,  KC_MINS, KC_Y,   KC_U,         KC_I,            KC_O,           KC_P,
-    KC_A,           KC_S,           KC_D,         KC_F,         KC_G,  KC_DQUO, KC_QUOT, KC_H,   KC_J,         KC_K,            KC_L,           KC_SCLN,
+    KC_A,           KC_S,           KC_D,         KC_F,         KC_G,  KC_GRV,  KC_MINS, KC_H,   KC_J,         KC_K,            KC_L,           KC_SCLN,
     LCTL_T(KC_Z),   LALT_T(KC_X),   LSFT_T(KC_C), LGUI_T(KC_V), KC_B,  KC_HYPR, KC_MEH,  KC_N,   RGUI_T(KC_M), RSFT_T(KC_COMM), RALT_T(KC_DOT), RCTL_T(KC_SLASH),
-    LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_TAB,       KC_LGUI,      LOWER, KC_BSPC, XXXXXXX, KC_SPC, RAISE,        KC_ENTER,        TD(DANCE_0),    KC_MUTE
+    LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_TAB,       KC_LGUI,      LOWER, KC_BSPC, XXXXXXX, KC_SPC, RAISE,        KC_ENTER,        KC_QUOT,        TD(DANCE_0)
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
@@ -149,10 +149,10 @@ void keyboard_post_init_user(void) {
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BASE] = {
-        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},
-        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},
-        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},   {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT}, {HSV_CTL},
-        {HSV_CTL}, {HSV_ALT}, {HSV_ON},  {HSV_GUI}, {HSV_LYR}, {HSV_BSPC},             {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_LYR}, {HSV_CTL}
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT}, {HSV_ON},  {HSV_GUI}, {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_LYR}
     },
 
     [_LOWER] = {
