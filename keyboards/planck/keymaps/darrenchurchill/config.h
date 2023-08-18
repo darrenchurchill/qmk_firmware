@@ -1,7 +1,9 @@
 #pragma once
 
 #ifdef AUDIO_ENABLE
-#define STARTUP_SONG SONG(PLANCK_SOUND)
+// TODO: pick a startup song when you have free time
+// see quantum/audio/song_list.h
+#    define STARTUP_SONG SONG(PLANCK_SOUND)
 #endif
 
 #define MIDI_BASIC
