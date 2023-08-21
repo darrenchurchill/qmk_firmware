@@ -4,6 +4,7 @@
 */
 #undef TAPPING_TERM
 #define TAPPING_TERM 225
+#define PERMISSIVE_HOLD
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
 #undef MOUSEKEY_WHEEL_DELAY
