@@ -21,6 +21,7 @@
 
 #undef TAPPING_TERM
 #define TAPPING_TERM 225
+#define PERMISSIVE_HOLD
 
 // TODO: figure out if RGB_DISABLE_TIMEOUT applies to anything on this board
 #undef RGB_DISABLE_TIMEOUT
