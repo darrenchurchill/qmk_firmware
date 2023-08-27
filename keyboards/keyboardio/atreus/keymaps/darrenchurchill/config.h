@@ -3,7 +3,7 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 #undef TAPPING_TERM
-#define TAPPING_TERM 225
+#define TAPPING_TERM 170
 #define PERMISSIVE_HOLD
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
