@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MUTE, CW_TOGG, KC_KB_VOLUME_UP,   _______, _______,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
     KC_CAPS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______,
     _______, _______, _______,           _______, QK_BOOT, _______,  KC_DEL, _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
-    _______, _______, _______,           _______, MO(_FN), _______, _______, _______, _______,       _______,       _______,       _______
+    _______, _______, _______,           _______, MO(_FN), _______, _______, _______, _______,       DT_PRNT,      DT_DOWN,       DT_UP
     ),
 
   [_MOUSE] = LAYOUT( /* [> Mouse <] */

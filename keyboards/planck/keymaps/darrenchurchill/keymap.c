@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MUTE, CW_TOGG, KC_VOLU, _______, _______, _______, _______, KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
     KC_CAPS, KC_MPRV, KC_VOLD, KC_MNXT, _______, _______, KC_DEL,  KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______,
     _______, _______, _______, _______, _______, _______, _______, _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
-    _______, BASE,    _______, _______, FN,      _______, XXXXXXX, _______, _______,       _______,       _______,       _______
+    _______, BASE,    _______, _______, FN,      _______, XXXXXXX, _______, _______,       DT_PRNT,       DT_DOWN,       DT_UP
   ),
 
   [_MOUSE] = LAYOUT_planck_grid(
