@@ -20,7 +20,7 @@
 #define PLANCK_EZ_LED_ADJUST 4 // KB_LED (my version of "adjust")
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 225
+#define TAPPING_TERM 170
 #define PERMISSIVE_HOLD
 
 // TODO: figure out if RGB_DISABLE_TIMEOUT applies to anything on this board
