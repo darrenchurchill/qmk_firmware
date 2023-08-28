@@ -3,9 +3,5 @@
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 ORYX_ENABLE = yes
-TAP_DANCE_ENABLE = yes
-SPACE_CADET_ENABLE = no
-CAPS_WORD_ENABLE = yes
+# TODO: decide if you want combos on all keyboards
 COMBO_ENABLE = yes
-SRC = matrix.c
-DYNAMIC_TAPPING_TERM_ENABLE = yes
