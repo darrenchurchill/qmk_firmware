@@ -14,53 +14,44 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "darrenchurchill.h"
 
 
-enum layer_names {
-    _QW,
-    _RS,
-    _LW,
-    _MOUSE,
-    _FN,
-};
+#define LAYOUT_atreus_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QW] = LAYOUT( /* Qwerty */
-    KC_Q,          KC_W,          KC_E,        KC_R,        KC_T,                                    KC_Y,   KC_U,        KC_I,           KC_O,          KC_P,
-    KC_A,          KC_S,          KC_D,        KC_F,        KC_G,                                    KC_H,   KC_J,        KC_K,           KC_L,          KC_SCLN,
-    LCTL_T(KC_Z),  ALT_T(KC_X),   SFT_T(KC_C), GUI_T(KC_V), KC_B,    HYPR_T(KC_GRV), MEH_T(KC_MINS), KC_N,   GUI_T(KC_M), SFT_T(KC_COMM), ALT_T(KC_DOT), CTL_T(KC_SLSH),
-    CTL_T(KC_GRV), ALT_T(KC_ESC), KC_TAB,      KC_LGUI,     MO(_LW), KC_LSFT,        KC_BSPC,        KC_SPC, MO(_RS),     KC_ENT,         KC_QUOT,       KC_MINS
+    [_BASE] = LAYOUT_atreus_wrapper(
+        _________________QWERTY_L1_________________,                                 _________________QWERTY_R1_________________,
+        _________________QWERTY_L2_________________,                                 _________________QWERTY_R2_________________,
+        _________________QWERTY_L3_________________, HYPR_T(KC_GRV), MEH_T(KC_MINS), _________________QWERTY_R3_________________,
+        _________________BASE_5_L4_________________, KC_LSFT,        KC_BSPC,        _________________BASE_5_R4_________________
     ),
 
-  [_LW] = LAYOUT( /* [> Lower <] */
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,       KC_8,     KC_9,    KC_0,
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_UNDS, KC_LBRC,    KC_RBRC,  KC_LPRN, KC_RPRN,
-    KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______, _______, KC_PLUS, KC_MINS,    KC_EQUAL, KC_LCBR, KC_RCBR,
-    _______, _______, _______, _______, _______, _______, _______, _______, MO(_MOUSE), KC_TILDE, KC_GRV,  _______
+    [_LOWER] = LAYOUT_atreus_wrapper(
+        _________________LOWER_L1__________________,                   _________________LOWER_R1__________________,
+        _________________LOWER_L2__________________,                   _________________LOWER_R2__________________,
+        _________________LOWER_L3__________________, _______, _______, _________________LOWER_R3__________________,
+        ________________LOWER_5_L4_________________, _______, _______, ________________LOWER_5_R4_________________
     ),
 
-  [_RS] = LAYOUT( /* [> Raise <] */
-    KC_MUTE, CW_TOGG, KC_KB_VOLUME_UP,   _______, _______,                   KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY,
-    KC_CAPS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______,                   KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______,
-    _______, _______, _______,           _______, QK_BOOT, _______,  KC_DEL, _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN),
-    _______, _______, _______,           _______, MO(_FN), _______, _______, _______, _______,       DT_PRNT,      DT_DOWN,       DT_UP
+    [_RAISE] = LAYOUT_atreus_wrapper(
+        _________________RAISE_L1__________________,                   _________________RAISE_R1__________________,
+        _________________RAISE_L2__________________,                   _________________RAISE_R2__________________,
+        _________________RAISE_L3__________________, _______, KC_DEL,  _________________RAISE_R3__________________,
+        ________________RAISE_5_L4_________________, _______, _______, ________________RAISE_5_R4_________________
     ),
 
-  [_MOUSE] = LAYOUT( /* [> Mouse <] */
-    _______, _______, _______, _______, _______,                   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
-    _______, _______, _______, KC_BTN1, KC_BTN2,                   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    [_MOUSE] = LAYOUT_atreus_wrapper(
+        _________________MOUSE_L1__________________,                   _________________MOUSE_R1__________________,
+        _________________MOUSE_L2__________________,                   _________________MOUSE_R2__________________,
+        _________________MOUSE_L3__________________, _______, _______, _________________MOUSE_R3__________________,
+        ________________MOUSE_5_L4_________________, _______, _______, __________________BLANK_5__________________
     ),
 
-  [_FN] = LAYOUT( /* [> Function <] */
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_F11,  KC_F12,  _______, _______, _______,                   _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    QK_BOOT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    [_FN] = LAYOUT_atreus_wrapper(
+        _________________FUNC_LEFT_________________,                   _________________FUNC_RIGHT________________,
+        KC_F11,  KC_F12, _______, _______, _______,                    __________________BLANK_5__________________,
+        __________________BLANK_5__________________, _______, _______, __________________BLANK_5__________________,
+        QK_BOOT, BASE,   _______, _______, _______,  _______, _______, __________________BLANK_5__________________
     )
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-
 };
