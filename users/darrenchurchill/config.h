@@ -15,6 +15,10 @@
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
 // Mouse Keys
+#define MOUSEKEY_INTERVAL           20
+#define MOUSEKEY_DELAY              0
+#define MOUSEKEY_TIME_TO_MAX        60
+#define MOUSEKEY_MAX_SPEED          7
 #undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY 40
 #undef MOUSEKEY_WHEEL_INTERVAL
