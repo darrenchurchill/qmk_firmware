@@ -1,5 +1,6 @@
 # https://docs.qmk.fm/#/feature_userspace
 SRC += $(USER_PATH)/darrenchurchill.c
+SRC += $(USER_PATH)/achordion.c
 
 # Set any rules.mk overrides for your specific user here.
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
