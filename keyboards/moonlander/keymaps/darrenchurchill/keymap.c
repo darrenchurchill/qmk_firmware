@@ -96,13 +96,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 */
 
-const uint16_t PROGMEM combo0[] = { KC_MEH, KC_HYPR, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo0, KC_CAPS_LOCK),
-};
-
-
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_keymap(void) {

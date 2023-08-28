@@ -11,6 +11,9 @@
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 
+// Combos
+#define COMBO_TERM 70
+
 // Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
