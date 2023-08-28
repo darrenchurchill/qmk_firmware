@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "darrenchurchill.h"
+#include "achordion.h"
 
 
 __attribute__ ((weak))
@@ -10,6 +11,28 @@ void keyboard_post_init_keymap(void) {
 void keyboard_post_init_user(void) {
     keyboard_post_init_keymap();
 }
+
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
+    return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    // https://getreuer.info/posts/keyboards/achordion/
+    if (!process_achordion(keycode, record)) { return false; }
+
+    return process_record_keymap(keycode, record);
+}
+
+__attribute__ ((weak))
+void matrix_scan_keymap(void) {}
+
+void matrix_scan_user(void) {
+    achordion_task();
+
+    matrix_scan_keymap();
+}
+
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
