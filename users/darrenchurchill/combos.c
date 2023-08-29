@@ -8,7 +8,9 @@
 #include "darrenchurchill.h"
 
 const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
+const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_lower_space, QK_REPEAT_KEY),
+    COMBO(combo_lower_raise, QK_ALT_REPEAT_KEY),
 };
