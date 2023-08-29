@@ -51,16 +51,16 @@ enum userspace_layers {
 #define __________________BLANK_5__________________       _______, _______, _______, _______, _______
 
 
-#define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
+#define _________________LOWER_L1__________________       __________________BLANK_5__________________
 #define _________________LOWER_L2__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define _________________LOWER_L3__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
+#define _________________LOWER_L3__________________       __________________BLANK_5__________________
 #define ____________LOWER_4_L4_____________               _______, BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
-#define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_UNDS, KC_LBRC,    KC_RBRC,  KC_LPRN, KC_RPRN
-#define _________________LOWER_R3__________________       KC_PLUS, KC_MINS,    KC_EQUAL, KC_LCBR, KC_RCBR
-#define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
+#define _________________LOWER_R1__________________       __________________BLANK_5__________________
+#define _________________LOWER_R2__________________       KC_CIRC, KC_AMPR, KC_ASTR,  KC_LPRN, KC_RPRN
+#define _________________LOWER_R3__________________       KC_BSLS, KC_MINS, KC_EQUAL, KC_LBRC, KC_RBRC
+#define ____________LOWER_4_R4_____________                        MOUSE,   KC_TILDE, KC_GRV,  _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 

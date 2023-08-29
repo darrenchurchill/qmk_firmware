@@ -21,12 +21,75 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
         case RALT_T(KC_DOT):
         case RCTL_T(KC_SLSH):
         case LCTL_T(KC_GRV):
+        case KC_EXLM:
+        case KC_AT:
+        case KC_HASH:
+        case KC_DLR:
+        case KC_PERC:
+        case KC_CIRC:
+        case KC_AMPR:
+        case KC_ASTR:
+        case KC_LPRN:
+        case KC_RPRN:
             return true;
         default:
             return false;
     }
 }
 
+void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_EXLM:
+            register_code16((!shifted) ? KC_EXLM : KC_1);
+            break;
+        case KC_AT:
+            register_code16((!shifted) ? KC_AT : KC_2);
+            break;
+        case KC_HASH:
+            register_code16((!shifted) ? KC_HASH : KC_3);
+            break;
+        case KC_DLR:
+            register_code16((!shifted) ? KC_DLR : KC_4);
+            break;
+        case KC_PERC:
+            register_code16((!shifted) ? KC_PERC : KC_5);
+            break;
+        case KC_CIRC:
+            register_code16((!shifted) ? KC_CIRC : KC_6);
+            break;
+        case KC_AMPR:
+            register_code16((!shifted) ? KC_AMPR : KC_7);
+            break;
+        case KC_ASTR:
+            register_code16((!shifted) ? KC_ASTR : KC_8);
+            break;
+        case KC_LPRN:
+            register_code16((!shifted) ? KC_LPRN : KC_9);
+            break;
+        case KC_RPRN:
+            register_code16((!shifted) ? KC_RPRN : KC_0);
+            break;
+        default:
+            if (shifted) {
+                add_weak_mods(MOD_BIT(KC_LSFT));
+            }
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            register_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
+
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch(keycode) {
+        case KC_EXLM:
+            unregister_code16((!shifted) ? KC_EXLM : KC_1);
+            break;
+        default:
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            // The IS_RETRO check isn't really necessary here, always using
+            // keycode & 0xFF would be fine.
+            unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
