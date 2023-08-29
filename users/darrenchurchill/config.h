@@ -20,8 +20,6 @@
 // Auto Shift
 #define NO_AUTO_SHIFT_ALPHA
 #define AUTO_SHIFT_MODIFIERS
-// Don't produce a tap for tap-hold keys held longer than this value
-#define RETRO_SHIFT 500  // milliseconds
 
 // Mouse Keys
 #define MOUSEKEY_INTERVAL           20
