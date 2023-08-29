@@ -2,6 +2,8 @@
 SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/achordion.c
 
+LTO_ENABLE = yes
+
 # Set any rules.mk overrides for your specific user here.
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
 TAP_DANCE_ENABLE = yes
