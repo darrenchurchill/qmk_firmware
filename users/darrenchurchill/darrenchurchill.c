@@ -89,6 +89,17 @@ tap_dance_action_t tap_dance_actions[] = {
 #endif // TAP_DANCE_ENABLE
 
 
+// See https://getreuer.info/posts/keyboards/achordion/
+// For per-keycode use of achordion_timeout()
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    // Default to default dynamic tapping term + nominal ms
+    // Reducing the default achordion_timeout makes same-hand tap-hold combos
+    // like LGUI_T(KC_M) + KC_SPACE on MacOS faster
+    // I think this is the best option for this particular key combination,
+    // because you somtimes also roll through M onto Space at the end of a word
+    return g_tapping_term + 50;
+}
+
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
