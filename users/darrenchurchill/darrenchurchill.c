@@ -12,6 +12,21 @@ void keyboard_post_init_user(void) {
     keyboard_post_init_keymap();
 }
 
+/*
+  Auto Shift
+*/
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case RSFT_T(KC_COMM):
+        case RALT_T(KC_DOT):
+        case RCTL_T(KC_SLSH):
+        case LCTL_T(KC_GRV):
+            return true;
+        default:
+            return false;
+    }
+}
+
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
