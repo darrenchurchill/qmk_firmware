@@ -12,27 +12,6 @@ void keyboard_post_init_user(void) {
     keyboard_post_init_keymap();
 }
 
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
-    return true;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    // https://getreuer.info/posts/keyboards/achordion/
-    if (!process_achordion(keycode, record)) { return false; }
-
-    return process_record_keymap(keycode, record);
-}
-
-__attribute__ ((weak))
-void matrix_scan_keymap(void) {}
-
-void matrix_scan_user(void) {
-    achordion_task();
-
-    matrix_scan_keymap();
-}
-
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -108,3 +87,25 @@ tap_dance_action_t tap_dance_actions[] = {
     [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_0_finished, dance_0_reset),
 };
 #endif // TAP_DANCE_ENABLE
+
+
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
+    return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    // https://getreuer.info/posts/keyboards/achordion/
+    if (!process_achordion(keycode, record)) { return false; }
+
+    return process_record_keymap(keycode, record);
+}
+
+__attribute__ ((weak))
+void matrix_scan_keymap(void) {}
+
+void matrix_scan_user(void) {
+    achordion_task();
+
+    matrix_scan_keymap();
+}
