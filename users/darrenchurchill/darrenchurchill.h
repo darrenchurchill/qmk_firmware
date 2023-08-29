@@ -46,8 +46,6 @@ enum userspace_layers {
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
 #define ________________NUMBER_RIGHT_______________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
-#define _________________FUNC_LEFT_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
-#define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 
 #define ______________BLANK_4______________               _______, _______, _______, _______
 #define __________________BLANK_5__________________       _______, _______, _______, _______, _______
@@ -75,7 +73,7 @@ enum userspace_layers {
 #define _________________RAISE_R1__________________       KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY
 #define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______
 #define _________________RAISE_R3__________________       _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN)
-#define ____________RAISE_4_R4_____________                        _______,       DT_PRNT,       DT_DOWN,       DT_UP
+#define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
 
 
@@ -101,6 +99,14 @@ enum userspace_layers {
 #define ________________KB_LED_R3__________________       _______, RGB_SAD, RGB_SAI, _______, _______
 #define ___________KB_LED_4_R4_____________                        _______, _______, RGB_SPD, RGB_SPI
 #define _______________KB_LED_5_R4_________________       _______, ___________KB_LED_4_R4_____________
+
+
+#define ___________________FN_L1___________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
+#define ___________________FN_L2___________________       KC_F11,  KC_F12,  _______, _______, _______
+
+#define ___________________FN_R1___________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
+#define ___________________FN_R2___________________       DT_PRNT, DT_DOWN, DT_UP,   _______, _______
+#define ___________________FN_R3___________________       AS_RPT,  AS_DOWN, AS_UP,   _______, _______
 
 
 #define ________________LAYERS_L1__________________       _______, _______, _______, TO(_RAISE), _______
