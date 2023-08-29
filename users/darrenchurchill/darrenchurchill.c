@@ -1,7 +1,20 @@
 #include QMK_KEYBOARD_H
+#include "os_detection.h"
+
 #include "darrenchurchill.h"
 #include "achordion.h"
 
+
+// helper function for some macros in process_record_user()
+os_variant_t get_host_os(void) {
+    static os_variant_t host_os = OS_UNSURE;
+
+    if (host_os == OS_UNSURE) {
+        host_os = detected_host_os();
+    }
+
+    return host_os;
+}
 
 __attribute__ ((weak))
 void keyboard_post_init_keymap(void) {
@@ -105,9 +118,36 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
+// https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
+
+
+    switch (keycode) {
+        case UKC_OS_COPY:
+            if (record->event.pressed) {
+                os_variant_t host_os = detected_host_os();
+
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(LGUI(KC_C));
+                } else {
+                    tap_code16(LCTL(KC_C));
+                }
+            }
+            return false;
+        case UKC_OS_PASTE:
+            if (record->event.pressed) {
+                os_variant_t host_os = detected_host_os();
+
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(LGUI(KC_V));
+                } else {
+                    tap_code16(LCTL(KC_V));
+                }
+            }
+            return false;
+    }
 
     return process_record_keymap(keycode, record);
 }

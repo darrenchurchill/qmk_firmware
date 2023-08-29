@@ -17,6 +17,13 @@ enum userspace_layers {
     _LAYERS,
 };
 
+// "UKC" Userspace KeyCode
+enum userspace_custom_keycodes {
+  UKC_OS_COPY = SAFE_RANGE,
+  UKC_OS_PASTE,
+  KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
+};
+
 #define BASE TO(_BASE)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
