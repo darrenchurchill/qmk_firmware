@@ -32,6 +32,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LSFT_T(KC_C):
         case RSFT_T(KC_COMM):
             return g_tapping_term - 30;
+        case LCTL_T(KC_GRV):
+            return g_tapping_term + 30;
         default:
             return g_tapping_term;
     }
