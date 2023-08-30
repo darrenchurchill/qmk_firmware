@@ -13,6 +13,10 @@
 
 // Combos
 #define COMBO_TERM 70
+// Define COMBO_HOLD_TERM such that my tap-only combos don't have to be pressed
+// too quickly in order to fire. The value defaults to TAPPING_TERM, but my
+// TAPPING_TERM is short so home-row shift works quickly.
+#define COMBO_HOLD_TERM 300
 #define COMBO_MUST_TAP_PER_COMBO
 
 // Caps Word
