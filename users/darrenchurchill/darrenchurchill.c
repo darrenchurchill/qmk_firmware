@@ -147,6 +147,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 }
             }
             return false;
+
+        case UKC_OS_PREV_TAB:
+            if (record->event.pressed) {
+                os_variant_t host_os = detected_host_os();
+
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(SGUI(KC_LBRC));
+                } else {
+                    tap_code16(LCTL(KC_PGUP));
+                }
+            }
+            return false;
+
+        case UKC_OS_NEXT_TAB:
+            if (record->event.pressed) {
+                os_variant_t host_os = detected_host_os();
+
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(SGUI(KC_RBRC));
+                } else {
+                    tap_code16(LCTL(KC_PGDN));
+                }
+            }
+            return false;
     }
 
     return process_record_keymap(keycode, record);
