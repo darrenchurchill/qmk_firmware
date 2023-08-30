@@ -13,6 +13,7 @@
 
 // Combos
 #define COMBO_TERM 70
+#define COMBO_MUST_TAP_PER_COMBO
 
 // Caps Word
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
