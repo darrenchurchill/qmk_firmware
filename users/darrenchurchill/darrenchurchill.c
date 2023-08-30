@@ -104,8 +104,27 @@ tap_dance_action_t tap_dance_actions[] = {
 #endif // TAP_DANCE_ENABLE
 
 
-// See https://getreuer.info/posts/keyboards/achordion/
-// For per-keycode use of achordion_timeout()
+/*
+  Achordion
+  See https://getreuer.info/posts/keyboards/achordion/
+*/
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+    // consider the following keycodes as holds
+    switch (tap_hold_keycode) {
+        case HYPR_T(KC_GRV):
+        case MEH_T(KC_MINS):
+            return true;
+    }
+
+    // The default choice is to return true if the keys are on opposite hands
+    return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+
+// See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
         case LCTL_T(KC_A):
