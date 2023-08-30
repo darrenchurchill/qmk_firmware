@@ -29,8 +29,8 @@ void keyboard_post_init_user(void) {
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LSFT_T(KC_C):
-        case RSFT_T(KC_COMM):
+        case LSFT_T(KC_D):
+        case RSFT_T(KC_K):
             return g_tapping_term - 30;
         case LCTL_T(KC_GRV):
             return g_tapping_term + 30;
