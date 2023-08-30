@@ -7,6 +7,10 @@
 #include "combos.h"
 #include "darrenchurchill.h"
 
+// Most combo #defines need to be in config.h, but this one can live here, and
+// lets you use the _BASE macro definition
+#define COMBO_ONLY_FROM_LAYER _BASE
+
 const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 const uint16_t PROGMEM combo_df[] = { KC_D, KC_F, COMBO_END};
