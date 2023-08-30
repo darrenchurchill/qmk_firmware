@@ -39,12 +39,12 @@ enum userspace_custom_keycodes {
   https://docs.qmk.fm/#/keycodes
  */
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________       KC_A,    KC_S,    KC_D,    KC_F,    KC_G
-#define _________________QWERTY_L3_________________       LCTL_T(KC_Z), LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V), KC_B
+#define _________________QWERTY_L2_________________       LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G
+#define _________________QWERTY_L3_________________       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
-#define _________________QWERTY_R3_________________       KC_N,    RGUI_T(KC_M), RSFT_T(KC_COMM), RALT_T(KC_DOT), RCTL_T(KC_SLSH)
+#define _________________QWERTY_R2_________________       KC_H,    RGUI_T(KC_J), RSFT_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN)
+#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH
 
 #define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_TAB,  KC_LGUI
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER

@@ -13,15 +13,16 @@
 
 const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
-const uint16_t PROGMEM combo_df[] = { KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_fg[] = { KC_F, KC_G, COMBO_END};
-const uint16_t PROGMEM combo_hj[] = { KC_H, KC_J, COMBO_END};
-const uint16_t PROGMEM combo_jk[] = { KC_J, KC_K, COMBO_END};
 
-const uint16_t PROGMEM combo_cvb[] = { LSFT_T(KC_C), LGUI_T(KC_V), KC_B, COMBO_END};
-const uint16_t PROGMEM combo_vb[] = { LGUI_T(KC_V), KC_B, COMBO_END};
+const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
+const uint16_t PROGMEM combo_fg[] = { LGUI_T(KC_F), KC_G, COMBO_END};
+const uint16_t PROGMEM combo_hj[] = { KC_H, RGUI_T(KC_J), COMBO_END};
+const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), RSFT_T(KC_K), COMBO_END};
 
-const uint16_t PROGMEM combo_ccomma[] = { LSFT_T(KC_C), RSFT_T(KC_COMM), COMBO_END};
+const uint16_t PROGMEM combo_cvb[] = { KC_C, KC_V, KC_B, COMBO_END};
+const uint16_t PROGMEM combo_vb[] = { KC_V, KC_B, COMBO_END};
+
+const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), RSFT_T(KC_K), COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_lower_space, QK_REPEAT_KEY),
@@ -32,5 +33,5 @@ combo_t key_combos[] = {
     COMBO(combo_jk, KC_ENT),
     COMBO(combo_cvb, UKC_OS_COPY),
     COMBO(combo_vb, UKC_OS_PASTE),
-    COMBO(combo_ccomma, CW_TOGG)
+    COMBO(combo_dk, CW_TOGG)
 };
