@@ -21,6 +21,8 @@ enum userspace_layers {
 enum userspace_custom_keycodes {
   UKC_OS_COPY = SAFE_RANGE,
   UKC_OS_PASTE,
+  UKC_OS_PREV_TAB,
+  UKC_OS_NEXT_TAB,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
@@ -77,9 +79,9 @@ enum userspace_custom_keycodes {
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, FN
 
-#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN,       KC_PGUP,       KC_END,        KC_MPLY
-#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,       KC_UP,         KC_RIGHT,      _______
-#define _________________RAISE_R3__________________       _______, SGUI(KC_LBRC), SGUI(KC_RBRC), LCTL(KC_PGUP), LCTL(KC_PGDN)
+#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN,         KC_PGUP,         KC_END,        KC_MPLY
+#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,         KC_UP,           KC_RIGHT,      _______
+#define _________________RAISE_R3__________________       _______, UKC_OS_PREV_TAB, UKC_OS_NEXT_TAB, _______, _______
 #define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
 
