@@ -71,8 +71,8 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
-#define _________________RAISE_L1__________________       KC_MUTE, CW_TOGG, KC_KB_VOLUME_UP,   _______, _______
-#define _________________RAISE_L2__________________       KC_CAPS, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______
+#define _________________RAISE_L1__________________       KC_MUTE, _______, KC_KB_VOLUME_UP,   _______, _______
+#define _________________RAISE_L2__________________       _______, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______
 #define _________________RAISE_L3__________________       _______, _______, _______,           _______, QK_BOOT
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, FN
