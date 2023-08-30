@@ -17,6 +17,8 @@ const uint16_t PROGMEM combo_jk[] = { KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_cvb[] = { LSFT_T(KC_C), LGUI_T(KC_V), KC_B, COMBO_END};
 const uint16_t PROGMEM combo_vb[] = { LGUI_T(KC_V), KC_B, COMBO_END};
 
+const uint16_t PROGMEM combo_ccomma[] = { LSFT_T(KC_C), RSFT_T(KC_COMM), COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(combo_lower_space, QK_REPEAT_KEY),
     COMBO(combo_lower_raise, QK_ALT_REPEAT_KEY),
@@ -25,5 +27,6 @@ combo_t key_combos[] = {
     COMBO(combo_hj, LSFT(KC_TAB)),
     COMBO(combo_jk, KC_ENT),
     COMBO(combo_cvb, UKC_OS_COPY),
-    COMBO(combo_vb, UKC_OS_PASTE)
+    COMBO(combo_vb, UKC_OS_PASTE),
+    COMBO(combo_ccomma, CW_TOGG)
 };
