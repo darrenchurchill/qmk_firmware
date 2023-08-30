@@ -107,6 +107,12 @@ tap_dance_action_t tap_dance_actions[] = {
 // See https://getreuer.info/posts/keyboards/achordion/
 // For per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    switch (tap_hold_keycode) {
+        case LCTL_T(KC_A):
+            // bump up the tapping term for this mod-tap key, so A-R rolls are
+            // harder to trigger ctrl-R
+            return g_tapping_term + 300;
+    }
     // Default to default dynamic tapping term + nominal ms
     // Reducing the default achordion_timeout makes same-hand tap-hold combos
     // like LGUI_T(KC_M) + KC_SPACE on MacOS faster
