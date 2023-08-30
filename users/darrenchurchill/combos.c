@@ -48,3 +48,31 @@ combo_t key_combos[] = {
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG)
 };
+
+
+// This function returns true if a given combo should only fire when tapped
+// (vs held)
+// https://docs.qmk.fm/#/feature_combo?id=per-combo-timing-holding-tapping-and-key-press-order
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+    switch (index) {
+      case FG_TAB:
+        return false;
+    }
+
+    // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in
+    // its chord, to be tap-only, this is for you:
+    uint16_t key;
+    uint8_t idx = 0;
+    while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) {
+        switch (key) {
+            case QK_MOD_TAP...QK_MOD_TAP_MAX:
+            case QK_LAYER_TAP...QK_LAYER_TAP_MAX:
+            case QK_MOMENTARY...QK_MOMENTARY_MAX:
+                return true;
+        }
+        idx += 1;
+    }
+
+    // Default: allow combo to fire when held
+    return false;
+}
