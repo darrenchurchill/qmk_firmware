@@ -123,6 +123,8 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
         case LCTL_T(KC_A):
             // bump up the tapping term for this mod-tap key, so A-R rolls are
             // harder to trigger ctrl-R
+        case LGUI_T(KC_F):
+            // Reduce cmd-A rolls
             return g_tapping_term + 300;
     }
     // Default to default dynamic tapping term + nominal ms
