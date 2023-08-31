@@ -30,12 +30,12 @@ const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
 const uint16_t PROGMEM combo_fg[] = { LGUI_T(KC_F), KC_G, COMBO_END};
 const uint16_t PROGMEM combo_hj[] = { KC_H, RGUI_T(KC_J), COMBO_END};
-const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), RSFT_T(KC_K), COMBO_END};
+const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), LSFT_T(KC_K), COMBO_END};
 
 const uint16_t PROGMEM combo_cvb[] = { KC_C, KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_vb[] = { KC_V, KC_B, COMBO_END};
 
-const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), RSFT_T(KC_K), COMBO_END};
+const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), LSFT_T(KC_K), COMBO_END};
 
 combo_t key_combos[] = {
     [LOWER_SPACE_REPEAT] = COMBO(combo_lower_space, QK_REPEAT_KEY),
