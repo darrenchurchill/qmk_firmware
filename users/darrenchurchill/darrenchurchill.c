@@ -120,11 +120,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
+        // bump up the tapping term for this mod-tap key, so A-R rolls are
+        // harder to trigger ctrl-R
         case LCTL_T(KC_A):
-            // bump up the tapping term for this mod-tap key, so A-R rolls are
-            // harder to trigger ctrl-R
-        case LGUI_T(KC_F):
-            // Reduce cmd-A rolls
+        case LGUI_T(KC_F): // Reduce cmd-A rolls
+        case RALT_T(KC_L): // Reduce opt-k rolls
             return g_tapping_term + 300;
     }
     // Default to default dynamic tapping term + nominal ms
