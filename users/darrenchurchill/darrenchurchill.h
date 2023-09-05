@@ -19,14 +19,14 @@ enum userspace_layers {
 
 // "UKC" Userspace KeyCode
 enum userspace_custom_keycodes {
-  UKC_OS_COPY = SAFE_RANGE,
+  UKC_BASE = SAFE_RANGE,
+  UKC_OS_COPY,
   UKC_OS_PASTE,
   UKC_OS_PREV_TAB,
   UKC_OS_NEXT_TAB,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
-#define BASE TO(_BASE)
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MOUSE MO(_MOUSE)
@@ -63,7 +63,7 @@ enum userspace_custom_keycodes {
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
 #define _________________LOWER_L2__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define _________________LOWER_L3__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
-#define ____________LOWER_4_L4_____________               _______, BASE, _______, _______
+#define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
@@ -100,7 +100,7 @@ enum userspace_custom_keycodes {
 #define ________________KB_LED_L1__________________       RGB_TOG, _______, _______, _______, TOGGLE_LAYER_COLOR
 #define ________________KB_LED_L2__________________       _______, RGB_MOD, _______, _______, _______
 #define ________________KB_LED_L3__________________       __________________BLANK_5__________________
-#define ___________KB_LED_4_L4_____________               QK_BOOT, BASE,    _______, _______
+#define ___________KB_LED_4_L4_____________               QK_BOOT, UKC_BASE,    _______, _______
 #define _______________KB_LED_5_L4_________________       ___________KB_LED_4_L4_____________, _______
 
 #define ________________KB_LED_R1__________________       _______, RGB_HUD, RGB_HUI, _______, RGB_MODE_PLAIN

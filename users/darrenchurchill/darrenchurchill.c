@@ -147,6 +147,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 
     switch (keycode) {
+        case UKC_BASE:
+            if (!record->event.pressed) return false; // already processed
+            // It's normally recommended to use layer_move() rather than
+            // layer_state_set()
+            // See: https://docs.qmk.fm/#/feature_layers?id=functions
+            // but the default_layer_state variable is already a layer_mask, so
+            // it's easy enough this way.
+            layer_state_set(default_layer_state); // move back to cur default layer
+            return false;
+
         case UKC_OS_COPY:
             if (record->event.pressed) {
                 os_variant_t host_os = detected_host_os();
