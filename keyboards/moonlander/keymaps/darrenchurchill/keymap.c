@@ -311,23 +311,23 @@ bool rgb_matrix_indicators_user(void) {
         case _QWERTY:
             set_layer_color(_QWERTY);
             break;
-        case 1:
-            set_layer_color(1);
+        case _LOWER:
+            set_layer_color(_LOWER);
             break;
-        case 2:
-            set_layer_color(2);
+        case _RAISE:
+            set_layer_color(_RAISE);
             break;
-        case 3:
-            set_layer_color(3);
+        case _MOUSE:
+            set_layer_color(_MOUSE);
             break;
-        case 4:
-            set_layer_color(4);
+        case _KB_LED:
+            set_layer_color(_KB_LED);
             break;
-        case 5:
-            set_layer_color(5);
+        case _FN:
+            set_layer_color(_FN);
             break;
-        case 6:
-            set_layer_color(6);
+        case _LAYERS:
+            set_layer_color(_LAYERS);
             break;
         default:
             if (rgb_matrix_get_flags() == LED_FLAG_NONE)
