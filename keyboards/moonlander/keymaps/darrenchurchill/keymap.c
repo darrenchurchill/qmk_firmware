@@ -24,7 +24,7 @@
 #define LAYOUT_moonlander_custom_wrapper(...) LAYOUT_moonlander_custom(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_moonlander_custom_wrapper(
+    [_QWERTY] = LAYOUT_moonlander_custom_wrapper(
         _________________QWERTY_L1_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R2_________________,
         _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________,
@@ -104,7 +104,7 @@ void keyboard_post_init_keymap(void) {
 
 // in columns, NOT rows
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_BASE] = {
+    [_QWERTY] = {
         {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
         {HSV_ON}, {HSV_ON}, {HSV_CTL}, {HSV_ON}, {HSV_CTL},
         {HSV_ON}, {HSV_ON}, {HSV_ALT}, {HSV_ON}, {HSV_ALT},
@@ -308,8 +308,8 @@ bool rgb_matrix_indicators_user(void) {
     }
     if (keyboard_config.disable_layer_led) { return false; }
     switch (biton32(layer_state)) {
-        case 0:
-            set_layer_color(0);
+        case _QWERTY:
+            set_layer_color(_QWERTY);
             break;
         case 1:
             set_layer_color(1);

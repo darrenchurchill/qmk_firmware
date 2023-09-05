@@ -14,7 +14,7 @@
 // https://github.com/qmk/qmk_firmware/blob/14e14e9ab8420bf15929d07da389a08a6d79fe3c/keyboards/moonlander/keymaps/drashna/keymap.c#L26
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_planck_wrapper(
+    [_QWERTY] = LAYOUT_planck_wrapper(
         _________________QWERTY_L1_________________, KC_GRV,         KC_MINS,        _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________, KC_GRV,         KC_MINS,        _________________QWERTY_R2_________________,
         _________________QWERTY_L3_________________, HYPR_T(KC_GRV), MEH_T(KC_MINS), _________________QWERTY_R3_________________,
@@ -71,7 +71,7 @@ void keyboard_post_init_keymap(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_BASE] = {
+    [_QWERTY] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
@@ -147,8 +147,8 @@ bool rgb_matrix_indicators_user(void) {
         return false;
     }
     switch (biton32(layer_state)) {
-        case _BASE:
-            set_layer_color(_BASE);
+        case _QWERTY:
+            set_layer_color(_QWERTY);
             break;
         case _LOWER:
             set_layer_color(_LOWER);

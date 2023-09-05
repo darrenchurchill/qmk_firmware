@@ -8,7 +8,7 @@ enum tap_dance_codes {
 #endif // TAP_DANCE_ENABLE
 
 enum userspace_layers {
-    _BASE,
+    _QWERTY,
     _LOWER,
     _RAISE,
     _MOUSE,
