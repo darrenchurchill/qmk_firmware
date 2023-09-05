@@ -21,6 +21,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________BASE_5_L4_________________, KC_BSPC,        XXXXXXX,        _________________BASE_5_R4_________________
     ),
 
+    [_COLEMAK_DH] = LAYOUT_planck_wrapper(
+        _______________COLEMAK_DH_L1_______________, _______, _______, _______________COLEMAK_DH_R1_______________,
+        _______________COLEMAK_DH_L2_______________, _______, _______, _______________COLEMAK_DH_R2_______________,
+        _______________COLEMAK_DH_L3_______________, _______, _______, _______________COLEMAK_DH_R3_______________,
+        _________________BASE_5_L4_________________, _______, XXXXXXX, _________________BASE_5_R4_________________
+    ),
+
     [_QWERTY_NO_MODS] = LAYOUT_planck_wrapper(
         _________________QWERTY_L1_________________, _______, _______, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________, _______, _______, _____________QWERTY_NO_MODS_R2_____________,
@@ -59,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT_planck_wrapper(
         ___________________FN_L1___________________, _______, _______, ___________________FN_R1___________________,
         ___________________FN_L2___________________, _______, _______, ___________________FN_R2___________________,
-        __________________BLANK_5__________________, _______, _______, ___________________FN_R3___________________,
+        ___________________FN_L3___________________, _______, _______, ___________________FN_R3___________________,
         _______, UKC_BASE, _______, _______, _______, _______, XXXXXXX, __________________BLANK_5__________________
     ),
 
@@ -79,6 +86,13 @@ void keyboard_post_init_keymap(void) {
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_QWERTY] = {
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_ON},  {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_LYR}
+    },
+
+    [_COLEMAK_DH] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
@@ -163,6 +177,9 @@ bool rgb_matrix_indicators_user(void) {
     switch (biton32(layer_state)) {
         case _QWERTY:
             set_layer_color(_QWERTY);
+            break;
+        case _COLEMAK_DH:
+            set_layer_color(_COLEMAK_DH);
             break;
         case _QWERTY_NO_MODS:
             set_layer_color(_QWERTY_NO_MODS);
