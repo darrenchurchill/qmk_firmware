@@ -20,7 +20,7 @@
 #define LAYOUT_atreus_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_atreus_wrapper(
+    [_QWERTY] = LAYOUT_atreus_wrapper(
         _________________QWERTY_L1_________________,                                 _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________,                                 _________________QWERTY_R2_________________,
         _________________QWERTY_L3_________________, HYPR_T(KC_GRV), MEH_T(KC_MINS), _________________QWERTY_R3_________________,

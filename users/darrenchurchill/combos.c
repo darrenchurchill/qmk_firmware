@@ -8,8 +8,8 @@
 #include "darrenchurchill.h"
 
 // Most combo #defines need to be in config.h, but this one can live here, and
-// lets you use the _BASE macro definition
-#define COMBO_ONLY_FROM_LAYER _BASE
+// lets you use the _QWERTY macro definition
+#define COMBO_ONLY_FROM_LAYER _QWERTY
 
 
 enum combos {
