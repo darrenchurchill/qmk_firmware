@@ -9,6 +9,7 @@ enum tap_dance_codes {
 
 enum userspace_layers {
     _QWERTY,
+    _QWERTY_NO_MODS, // top-level "default" layout so can override others temporarily
     _LOWER,
     _RAISE,
     _MOUSE,
@@ -46,7 +47,9 @@ enum userspace_custom_keycodes {
 #define _________________QWERTY_R2_________________       KC_H,    RGUI_T(KC_J), LSFT_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN)
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH
 
-#define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_TAB,  KC_LGUI
+#define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
+
+#define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, LT(_QWERTY_NO_MODS, KC_TAB)
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER
 
 #define _____________BASE_4_R4_____________                        RAISE,  KC_ENT,  KC_QUOT, TD(DANCE_0)
