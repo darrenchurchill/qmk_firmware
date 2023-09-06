@@ -119,6 +119,14 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    switch (tap_hold_keycode) {
+        case LT(_QWERTY_NO_MODS, KC_TAB):
+            // This layer-tap key was frequently being changed from a hold->tap
+            // when quickly pressing a key after holding the LT key, resulting
+            // in tab + J, for example.
+            return g_tapping_term;
+    }
+
     // Default to default dynamic tapping term + nominal ms
     // Reducing the default achordion_timeout makes same-hand tap-hold combos
     // like LGUI_T(KC_M) + KC_SPACE on MacOS faster
