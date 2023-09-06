@@ -119,20 +119,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    switch (tap_hold_keycode) {
-        // bump up the tapping term for this mod-tap key, so A-R rolls are
-        // harder to trigger ctrl-R
-        case LCTL_T(KC_A):
-        case LGUI_T(KC_F): // Reduce cmd-A rolls
-        case RALT_T(KC_L): // Reduce opt-k rolls
-            return g_tapping_term + 300;
-    }
     // Default to default dynamic tapping term + nominal ms
     // Reducing the default achordion_timeout makes same-hand tap-hold combos
     // like LGUI_T(KC_M) + KC_SPACE on MacOS faster
     // I think this is the best option for this particular key combination,
     // because you somtimes also roll through M onto Space at the end of a word
-    return g_tapping_term + 50;
+    return g_tapping_term + 500;
 }
 
 __attribute__ ((weak))
