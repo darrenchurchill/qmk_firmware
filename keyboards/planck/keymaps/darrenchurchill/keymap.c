@@ -49,6 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ________________RAISE_5_L4_________________, _______, XXXXXXX, ________________RAISE_5_R4_________________
     ),
 
+    [_EXTEND] = LAYOUT_planck_wrapper(
+        _________________EXTEND_L1_________________, _______, _______, _________________EXTEND_R1_________________,
+        _________________EXTEND_L2_________________, _______, _______, _________________EXTEND_R2_________________,
+        _________________EXTEND_L3_________________, _______, _______, _________________EXTEND_R3_________________,
+        ________________EXTEND_5_L4________________, _______, XXXXXXX, ________________EXTEND_5_R4________________
+    ),
+
     [_MOUSE] = LAYOUT_planck_wrapper(
         _________________MOUSE_L1__________________, _______, _______, _________________MOUSE_R1__________________,
         _________________MOUSE_L2__________________, _______, _______, _________________MOUSE_R2__________________,
@@ -120,6 +127,13 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},     {HSV_LYR}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
     },
 
+    [_EXTEND] = {
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_QUOT}, {HSV_QUOT}, {HSV_BSPC}, {HSV_QUOT},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF}
+    },
+
     [_MOUSE] = {
         {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_MS},       {HSV_MS},       {HSV_MS},       {HSV_MS},       {HSV_OFF},
         {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_MS},  {HSV_MS},  {HSV_OFF}, {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_MS_WHEEL}, {HSV_OFF},
@@ -189,6 +203,9 @@ bool rgb_matrix_indicators_user(void) {
             break;
         case _RAISE:
             set_layer_color(_RAISE);
+            break;
+        case _EXTEND:
+            set_layer_color(_EXTEND);
             break;
         case _MOUSE:
             set_layer_color(_MOUSE);
