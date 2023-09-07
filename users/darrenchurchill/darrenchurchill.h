@@ -92,8 +92,8 @@ enum userspace_custom_keycodes {
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, FN
 
 #define _________________RAISE_R1__________________       KC_HOME, KC_PGDN,         KC_PGUP,         KC_END,        KC_MPLY
-#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,         KC_UP,           KC_RIGHT,      _______
-#define _________________RAISE_R3__________________       _______, UKC_OS_PREV_TAB, UKC_OS_NEXT_TAB, _______, _______
+#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,         KC_UP,           KC_RIGHT,      LCTL(KC_GRV)
+#define _________________RAISE_R3__________________       _______, UKC_OS_PREV_TAB, UKC_OS_NEXT_TAB, _______,       LGUI(KC_GRV)
 #define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
 
