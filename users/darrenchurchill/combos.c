@@ -14,9 +14,8 @@ enum combos {
     LOWER_SPACE_REPEAT,
     LOWER_RAISE_ALT_REPEAT,
     DF_ESC,
-    FG_TAB,
-    HJ_LSFT_TAB,
     JK_ENT,
+    MCOMMA_TAB,
     XC_EXTEND,
     CVB_OS_COPY,
     VB_OS_PASTE,
@@ -27,9 +26,8 @@ const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 
 const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
-const uint16_t PROGMEM combo_fg[] = { LGUI_T(KC_F), KC_G, COMBO_END};
-const uint16_t PROGMEM combo_hj[] = { KC_H, RGUI_T(KC_J), COMBO_END};
 const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), LSFT_T(KC_K), COMBO_END};
+const uint16_t PROGMEM combo_mcomma[] = { KC_M, KC_COMMA, COMBO_END};
 
 const uint16_t PROGMEM combo_xc[] = { KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_cvb[] = { KC_C, KC_V, KC_B, COMBO_END};
@@ -42,9 +40,8 @@ combo_t key_combos[] = {
     [LOWER_SPACE_REPEAT] = COMBO(combo_lower_space, QK_REPEAT_KEY),
     [LOWER_RAISE_ALT_REPEAT] = COMBO(combo_lower_raise, QK_ALT_REPEAT_KEY),
     [DF_ESC] = COMBO(combo_df, KC_ESC),
-    [FG_TAB] = COMBO(combo_fg, KC_TAB),
-    [HJ_LSFT_TAB] = COMBO(combo_hj, LSFT(KC_TAB)),
     [JK_ENT] = COMBO(combo_jk, KC_ENT),
+    [MCOMMA_TAB] = COMBO(combo_mcomma, KC_TAB),
     [XC_EXTEND] = COMBO(combo_xc, EXTEND),
     [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
@@ -57,7 +54,7 @@ combo_t key_combos[] = {
 // https://docs.qmk.fm/#/feature_combo?id=per-combo-timing-holding-tapping-and-key-press-order
 bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     switch (index) {
-      case FG_TAB:
+      case MCOMMA_TAB:
         return false;
     }
 
