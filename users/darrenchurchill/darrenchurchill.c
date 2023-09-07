@@ -119,10 +119,17 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         case LALT_T(KC_S):
             switch (other_keycode) {
                 case KC_ENT:
+                case KC_TAB:
                     return true;
             }
             break;
         case LSFT_T(KC_D):
+            switch (other_keycode) {
+                case KC_TAB:
+                    return true;
+            }
+            break;
+        case LGUI_T(KC_F):
             switch (other_keycode) {
                 case KC_TAB:
                     return true;
