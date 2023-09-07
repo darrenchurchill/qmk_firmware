@@ -110,6 +110,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         case HYPR_T(KC_GRV):
         case MEH_T(KC_MINS):
             return true;
+        case RGUI_T(KC_J):
+            switch (other_keycode) {
+                case KC_SPC:
+                    return true;
+            }
+            break;
     }
 
     // The default choice is to return true if the keys are on opposite hands
