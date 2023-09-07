@@ -7,7 +7,7 @@
 
 // Tap Hold
 #undef TAPPING_TERM
-#define TAPPING_TERM 170
+#define TAPPING_TERM 200 // good for moonlander right now, check others and decide whether they need their own
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 
