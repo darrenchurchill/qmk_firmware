@@ -13,6 +13,7 @@ enum userspace_layers {
     _QWERTY_NO_MODS, // top-level "default" layout so can override others temporarily
     _LOWER,
     _RAISE,
+    _EXTEND,
     _MOUSE,
     _KB_LED,
     _FN,
@@ -31,6 +32,7 @@ enum userspace_custom_keycodes {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define EXTEND MO(_EXTEND)
 #define MOUSE MO(_MOUSE)
 #define KB_LED MO(_KB_LED)
 #define FN MO(_FN)
@@ -96,6 +98,19 @@ enum userspace_custom_keycodes {
 #define _________________RAISE_R3__________________       _______, UKC_OS_PREV_TAB, UKC_OS_NEXT_TAB, _______,       LGUI(KC_GRV)
 #define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
+
+
+#define _________________EXTEND_L1_________________       __________________BLANK_5__________________
+#define _________________EXTEND_L2_________________       __________________BLANK_5__________________
+#define _________________EXTEND_L3_________________       __________________BLANK_5__________________
+#define ____________EXTEND_4_L4____________               ____________LOWER_4_L4_____________
+#define ________________EXTEND_5_L4________________       ____________EXTEND_4_L4____________, _______
+
+#define _________________EXTEND_R1_________________       _______, _______, _______, _______, _______
+#define _________________EXTEND_R2_________________       KC_BSPC, KC_QUOT, KC_DQUO, KC_DEL,  KC_GRV
+#define _________________EXTEND_R3_________________       _______, _______, _______, _______, _______
+#define ____________EXTEND_4_R4____________                        ______________BLANK_4______________
+#define ________________EXTEND_5_R4________________       _______, ____________EXTEND_4_R4____________
 
 
 #define _________________MOUSE_L1__________________       __________________BLANK_5__________________
