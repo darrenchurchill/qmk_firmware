@@ -116,6 +116,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                     return true;
             }
             break;
+        case LALT_T(KC_S):
+            switch (other_keycode) {
+                case KC_ENT:
+                    return true;
+            }
+            break;
     }
 
     // The default choice is to return true if the keys are on opposite hands
