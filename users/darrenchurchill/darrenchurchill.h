@@ -9,7 +9,6 @@ enum tap_dance_codes {
 
 enum userspace_layers {
     _QWERTY,
-    _COLEMAK_DH,
     _QWERTY_NO_MODS, // top-level "default" layout so can override others temporarily
     _LOWER,
     _RAISE,
@@ -51,14 +50,6 @@ enum userspace_custom_keycodes {
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
-
-#define _______________COLEMAK_DH_L1_______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
-#define _______________COLEMAK_DH_L2_______________       LCTL_T(KC_A), LALT_T(KC_R), LSFT_T(KC_S), LGUI_T(KC_T), KC_G
-#define _______________COLEMAK_DH_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
-
-#define _______________COLEMAK_DH_R1_______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define _______________COLEMAK_DH_R2_______________       KC_M,    RGUI_T(KC_N), LSFT_T(KC_E), RALT_T(KC_I), RCTL_T(KC_O)
-#define _______________COLEMAK_DH_R3_______________       KC_K,    KC_H,    KC_COMM, KC_DOT, KC_SLSH
 
 #define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, LT(_QWERTY_NO_MODS, KC_TAB)
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER
@@ -139,7 +130,6 @@ enum userspace_custom_keycodes {
 
 #define ___________________FN_L1___________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define ___________________FN_L2___________________       KC_F11,  KC_F12,  _______, _______, _______
-#define ___________________FN_L3___________________       DF(_QWERTY),  DF(_COLEMAK_DH),  _______, _______, _______
 
 #define ___________________FN_R1___________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 #define ___________________FN_R2___________________       DT_PRNT, DT_DOWN, DT_UP,   _______, _______
