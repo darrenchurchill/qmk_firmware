@@ -32,14 +32,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       LOWER, KC_LSFT,                         KC_BSPC, KC_SPACE
     ),
 
-    [_COLEMAK_DH] = LAYOUT_moonlander_custom_wrapper(
-        _______________COLEMAK_DH_L1_______________,  _______,       _______, _______________COLEMAK_DH_R1_______________,
-        _______________COLEMAK_DH_L2_______________,  _______,       _______, _______________COLEMAK_DH_R2_______________,
-        _______________COLEMAK_DH_L3_______________,                          _______________COLEMAK_DH_R3_______________,
-        _____________BASE_4_L4_____________,          _______,       _______,         _____________BASE_4_R4_____________,
-                                   _______, _______,                          _______, _______
-    ),
-
     [_QWERTY_NO_MODS] = LAYOUT_moonlander_custom_wrapper(
         _________________QWERTY_L1_________________,  _______,       _______, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________,  _______,       _______, _____________QWERTY_NO_MODS_R2_____________,
@@ -91,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT_moonlander_custom_wrapper(
         ___________________FN_L1___________________, _______,        _______, ___________________FN_R1___________________,
         ___________________FN_L2___________________, _______,        _______, ___________________FN_R2___________________,
-        ___________________FN_L3___________________,                          ___________________FN_R3___________________,
+        __________________BLANK_5__________________,                          ___________________FN_R3___________________,
         _______, UKC_BASE, _______, _______,         _______,        _______,         ______________BLANK_4______________,
                                    _______, _______,                          _______, _______
     ),
@@ -135,28 +127,6 @@ void keyboard_post_init_keymap(void) {
 // in columns, NOT rows
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_QWERTY] = {
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_CTL}, {HSV_ON}, {HSV_CTL},
-        {HSV_ON}, {HSV_ON}, {HSV_ALT}, {HSV_ON}, {HSV_ALT},
-        {HSV_ON}, {HSV_ON}, {HSV_SFT}, {HSV_ON}, {HSV_GUI},
-        {HSV_ON}, {HSV_ON}, {HSV_GUI}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_SFT}, {HSV_ON},
-        {HSV_ON},
-
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_CTL}, {HSV_ON}, {HSV_LYR},
-        {HSV_ON}, {HSV_ON}, {HSV_ALT}, {HSV_ON}, {HSV_QUOT},
-        {HSV_ON}, {HSV_ON}, {HSV_SFT}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_GUI}, {HSV_ON}, {HSV_LYR},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_QUOT}, {HSV_SYM},
-        {HSV_ON}, {HSV_BSPC}, {HSV_ON},
-        {HSV_ON}
-    },
-
-    [_COLEMAK_DH] = {
         {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
         {HSV_ON}, {HSV_ON}, {HSV_CTL}, {HSV_ON}, {HSV_CTL},
         {HSV_ON}, {HSV_ON}, {HSV_ALT}, {HSV_ON}, {HSV_ALT},
@@ -406,9 +376,6 @@ bool rgb_matrix_indicators_user(void) {
     switch (biton32(layer_state)) {
         case _QWERTY:
             set_layer_color(_QWERTY);
-            break;
-        case _COLEMAK_DH:
-            set_layer_color(_COLEMAK_DH);
             break;
         case _QWERTY_NO_MODS:
             set_layer_color(_QWERTY_NO_MODS);
