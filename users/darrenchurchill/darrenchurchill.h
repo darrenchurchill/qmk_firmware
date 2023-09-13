@@ -41,12 +41,16 @@ enum userspace_custom_keycodes {
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
  */
+#define LEFT_MODS(K01, K02, K03, K04) LCTL_T(K01), LALT_T(K02), LSFT_T(K03), LGUI_T(K04)
+#define RIGHT_MODS(K01, K02, K03, K04) RGUI_T(K01), LSFT_T(K02), RALT_T(K03), RCTL_T(K04)
+
+
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________       LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G
+#define _________________QWERTY_L2_________________       LEFT_MODS(KC_A, KC_S, KC_D, KC_F),  KC_G
 #define _________________QWERTY_L3_________________       KC_Z,    EXTEND,    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H,    RGUI_T(KC_J), LSFT_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN)
+#define _________________QWERTY_R2_________________       KC_H,    RIGHT_MODS(KC_J, KC_K, KC_L, KC_SCLN)
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
