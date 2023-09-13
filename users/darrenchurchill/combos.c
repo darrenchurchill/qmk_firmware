@@ -16,7 +16,6 @@ enum combos {
     DF_ESC,
     JK_ENT,
     MCOMMA_TAB,
-    XC_EXTEND,
     CVB_OS_COPY,
     VB_OS_PASTE,
     DK_CW_TOGG,
@@ -29,7 +28,6 @@ const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
 const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), LSFT_T(KC_K), COMBO_END};
 const uint16_t PROGMEM combo_mcomma[] = { KC_M, KC_COMMA, COMBO_END};
 
-const uint16_t PROGMEM combo_xc[] = { KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_cvb[] = { KC_C, KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_vb[] = { KC_V, KC_B, COMBO_END};
 
@@ -42,7 +40,6 @@ combo_t key_combos[] = {
     [DF_ESC] = COMBO(combo_df, KC_ESC),
     [JK_ENT] = COMBO(combo_jk, KC_ENT),
     [MCOMMA_TAB] = COMBO(combo_mcomma, KC_TAB),
-    [XC_EXTEND] = COMBO(combo_xc, EXTEND),
     [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),

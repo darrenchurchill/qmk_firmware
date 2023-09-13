@@ -32,7 +32,7 @@ enum userspace_custom_keycodes {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
-#define EXTEND MO(_EXTEND)
+#define EXTEND LT(_EXTEND, KC_X)
 #define MOUSE MO(_MOUSE)
 #define KB_LED MO(_KB_LED)
 #define FN MO(_FN)
@@ -44,7 +44,7 @@ enum userspace_custom_keycodes {
  */
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________       LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G
-#define _________________QWERTY_L3_________________       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+#define _________________QWERTY_L3_________________       KC_Z,    EXTEND,    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTY_R2_________________       KC_H,    RGUI_T(KC_J), LSFT_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN)
