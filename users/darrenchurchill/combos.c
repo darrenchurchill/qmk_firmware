@@ -7,35 +7,25 @@
 #include "combos.h"
 #include "darrenchurchill.h"
 
-// Most combo #defines need to be in config.h, but this one can live here, and
-// lets you use the _QWERTY macro definition
-#define COMBO_ONLY_FROM_LAYER _QWERTY
-
+// NOTE: Combos are defined to be evaluated from the _QWERTY layer
+// See config.h COMBO_ONLY_FROM_LAYER
 
 enum combos {
     LOWER_SPACE_REPEAT,
     LOWER_RAISE_ALT_REPEAT,
-    DF_ESC, // qwerty start
+    DF_ESC,
     FG_TAB,
     HJ_LSFT_TAB,
     JK_ENT,
     XC_RAISE,
     CVB_OS_COPY,
     VB_OS_PASTE,
-    DK_CW_TOGG, // qwerty end
-    ST_ESC, // colemak start
-    TG_TAB,
-    MN_LSFT_TAB,
-    NE_ENT,
-    CDV_OS_COPY,
-    DV_OS_PASTE,
-    SE_CW_TOGG, // colemak end
+    DK_CW_TOGG,
 };
 
 const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 
-// QWERTY combos
 const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
 const uint16_t PROGMEM combo_fg[] = { LGUI_T(KC_F), KC_G, COMBO_END};
 const uint16_t PROGMEM combo_hj[] = { KC_H, RGUI_T(KC_J), COMBO_END};
@@ -47,37 +37,18 @@ const uint16_t PROGMEM combo_vb[] = { KC_V, KC_B, COMBO_END};
 
 const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), LSFT_T(KC_K), COMBO_END};
 
-// Colemak DH combos
-const uint16_t PROGMEM combo_st[] = { LSFT_T(KC_S), LGUI_T(KC_T), COMBO_END};
-const uint16_t PROGMEM combo_tg[] = { LGUI_T(KC_T), KC_G, COMBO_END};
-const uint16_t PROGMEM combo_mn[] = { KC_M, RGUI_T(KC_N), COMBO_END};
-const uint16_t PROGMEM combo_ne[] = { RGUI_T(KC_N), LSFT_T(KC_E), COMBO_END};
-
-// xc: same as qwerty above
-const uint16_t PROGMEM combo_cdv[] = { KC_C, KC_D, KC_V, COMBO_END};
-const uint16_t PROGMEM combo_dv[] = { KC_D, KC_V, COMBO_END};
-
-const uint16_t PROGMEM combo_se[] = { LSFT_T(KC_S), LSFT_T(KC_E), COMBO_END};
-
 
 combo_t key_combos[] = {
     [LOWER_SPACE_REPEAT] = COMBO(combo_lower_space, QK_REPEAT_KEY),
     [LOWER_RAISE_ALT_REPEAT] = COMBO(combo_lower_raise, QK_ALT_REPEAT_KEY),
-    [DF_ESC] = COMBO(combo_df, KC_ESC), // qwerty
+    [DF_ESC] = COMBO(combo_df, KC_ESC),
     [FG_TAB] = COMBO(combo_fg, KC_TAB),
     [HJ_LSFT_TAB] = COMBO(combo_hj, LSFT(KC_TAB)),
     [JK_ENT] = COMBO(combo_jk, KC_ENT),
-    [XC_RAISE] = COMBO(combo_xc, RAISE), // this one is both
+    [XC_RAISE] = COMBO(combo_xc, RAISE),
     [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),
-    [ST_ESC] = COMBO(combo_st, KC_ESC), // colemak
-    [TG_TAB] = COMBO(combo_tg, KC_TAB),
-    [MN_LSFT_TAB] = COMBO(combo_mn, LSFT(KC_TAB)),
-    [NE_ENT] = COMBO(combo_ne, KC_ENT),
-    [CDV_OS_COPY] = COMBO(combo_cdv, UKC_OS_COPY),
-    [DV_OS_PASTE] = COMBO(combo_dv, UKC_OS_PASTE),
-    [SE_CW_TOGG] = COMBO(combo_se, CW_TOGG),
 };
 
 
