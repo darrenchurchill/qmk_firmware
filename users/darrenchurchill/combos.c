@@ -11,8 +11,6 @@
 // See config.h COMBO_ONLY_FROM_LAYER
 
 enum combos {
-    LOWER_SPACE_REPEAT,
-    LOWER_RAISE_ALT_REPEAT,
     DF_ESC,
     JK_ENT,
     MCOMMA_TAB,
@@ -21,8 +19,6 @@ enum combos {
     DK_CW_TOGG,
 };
 
-const uint16_t PROGMEM combo_lower_space[] = { LOWER, KC_SPC, COMBO_END};
-const uint16_t PROGMEM combo_lower_raise[] = { LOWER, RAISE, COMBO_END};
 
 const uint16_t PROGMEM combo_df[] = { LSFT_T(KC_D), LGUI_T(KC_F), COMBO_END};
 const uint16_t PROGMEM combo_jk[] = { RGUI_T(KC_J), LSFT_T(KC_K), COMBO_END};
@@ -35,8 +31,6 @@ const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), LSFT_T(KC_K), COMBO_END};
 
 
 combo_t key_combos[] = {
-    [LOWER_SPACE_REPEAT] = COMBO(combo_lower_space, QK_REPEAT_KEY),
-    [LOWER_RAISE_ALT_REPEAT] = COMBO(combo_lower_raise, QK_ALT_REPEAT_KEY),
     [DF_ESC] = COMBO(combo_df, KC_ESC),
     [JK_ENT] = COMBO(combo_jk, KC_ENT),
     [MCOMMA_TAB] = COMBO(combo_mcomma, KC_TAB),
