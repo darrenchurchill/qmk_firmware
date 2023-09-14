@@ -70,13 +70,13 @@ enum userspace_custom_keycodes {
 #define __________________BLANK_5__________________       _______, _______, _______, _______, _______
 
 
-#define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
-#define _________________LOWER_L2__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define _________________LOWER_L3__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
+#define _________________LOWER_L1__________________       KC_GRV,  KC_7,    KC_8,    KC_9, _______
+#define _________________LOWER_L2__________________       KC_QUOT, KC_4,    KC_5,    KC_6, KC_PIPE
+#define _________________LOWER_L3__________________       KC_0,    KC_1,    KC_2,    KC_3, KC_BSLS
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
-#define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
+#define _________________LOWER_R1__________________       _______, _______, _______, _______, _______
 #define _________________LOWER_R2__________________       KC_UNDS, KC_LBRC,    KC_RBRC,  KC_LPRN, KC_RPRN
 #define _________________LOWER_R3__________________       KC_PLUS, KC_MINS,    KC_EQUAL, KC_LCBR, KC_RCBR
 #define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
