@@ -166,6 +166,54 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     return g_tapping_term + 500;
 }
 
+
+/*
+  Auto Shift Per Key, in addition to the config in config.h
+  https://docs.qmk.fm/#/feature_auto_shift
+*/
+__attribute__ ((weak))
+bool get_custom_auto_shifted_key_keymap(uint16_t keycode, keyrecord_t *record) {
+    return false;
+}
+
+// This is the code from the default function, but calls *_keymap() fn instead
+// See quantum/process_keycode/process_auto_shift.c
+bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+#    ifndef NO_AUTO_SHIFT_ALPHA
+        case AUTO_SHIFT_ALPHA:
+#    endif
+#    ifndef NO_AUTO_SHIFT_NUMERIC
+        case AUTO_SHIFT_NUMERIC:
+#    endif
+#    ifndef NO_AUTO_SHIFT_SPECIAL
+        case AUTO_SHIFT_SPECIAL:
+#    endif
+            return true;
+    }
+
+    return get_custom_auto_shifted_key_keymap(keycode, record);
+}
+
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_0:
+        case KC_9:
+            // I already have left/right paren keys in LOWER layer, and I tend
+            // to type 0 slowly and mistakenly trigger auto shift
+            return false;
+    }
+    return get_default_auto_shifted_key(keycode, record);
+}
+
+// The default function, overrode to re-plumb the order default cases are
+// checked. This way I can override KC_0 and KC_9 while leaving
+// AUTO_SHIFT_NUMERIC enabled
+bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    return get_custom_auto_shifted_key(keycode, record);
+}
+
+
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
