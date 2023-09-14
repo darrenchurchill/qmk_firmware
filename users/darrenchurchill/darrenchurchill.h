@@ -77,7 +77,7 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       _______, _______, _______, _______, _______
-#define _________________LOWER_R2__________________       KC_UNDS, KC_LBRC,    KC_RBRC,  KC_LPRN, KC_RPRN
+#define _________________LOWER_R2__________________       KC_UNDS, RGUI_T(KC_LBRC), LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
 #define _________________LOWER_R3__________________       KC_PLUS, KC_MINS,    KC_EQUAL, KC_LCBR, KC_RCBR
 #define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
