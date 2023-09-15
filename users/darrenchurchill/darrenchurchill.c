@@ -118,7 +118,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             break;
         case RCTL_T(KC_SCLN):
             switch (other_keycode) {
+                case KC_Y:
                 case KC_U:
+                case KC_I:
+                case KC_O:
                     return true;
             }
             break;
