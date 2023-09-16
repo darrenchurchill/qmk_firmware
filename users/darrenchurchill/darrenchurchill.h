@@ -32,7 +32,7 @@ enum userspace_custom_keycodes {
 #define LOWER MO(_LOWER)
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
 #define RAISE MO(_RAISE)
-#define EXTEND LT(_EXTEND, KC_X)
+#define EXT_T(KC) LT(_EXTEND, KC)
 #define MOUSE MO(_MOUSE)
 #define KB_LED MO(_KB_LED)
 #define FN MO(_FN)
@@ -48,7 +48,7 @@ enum userspace_custom_keycodes {
 
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________       LEFT_MODS(KC_A, KC_S, KC_D, KC_F),  KC_G
-#define _________________QWERTY_L3_________________       KC_Z,    EXTEND,    KC_C,    KC_V,    KC_B
+#define _________________QWERTY_L3_________________       KC_Z,    EXT_T(KC_X),    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTY_R2_________________       KC_H,    RIGHT_MODS(KC_J, KC_K, KC_L, KC_SCLN)
