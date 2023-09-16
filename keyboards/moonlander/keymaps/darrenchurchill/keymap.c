@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________QWERTY_L2_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R2_________________,
         _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________,
         _____________BASE_4_L4_____________,          KC_HYPR,       KC_MEH,          _____________BASE_4_R4_____________,
-                                      LOWER, KC_LSFT,                         KC_BSPC, KC_SPACE
+                                      LOWER, KC_LSFT,                         KC_BSPC, RSE_T(KC_SPC)
     ),
 
     [_QWERTY_NO_MODS] = LAYOUT_moonlander_custom_wrapper(

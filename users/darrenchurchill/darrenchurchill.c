@@ -33,6 +33,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 #endif // TAPPING_TERM_PER_KEY
 
+#ifdef QUICK_TAP_TERM_PER_KEY
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case RSE_T(KC_SPC):
+            // Disable tap-hold repeat for this key
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}
+#endif // QUICK_TAP_TERM_PER_KEY
 
 #ifdef AUTO_SHIFT_TIMEOUT_PER_KEY
 uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) {
@@ -160,6 +171,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
+        case RSE_T(KC_SPC):
         case LT(_QWERTY_NO_MODS, KC_TAB):
             // This layer-tap key was frequently being changed from a hold->tap
             // when quickly pressing a key after holding the LT key, resulting

@@ -30,9 +30,9 @@ enum userspace_custom_keycodes {
 };
 
 #define LOWER MO(_LOWER)
-// TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
-#define RAISE MO(_RAISE)
-#define MOUSE MO(_MOUSE)
+#define RSE_T(KC) LT(_RAISE, KC)
+#define EXT_T(KC) LT(_EXTEND, KC)
+#define MOUSE_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
 #define FN MO(_FN)
 #define LAYERS MO(_LAYERS)
@@ -58,8 +58,8 @@ enum userspace_custom_keycodes {
 #define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, LT(_QWERTY_NO_MODS, KC_TAB)
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER
 
-#define _____________BASE_4_R4_____________                        RAISE,  KC_ENT,  KC_QUOT, TD(DANCE_0)
-#define _________________BASE_5_R4_________________       KC_SPC, _____________BASE_4_R4_____________
+#define _____________BASE_4_R4_____________                        QK_REP,  KC_ENT,  KC_QUOT, TD(DANCE_0)
+#define _________________BASE_5_R4_________________       RSE_T(KC_SPC), _____________BASE_4_R4_____________
 
 
 #define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
@@ -76,10 +76,10 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
-#define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 #define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_LBRC), LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
 #define _________________LOWER_R3__________________       KC_AMPR, KC_DQUO,    KC_QUOT, KC_LCBR, KC_RCBR
+#define ____________LOWER_4_R4_____________                        _______,      KC_TILDE, KC_GRV,  _______
+#define ________________LOWER_5_R4_________________       MOUSE_T(KC_SPC), ____________LOWER_4_R4_____________
 
 
 #define _________________RAISE_L1__________________       KC_MUTE, _______, KC_KB_VOLUME_UP,   _______, _______
