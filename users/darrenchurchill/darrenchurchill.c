@@ -51,8 +51,6 @@ enum {
 
 static tap dance_state[1];
 
-uint8_t dance_step(tap_dance_state_t *state);
-
 uint8_t dance_step(tap_dance_state_t *state) {
     if (state->count == 1) {
         if (state->interrupted || !state->pressed)
@@ -69,9 +67,6 @@ uint8_t dance_step(tap_dance_state_t *state) {
     }
     return MORE_TAPS;
 }
-
-void dance_0_finished(tap_dance_state_t *state, void *user_data);
-void dance_0_reset(tap_dance_state_t *state, void *user_data);
 
 void dance_0_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[0].step = dance_step(state);
