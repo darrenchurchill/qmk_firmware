@@ -63,22 +63,22 @@ enum userspace_custom_keycodes {
 #define _________________BASE_5_R4_________________       KC_SPC, _____________BASE_4_R4_____________
 
 
-#define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
-#define ________________NUMBER_RIGHT_______________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
+#define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
+#define ________________NUMBER_RIGHT_______________       KC_6,    KC_1,    KC_2,    KC_3,    KC_4
 
 #define ______________BLANK_4______________               _______, _______, _______, _______
 #define __________________BLANK_5__________________       _______, _______, _______, _______, _______
 
 
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
-#define _________________LOWER_L2__________________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define _________________LOWER_L3__________________       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS
+#define _________________LOWER_L2__________________       KC_UNDS, KC_PLUS, LSFT_T(KC_MINS), LGUI_T(KC_EQUAL), KC_GRV
+#define _________________LOWER_L3__________________       _______, KC_SLSH, KC_ASTR, KC_PIPE,  KC_BSLS
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_UNDS, RGUI_T(KC_LBRC), LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
-#define _________________LOWER_R3__________________       KC_PLUS, KC_MINS,    KC_EQUAL, KC_LCBR, KC_RCBR
+#define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_LBRC), LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
+#define _________________LOWER_R3__________________       KC_AMPR, KC_DQUO,    KC_QUOT, KC_LCBR, KC_RCBR
 #define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
