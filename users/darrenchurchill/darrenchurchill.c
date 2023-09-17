@@ -256,6 +256,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 }
             }
             return false;
+
         case UKC_OS_PASTE:
             if (record->event.pressed) {
                 os_variant_t host_os = detected_host_os();
