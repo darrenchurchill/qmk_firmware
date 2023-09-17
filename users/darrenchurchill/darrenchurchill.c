@@ -171,6 +171,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
+        case EXT_T(KC_X):
+            return 0;  // Bypass achordion for this key.
         case RSE_T(KC_SPC):
         case LT(_QWERTY_NO_MODS, KC_TAB):
             // This layer-tap key was frequently being changed from a hold->tap
