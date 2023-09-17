@@ -26,6 +26,8 @@ enum userspace_custom_keycodes {
   UKC_OS_PASTE,
   UKC_OS_PREV_TAB,
   UKC_OS_NEXT_TAB,
+  UKC_SYMBREP,
+  UKC_ALTSYMBREP,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
@@ -102,7 +104,7 @@ enum userspace_custom_keycodes {
 #define ________________EXTEND_5_L4________________       ____________EXTEND_4_L4____________, _______
 
 #define _________________EXTEND_R1_________________       _______, _______, _______, _______, _______
-#define _________________EXTEND_R2_________________       KC_BSPC, KC_QUOT, KC_DQUO, KC_DEL,  KC_GRV
+#define _________________EXTEND_R2_________________       KC_BSPC, UKC_SYMBREP, UKC_ALTSYMBREP, KC_DEL,  KC_GRV
 #define _________________EXTEND_R3_________________       _______, _______, _______, _______, _______
 #define ____________EXTEND_4_R4____________                        QK_AREP, _______, _______, _______
 #define ________________EXTEND_5_R4________________       _______, ____________EXTEND_4_R4____________

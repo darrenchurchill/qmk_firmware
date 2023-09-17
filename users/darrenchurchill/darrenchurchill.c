@@ -4,6 +4,8 @@
 #include "darrenchurchill.h"
 #include "achordion.h"
 
+uint16_t last_lower_layer_keycode = KC_NO;
+uint8_t last_lower_layer_mods = 0;
 
 // helper function for some macros in process_record_user()
 os_variant_t get_host_os(void) {
@@ -237,6 +239,43 @@ bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 }
 
 
+/*
+  Repeat Key
+  https://docs.qmk.fm/#/feature_repeat_key
+*/
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_LPRN: return KC_RPRN;
+        case KC_RPRN: return KC_LPRN;
+
+        case KC_LBRC: return KC_RBRC;
+        case KC_RBRC: return KC_LBRC;
+
+        case KC_LCBR: return KC_RCBR;
+        case KC_RCBR: return KC_LCBR;
+    }
+
+    return KC_TRANSPARENT;
+}
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
+    if (IS_LAYER_ON(_LOWER)) {
+        last_lower_layer_keycode = keycode;
+        last_lower_layer_mods = *remembered_mods;
+    }
+
+    switch (keycode) {
+        case UKC_SYMBREP:
+        case UKC_ALTSYMBREP:
+            // Ignore custom repeat key keycodes.
+            return false;
+        case KC_BACKSPACE:
+            return false;
+    }
+
+    return true;
+}
+
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
@@ -303,6 +342,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 } else {
                     tap_code16(LCTL(KC_PGDN));
                 }
+            }
+            return false;
+
+        case UKC_SYMBREP:
+            if (record->event.pressed) {
+                tap_code16(last_lower_layer_keycode | last_lower_layer_mods);
+                set_last_keycode(last_lower_layer_keycode);
+                set_last_mods(last_lower_layer_mods);
+            }
+            return false;
+
+        case UKC_ALTSYMBREP:
+            if (record->event.pressed) {
+                uint16_t alt_repeat_keycode = get_alt_repeat_key_keycode_user(
+                    last_lower_layer_keycode,
+                    last_lower_layer_mods
+                );
+                tap_code16(alt_repeat_keycode | last_lower_layer_mods);
+                set_last_keycode(alt_repeat_keycode);
+                set_last_mods(last_lower_layer_mods);
             }
             return false;
     }
