@@ -141,6 +141,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             switch (other_keycode) {
                 case LOWER:
                 case KC_TAB:
+                case KC_ENT:
                     return true;
             }
             break;
