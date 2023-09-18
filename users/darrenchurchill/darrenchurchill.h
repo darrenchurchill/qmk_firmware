@@ -20,6 +20,8 @@ enum userspace_layers {
 };
 
 // "UKC" Userspace KeyCode
+// NOTE: When adding a new custom keycode, consider whether to ignore it
+// inside of Repeat Key's remember_last_key_user()
 enum userspace_custom_keycodes {
   UKC_BASE = SAFE_RANGE,
   UKC_OS_COPY,
@@ -72,14 +74,14 @@ enum userspace_custom_keycodes {
 
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
 #define _________________LOWER_L2__________________       KC_UNDS, KC_PLUS, LSFT_T(KC_MINS), LGUI_T(KC_EQUAL), KC_GRV
-#define _________________LOWER_L3__________________       _______, KC_SLSH, KC_ASTR, KC_PIPE,  KC_BSLS
+#define _________________LOWER_L3__________________       KC_AMPR, KC_SLSH, KC_ASTR, KC_PIPE,  KC_BSLS
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_LBRC), LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
-#define _________________LOWER_R3__________________       KC_AMPR, KC_DQUO,    KC_QUOT, KC_LCBR, KC_RCBR
-#define ____________LOWER_4_R4_____________                        MOUSE,      KC_TILDE, KC_GRV,  _______
+#define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_LBRC),  LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
+#define _________________LOWER_R3__________________       QK_AREP, QK_REP, KC_QUOT,  KC_LABK, KC_RABK
+#define ____________LOWER_4_R4_____________                        MOUSE,  KC_TILDE, KC_GRV,  _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
