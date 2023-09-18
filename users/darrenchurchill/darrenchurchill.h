@@ -32,7 +32,7 @@ enum userspace_custom_keycodes {
 };
 
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
-#define LWR_T(KC) LT(_LOWER, KC)
+#define LWR MO(_LOWER)
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
@@ -60,7 +60,7 @@ enum userspace_custom_keycodes {
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
 
 #define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, QNM_T(KC_TAB)
-#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LWR_T(KC_ESC)
+#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LWR
 
 #define _____________BASE_4_R4_____________                        RSE_T(KC_ENT),  KC_ENT,  KC_QUOT, TD(DANCE_0)
 #define _________________BASE_5_R4_________________       LSFT_T(KC_SPC), _____________BASE_4_R4_____________

@@ -37,7 +37,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QNM_T(KC_TAB):
-        case LWR_T(KC_ESC):
         case LSFT_T(KC_SPC):
         case RSE_T(KC_ENT):
             // Disable tap-hold repeat
@@ -153,7 +152,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             break;
         case LSFT_T(KC_D):
             switch (other_keycode) {
-                case LWR_T(KC_ESC):
+                case LWR:
                 case KC_TAB:
                 case KC_ENT:
                     return true;
@@ -166,7 +165,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             }
             break;
         // Thumb Mod-Tap keys
-        case LWR_T(KC_ESC):
+        case LWR:
             return true;
         case RSE_T(KC_ENT):
             return true;
