@@ -60,7 +60,7 @@ enum userspace_custom_keycodes {
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER
 
 #define _____________BASE_4_R4_____________                        RAISE,  KC_ENT,  KC_QUOT, TD(DANCE_0)
-#define _________________BASE_5_R4_________________       KC_SPC, _____________BASE_4_R4_____________
+#define _________________BASE_5_R4_________________       LSFT_T(KC_SPC), _____________BASE_4_R4_____________
 
 
 #define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
