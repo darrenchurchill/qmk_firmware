@@ -236,6 +236,22 @@ bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     return get_custom_auto_shifted_key(keycode, record);
 }
 
+/*
+  Repeat Key
+  https://docs.qmk.fm/#/feature_repeat_key
+*/
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        // Ignore the following keys
+        case UKC_BASE ... UKC_OS_NEXT_TAB:  // My custom keycodes
+        case KC_BACKSPACE:
+        case KC_DELETE:
+            return false;
+    }
+
+    return true;  // Other keys can be repeated.
+}
 
 __attribute__ ((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
