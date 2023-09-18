@@ -31,6 +31,7 @@ enum userspace_custom_keycodes {
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
+#define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
 #define LOWER MO(_LOWER)
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
 #define RAISE MO(_RAISE)
@@ -58,8 +59,8 @@ enum userspace_custom_keycodes {
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
 
-#define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, LT(_QWERTY_NO_MODS, KC_TAB)
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LOWER
+#define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, QNM_T(KC_TAB)
 
 #define _____________BASE_4_R4_____________                        RAISE,  KC_ENT,  KC_QUOT, TD(DANCE_0)
 #define _________________BASE_5_R4_________________       LSFT_T(KC_SPC), _____________BASE_4_R4_____________
