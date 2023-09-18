@@ -80,8 +80,8 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_LBRC),  LSFT_T(KC_RBRC), KC_LPRN, KC_RPRN
-#define _________________LOWER_R3__________________       QK_AREP, QK_REP, KC_QUOT,  KC_LABK, KC_RABK
+#define _________________LOWER_R2__________________       KC_HASH, RGUI_T(KC_DQUO),  LSFT_T(KC_LPRN), KC_RPRN, KC_QUOT
+#define _________________LOWER_R3__________________       _______, KC_LABK, KC_LBRC, KC_RBRC, KC_RABK
 #define ____________LOWER_4_R4_____________                        MOUSE,  KC_TILDE, KC_GRV,  _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
