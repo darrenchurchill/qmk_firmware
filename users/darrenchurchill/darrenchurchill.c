@@ -273,6 +273,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 
     switch (keycode) {
+        case LSFT_T(KC_HASH):
+            // Handle non-basic keycode KC_HASH
+            if (record->tap.count && record->event.pressed) {
+                // On tap
+                tap_code16(KC_HASH);
+                return false;
+            }
+            // Let QMK process the hold case as usual
+            return true;
+
+        case LGUI_T(KC_DLR):
+            // Hadle non-basic keycode KC_DLR
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_DLR);
+                return false;
+            }
+            return true;
+
+        case RGUI_T(KC_LPRN):
+            // Hadle non-basic keycode KC_LPRN
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LPRN);
+                return false;
+            }
+            return true;
+
+        case LSFT_T(KC_RPRN):
+            // Hadle non-basic keycode KC_RPRN
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_RPRN);
+                return false;
+            }
+            return true;
+
         case UKC_BASE:
             if (!record->event.pressed) return false; // already processed
             // It's normally recommended to use layer_move() rather than
