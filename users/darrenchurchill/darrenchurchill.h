@@ -28,6 +28,8 @@ enum userspace_custom_keycodes {
   UKC_OS_PASTE,
   UKC_OS_PREV_TAB,
   UKC_OS_NEXT_TAB,
+  UKC_SG_ARRW,
+  UKC_DB_ARRW,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 

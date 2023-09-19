@@ -364,6 +364,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 }
             }
             return false;
+
+        case UKC_SG_ARRW:
+            // Handle my custom keycode for a single arrow
+            if (record->event.pressed) {
+                tap_code16(KC_MINS);
+                tap_code16(KC_RABK);
+            }
+            return false;
+
+        case UKC_DB_ARRW:
+            // Handle my custom keycode for a double arrow
+            if (record->event.pressed) {
+                tap_code16(KC_EQUAL);
+                tap_code16(KC_RABK);
+            }
+            return false;
     }
 
     return process_record_keymap(keycode, record);
