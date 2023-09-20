@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________RAISE_L2__________________, _______,         KC_DEL,  _________________RAISE_R2__________________,
         _________________RAISE_L3__________________,                           _________________RAISE_R3__________________,
         ____________RAISE_4_L4_____________,         _______,         _______,         ____________RAISE_4_R4_____________,
-                                        FN, _______,                           _______, _______
+                                   _______, _______,                           _______, _______
     ),
 
     [_EXTEND] = LAYOUT_moonlander_custom_wrapper(
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT_moonlander_custom_wrapper(
         ___________________FN_L1___________________, _______,        _______, ___________________FN_R1___________________,
         ___________________FN_L2___________________, _______,        _______, ___________________FN_R2___________________,
-        __________________BLANK_5__________________,                          ___________________FN_R3___________________,
+        ___________________FN_L3___________________,                          ___________________FN_R3___________________,
         _______, UKC_BASE, _______, _______,         _______,        _______,         ______________BLANK_4______________,
                                    _______, _______,                          _______, _______
     ),
@@ -200,7 +200,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_OFF}, {HSV_PRV_NXT}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF},
 
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
@@ -282,21 +282,21 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_FN] = {
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_FN}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_FN}, {HSV_OFF}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_LYR_ESC},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF},
 
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF},
+        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF},
+        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}

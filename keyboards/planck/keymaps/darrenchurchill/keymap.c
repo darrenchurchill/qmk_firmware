@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT_planck_wrapper(
         ___________________FN_L1___________________, _______, _______, ___________________FN_R1___________________,
         ___________________FN_L2___________________, _______, _______, ___________________FN_R2___________________,
-        __________________BLANK_5__________________, _______, _______, ___________________FN_R3___________________,
+        ___________________FN_L3___________________, _______, _______, ___________________FN_R3___________________,
         _______, UKC_BASE, _______, _______, _______, _______, XXXXXXX, __________________BLANK_5__________________
     ),
 
@@ -110,7 +110,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_MUTE}, {HSV_OFF},     {HSV_VOL}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PLAY},
         {HSV_OFF},  {HSV_PRV_NXT}, {HSV_VOL}, {HSV_PRV_NXT}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_CTL},
         {HSV_OFF},  {HSV_OFF},     {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_OFF},   {HSV_GUI},
-        {HSV_OFF},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},     {HSV_LYR}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
+        {HSV_OFF},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
     },
 
     [_EXTEND] = {
@@ -135,9 +135,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_FN] = {
-        {HSV_FN},  {HSV_FN},      {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
-        {HSV_FN},  {HSV_FN},      {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
+        {HSV_OFF}, {HSV_ON},      {HSV_ON},  {HSV_ON},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
+        {HSV_OFF}, {HSV_ON},      {HSV_ON},  {HSV_ON},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
     },
 
