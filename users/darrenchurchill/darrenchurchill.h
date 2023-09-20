@@ -51,7 +51,7 @@ enum userspace_custom_keycodes {
 #define EXT_T(KC) LT(_EXTEND, KC)
 #define MOUSE MO(_MOUSE)
 #define KB_LED MO(_KB_LED)
-#define FN MO(_FN)
+#define FN_T(KC) LT(_FN, KC)
 #define LAYERS MO(_LAYERS)
 
 /*
@@ -64,7 +64,7 @@ enum userspace_custom_keycodes {
 
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________ LMODS(KC_A,    KC_S,    KC_D,    KC_F),   KC_G
-#define _________________QWERTY_L3_________________       KC_Z, EXT_T(KC_X), KC_C,   KC_V,    KC_B
+#define _________________QWERTY_L3_________________  FN_T(KC_Z), EXT_T(KC_X), KC_C,  KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTY_R2_________________       KC_H, RMODS(KC_J, KC_K,    KC_L,    KC_SCLN)
@@ -103,7 +103,7 @@ enum userspace_custom_keycodes {
 #define _________________RAISE_L2__________________       _______, KC_MPRV, VOL_DN,  KC_MNXT, _______
 #define _________________RAISE_L3__________________       QK_RBT,  _______, _______, _______, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
-#define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, FN
+#define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, _______
 
 #define _________________RAISE_R1__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,   KC_MPLY
 #define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, LCTL(KC_GRV)
@@ -149,12 +149,13 @@ enum userspace_custom_keycodes {
 #define _______________KB_LED_5_R4_________________       _______, ___________KB_LED_4_R4_____________
 
 
-#define ___________________FN_L1___________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
-#define ___________________FN_L2___________________       KC_F11,  KC_F12,  _______, _______, _______
+#define ___________________FN_L1___________________       __________________BLANK_5__________________
+#define ___________________FN_L2___________________       _______, DT_PRNT, DT_DOWN, DT_UP,   _______
+#define ___________________FN_L3___________________       _______, AS_RPT,  AS_DOWN, AS_UP,   _______
 
-#define ___________________FN_R1___________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
-#define ___________________FN_R2___________________       DT_PRNT, DT_DOWN, DT_UP,   _______, _______
-#define ___________________FN_R3___________________       AS_RPT,  AS_DOWN, AS_UP,   _______, _______
+#define ___________________FN_R1___________________       KC_F6,   KC_F1,   KC_F2,   KC_F3,   KC_F4
+#define ___________________FN_R2___________________       KC_F5,   KC_F7,   KC_F8,   KC_F9,   KC_F10
+#define ___________________FN_R3___________________       _______, KC_F11,  KC_F12,  _______, _______
 
 
 #define ________________LAYERS_L1__________________       _______, _______, _______, TO(_RAISE), _______
