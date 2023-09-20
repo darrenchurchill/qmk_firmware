@@ -33,6 +33,17 @@ enum userspace_custom_keycodes {
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
+/*
+  Keycode Macros
+*/
+#define VOL_DN  KC_KB_VOLUME_DOWN
+#define VOL_UP  KC_KB_VOLUME_UP
+#define OS_PTAB UKC_OS_PREV_TAB
+#define OS_NTAB UKC_OS_NEXT_TAB
+
+/*
+  Layer Macros
+*/
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
 #define LWR MO(_LOWER)
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
@@ -46,26 +57,26 @@ enum userspace_custom_keycodes {
 /*
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
- */
-#define LEFT_MODS(K01, K02, K03, K04) LCTL_T(K01), LALT_T(K02), LSFT_T(K03), LGUI_T(K04)
-#define RIGHT_MODS(K01, K02, K03, K04) RGUI_T(K01), LSFT_T(K02), RALT_T(K03), RCTL_T(K04)
+*/
+#define LMODS(K01, K02, K03, K04) LCTL_T(K01), LALT_T(K02), LSFT_T(K03), LGUI_T(K04)
+#define RMODS(K01, K02, K03, K04) RGUI_T(K01), LSFT_T(K02), RALT_T(K03), RCTL_T(K04)
 
 
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________       LEFT_MODS(KC_A, KC_S, KC_D, KC_F),  KC_G
-#define _________________QWERTY_L3_________________       KC_Z,    EXT_T(KC_X),    KC_C,    KC_V,    KC_B
+#define _________________QWERTY_L2_________________ LMODS(KC_A,    KC_S,    KC_D,    KC_F),   KC_G
+#define _________________QWERTY_L3_________________       KC_Z, EXT_T(KC_X), KC_C,   KC_V,    KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H,    RIGHT_MODS(KC_J, KC_K, KC_L, KC_SCLN)
-#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH
+#define _________________QWERTY_R2_________________       KC_H, RMODS(KC_J, KC_K,    KC_L,    KC_SCLN)
+#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
 
-#define _____________BASE_4_L4_____________               LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, QNM_T(KC_TAB)
+#define _____________BASE_4_L4_____________        LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, QNM_T(KC_TAB)
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LWR
 
-#define _____________BASE_4_R4_____________                        RSE_T(KC_ENT),  KC_ENT,  KC_QUOT, TD(DANCE_0)
-#define _________________BASE_5_R4_________________       LSFT_T(KC_SPC), _____________BASE_4_R4_____________
+#define _____________BASE_4_R4_____________                  RSE_T(KC_ENT), KC_ENT, KC_QUOT, TD(DANCE_0)
+#define _________________BASE_5_R4_________________ LSFT_T(KC_SPC), _____________BASE_4_R4_____________
 
 
 #define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
@@ -88,15 +99,15 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
-#define _________________RAISE_L1__________________       KC_MUTE, _______, KC_KB_VOLUME_UP,   _______, _______
-#define _________________RAISE_L2__________________       _______, KC_MPRV, KC_KB_VOLUME_DOWN, KC_MNXT, _______
-#define _________________RAISE_L3__________________       QK_RBT,  _______, _______,           _______, _______
+#define _________________RAISE_L1__________________       KC_MUTE, _______, VOL_UP,  _______, _______
+#define _________________RAISE_L2__________________       _______, KC_MPRV, VOL_DN,  KC_MNXT, _______
+#define _________________RAISE_L3__________________       QK_RBT,  _______, _______, _______, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, FN
 
-#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN,         KC_PGUP,         KC_END,        KC_MPLY
-#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN,         KC_UP,           KC_RIGHT,      LCTL(KC_GRV)
-#define _________________RAISE_R3__________________       _______, UKC_OS_PREV_TAB, UKC_OS_NEXT_TAB, _______,       LGUI(KC_GRV)
+#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,   KC_MPLY
+#define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, LCTL(KC_GRV)
+#define _________________RAISE_R3__________________       _______, OS_PTAB, OS_NTAB, _______,  LGUI(KC_GRV)
 #define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
 
