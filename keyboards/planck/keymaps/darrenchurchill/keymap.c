@@ -107,17 +107,17 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_RAISE] = {
-        {HSV_MUTE}, {HSV_OFF},     {HSV_VOL}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PLAY},
-        {HSV_OFF},  {HSV_PRV_NXT}, {HSV_VOL}, {HSV_PRV_NXT}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_CTL},
-        {HSV_OFF},  {HSV_OFF},     {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_OFF},   {HSV_GUI},
-        {HSV_OFF},  {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_OFF},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_CTL},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_OFF},   {HSV_GUI},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
     },
 
     [_EXTEND] = {
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_QUOT}, {HSV_QUOT}, {HSV_BSPC}, {HSV_QUOT},
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF}
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRV_NXT}, {HSV_VOL},  {HSV_VOL}, {HSV_PRV_NXT}, {HSV_PLAY},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},    {HSV_OFF},  {HSV_OFF}, {HSV_BSPC},    {HSV_QUOT},
+        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},     {HSV_MUTE}, {HSV_OFF}, {HSV_OFF},     {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF},     {HSV_OFF},  {HSV_OFF}, {HSV_OFF},     {HSV_OFF}
     },
 
     [_MOUSE] = {
