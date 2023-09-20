@@ -13,6 +13,7 @@
 enum combos {
     JK_ENT,
     COMMA_DOT_SG_ARRW,
+    M_COMMA_UNDS,
     M_COMMA_DOT_DB_ARRW,
     DF_ESC,
     CV_TAB,
@@ -30,6 +31,7 @@ const uint16_t PROGMEM combo_cvb[] = { KC_C, KC_V, KC_B, COMBO_END };
 const uint16_t PROGMEM combo_vb[] = { KC_V, KC_B, COMBO_END };
 
 const uint16_t PROGMEM combo_comma_dot[] = { KC_COMMA, KC_DOT, COMBO_END };
+const uint16_t PROGMEM combo_m_comma[] = { KC_M, KC_COMMA, COMBO_END };
 const uint16_t PROGMEM combo_m_comma_dot[] = { KC_M, KC_COMMA, KC_DOT, COMBO_END };
 
 const uint16_t PROGMEM combo_dk[] = { LSFT_T(KC_D), LSFT_T(KC_K), COMBO_END };
@@ -42,6 +44,7 @@ combo_t key_combos[] = {
     [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
     [COMMA_DOT_SG_ARRW] = COMBO(combo_comma_dot, UKC_SG_ARRW),
+    [M_COMMA_UNDS] = COMBO(combo_m_comma, KC_UNDS),
     [M_COMMA_DOT_DB_ARRW] = COMBO(combo_m_comma_dot, UKC_DB_ARRW),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),
 };
