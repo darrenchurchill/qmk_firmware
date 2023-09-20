@@ -49,7 +49,7 @@ enum userspace_custom_keycodes {
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
-#define MOUSE MO(_MOUSE)
+#define MS_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
 #define FN_T(KC) LT(_FN, KC)
 #define LAYERS MO(_LAYERS)
@@ -64,7 +64,7 @@ enum userspace_custom_keycodes {
 
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________ LMODS(KC_A,    KC_S,    KC_D,    KC_F),   KC_G
-#define _________________QWERTY_L3_________________  FN_T(KC_Z), EXT_T(KC_X), KC_C,  KC_V,    KC_B
+#define _________________QWERTY_L3_________________  FN_T(KC_Z), EXT_T(KC_X), KC_C, MS_T(KC_V), KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTY_R2_________________       KC_H, RMODS(KC_J, KC_K,    KC_L,    KC_SCLN)
@@ -95,7 +95,7 @@ enum userspace_custom_keycodes {
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
 #define _________________LOWER_R2__________________       KC_UNDS, RGUI_T(KC_LPRN), LSFT_T(KC_RPRN), KC_LBRC, KC_RBRC
 #define _________________LOWER_R3__________________       KC_BSLS, KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR
-#define ____________LOWER_4_R4_____________                        MOUSE,   _______, KC_EXLM,  _______
+#define ____________LOWER_4_R4_____________                        _______, _______, KC_EXLM, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
@@ -126,14 +126,14 @@ enum userspace_custom_keycodes {
 
 
 #define _________________MOUSE_L1__________________       __________________BLANK_5__________________
-#define _________________MOUSE_L2__________________       _______, _______, _______, KC_BTN1, KC_BTN2
+#define _________________MOUSE_L2__________________       __________________BLANK_5__________________
 #define _________________MOUSE_L3__________________       __________________BLANK_5__________________
 #define ____________MOUSE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________MOUSE_5_L4_________________       ____________MOUSE_4_L4_____________, _______
 
-#define _________________MOUSE_R1__________________       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______
-#define _________________MOUSE_R2__________________       KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______
-#define _________________MOUSE_R3__________________       __________________BLANK_5__________________
+#define _________________MOUSE_R1__________________       KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______
+#define _________________MOUSE_R2__________________       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______
+#define _________________MOUSE_R3__________________       _______, KC_BTN1, KC_BTN2, _______, _______
 
 
 #define ________________KB_LED_L1__________________       RGB_TOG, _______, _______, _______, TOGGLE_LAYER_COLOR
