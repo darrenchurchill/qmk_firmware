@@ -274,16 +274,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     switch (keycode) {
         // _LOWER layer keycodes
-        case LKC_D:
-            // Handle non-basic keycode KC_HASH
-            if (record->tap.count && record->event.pressed) {
-                // On tap
-                tap_code16(KC_HASH);
-                return false;
-            }
-            // Let QMK process the hold case as usual
-            return true;
-
         case LKC_K:
             // Handle non-basic keycode KC_RPRN
             if (record->tap.count && record->event.pressed) {
