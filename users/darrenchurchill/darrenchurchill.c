@@ -128,7 +128,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         case MEH_T(KC_MINS):
             return true;
         // Home Row Modifiers
-        case QKC_J:
+        case QKC_DOT:
             switch (other_keycode) {
                 case BKC_N:
                     return true;
@@ -158,8 +158,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                     return true;
             }
             break;
-        case QKC_F:
+        case QKC_X:
             switch (other_keycode) {
+                case QKC_C:
+                case QKC_V:
+                case KC_B:
                 case KC_TAB:
                     return true;
             }

@@ -39,6 +39,7 @@ enum userspace_custom_keycodes {
 */
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
 #define LWR MO(_LOWER)
+#define LWR_T(KC) LT(_LOWER, KC)
 // TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
@@ -61,15 +62,17 @@ enum userspace_custom_keycodes {
 #define QKC_A LCTL_T(KC_A)
 #define QKC_S LALT_T(KC_S)
 #define QKC_D LSFT_T(KC_D)
-#define QKC_F LGUI_T(KC_F)
+#define QKC_F LWR_T(KC_F)
 #define QKC_Z FN_T(KC_Z)
-#define QKC_X EXT_T(KC_X)
+#define QKC_X LGUI_T(KC_X)
+#define QKC_C EXT_T(KC_C)
 #define QKC_V MS_T(KC_V)
 // Right Hand
-#define QKC_J RGUI_T(KC_J)
+#define QKC_J LWR_T(KC_J)
 #define QKC_K LSFT_T(KC_K)
 #define QKC_L RALT_T(KC_L)
 #define QKC_SC RCTL_T(KC_SCLN)
+#define QKC_DOT RGUI_T(KC_DOT)
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
 // These are named by the Qwerty key they sit below
@@ -98,11 +101,11 @@ enum userspace_custom_keycodes {
 */
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   KC_G
-#define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   KC_C,    QKC_V,   KC_B
+#define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   QKC_C,   QKC_V,   KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTY_R2_________________       KC_H,    QKC_J,   QKC_K,   QKC_L,   QKC_SC
-#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
+#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, QKC_DOT, KC_SLSH
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
 
