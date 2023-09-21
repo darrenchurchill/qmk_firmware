@@ -3,6 +3,7 @@
 
 #include "darrenchurchill.h"
 #include "features/achordion.h"
+#include "features/custom_shift_keys.h"
 
 
 // helper function for some macros in process_record_user()
@@ -233,9 +234,11 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_0:
         case KC_9:
-            // I already have left/right paren keys in LOWER layer, and I tend
-            // to type 0 slowly and mistakenly trigger auto shift
-            return false;
+        case KC_LBRC:
+        case KC_RBRC:
+        case KC_AMPR:
+        case UKC_LWR_SLSH:
+            return true;
     }
     return get_default_auto_shifted_key(keycode, record);
 }
@@ -246,6 +249,68 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     return get_custom_auto_shifted_key(keycode, record);
 }
+
+void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_9:
+            register_code16((!shifted) ? KC_9 : KC_LABK);
+            break;
+        case KC_0:
+            register_code16((!shifted) ? KC_0 : KC_RABK);
+            break;
+        case KC_AMPR:
+            register_code16((!shifted) ? KC_AMPR : KC_PIPE);
+            break;
+        case UKC_LWR_SLSH:
+            register_code16((!shifted) ? KC_SLSH : KC_BSLS);
+            break;
+        default:
+            if (shifted) {
+                add_weak_mods(MOD_BIT(KC_LSFT));
+            }
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            register_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
+
+void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_9:
+            unregister_code16((!shifted) ? KC_9 : KC_LABK);
+            break;
+        case KC_0:
+            unregister_code16((!shifted) ? KC_0 : KC_RABK);
+            break;
+        case KC_AMPR:
+            unregister_code16((!shifted) ? KC_AMPR : KC_PIPE);
+            break;
+        case UKC_LWR_SLSH:
+            unregister_code16((!shifted) ? KC_SLSH : KC_BSLS);
+            break;
+        default:
+            // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
+            // The IS_RETRO check isn't really necessary here, always using the
+            // keycode & 0xFF would be fine.
+            unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
+    }
+}
+
+
+/*
+  Custom Shift Keys
+  https://getreuer.info/posts/keyboards/custom-shift-keys/index.html
+
+  Note: anything you add here that you also want Auto Shift to act on, you need
+        to add to the Auto Shift pipeline functions above.
+*/
+const custom_shift_key_t custom_shift_keys[] = {
+    {KC_9, KC_LABK},
+    {KC_0, KC_RABK},
+    {KC_AMPR, KC_PIPE},
+    {UKC_LWR_SLSH, KC_BSLS},
+};
+uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
 
 /*
   Repeat Key
@@ -273,6 +338,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
+    if (!process_custom_shift_keys(keycode, record)) { return false; }
 
 
     switch (keycode) {
