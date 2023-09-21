@@ -12,6 +12,10 @@
 #define QUICK_TAP_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 
+// One Shot Keys
+#define ONESHOT_TAP_TOGGLE 2
+#define ONESHOT_TIMEOUT 500
+
 // Combos
 #define COMBO_TERM 70
 // Define COMBO_HOLD_TERM such that my tap-only combos don't have to be pressed

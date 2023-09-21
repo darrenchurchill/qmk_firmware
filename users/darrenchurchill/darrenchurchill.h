@@ -39,10 +39,9 @@ enum userspace_custom_keycodes {
   Layer Macros
 */
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
-#define LWR MO(_LOWER)
+#define LWR OSL(_LOWER)
 #define LWR_T(KC) LT(_LOWER, KC)
-// TODO: change RAISE macro to a custom tap dance keycode, where tap is QK_REPEAT_KEY
-#define RSE_T(KC) LT(_RAISE, KC)
+#define RSE OSL(_RAISE)
 #define EXT_T(KC) LT(_EXTEND, KC)
 #define MS_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
@@ -85,7 +84,7 @@ enum userspace_custom_keycodes {
 #define BKC_B LWR
 // Right Hand
 #define BKC_N LSFT_T(KC_SPACE)
-#define BKC_M RSE_T(KC_ENT)
+#define BKC_M RSE
 #define BKC_COM KC_ENT
 #define BKC_DOT KC_QUOT
 #define BKC_SLSH TD(DANCE_0)
