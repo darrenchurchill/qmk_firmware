@@ -30,6 +30,7 @@ enum userspace_custom_keycodes {
   UKC_OS_NEXT_TAB,
   UKC_SG_ARRW,
   UKC_DB_ARRW,
+  UKC_LWR_SLSH,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
@@ -124,14 +125,14 @@ enum userspace_custom_keycodes {
 
 
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
-#define _________________LOWER_L2__________________       KC_EXLM, KC_PLUS,  LKC_D,   KC_EQUAL, KC_GRV
-#define _________________LOWER_L3__________________       KC_CIRC, KC_SLSH,  KC_ASTR, KC_DLR,   KC_HASH
+#define _________________LOWER_L2__________________       KC_EXLM, KC_PLUS,       LKC_D,   KC_EQUAL, KC_GRV
+#define _________________LOWER_L3__________________       KC_CIRC, UKC_LWR_SLSH,  KC_ASTR, KC_DLR,   KC_HASH
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
 #define _________________LOWER_R2__________________       KC_AMPR, KC_LPRN, LKC_K,   KC_LBRC, KC_RBRC
-#define _________________LOWER_R3__________________       KC_PIPE, KC_DQUO, KC_QUOT, KC_LCBR, KC_RCBR
+#define _________________LOWER_R3__________________       _______, KC_DQUO, KC_QUOT, KC_LCBR, KC_RCBR
 #define ____________LOWER_4_R4_____________                        _______, _______, _______, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
