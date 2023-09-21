@@ -39,7 +39,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case BKC_V:
         case BKC_N:
-        case BKC_M:
             // Disable tap-hold repeat
             return 0;
     }
@@ -342,6 +341,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 
     switch (keycode) {
+        // _QWERTY layer keycodes
+        case KC_ESC:
+            if (record->event.pressed
+                    && get_highest_layer(layer_state) > _QWERTY_NO_MODS) {
+                // If we're on a layer higher than _QWERTY_NO_MODS, return to the
+                // _QWERTY layer instead of tapping KC_ESC. This includes cancelling
+                // the current One Shot mods & layer state.
+                clear_oneshot_mods();
+                clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+                reset_oneshot_layer();
+                layer_move(_QWERTY);
+                return false;
+            }
+            return true;
+
         // _LOWER layer keycodes
         case LKC_K:
             // Handle non-basic keycode KC_RPRN
