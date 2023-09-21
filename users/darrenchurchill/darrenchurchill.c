@@ -284,22 +284,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             // Let QMK process the hold case as usual
             return true;
 
-        case LKC_F:
-            // Handle non-basic keycode KC_DLR
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_DLR);
-                return false;
-            }
-            return true;
-
-        case LKC_J:
-            // Handle non-basic keycode KC_LPRN
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LPRN);
-                return false;
-            }
-            return true;
-
         case LKC_K:
             // Handle non-basic keycode KC_RPRN
             if (record->tap.count && record->event.pressed) {
