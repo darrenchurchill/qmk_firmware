@@ -36,9 +36,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 #ifdef QUICK_TAP_TERM_PER_KEY
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case QNM_T(KC_TAB):
-        case LSFT_T(KC_SPC):
-        case RSE_T(KC_ENT):
+        case BKC_V:
+        case BKC_N:
+        case BKC_M:
             // Disable tap-hold repeat
             return 0;
     }
@@ -128,13 +128,13 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         case MEH_T(KC_MINS):
             return true;
         // Home Row Modifiers
-        case RGUI_T(KC_J):
+        case QKC_J:
             switch (other_keycode) {
-                case LSFT_T(KC_SPC):
+                case BKC_N:
                     return true;
             }
             break;
-        case RCTL_T(KC_SCLN):
+        case QKC_SC:
             switch (other_keycode) {
                 case KC_Y:
                 case KC_U:
@@ -143,14 +143,14 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                     return true;
             }
             break;
-        case LALT_T(KC_S):
+        case QKC_S:
             switch (other_keycode) {
                 case KC_ENT:
                 case KC_TAB:
                     return true;
             }
             break;
-        case LSFT_T(KC_D):
+        case QKC_D:
             switch (other_keycode) {
                 case LWR:
                 case KC_TAB:
@@ -158,16 +158,16 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                     return true;
             }
             break;
-        case LGUI_T(KC_F):
+        case QKC_F:
             switch (other_keycode) {
                 case KC_TAB:
                     return true;
             }
             break;
         // Thumb Mod-Tap keys
-        case LWR:
+        case BKC_B:
             return true;
-        case RSE_T(KC_ENT):
+        case BKC_M:
             return true;
     }
 
@@ -179,10 +179,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 // See link above for per-keycode use of achordion_timeout()
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
-        case LSFT_T(KC_SPACE):
+        case BKC_N:
             // Bypass achordion
             return 0;
-        case LT(_QWERTY_NO_MODS, KC_TAB):
+        case BKC_V:
             // This layer-tap key was frequently being changed from a hold->tap
             // when quickly pressing a key after holding the LT key, resulting
             // in tab + J, for example.
@@ -273,7 +273,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 
     switch (keycode) {
-        case LSFT_T(KC_HASH):
+        // _LOWER layer keycodes
+        case LKC_D:
             // Handle non-basic keycode KC_HASH
             if (record->tap.count && record->event.pressed) {
                 // On tap
@@ -283,7 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             // Let QMK process the hold case as usual
             return true;
 
-        case LGUI_T(KC_DLR):
+        case LKC_F:
             // Handle non-basic keycode KC_DLR
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_DLR);
@@ -291,7 +292,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return true;
 
-        case RGUI_T(KC_LPRN):
+        case LKC_J:
             // Handle non-basic keycode KC_LPRN
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_LPRN);
@@ -299,7 +300,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return true;
 
-        case LSFT_T(KC_RPRN):
+        case LKC_K:
             // Handle non-basic keycode KC_RPRN
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_RPRN);
@@ -307,6 +308,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return true;
 
+        // My custom keycodes
         case UKC_BASE:
             if (!record->event.pressed) return false; // already processed
             // It's normally recommended to use layer_move() rather than
