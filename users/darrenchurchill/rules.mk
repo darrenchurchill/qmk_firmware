@@ -1,6 +1,7 @@
 # https://docs.qmk.fm/#/feature_userspace
 SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/features/achordion.c
+SRC += $(USER_PATH)/features/custom_shift_keys.c
 
 LTO_ENABLE = yes
 
