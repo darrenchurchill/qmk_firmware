@@ -33,13 +33,6 @@ enum userspace_custom_keycodes {
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
-/*
-  Keycode Macros
-*/
-#define VOL_DN  KC_KB_VOLUME_DOWN
-#define VOL_UP  KC_KB_VOLUME_UP
-#define OS_PTAB UKC_OS_PREV_TAB
-#define OS_NTAB UKC_OS_NEXT_TAB
 
 /*
   Layer Macros
@@ -54,29 +47,72 @@ enum userspace_custom_keycodes {
 #define FN_T(KC) LT(_FN, KC)
 #define LAYERS MO(_LAYERS)
 
+
+/*
+  Keycode Macros
+*/
+#define VOL_DN  KC_KB_VOLUME_DOWN
+#define VOL_UP  KC_KB_VOLUME_UP
+#define OS_PTAB UKC_OS_PREV_TAB
+#define OS_NTAB UKC_OS_NEXT_TAB
+
+// QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
+// Left Hand
+#define QKC_A LCTL_T(KC_A)
+#define QKC_S LALT_T(KC_S)
+#define QKC_D LSFT_T(KC_D)
+#define QKC_F LGUI_T(KC_F)
+#define QKC_Z FN_T(KC_Z)
+#define QKC_X EXT_T(KC_X)
+#define QKC_V MS_T(KC_V)
+// Right Hand
+#define QKC_J RGUI_T(KC_J)
+#define QKC_K LSFT_T(KC_K)
+#define QKC_L RALT_T(KC_L)
+#define QKC_SC RCTL_T(KC_SCLN)
+
+// Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
+// These are named by the Qwerty key they sit below
+// Left Hand
+#define BKC_Z LCTL_T(KC_GRV)
+#define BKC_X LALT_T(KC_ESC)
+#define BKC_C KC_LGUI
+#define BKC_V QNM_T(KC_TAB)
+#define BKC_B LWR
+// Right Hand
+#define BKC_N LSFT_T(KC_SPACE)
+#define BKC_M RSE_T(KC_ENT)
+#define BKC_COM KC_ENT
+#define BKC_DOT KC_QUOT
+#define BKC_SLSH TD(DANCE_0)
+
+// LOWER Layer Keys: LKC -> "Lower KeyCode"
+// Left Hand
+#define LKC_D LSFT_T(KC_HASH)
+#define LKC_F LGUI_T(KC_DLR)
+// Right Hand
+#define LKC_J RGUI_T(KC_LPRN)
+#define LKC_K LSFT_T(KC_RPRN)
+
 /*
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
 */
-#define LMODS(K01, K02, K03, K04) LCTL_T(K01), LALT_T(K02), LSFT_T(K03), LGUI_T(K04)
-#define RMODS(K01, K02, K03, K04) RGUI_T(K01), LSFT_T(K02), RALT_T(K03), RCTL_T(K04)
-
-
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________ LMODS(KC_A,    KC_S,    KC_D,    KC_F),   KC_G
-#define _________________QWERTY_L3_________________  FN_T(KC_Z), EXT_T(KC_X), KC_C, MS_T(KC_V), KC_B
+#define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   KC_G
+#define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   KC_C,    QKC_V,   KC_B
 
 #define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H, RMODS(KC_J, KC_K,    KC_L,    KC_SCLN)
+#define _________________QWERTY_R2_________________       KC_H,    QKC_J,   QKC_K,   QKC_L,   QKC_SC
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
 
-#define _____________BASE_4_L4_____________        LCTL_T(KC_GRV), LALT_T(KC_ESC), KC_LGUI, QNM_T(KC_TAB)
-#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, LWR
+#define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
+#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B
 
-#define _____________BASE_4_R4_____________                  RSE_T(KC_ENT), KC_ENT, KC_QUOT, TD(DANCE_0)
-#define _________________BASE_5_R4_________________ LSFT_T(KC_SPC), _____________BASE_4_R4_____________
+#define _____________BASE_4_R4_____________                        BKC_M,   BKC_COM, BKC_DOT, BKC_SLSH
+#define _________________BASE_5_R4_________________       BKC_N, _____________BASE_4_R4_____________
 
 
 #define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
@@ -87,13 +123,13 @@ enum userspace_custom_keycodes {
 
 
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
-#define _________________LOWER_L2__________________       KC_QUOT, KC_DQUO,  LSFT_T(KC_HASH), LGUI_T(KC_DLR), KC_GRV
+#define _________________LOWER_L2__________________       KC_QUOT, KC_DQUO,  LKC_D,   LKC_F,   KC_GRV
 #define _________________LOWER_L3__________________       KC_AMPR, KC_SLSH,  KC_ASTR, KC_PLUS, KC_PIPE
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_UNDS, RGUI_T(KC_LPRN), LSFT_T(KC_RPRN), KC_LBRC, KC_RBRC
+#define _________________LOWER_R2__________________       KC_UNDS, LKC_J,   LKC_K,   KC_LBRC, KC_RBRC
 #define _________________LOWER_R3__________________       KC_BSLS, KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR
 #define ____________LOWER_4_R4_____________                        _______, _______, KC_EXLM, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
