@@ -121,6 +121,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         // Home Row Modifiers
         case QKC_J:
             switch (other_keycode) {
+                case KC_BSPC:
                 case BKC_N:
                     return true;
             }
