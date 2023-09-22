@@ -46,15 +46,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 }
 #endif // QUICK_TAP_TERM_PER_KEY
 
-#ifdef AUTO_SHIFT_TIMEOUT_PER_KEY
-uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KC_SLASH:
-            if (IS_LAYER_ON(_LOWER)) return 2 * get_generic_autoshift_timeout();
-    }
-    return get_generic_autoshift_timeout();
-}
-#endif // AUTO_SHIFT_TIMEOUT_PER_KEY
 
 #ifdef TAP_DANCE_ENABLE
 typedef struct {
