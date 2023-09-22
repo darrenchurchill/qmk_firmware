@@ -90,10 +90,54 @@ enum userspace_custom_keycodes {
 #define BKC_SLSH TD(DANCE_0)
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
+// Mostly inspired by:
+// https://getreuer.info/posts/keyboards/symbol-layer/index.html
+// https://github.com/getreuer/qmk-keymap
 // Left Hand
-#define LKC_D LSFT_T(KC_MINS)
+/*
+   7    8    9    0    5 (Available w/ custom shift keys on top row)
+   @    <    >    "    `
+   !    -    +    =    #
+  ___   /    *    ^    \
+*/
+#define LKC_Q KC_AT
+#define LKC_W KC_LABK
+#define LKC_E KC_RABK
+#define LKC_R KC_DQUO
+#define LKC_T KC_GRV
+#define LKC_A KC_EXLM
+#define LKC_S KC_MINS
+#define LKC_D LSFT_T(KC_PLUS)
+#define LKC_F KC_EQUAL
+#define LKC_G KC_HASH
+#define LKC_Z _______
+#define LKC_X UKC_LWR_SLSH
+#define LKC_C KC_ASTR
+#define LKC_V KC_CIRC
+#define LKC_B KC_BSLS
+
 // Right Hand
-#define LKC_K LSFT_T(KC_RPRN)
+/*
+   6    1    2    3    4 (Available w/ custom shift keys on top row)
+   &    '    [    ]    %
+   |    _    (    )    ?
+   ~    $    {    }   ___
+*/
+#define LKC_Y KC_AMPR
+#define LKC_U KC_QUOT
+#define LKC_I KC_LBRC
+#define LKC_O KC_RBRC
+#define LKC_P KC_PERC
+#define LKC_H KC_PIPE
+#define LKC_J KC_UNDS
+#define LKC_K LSFT_T(KC_LPRN)
+#define LKC_L KC_RPRN
+#define LKC_SC KC_QUES
+#define LKC_N KC_TILD
+#define LKC_M KC_DLR
+#define LKC_COM KC_LCBR
+#define LKC_DOT KC_RCBR
+#define LKC_SL  _______
 
 /*
   Keycode wrappers
@@ -123,15 +167,15 @@ enum userspace_custom_keycodes {
 #define __________________BLANK_5__________________       _______, _______, _______, _______, _______
 
 
-#define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
-#define _________________LOWER_L2__________________       KC_EXLM, KC_PLUS,       LKC_D,   KC_EQUAL, KC_GRV
-#define _________________LOWER_L3__________________       KC_CIRC, UKC_LWR_SLSH,  KC_ASTR, KC_DLR,   KC_HASH
+#define _________________LOWER_L1__________________       LKC_Q,   LKC_W,   LKC_E,   LKC_R,   LKC_T
+#define _________________LOWER_L2__________________       LKC_A,   LKC_S,   LKC_D,   LKC_F,   LKC_G
+#define _________________LOWER_L3__________________       LKC_Z,   LKC_X,   LKC_C,   LKC_V,   LKC_B
 #define ____________LOWER_4_L4_____________               _______, UKC_BASE, _______, _______
 #define ________________LOWER_5_L4_________________       ____________LOWER_4_L4_____________, _______
 
-#define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2__________________       KC_AMPR, KC_LPRN, LKC_K,   KC_LBRC, KC_RBRC
-#define _________________LOWER_R3__________________       _______, KC_DQUO, KC_QUOT, KC_LCBR, KC_RCBR
+#define _________________LOWER_R1__________________       LKC_Y,   LKC_U,   LKC_I,    LKC_O,   LKC_P
+#define _________________LOWER_R2__________________       LKC_H,   LKC_J,   LKC_K,    LKC_L,   LKC_SC
+#define _________________LOWER_R3__________________       LKC_N,   LKC_M,   LKC_COM,  LKC_DOT, LKC_SL
 #define ____________LOWER_4_R4_____________                        _______, _______, _______, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
