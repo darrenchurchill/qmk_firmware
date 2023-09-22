@@ -31,7 +31,6 @@
 // Auto Shift
 #define NO_AUTO_SHIFT_ALPHA
 #define AUTO_SHIFT_MODIFIERS
-#define AUTO_SHIFT_TIMEOUT_PER_KEY
 
 // Mouse Keys
 #define MOUSEKEY_INTERVAL           20
