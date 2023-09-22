@@ -228,16 +228,16 @@ bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_Q:
-        case LKC_W:
-        case LKC_E:
-        case LKC_R:
-        case LKC_T:
-        case LKC_Y:
-        case LKC_U:
-        case LKC_I:
-        case LKC_O:
-        case LKC_P:
+        case LKC_A:
+        case LKC_S:
+        case LKC_D:
+        case LKC_F:
+        case LKC_G:
+        case LKC_H:
+        case LKC_J:
+        case LKC_K:
+        case LKC_L:
+        case LKC_SC:
         case UKC_LWR_SLSH:
             return true;
     }
@@ -253,35 +253,35 @@ bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_Q:
-            register_code16((!shifted) ? LKC_Q : KC_7);
+        case LKC_A:
+            register_code16((!shifted) ? LKC_A : KC_7);
             break;
-        case LKC_W:
-            register_code16((!shifted) ? LKC_W : KC_8);
+        case LKC_S:
+            register_code16((!shifted) ? LKC_S : KC_8);
             break;
-        case LKC_E:
-            register_code16((!shifted) ? LKC_E : KC_9);
+        case LKC_D:
+            register_code16((!shifted) ? LKC_D : KC_9);
             break;
-        case LKC_R:
-            register_code16((!shifted) ? LKC_R : KC_0);
+        case LKC_F:
+            register_code16((!shifted) ? LKC_F : KC_0);
             break;
-        case LKC_T:
-            register_code16((!shifted) ? LKC_T : KC_5);
+        case LKC_G:
+            register_code16((!shifted) ? LKC_G : KC_5);
             break;
-        case LKC_Y:
-            register_code16((!shifted) ? LKC_Y : KC_6);
+        case LKC_H:
+            register_code16((!shifted) ? LKC_H : KC_6);
             break;
-        case LKC_U:
-            register_code16((!shifted) ? LKC_U : KC_1);
+        case LKC_J:
+            register_code16((!shifted) ? LKC_J : KC_1);
             break;
-        case LKC_I:
-            register_code16((!shifted) ? LKC_I : KC_2);
+        case LKC_K:
+            register_code16((!shifted) ? LKC_K : KC_2);
             break;
-        case LKC_O:
-            register_code16((!shifted) ? LKC_O : KC_3);
+        case LKC_L:
+            register_code16((!shifted) ? LKC_L : KC_3);
             break;
-        case LKC_P:
-            register_code16((!shifted) ? LKC_P : KC_4);
+        case LKC_SC:
+            register_code16((!shifted) ? LKC_SC : KC_4);
             break;
         case UKC_LWR_SLSH:
             register_code16((!shifted) ? KC_SLSH : KC_BSLS);
@@ -297,35 +297,35 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_Q:
-            unregister_code16((!shifted) ? LKC_Q : KC_7);
+        case LKC_A:
+            unregister_code16((!shifted) ? LKC_A : KC_7);
             break;
-        case LKC_W:
-            unregister_code16((!shifted) ? LKC_W : KC_8);
+        case LKC_S:
+            unregister_code16((!shifted) ? LKC_S : KC_8);
             break;
-        case LKC_E:
-            unregister_code16((!shifted) ? LKC_E : KC_9);
+        case LKC_D:
+            unregister_code16((!shifted) ? LKC_D : KC_9);
             break;
-        case LKC_R:
-            unregister_code16((!shifted) ? LKC_R : KC_0);
+        case LKC_F:
+            unregister_code16((!shifted) ? LKC_F : KC_0);
             break;
-        case LKC_T:
-            unregister_code16((!shifted) ? LKC_T : KC_5);
+        case LKC_G:
+            unregister_code16((!shifted) ? LKC_G : KC_5);
             break;
-        case LKC_Y:
-            unregister_code16((!shifted) ? LKC_Y : KC_6);
+        case LKC_H:
+            unregister_code16((!shifted) ? LKC_H : KC_6);
             break;
-        case LKC_U:
-            unregister_code16((!shifted) ? LKC_U : KC_1);
+        case LKC_J:
+            unregister_code16((!shifted) ? LKC_J : KC_1);
             break;
-        case LKC_I:
-            unregister_code16((!shifted) ? LKC_I : KC_2);
+        case LKC_K:
+            unregister_code16((!shifted) ? LKC_K : KC_2);
             break;
-        case LKC_O:
-            unregister_code16((!shifted) ? LKC_O : KC_3);
+        case LKC_L:
+            unregister_code16((!shifted) ? LKC_L : KC_3);
             break;
-        case LKC_P:
-            unregister_code16((!shifted) ? LKC_P : KC_4);
+        case LKC_SC:
+            unregister_code16((!shifted) ? LKC_SC : KC_4);
             break;
         case UKC_LWR_SLSH:
             unregister_code16((!shifted) ? KC_SLSH : KC_BSLS);
@@ -347,16 +347,16 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
         to add to the Auto Shift pipeline functions above.
 */
 const custom_shift_key_t custom_shift_keys[] = {
-    {LKC_Q, KC_7},
-    {LKC_W, KC_8},
-    {LKC_E, KC_9},
-    {LKC_R, KC_0},
-    {LKC_T, KC_5},
-    {LKC_Y, KC_6},
-    {LKC_U, KC_1},
-    {LKC_I, KC_2},
-    {LKC_O, KC_3},
-    {LKC_P, KC_4},
+    {LKC_A, KC_7},
+    {LKC_S, KC_8},
+    {LKC_D, KC_9},
+    {LKC_F, KC_0},
+    {LKC_G, KC_5},
+    {LKC_H, KC_6},
+    {LKC_J, KC_1},
+    {LKC_K, KC_2},
+    {LKC_L, KC_3},
+    {LKC_SC, KC_4},
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
