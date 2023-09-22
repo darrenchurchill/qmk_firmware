@@ -128,6 +128,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         case MEH_T(KC_MINS):
             return true;
         // Home Row Modifiers
+        case QKC_J:
+            switch (other_keycode) {
+                case BKC_N:
+                    return true;
+            }
         case QKC_DOT:
             switch (other_keycode) {
                 case BKC_N:
@@ -231,11 +236,16 @@ bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_0:
-        case KC_9:
-        case KC_LBRC:
-        case KC_RBRC:
-        case KC_AMPR:
+        case LKC_Q:
+        case LKC_W:
+        case LKC_E:
+        case LKC_R:
+        case LKC_T:
+        case LKC_Y:
+        case LKC_U:
+        case LKC_I:
+        case LKC_O:
+        case LKC_P:
         case UKC_LWR_SLSH:
             return true;
     }
@@ -251,14 +261,35 @@ bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case KC_9:
-            register_code16((!shifted) ? KC_9 : KC_LABK);
+        case LKC_Q:
+            register_code16((!shifted) ? LKC_Q : KC_7);
             break;
-        case KC_0:
-            register_code16((!shifted) ? KC_0 : KC_RABK);
+        case LKC_W:
+            register_code16((!shifted) ? LKC_W : KC_8);
             break;
-        case KC_AMPR:
-            register_code16((!shifted) ? KC_AMPR : KC_PIPE);
+        case LKC_E:
+            register_code16((!shifted) ? LKC_E : KC_9);
+            break;
+        case LKC_R:
+            register_code16((!shifted) ? LKC_R : KC_0);
+            break;
+        case LKC_T:
+            register_code16((!shifted) ? LKC_T : KC_5);
+            break;
+        case LKC_Y:
+            register_code16((!shifted) ? LKC_Y : KC_6);
+            break;
+        case LKC_U:
+            register_code16((!shifted) ? LKC_U : KC_1);
+            break;
+        case LKC_I:
+            register_code16((!shifted) ? LKC_I : KC_2);
+            break;
+        case LKC_O:
+            register_code16((!shifted) ? LKC_O : KC_3);
+            break;
+        case LKC_P:
+            register_code16((!shifted) ? LKC_P : KC_4);
             break;
         case UKC_LWR_SLSH:
             register_code16((!shifted) ? KC_SLSH : KC_BSLS);
@@ -274,14 +305,35 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case KC_9:
-            unregister_code16((!shifted) ? KC_9 : KC_LABK);
+        case LKC_Q:
+            unregister_code16((!shifted) ? LKC_Q : KC_7);
             break;
-        case KC_0:
-            unregister_code16((!shifted) ? KC_0 : KC_RABK);
+        case LKC_W:
+            unregister_code16((!shifted) ? LKC_W : KC_8);
             break;
-        case KC_AMPR:
-            unregister_code16((!shifted) ? KC_AMPR : KC_PIPE);
+        case LKC_E:
+            unregister_code16((!shifted) ? LKC_E : KC_9);
+            break;
+        case LKC_R:
+            unregister_code16((!shifted) ? LKC_R : KC_0);
+            break;
+        case LKC_T:
+            unregister_code16((!shifted) ? LKC_T : KC_5);
+            break;
+        case LKC_Y:
+            unregister_code16((!shifted) ? LKC_Y : KC_6);
+            break;
+        case LKC_U:
+            unregister_code16((!shifted) ? LKC_U : KC_1);
+            break;
+        case LKC_I:
+            unregister_code16((!shifted) ? LKC_I : KC_2);
+            break;
+        case LKC_O:
+            unregister_code16((!shifted) ? LKC_O : KC_3);
+            break;
+        case LKC_P:
+            unregister_code16((!shifted) ? LKC_P : KC_4);
             break;
         case UKC_LWR_SLSH:
             unregister_code16((!shifted) ? KC_SLSH : KC_BSLS);
@@ -303,9 +355,16 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
         to add to the Auto Shift pipeline functions above.
 */
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_9, KC_LABK},
-    {KC_0, KC_RABK},
-    {KC_AMPR, KC_PIPE},
+    {LKC_Q, KC_7},
+    {LKC_W, KC_8},
+    {LKC_E, KC_9},
+    {LKC_R, KC_0},
+    {LKC_T, KC_5},
+    {LKC_Y, KC_6},
+    {LKC_U, KC_1},
+    {LKC_I, KC_2},
+    {LKC_O, KC_3},
+    {LKC_P, KC_4},
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
@@ -357,10 +416,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             return true;
 
         // _LOWER layer keycodes
-        case LKC_K:
-            // Handle non-basic keycode KC_RPRN
+        case LKC_D:
+            // Handle non-basic keycode KC_PLUS
             if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RPRN);
+                tap_code16(KC_PLUS);
+                return false;
+            }
+            return true;
+
+        case LKC_K:
+            // Handle non-basic keycode KC_LPRN
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LPRN);
                 return false;
             }
             return true;
