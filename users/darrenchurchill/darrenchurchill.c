@@ -48,23 +48,23 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 
 #ifdef TAP_DANCE_ENABLE
-typedef struct {
-    bool is_press_action;
-    uint8_t step;
-} tap;
-
-enum {
+typedef enum {
     SINGLE_TAP = 1,
     SINGLE_HOLD,
     DOUBLE_TAP,
     DOUBLE_HOLD,
     DOUBLE_SINGLE_TAP,
     MORE_TAPS
-};
+} td_state_t;
 
-static tap dance_state[1];
+typedef struct {
+    bool is_press_action;
+    td_state_t step;
+} td_tap_t;
 
-uint8_t dance_step(tap_dance_state_t *state) {
+static td_tap_t dance_state[1];
+
+td_state_t dance_step(tap_dance_state_t *state) {
     if (state->count == 1) {
         if (state->interrupted || !state->pressed)
             return SINGLE_TAP;
@@ -90,12 +90,17 @@ void dance_0_finished(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_TAP:
             layer_move(_LAYERS);
             break;
+        case SINGLE_HOLD:
+        case DOUBLE_HOLD:
+        case DOUBLE_SINGLE_TAP:
+        case MORE_TAPS:
+            // Do nothing;
+            break;
     }
 }
 
 void dance_0_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
-    switch (dance_state[0].step) {}
     dance_state[0].step = 0;
 }
 
