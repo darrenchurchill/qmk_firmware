@@ -206,29 +206,12 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 /*
   Auto Shift Per Key, in addition to the config in config.h
   https://docs.qmk.fm/#/feature_auto_shift
+  This function should return `true` if you want the default
+  get_auto_shifted_key() function to process the keycode.
 */
 __attribute__ ((weak))
 bool get_custom_auto_shifted_key_keymap(uint16_t keycode, keyrecord_t *record) {
-    return false;
-}
-
-// This is the code from the default function, but calls *_keymap() fn instead
-// See quantum/process_keycode/process_auto_shift.c
-bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-#    ifndef NO_AUTO_SHIFT_ALPHA
-        case AUTO_SHIFT_ALPHA:
-#    endif
-#    ifndef NO_AUTO_SHIFT_NUMERIC
-        case AUTO_SHIFT_NUMERIC:
-#    endif
-#    ifndef NO_AUTO_SHIFT_SPECIAL
-        case AUTO_SHIFT_SPECIAL:
-#    endif
-            return true;
-    }
-
-    return get_custom_auto_shifted_key_keymap(keycode, record);
+    return true;
 }
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
@@ -245,15 +228,36 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
         case LKC_SC:
         case UKC_LWR_SLSH:
             return true;
+        case LKC_U:
+        case LKC_I:
+        case LKC_O:
+            return false;
     }
-    return get_default_auto_shifted_key(keycode, record);
+
+    return get_custom_auto_shifted_key_keymap(keycode, record);
 }
 
 // The default function, overrode to re-plumb the order default cases are
-// checked. This way I can override KC_0 and KC_9 while leaving
-// AUTO_SHIFT_NUMERIC enabled
+// checked. This way I can override certain keycodes in each group below, while
+// leaving preprocessor directives active
+// See quantum/process_keycode/process_auto_shift.c
 bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-    return get_custom_auto_shifted_key(keycode, record);
+    if (!get_custom_auto_shifted_key(keycode, record)) return false;
+
+    switch (keycode) {
+#    ifndef NO_AUTO_SHIFT_ALPHA
+        case AUTO_SHIFT_ALPHA:
+#    endif
+#    ifndef NO_AUTO_SHIFT_NUMERIC
+        case AUTO_SHIFT_NUMERIC:
+#    endif
+#    ifndef NO_AUTO_SHIFT_SPECIAL
+        case AUTO_SHIFT_SPECIAL:
+#    endif
+            return true;
+    }
+
+    return false;
 }
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
