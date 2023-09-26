@@ -28,6 +28,8 @@ enum userspace_custom_keycodes {
   UKC_OS_PASTE,
   UKC_OS_PREV_TAB,
   UKC_OS_NEXT_TAB,
+  UKC_OS_PREV_SPACE,
+  UKC_OS_NEXT_SPACE,
   UKC_SG_ARRW,
   UKC_DB_ARRW,
   UKC_LWR_SLSH,
@@ -58,6 +60,8 @@ enum userspace_custom_keycodes {
 #define VOL_UP  KC_KB_VOLUME_UP
 #define OS_PTAB UKC_OS_PREV_TAB
 #define OS_NTAB UKC_OS_NEXT_TAB
+#define OS_PSPC UKC_OS_PREV_SPACE
+#define OS_NSPC UKC_OS_NEXT_SPACE
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
@@ -205,9 +209,9 @@ enum userspace_custom_keycodes {
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, _______
 
-#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,   _______
+#define _________________RAISE_R1__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,   LGUI(KC_GRV)
 #define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, LCTL(KC_GRV)
-#define _________________RAISE_R3__________________       _______, OS_PTAB, OS_NTAB, _______,  LGUI(KC_GRV)
+#define _________________RAISE_R3__________________       _______, OS_PTAB, OS_NTAB, OS_PSPC,  OS_NSPC
 #define ____________RAISE_4_R4_____________                        ______________BLANK_4______________
 #define ________________RAISE_5_R4_________________       _______, ____________RAISE_4_R4_____________
 
