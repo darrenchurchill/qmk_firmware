@@ -399,6 +399,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
     if (!process_custom_shift_keys(keycode, record)) { return false; }
 
+    static os_variant_t host_os = OS_UNSURE;
+    host_os = detected_host_os();
 
     switch (keycode) {
         // _QWERTY layer keycodes
@@ -446,8 +448,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case UKC_OS_COPY:
             if (record->event.pressed) {
-                os_variant_t host_os = detected_host_os();
-
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(LGUI(KC_C));
                 } else {
@@ -458,8 +458,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case UKC_OS_PASTE:
             if (record->event.pressed) {
-                os_variant_t host_os = detected_host_os();
-
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(LGUI(KC_V));
                 } else {
@@ -470,8 +468,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case UKC_OS_PREV_TAB:
             if (record->event.pressed) {
-                os_variant_t host_os = detected_host_os();
-
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(SGUI(KC_LBRC));
                 } else {
@@ -482,8 +478,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case UKC_OS_NEXT_TAB:
             if (record->event.pressed) {
-                os_variant_t host_os = detected_host_os();
-
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(SGUI(KC_RBRC));
                 } else {
