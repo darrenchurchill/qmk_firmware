@@ -486,6 +486,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return false;
 
+        case UKC_OS_PREV_SPACE:
+            if (record->event.pressed) {
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(LCTL(KC_LEFT));
+                } else {
+                    // TODO: confirm this is correct for Ubuntu
+                    tap_code16(LCA(KC_UP));
+                }
+            }
+            return false;
+
+        case UKC_OS_NEXT_SPACE:
+            if (record->event.pressed) {
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    tap_code16(LCTL(KC_RIGHT));
+                } else {
+                    // TODO: confirm this is correct for Ubuntu
+                    tap_code16(LCA(KC_DOWN));
+                }
+            }
+            return false;
+
         case UKC_SG_ARRW:
             // Handle my custom keycode for a single arrow
             if (record->event.pressed) {
