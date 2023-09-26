@@ -89,7 +89,7 @@ enum userspace_custom_keycodes {
 #define BKC_M RSE
 #define BKC_COM KC_ENT
 #define BKC_DOT KC_QUOT
-#define BKC_SLSH TD(DANCE_0)
+#define BKC_SL TD(DANCE_0)
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
 // Mostly inspired by:
@@ -158,7 +158,7 @@ enum userspace_custom_keycodes {
 #define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B
 
-#define _____________BASE_4_R4_____________                        BKC_M,   BKC_COM, BKC_DOT, BKC_SLSH
+#define _____________BASE_4_R4_____________                        BKC_M,   BKC_COM, BKC_DOT, BKC_SL
 #define _________________BASE_5_R4_________________       BKC_N, _____________BASE_4_R4_____________
 
 
