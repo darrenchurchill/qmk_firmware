@@ -4,6 +4,7 @@
 #include "darrenchurchill.h"
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
+#include "features/repeat_key.h"
 
 
 // helper function for some macros in process_record_user()
@@ -373,7 +374,7 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 
 /*
   Repeat Key
-  https://docs.qmk.fm/#/feature_repeat_key
+  https://getreuer.info/posts/keyboards/repeat-key/index.html
 */
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
@@ -397,6 +398,9 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
+    if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
+        return false;
+    }
     if (!process_custom_shift_keys(keycode, record)) { return false; }
 
 

@@ -2,6 +2,7 @@
 SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/features/achordion.c
 SRC += $(USER_PATH)/features/custom_shift_keys.c
+SRC += $(USER_PATH)/features/repeat_key.c
 
 LTO_ENABLE = yes
 
@@ -15,7 +16,6 @@ OS_DETECTION_ENABLE = yes
 
 DYNAMIC_TAPPING_TERM_ENABLE = yes
 COMBO_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
 
 # https://github.com/qmk/qmk_firmware/issues/21137
 # Using INTROSPECTION_KEYMAP_C isn't recommended, but it works for this purpose
