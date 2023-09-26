@@ -61,20 +61,37 @@ enum userspace_custom_keycodes {
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
-#define QKC_A LCTL_T(KC_A)
+#define QKC_Q KC_Q
+#define QKC_W KC_W
+#define QKC_E KC_E
+#define QKC_R KC_R
+#define QKC_T KC_T
+#define QKC_A LWR_T(KC_A)
 #define QKC_S LALT_T(KC_S)
 #define QKC_D LSFT_T(KC_D)
-#define QKC_F LWR_T(KC_F)
+#define QKC_F LCTL_T(KC_F)
+#define QKC_G KC_G
 #define QKC_Z FN_T(KC_Z)
-#define QKC_X LGUI_T(KC_X)
-#define QKC_C EXT_T(KC_C)
-#define QKC_V MS_T(KC_V)
+#define QKC_X EXT_T(KC_X)
+#define QKC_C MS_T(KC_C)
+#define QKC_V LGUI_T(KC_V)
+#define QKC_B KC_B
 // Right Hand
-#define QKC_J LWR_T(KC_J)
+#define QKC_Y KC_Y
+#define QKC_U KC_U
+#define QKC_I KC_I
+#define QKC_O KC_O
+#define QKC_P KC_P
+#define QKC_H KC_H
+#define QKC_J RCTL_T(KC_J)
 #define QKC_K LSFT_T(KC_K)
 #define QKC_L RALT_T(KC_L)
-#define QKC_SC RCTL_T(KC_SCLN)
-#define QKC_DOT RGUI_T(KC_DOT)
+#define QKC_SC LWR_T(KC_SCLN)
+#define QKC_N KC_N
+#define QKC_M RGUI_T(KC_M)
+#define QKC_DOT KC_DOT
+#define QKC_COM KC_COMM
+#define QKC_SL KC_SLSH
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
 // These are named by the Qwerty key they sit below
@@ -145,15 +162,15 @@ enum userspace_custom_keycodes {
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
 */
-#define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   KC_G
-#define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   QKC_C,   QKC_V,   KC_B
+#define _________________QWERTY_L1_________________       QKC_Q,   QKC_W,   QKC_E,   QKC_R,   QKC_T
+#define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   QKC_G
+#define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   QKC_C,   QKC_V,   QKC_B
 
-#define _________________QWERTY_R1_________________       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________       KC_H,    QKC_J,   QKC_K,   QKC_L,   QKC_SC
-#define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, QKC_DOT, KC_SLSH
+#define _________________QWERTY_R1_________________       QKC_Y,   QKC_U,   QKC_I,   QKC_O,   QKC_P
+#define _________________QWERTY_R2_________________       QKC_H,   QKC_J,   QKC_K,   QKC_L,   QKC_SC
+#define _________________QWERTY_R3_________________       QKC_N,   QKC_M,   QKC_COM, QKC_DOT, QKC_SL
 
-#define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN
+#define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
 
 #define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B

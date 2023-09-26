@@ -139,10 +139,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             break;
         case QKC_SC:
             switch (other_keycode) {
-                case KC_Y:
-                case KC_U:
-                case KC_I:
-                case KC_O:
+                case QKC_Y:
+                case QKC_U:
+                case QKC_I:
+                case QKC_O:
                     return true;
             }
             break;
@@ -165,7 +165,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             switch (other_keycode) {
                 case QKC_C:
                 case QKC_V:
-                case KC_B:
+                case QKC_B:
                 case KC_TAB:
                     return true;
             }
