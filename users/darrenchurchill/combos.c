@@ -27,12 +27,12 @@ const uint16_t PROGMEM combo_df[] = { QKC_D, QKC_F, COMBO_END };
 const uint16_t PROGMEM combo_jk[] = { QKC_J, QKC_K, COMBO_END };
 
 const uint16_t PROGMEM combo_cv[] = { QKC_C, QKC_V, COMBO_END };
-const uint16_t PROGMEM combo_cvb[] = { QKC_C, QKC_V, KC_B, COMBO_END };
-const uint16_t PROGMEM combo_vb[] = { QKC_V, KC_B, COMBO_END };
+const uint16_t PROGMEM combo_cvb[] = { QKC_C, QKC_V, QKC_B, COMBO_END };
+const uint16_t PROGMEM combo_vb[] = { QKC_V, QKC_B, COMBO_END };
 
-const uint16_t PROGMEM combo_comma_dot[] = { KC_COMMA, QKC_DOT, COMBO_END };
-const uint16_t PROGMEM combo_m_comma[] = { KC_M, KC_COMMA, COMBO_END };
-const uint16_t PROGMEM combo_m_comma_dot[] = { KC_M, KC_COMMA, QKC_DOT, COMBO_END };
+const uint16_t PROGMEM combo_comma_dot[] = { QKC_COM, QKC_DOT, COMBO_END };
+const uint16_t PROGMEM combo_m_comma[] = { QKC_M, QKC_COM, COMBO_END };
+const uint16_t PROGMEM combo_m_comma_dot[] = { QKC_M, QKC_COM, QKC_DOT, COMBO_END };
 
 const uint16_t PROGMEM combo_dk[] = { QKC_D, QKC_K, COMBO_END };
 
