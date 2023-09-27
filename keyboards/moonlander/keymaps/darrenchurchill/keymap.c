@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY_NO_MODS] = LAYOUT_moonlander_custom_wrapper(
         _________________QWERTY_L1_________________,  _______,       _______, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________,  _______,       _______, _____________QWERTY_NO_MODS_R2_____________,
-        _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________,
+        _________________QWERTY_L3_________________,                          _____________QWERTY_NO_MODS_R3_____________,
         _____________BASE_4_L4_____________,          _______,       _______,         _____________BASE_4_R4_____________,
                                    _______, _______,                          _______, _______
     ),
@@ -128,20 +128,20 @@ void keyboard_post_init_keymap(void) {
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_QWERTY] = {
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, // left outside column, top to bottom
-        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ON},  {HSV_CTL},
-        {HSV_OFF}, {HSV_ON},   {HSV_ALT}, {HSV_ON},  {HSV_ALT},
-        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_ON},  {HSV_GUI},
-        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_GUI}, {HSV_ON},
+        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_CTL}, {HSV_CTL},
+        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ALT}, {HSV_ALT},
+        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
+        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
         {HSV_LYR}, {HSV_SFT},  {HSV_ON}, // piano keys
         {HSV_ON}, // thumb key
 
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, // right outside column, top to bottom
-        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ON},  {HSV_QUOT},
-        {HSV_OFF}, {HSV_ON},   {HSV_ALT}, {HSV_ON},  {HSV_QUOT},
-        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_GUI}, {HSV_LYR},
+        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_CTL}, {HSV_QUOT},
+        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ALT}, {HSV_QUOT},
+        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_ON},
+        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_SYM},
         {HSV_ON},  {HSV_BSPC}, {HSV_ON},
@@ -150,10 +150,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_QWERTY_NO_MODS] = {
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ON},  {HSV_CTL},
-        {HSV_OFF}, {HSV_ON},   {HSV_ALT}, {HSV_ON},  {HSV_ALT},
-        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_ON},  {HSV_GUI},
-        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_GUI}, {HSV_ON},
+        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_CTL}, {HSV_CTL},
+        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ALT}, {HSV_ALT},
+        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
+        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
         {HSV_LYR}, {HSV_SFT},  {HSV_ON},
@@ -194,10 +194,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_RAISE] = {
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ALT}, {HSV_OFF}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_GUI}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_ALT}, {HSV_LYR_ESC},
+        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_SFT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
@@ -216,10 +216,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_EXTEND] = {
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ALT}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_GUI}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_ALT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_SFT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},

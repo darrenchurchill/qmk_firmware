@@ -60,20 +60,20 @@ enum userspace_custom_keycodes {
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
-#define QKC_Q KC_Q
-#define QKC_W KC_W
-#define QKC_E KC_E
+#define QKC_Q FN_T(KC_Q)
+#define QKC_W MS_T(KC_W)
+#define QKC_E EXT_T(KC_E)
 #define QKC_R KC_R
 #define QKC_T KC_T
 #define QKC_A LWR_T(KC_A)
-#define QKC_S LALT_T(KC_S)
+#define QKC_S LCTL_T(KC_S)
 #define QKC_D LSFT_T(KC_D)
-#define QKC_F LCTL_T(KC_F)
+#define QKC_F LGUI_T(KC_F)
 #define QKC_G KC_G
-#define QKC_Z FN_T(KC_Z)
-#define QKC_X EXT_T(KC_X)
-#define QKC_C MS_T(KC_C)
-#define QKC_V LGUI_T(KC_V)
+#define QKC_Z LCTL_T(KC_Z)
+#define QKC_X LALT_T(KC_X)
+#define QKC_C LSFT_T(KC_C)
+#define QKC_V KC_V
 #define QKC_B KC_B
 // Right Hand
 #define QKC_Y KC_Y
@@ -82,15 +82,15 @@ enum userspace_custom_keycodes {
 #define QKC_O KC_O
 #define QKC_P KC_P
 #define QKC_H KC_H
-#define QKC_J RCTL_T(KC_J)
+#define QKC_J RGUI_T(KC_J)
 #define QKC_K LSFT_T(KC_K)
-#define QKC_L RALT_T(KC_L)
+#define QKC_L RCTL_T(KC_L)
 #define QKC_SC LWR_T(KC_SCLN)
 #define QKC_N KC_N
-#define QKC_M RGUI_T(KC_M)
-#define QKC_DOT KC_DOT
-#define QKC_COM KC_COMM
-#define QKC_SL KC_SLSH
+#define QKC_M KC_M
+#define QKC_COM LSFT_T(KC_COMM)
+#define QKC_DOT RALT_T(KC_DOT)
+#define QKC_SL RCTL_T(KC_SLSH)
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
 // These are named by the Qwerty key they sit below
@@ -170,6 +170,7 @@ enum userspace_custom_keycodes {
 #define _________________QWERTY_R3_________________       QKC_N,   QKC_M,   QKC_COM, QKC_DOT, QKC_SL
 
 #define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
+#define _____________QWERTY_NO_MODS_R3_____________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B
