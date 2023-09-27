@@ -120,59 +120,67 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
     // consider the following keycodes as holds
+    uint8_t tap_hold_keycode_mods = QK_MODS_GET_MODS(tap_hold_keycode);
+
+    if (tap_hold_keycode_mods & MOD_MASK_GUI) {
+        switch (other_keycode) {
+            case QKC_C:
+            case QKC_V:
+            case QKC_B:
+            case BKC_N: // Cmd + Space
+            case KC_TAB:
+                return true;
+        }
+    }
+
+    if (tap_hold_keycode_mods & MOD_MASK_SHIFT) {
+        switch (other_keycode) {
+            case LWR: // Shift + Tab
+            case KC_TAB:
+            case KC_ENT:
+                return true;
+        }
+    }
+
+    if (tap_hold_keycode_mods & MOD_MASK_ALT) {
+        switch (other_keycode) {
+            case BKC_B: // Alt + Tab
+            case KC_TAB:
+                return true;
+
+        }
+    }
+
+    if (tap_hold_keycode_mods & MOD_MASK_CTRL) {
+        switch (other_keycode) {
+            // Left Hand
+            case QKC_E:
+            case QKC_A:
+            case QKC_C:
+            case QKC_V:
+            case QKC_B:
+            // Right Hand
+            case QKC_Y:
+            case QKC_U:
+            case QKC_I:
+            case QKC_O:
+            case KC_TAB:
+                return true;
+        }
+    }
+
+    if (QK_LAYER_TAP_GET_LAYER(tap_hold_keycode) == _LOWER) {
+        switch (other_keycode) {
+            case KC_BSPC:
+            case BKC_N: // Space
+                return true;
+        }
+    }
+
     switch (tap_hold_keycode) {
         case HYPR_T(KC_GRV):
         case MEH_T(KC_MINS):
-            return true;
-        // Home Row Modifiers
-        case QKC_J:
-            switch (other_keycode) {
-                case KC_BSPC:
-                case BKC_N:
-                    return true;
-            }
-        case QKC_DOT:
-            switch (other_keycode) {
-                case BKC_N:
-                    return true;
-            }
-            break;
-        case QKC_SC:
-            switch (other_keycode) {
-                case QKC_Y:
-                case QKC_U:
-                case QKC_I:
-                case QKC_O:
-                    return true;
-            }
-            break;
-        case QKC_S:
-            switch (other_keycode) {
-                case KC_ENT:
-                case KC_TAB:
-                    return true;
-            }
-            break;
-        case QKC_D:
-            switch (other_keycode) {
-                case LWR:
-                case KC_TAB:
-                case KC_ENT:
-                    return true;
-            }
-            break;
-        case QKC_X:
-            switch (other_keycode) {
-                case QKC_C:
-                case QKC_V:
-                case QKC_B:
-                case KC_TAB:
-                    return true;
-            }
-            break;
-        // Thumb Mod-Tap keys
         case BKC_B:
-            return true;
         case BKC_M:
             return true;
     }
