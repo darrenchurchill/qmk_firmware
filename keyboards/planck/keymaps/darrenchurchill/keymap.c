@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY_NO_MODS] = LAYOUT_planck_wrapper(
         _________________QWERTY_L1_________________, _______, _______, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________, _______, _______, _____________QWERTY_NO_MODS_R2_____________,
-        _________________QWERTY_L3_________________, _______, _______, _________________QWERTY_R3_________________,
+        _________________QWERTY_L3_________________, _______, _______, _____________QWERTY_NO_MODS_R3_____________,
         _________________BASE_5_L4_________________, _______, XXXXXXX, _________________BASE_5_R4_________________
     ),
 
@@ -87,15 +87,15 @@ void keyboard_post_init_keymap(void) {
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_QWERTY] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
-        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_LYR}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_LYR}, {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
-        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_LYR}, {HSV_CTL}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_CTL},  {HSV_LYR},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
         {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_ON},  {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
     },
 
     [_QWERTY_NO_MODS] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
-        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_LYR}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
-        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_LYR}, {HSV_CTL}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_ON},  {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
     },
 
@@ -108,15 +108,15 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_RAISE] = {
         {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_OFF},
-        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_CTL},
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_OFF},   {HSV_GUI},
+        {HSV_OFF}, {HSV_CTL},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_OFF},   {HSV_GUI},
         {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF}
     },
 
     [_EXTEND] = {
         {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRV_NXT}, {HSV_VOL},  {HSV_VOL}, {HSV_PRV_NXT}, {HSV_PLAY},
-        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},    {HSV_OFF},  {HSV_OFF}, {HSV_BSPC},    {HSV_QUOT},
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},     {HSV_MUTE}, {HSV_OFF}, {HSV_OFF},     {HSV_OFF},
+        {HSV_OFF}, {HSV_CTL},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},    {HSV_OFF},  {HSV_OFF}, {HSV_BSPC},    {HSV_QUOT},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},     {HSV_MUTE}, {HSV_OFF}, {HSV_OFF},     {HSV_OFF},
         {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF},     {HSV_OFF},  {HSV_OFF}, {HSV_OFF},     {HSV_OFF}
     },
 
