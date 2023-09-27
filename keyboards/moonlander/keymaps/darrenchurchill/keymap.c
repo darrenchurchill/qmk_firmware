@@ -138,7 +138,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_ON}, // thumb key
 
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, // right outside column, top to bottom
-        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ON},  {HSV_LYR},
+        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_ON},  {HSV_QUOT},
         {HSV_OFF}, {HSV_ON},   {HSV_ALT}, {HSV_ON},  {HSV_QUOT},
         {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_GUI}, {HSV_LYR},
@@ -160,7 +160,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_ON},
 
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_LYR},
+        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_QUOT},
         {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_QUOT},
         {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON},
         {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_LYR},
