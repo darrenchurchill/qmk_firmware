@@ -179,17 +179,11 @@ bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_A:
-        case LKC_S:
-        case LKC_D:
-        case LKC_F:
-        case LKC_G:
-        case LKC_H:
-        case LKC_J:
-        case LKC_K:
         case LKC_L:
         case LKC_SC:
-        case UKC_LWR_SLSH:
+            return false;
+        case LKC_H:
+        case LKC_X:
             return true;
     }
     return get_default_auto_shifted_key(keycode, record);
@@ -204,37 +198,10 @@ bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_A:
-            register_code16((!shifted) ? LKC_A : KC_7);
-            break;
-        case LKC_S:
-            register_code16((!shifted) ? LKC_S : KC_8);
-            break;
-        case LKC_D:
-            register_code16((!shifted) ? LKC_D : KC_9);
-            break;
-        case LKC_F:
-            register_code16((!shifted) ? LKC_F : KC_0);
-            break;
-        case LKC_G:
-            register_code16((!shifted) ? LKC_G : KC_5);
-            break;
         case LKC_H:
-            register_code16((!shifted) ? LKC_H : KC_6);
+            register_code16((!shifted) ? KC_PIPE : KC_AMPR);
             break;
-        case LKC_J:
-            register_code16((!shifted) ? LKC_J : KC_1);
-            break;
-        case LKC_K:
-            register_code16((!shifted) ? LKC_K : KC_2);
-            break;
-        case LKC_L:
-            register_code16((!shifted) ? LKC_L : KC_3);
-            break;
-        case LKC_SC:
-            register_code16((!shifted) ? LKC_SC : KC_4);
-            break;
-        case UKC_LWR_SLSH:
+        case LKC_X:
             register_code16((!shifted) ? KC_SLSH : KC_BSLS);
             break;
         default:
@@ -248,37 +215,10 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_A:
-            unregister_code16((!shifted) ? LKC_A : KC_7);
-            break;
-        case LKC_S:
-            unregister_code16((!shifted) ? LKC_S : KC_8);
-            break;
-        case LKC_D:
-            unregister_code16((!shifted) ? LKC_D : KC_9);
-            break;
-        case LKC_F:
-            unregister_code16((!shifted) ? LKC_F : KC_0);
-            break;
-        case LKC_G:
-            unregister_code16((!shifted) ? LKC_G : KC_5);
-            break;
         case LKC_H:
-            unregister_code16((!shifted) ? LKC_H : KC_6);
+            unregister_code16((!shifted) ? KC_PIPE : KC_AMPR);
             break;
-        case LKC_J:
-            unregister_code16((!shifted) ? LKC_J : KC_1);
-            break;
-        case LKC_K:
-            unregister_code16((!shifted) ? LKC_K : KC_2);
-            break;
-        case LKC_L:
-            unregister_code16((!shifted) ? LKC_L : KC_3);
-            break;
-        case LKC_SC:
-            unregister_code16((!shifted) ? LKC_SC : KC_4);
-            break;
-        case UKC_LWR_SLSH:
+        case LKC_X:
             unregister_code16((!shifted) ? KC_SLSH : KC_BSLS);
             break;
         default:
@@ -298,16 +238,9 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
         to add to the Auto Shift pipeline functions above.
 */
 const custom_shift_key_t custom_shift_keys[] = {
-    {LKC_A, KC_7},
-    {LKC_S, KC_8},
-    {LKC_D, KC_9},
-    {LKC_F, KC_0},
-    {LKC_G, KC_5},
-    {LKC_H, KC_6},
-    {LKC_J, KC_1},
-    {LKC_K, KC_2},
-    {LKC_L, KC_3},
-    {LKC_SC, KC_4},
+    {LKC_H, KC_AMPR},
+    {LKC_L, LKC_L},
+    {LKC_SC, LKC_SC},
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
@@ -316,6 +249,7 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 /*
   Repeat Key
   https://getreuer.info/posts/keyboards/repeat-key/index.html
+  TODO: are you still using repeat key?
 */
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
@@ -335,6 +269,19 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
+bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
+    if (get_repeat_key_count() > 0) {
+        if (record->event.pressed) {
+            register_code16(get_last_keycode());
+        } else {
+            unregister_code16(get_last_keycode());
+        }
+        return false;
+    }
+    return true;
+}
+
+
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
@@ -346,6 +293,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     static os_variant_t host_os = OS_UNSURE;
     host_os = detected_host_os();
+    uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+    uint8_t mod_tap_mods = QK_MOD_TAP_GET_MODS(keycode);
 
     switch (keycode) {
         // _QWERTY layer keycodes
@@ -365,17 +314,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         // _LOWER layer keycodes
         case LKC_D:
-            // Handle non-basic keycode KC_PLUS
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_PLUS);
-                return false;
-            }
-            return true;
-
         case LKC_K:
-            // Handle non-basic keycode KC_LPRN
+            if (!process_repeated_keycode(keycode, record)) { return false; }
+
+            // Handle non-basic mod-tap keycode
             if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LPRN);
+                set_last_mods(mod_tap_mods);
+                set_last_keycode(mod_tap_kc);
+
+                register_weak_mods(mod_tap_mods);
+                tap_code16(mod_tap_kc);
+                unregister_weak_mods(mod_tap_mods);
                 return false;
             }
             return true;

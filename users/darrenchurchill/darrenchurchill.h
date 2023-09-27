@@ -113,49 +113,47 @@ enum userspace_custom_keycodes {
 // https://github.com/getreuer/qmk-keymap
 // Left Hand
 /*
-   7    8    9    0    5 (Available w/ custom shift keys on top row)
-   @    <    >    "    `
+   7    8    9    0    5
    !    -    +    =    #
-  ___   /    *    ^    \
+   ^    /    *    $    \
 */
-#define LKC_Q KC_AT
-#define LKC_W KC_LABK
-#define LKC_E KC_RABK
-#define LKC_R KC_DQUO
-#define LKC_T KC_GRV
+#define LKC_Q KC_7
+#define LKC_W KC_8
+#define LKC_E KC_9
+#define LKC_R KC_0
+#define LKC_T KC_5
 #define LKC_A KC_EXLM
 #define LKC_S KC_MINS
-#define LKC_D LSFT_T(KC_PLUS)
+#define LKC_D LSFT_T(KC_PLUS) // Know this is indistinguishable from LSFT_T(KC_EQL)
 #define LKC_F KC_EQUAL
 #define LKC_G KC_HASH
-#define LKC_Z _______
+#define LKC_Z KC_CIRC
 #define LKC_X UKC_LWR_SLSH
 #define LKC_C KC_ASTR
-#define LKC_V KC_CIRC
+#define LKC_V KC_DLR
 #define LKC_B KC_BSLS
 
 // Right Hand
 /*
-   6    1    2    3    4 (Available w/ custom shift keys on top row)
-   &    '    [    ]    %
-   |    _    (    )    ?
-   ~    $    {    }   ___
+   6    1    2    3    4
+   |    (    )    [    ]
+   %    <    >    {    }
 */
-#define LKC_Y KC_AMPR
-#define LKC_U KC_QUOT
-#define LKC_I KC_LBRC
-#define LKC_O KC_RBRC
-#define LKC_P KC_PERC
+#define LKC_Y KC_6
+#define LKC_U KC_1
+#define LKC_I KC_2
+#define LKC_O KC_3
+#define LKC_P KC_4
 #define LKC_H KC_PIPE
-#define LKC_J KC_UNDS
-#define LKC_K LSFT_T(KC_LPRN)
-#define LKC_L KC_RPRN
-#define LKC_SC KC_QUES
-#define LKC_N KC_TILD
-#define LKC_M KC_DLR
-#define LKC_COM KC_LCBR
-#define LKC_DOT KC_RCBR
-#define LKC_SL  _______
+#define LKC_J KC_LPRN
+#define LKC_K LSFT_T(KC_RPRN) // Know this is indistinguishable from LSFT_T(KC_0)
+#define LKC_L KC_LBRC
+#define LKC_SC KC_RBRC
+#define LKC_N KC_PERC
+#define LKC_M KC_LABK
+#define LKC_COM KC_RABK
+#define LKC_DOT KC_LCBR
+#define LKC_SL KC_RCBR
 
 /*
   Keycode wrappers
