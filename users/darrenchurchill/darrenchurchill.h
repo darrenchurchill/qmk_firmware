@@ -1,11 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
 
-#ifdef TAP_DANCE_ENABLE
-enum tap_dance_codes {
-    DANCE_0,
-};
-#endif // TAP_DANCE_ENABLE
 
 enum userspace_layers {
     _QWERTY,
@@ -110,7 +105,7 @@ enum userspace_custom_keycodes {
 #define BKC_M RSE
 #define BKC_COM KC_ENT
 #define BKC_DOT KC_QUOT
-#define BKC_SL TD(DANCE_0)
+#define BKC_SL KC_DQUO
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
 // Mostly inspired by:

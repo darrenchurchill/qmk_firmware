@@ -8,7 +8,6 @@ LTO_ENABLE = yes
 
 # Set any rules.mk overrides for your specific user here.
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
-TAP_DANCE_ENABLE = yes
 SPACE_CADET_ENABLE = no
 CAPS_WORD_ENABLE = yes
 AUTO_SHIFT_ENABLE = yes

@@ -20,6 +20,9 @@ enum combos {
     CVB_OS_COPY,
     VB_OS_PASTE,
     DK_CW_TOGG,
+#ifdef RGB_MATRIX_ENABLE
+    LYR_TG_LAYER,
+#endif
     QWER_REBOOT,
     QWERT_BOOTLOADER
 };
@@ -37,6 +40,9 @@ const uint16_t PROGMEM combo_m_comma[] = { QKC_M, QKC_COM, COMBO_END };
 const uint16_t PROGMEM combo_m_comma_dot[] = { QKC_M, QKC_COM, QKC_DOT, COMBO_END };
 
 const uint16_t PROGMEM combo_dk[] = { QKC_D, QKC_K, COMBO_END };
+#ifdef RGB_MATRIX_ENABLE
+const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
+#endif
 const uint16_t PROGMEM combo_qwer[] = { QKC_Q, QKC_W, QKC_E, QKC_R, COMBO_END };
 const uint16_t PROGMEM combo_qwert[] = { QKC_Q, QKC_W, QKC_E, QKC_R, QKC_T, COMBO_END };
 
@@ -51,6 +57,9 @@ combo_t key_combos[] = {
     [M_COMMA_UNDS] = COMBO(combo_m_comma, KC_UNDS),
     [M_COMMA_DOT_DB_ARRW] = COMBO(combo_m_comma_dot, UKC_DB_ARRW),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),
+#ifdef RGB_MATRIX_ENABLE
+    [LYR_TG_LAYER] = COMBO(combo_lyr, TG(_LAYERS)),
+#endif
     [QWER_REBOOT] = COMBO(combo_qwer, QK_REBOOT),
     [QWERT_BOOTLOADER] = COMBO(combo_qwert, QK_BOOTLOADER),
 };
