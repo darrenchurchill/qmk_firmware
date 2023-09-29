@@ -14,7 +14,6 @@ enum combos {
     JK_ENT,
     COMMA_DOT_SG_ARRW,
     M_COMMA_UNDS,
-    M_COMMA_DOT_DB_ARRW,
     DF_ESC,
     CV_TAB,
     CVB_OS_COPY,
@@ -37,7 +36,6 @@ const uint16_t PROGMEM combo_vb[] = { QKC_V, QKC_B, COMBO_END };
 
 const uint16_t PROGMEM combo_comma_dot[] = { QKC_COM, QKC_DOT, COMBO_END };
 const uint16_t PROGMEM combo_m_comma[] = { QKC_M, QKC_COM, COMBO_END };
-const uint16_t PROGMEM combo_m_comma_dot[] = { QKC_M, QKC_COM, QKC_DOT, COMBO_END };
 
 const uint16_t PROGMEM combo_dk[] = { QKC_D, QKC_K, COMBO_END };
 #ifdef RGB_MATRIX_ENABLE
@@ -53,9 +51,8 @@ combo_t key_combos[] = {
     [CV_TAB] = COMBO(combo_cv, KC_TAB),
     [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
     [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
-    [COMMA_DOT_SG_ARRW] = COMBO(combo_comma_dot, UKC_SG_ARRW),
+    [COMMA_DOT_SG_ARRW] = COMBO(combo_comma_dot, UKC_ARRW),
     [M_COMMA_UNDS] = COMBO(combo_m_comma, KC_UNDS),
-    [M_COMMA_DOT_DB_ARRW] = COMBO(combo_m_comma_dot, UKC_DB_ARRW),
     [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),
 #ifdef RGB_MATRIX_ENABLE
     [LYR_TG_LAYER] = COMBO(combo_lyr, TG(_LAYERS)),

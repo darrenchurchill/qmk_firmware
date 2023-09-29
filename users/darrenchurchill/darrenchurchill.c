@@ -75,6 +75,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             case LWR: // Shift + Tab
             case KC_TAB:
             case KC_ENT:
+            case UKC_ARRW:
                 return true;
         }
     }
@@ -293,6 +294,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     static os_variant_t host_os = OS_UNSURE;
     host_os = detected_host_os();
+    uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
     uint8_t mod_tap_mods = QK_MOD_TAP_GET_MODS(keycode);
 
@@ -402,18 +404,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return false;
 
-        case UKC_SG_ARRW:
+        case UKC_ARRW:
             // Handle my custom keycode for a single arrow
             if (record->event.pressed) {
-                tap_code16(KC_MINS);
-                tap_code16(KC_RABK);
-            }
-            return false;
-
-        case UKC_DB_ARRW:
-            // Handle my custom keycode for a double arrow
-            if (record->event.pressed) {
-                tap_code16(KC_EQUAL);
+                if (cur_mods & MOD_MASK_SHIFT) {
+                    del_mods(MOD_MASK_SHIFT);
+                    tap_code16(KC_EQUAL);
+                    set_mods(cur_mods);
+                } else {
+                    tap_code16(KC_MINS);
+                }
                 tap_code16(KC_RABK);
             }
             return false;
