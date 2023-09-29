@@ -10,20 +10,8 @@
 // NOTE: Combos are defined to be evaluated from the _QWERTY layer
 // See config.h COMBO_ONLY_FROM_LAYER
 
-enum combos {
-    JK_ENT,
-    COMMA_DOT_SG_ARRW,
-    M_COMMA_UNDS,
-    DF_ESC,
+enum required_idx_combos {
     CV_TAB,
-    CVB_OS_COPY,
-    VB_OS_PASTE,
-    DK_CW_TOGG,
-#ifdef RGB_MATRIX_ENABLE
-    LYR_TG_LAYER,
-#endif
-    QWER_REBOOT,
-    QWERT_BOOTLOADER
 };
 
 
@@ -46,19 +34,19 @@ const uint16_t PROGMEM combo_qwert[] = { QKC_Q, QKC_W, QKC_E, QKC_R, QKC_T, COMB
 
 
 combo_t key_combos[] = {
-    [DF_ESC] = COMBO(combo_df, KC_ESC),
-    [JK_ENT] = COMBO(combo_jk, KC_ENT),
     [CV_TAB] = COMBO(combo_cv, KC_TAB),
-    [CVB_OS_COPY] = COMBO(combo_cvb, UKC_OS_COPY),
-    [VB_OS_PASTE] = COMBO(combo_vb, UKC_OS_PASTE),
-    [COMMA_DOT_SG_ARRW] = COMBO(combo_comma_dot, UKC_ARRW),
-    [M_COMMA_UNDS] = COMBO(combo_m_comma, KC_UNDS),
-    [DK_CW_TOGG] = COMBO(combo_dk, CW_TOGG),
+    COMBO(combo_df, KC_ESC),
+    COMBO(combo_jk, KC_ENT),
+    COMBO(combo_cvb, UKC_OS_COPY),
+    COMBO(combo_vb, UKC_OS_PASTE),
+    COMBO(combo_comma_dot, UKC_ARRW),
+    COMBO(combo_m_comma, KC_UNDS),
+    COMBO(combo_dk, CW_TOGG),
 #ifdef RGB_MATRIX_ENABLE
-    [LYR_TG_LAYER] = COMBO(combo_lyr, TG(_LAYERS)),
+    COMBO(combo_lyr, TG(_LAYERS)),
 #endif
-    [QWER_REBOOT] = COMBO(combo_qwer, QK_REBOOT),
-    [QWERT_BOOTLOADER] = COMBO(combo_qwert, QK_BOOTLOADER),
+    COMBO(combo_qwer, QK_REBOOT),
+    COMBO(combo_qwert, QK_BOOTLOADER),
 };
 
 
