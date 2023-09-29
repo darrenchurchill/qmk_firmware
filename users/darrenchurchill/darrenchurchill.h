@@ -25,8 +25,7 @@ enum userspace_custom_keycodes {
   UKC_OS_NEXT_TAB,
   UKC_OS_PREV_SPACE,
   UKC_OS_NEXT_SPACE,
-  UKC_SG_ARRW,
-  UKC_DB_ARRW,
+  UKC_ARRW,
   UKC_LWR_SLSH,
   UKC_REP,  // Repeat Key
   UKC_AREP,  // Alt Repeat Key
