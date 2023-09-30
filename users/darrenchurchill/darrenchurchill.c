@@ -65,7 +65,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             case QKC_V:
             case QKC_B:
             case BKC_N: // Cmd + Space
-            case KC_TAB:
+            case BKC_B: // Cmd + Tab
                 return true;
         }
     }
@@ -73,8 +73,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     if (tap_hold_keycode_mods & MOD_MASK_SHIFT) {
         switch (other_keycode) {
             case LWR: // Shift + Tab
-            case KC_TAB:
-            case KC_ENT:
             case UKC_ARRW:
                 return true;
         }
@@ -83,9 +81,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     if (tap_hold_keycode_mods & MOD_MASK_ALT) {
         switch (other_keycode) {
             case BKC_B: // Alt + Tab
-            case KC_TAB:
                 return true;
-
         }
     }
 
@@ -97,12 +93,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             case QKC_C:
             case QKC_V:
             case QKC_B:
+            case BKC_B: // Ctrl + Tab
             // Right Hand
             case QKC_Y:
             case QKC_U:
             case QKC_I:
             case QKC_O:
-            case KC_TAB:
                 return true;
         }
     }
