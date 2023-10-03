@@ -415,6 +415,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 tap_code16(KC_RABK);
             }
             return false;
+
+        case UKC_DB_MINS:
+            // Handle my custom keycode for a double minus/dash
+            if (record->event.pressed) {
+                tap_code16(KC_MINS);
+                tap_code16(KC_MINS);
+            }
+            return false;
+
+        case UKC_DB_UNDS:
+            // Handle my custom keycode for a double underscore
+            if (record->event.pressed) {
+                tap_code16(KC_UNDS);
+                tap_code16(KC_UNDS);
+            }
+            return false;
     }
 
     return process_record_keymap(keycode, record);
