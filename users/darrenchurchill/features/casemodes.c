@@ -213,7 +213,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
             // handle xcase mode
             if (xcase_state == XCASE_ON) {
                 // place the delimiter if space is tapped
-                if (keycode == KC_SPACE) {
+                if (QK_MODS_GET_BASIC_KEYCODE(keycode) == KC_SPACE) {
                     if (distance_to_last_delim != 0) {
                         place_delimiter();
                         distance_to_last_delim = 0;
