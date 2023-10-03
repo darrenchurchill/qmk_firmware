@@ -30,8 +30,8 @@
 #define COMBO_HOLD_TERM 300
 #define COMBO_MUST_TAP_PER_COMBO
 
-// Caps Word
-#define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
+// Caps Word, from features/casemodes.[h|c]
+#define CAPSWORD_USE_SHIFT
 
 // Auto Shift
 #define NO_AUTO_SHIFT_ALPHA

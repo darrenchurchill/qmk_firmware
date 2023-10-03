@@ -4,6 +4,7 @@
 
 #include "darrenchurchill.h"
 #include "features/achordion.h"
+#include "features/casemodes.h"
 #include "features/custom_shift_keys.h"
 #include "features/repeat_key.h"
 
@@ -278,6 +279,64 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 
 
 /*
+  Case Modes:
+  Caps Word and X-Case
+  https://github.com/andrewjrae/kyria-keymap/tree/e3ad77dc4d48b8e6a842c9136c76c1021ab5976b#case-modes
+*/
+
+// Return `true` if the keycode should be considered part of the word you're
+// typing, and x-case should use the default separator, `KC_UNDS`, or the value
+// of DEFAULT_XCASE_SEPARATOR.
+bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record) {
+    switch (keycode) {
+        case KC_A ... KC_Z:
+        case KC_1 ... KC_0:
+            return true;
+    }
+    return false;
+}
+
+// Returns true if the case modes should terminate, false if they continue
+// Note that the keycodes given to this function will be stripped down to
+// basic keycodes if they are dual function keys. Meaning a modtap on 'a'
+// will pass KC_A rather than LSFT_T(KC_A).
+// Case delimiters will also not be passed into this function.
+bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
+    switch (keycode) {
+        // Keycodes to ignore (don't disable caps word)
+        // Ignore these b/c they're part of the word you're typing
+        case KC_A ... KC_Z:
+        case KC_1 ... KC_0:
+        case KC_MINS:
+        case KC_UNDS:
+        case KC_BSPC:
+        // Ignore these to be processed in process_record_user()
+        case UKC_CW_TOGG:
+            // If mod chording disable the mods
+            if (record->event.pressed && (get_mods() != 0)) {
+                return true;
+            }
+            break;
+        default:
+            if (record->event.pressed) {
+                return true;
+            }
+            break;
+    }
+    return false;
+}
+
+void toggle_screaming_snake_case(void) {
+    if (get_xcase_state() == XCASE_ON) {
+        disable_xcase();
+    } else {
+        enable_xcase();
+    }
+    toggle_caps_word();
+}
+
+
+/*
   Leader Key
   https://docs.qmk.fm/#/feature_leader_key
 */
@@ -340,6 +399,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
     }
     if (!process_custom_shift_keys(keycode, record)) { return false; }
+    if (!process_case_modes(keycode, record)) { return false; }
 
     static os_variant_t host_os = OS_UNSURE;
     host_os = detected_host_os();
@@ -480,6 +540,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             if (record->event.pressed) {
                 tap_code16(KC_UNDS);
                 tap_code16(KC_UNDS);
+            }
+            return false;
+
+        case UKC_CW_TOGG:
+            if (record->event.pressed) {
+                toggle_screaming_snake_case();
             }
             return false;
     }

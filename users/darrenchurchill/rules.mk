@@ -1,6 +1,7 @@
 # https://docs.qmk.fm/#/feature_userspace
 SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/features/achordion.c
+SRC += $(USER_PATH)/features/casemodes.c
 SRC += $(USER_PATH)/features/custom_shift_keys.c
 SRC += $(USER_PATH)/features/repeat_key.c
 
@@ -9,7 +10,6 @@ LTO_ENABLE = yes
 # Set any rules.mk overrides for your specific user here.
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
 SPACE_CADET_ENABLE = no
-CAPS_WORD_ENABLE = yes
 AUTO_SHIFT_ENABLE = yes
 LEADER_ENABLE = yes
 OS_DETECTION_ENABLE = yes
