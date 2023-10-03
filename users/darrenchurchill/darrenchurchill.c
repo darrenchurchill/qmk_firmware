@@ -178,6 +178,7 @@ bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case KC_EQUAL:
         case KC_LBRC:
         case KC_RBRC:
             // I have these symbols' shifted varients on their own keys in the
@@ -185,6 +186,9 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
             return false;
         case LKC_H: // TODO: remove if you keep ampersand on it's own key
         case LKC_X: // TODO: remove is you keep backslash on it's own key
+        case LKC_M:
+        case LKC_COM:
+        case LKC_DOT:
             return true;
     }
     return get_default_auto_shifted_key(keycode, record);
@@ -205,6 +209,15 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
         case LKC_X:
             register_code16((!shifted) ? KC_SLSH : KC_BSLS);
             break;
+        case LKC_M:
+            register_code16((!shifted) ? KC_DLR : KC_EQUAL);
+            break;
+        case LKC_COM:
+            register_code16((!shifted) ? KC_LCBR : KC_LABK);
+            break;
+        case LKC_DOT:
+            register_code16((!shifted) ? KC_RCBR : KC_RABK);
+            break;
         default:
             if (shifted) {
                 add_weak_mods(MOD_BIT(KC_LSFT));
@@ -221,6 +234,15 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
             break;
         case LKC_X:
             unregister_code16((!shifted) ? KC_SLSH : KC_BSLS);
+            break;
+        case LKC_M:
+            unregister_code16((!shifted) ? KC_DLR : KC_EQUAL);
+            break;
+        case LKC_COM:
+            unregister_code16((!shifted) ? KC_LCBR : KC_LABK);
+            break;
+        case LKC_DOT:
+            unregister_code16((!shifted) ? KC_RCBR : KC_RABK);
             break;
         default:
             // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift
@@ -241,10 +263,14 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
 const custom_shift_key_t custom_shift_keys[] = {
     // I have these symbols' shifted variants on their own keys in the
     // _LOWER layer, so I don't want to shift them.
+    {KC_EQUAL, KC_EQUAL},
     {KC_LBRC, KC_LBRC},
     {KC_RBRC, KC_RBRC},
     // Remaining custom shift keys
     {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here
+    {LKC_M, KC_EQUAL},
+    {LKC_COM, KC_LABK},
+    {LKC_DOT, KC_RABK},
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
