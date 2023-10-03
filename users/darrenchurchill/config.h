@@ -5,6 +5,11 @@
 
 #pragma once
 
+// TODO: figure out which of these is/may be fixing the input problem at boot
+// login on MacOS
+#define TAP_CODE_DELAY 10
+#define TAP_HOLD_CAPS_DELAY 200
+
 // Tap Hold
 #undef TAPPING_TERM
 #define TAPPING_TERM 200 // good for moonlander right now, check others and decide whether they need their own
