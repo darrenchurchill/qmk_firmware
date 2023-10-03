@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "leader.h"
 #include "os_detection.h"
 
 #include "darrenchurchill.h"
@@ -274,6 +275,25 @@ const custom_shift_key_t custom_shift_keys[] = {
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
+
+/*
+  Leader Key
+  https://docs.qmk.fm/#/feature_leader_key
+*/
+void leader_end_user(void) {
+    // You only need the tap portion of Mod-Tap or Layer-Tap keys here.
+    // If you want to require the full keycode instead, see link here:
+    // https://docs.qmk.fm/#/feature_leader_key?id=strict-key-processing
+    if (leader_sequence_one_key(KC_ESC)) {
+        // do nothing, but capture the KC_ESC tap
+    } else if (leader_sequence_two_keys(KC_Q, KC_R)) {
+        // "Q" for QMK, "R" for reboot
+        soft_reset_keyboard();
+    } else if (leader_sequence_two_keys(KC_Q, KC_B)) {
+        // "Q" for QMK, "R" for reboot
+        reset_keyboard();
+}
 
 
 /*
