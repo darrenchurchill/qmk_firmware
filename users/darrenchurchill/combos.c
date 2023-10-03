@@ -62,7 +62,7 @@ combo_t key_combos[] = {
     COMBO(combo_kl, KC_MINS),
     COMBO(combo_m_comma, KC_ENT),
     COMBO(combo_comma_dot, UKC_ARRW),
-    COMBO(combo_dk, CW_TOGG),
+    COMBO(combo_dk, UKC_CW_TOGG),
 #ifdef RGB_MATRIX_ENABLE
     COMBO(combo_lyr, TG(_LAYERS)),
 #endif
