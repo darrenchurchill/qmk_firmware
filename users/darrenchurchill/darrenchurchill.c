@@ -352,6 +352,16 @@ void leader_end_user(void) {
     } else if (leader_sequence_two_keys(KC_Q, KC_B)) {
         // "Q" for QMK, "R" for reboot
         reset_keyboard();
+    } else if (leader_sequence_one_key(KC_X)) {
+        // "X" for generic X-Case, see use_default_xcase_separator() above
+        enable_xcase();
+    } else if (leader_sequence_one_key(KC_C)) {
+        // "C" for camelCase
+        enable_xcase_with(OSM(MOD_LSFT));
+    } else if (leader_sequence_one_key(KC_S)) {
+        // "S" for SCREAMING_SNAKE_CASE
+        toggle_screaming_snake_case();
+    }
 }
 
 
