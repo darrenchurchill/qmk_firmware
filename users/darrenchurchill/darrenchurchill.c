@@ -311,6 +311,7 @@ bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
         case KC_UNDS:
         case KC_BSPC:
         // Ignore these to be processed in process_record_user()
+        case KC_ESC:
         case UKC_CW_TOGG:
             // If mod chording disable the mods
             if (record->event.pressed && (get_mods() != 0)) {
@@ -420,16 +421,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         // _QWERTY layer keycodes
         case KC_ESC:
-            if (record->event.pressed
-                    && get_highest_layer(layer_state) > _QWERTY_NO_MODS) {
-                // If we're on a layer higher than _QWERTY_NO_MODS, return to the
-                // _QWERTY layer instead of tapping KC_ESC. This includes cancelling
-                // the current One Shot mods & layer state.
-                clear_oneshot_mods();
-                clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-                reset_oneshot_layer();
-                layer_move(_QWERTY);
-                return false;
+            if (record->event.pressed) {
+                if (caps_word_enabled() || get_xcase_state() == XCASE_ON) {
+                    disable_caps_word();
+                    disable_xcase();
+                    return false;
+                }
+                if (get_highest_layer(layer_state) > _QWERTY_NO_MODS) {
+                    // If we're on a layer higher than _QWERTY_NO_MODS, return to the
+                    // _QWERTY layer instead of tapping KC_ESC. This includes cancelling
+                    // the current One Shot mods & layer state.
+                    clear_oneshot_mods();
+                    clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+                    reset_oneshot_layer();
+                    layer_move(_QWERTY);
+                    return false;
+                }
             }
             return true;
 
