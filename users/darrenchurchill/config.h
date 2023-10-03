@@ -12,6 +12,11 @@
 #define QUICK_TAP_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 
+// Leader Key
+#define LEADER_NO_TIMEOUT // Disable the timeout for the leader key itself
+#define LEADER_TIMEOUT 500 // ms, the timeout for the remaining key sequence
+#define LEADER_PER_KEY_TIMING // Reset the timer after each keypress
+
 // One Shot Keys
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 500
