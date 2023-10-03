@@ -112,8 +112,7 @@ void disable_xcase(void) {
 // Place the current xcase delimiter
 static void place_delimiter(void) {
     if (IS_OSM(xcase_delimiter)) {
-        // apparently set_oneshot_mods() is dumb and doesn't deal with handedness for you
-        uint8_t mods = xcase_delimiter & 0x10 ? (xcase_delimiter & 0x0F) << 4 : xcase_delimiter & 0xFF;
+        uint8_t mods = QK_ONE_SHOT_MOD_GET_MODS(xcase_delimiter);
         set_oneshot_mods(mods);
     } else {
         tap_code16(xcase_delimiter);
