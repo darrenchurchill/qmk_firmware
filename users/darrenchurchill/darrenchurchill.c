@@ -403,6 +403,8 @@ bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
 
 
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md
+// There's also a good description of process_record_user() at link below:
+// https://getreuer.info/posts/keyboards/macros/index.html#process_record_user-in-depth
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
@@ -412,6 +414,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_custom_shift_keys(keycode, record)) { return false; }
     if (!process_case_modes(keycode, record)) { return false; }
 
+    // TODO: add macros to explicitly set the host_os, in case it can't be detected
     static os_variant_t host_os = OS_UNSURE;
     host_os = detected_host_os();
     uint8_t cur_mods = get_mods();
