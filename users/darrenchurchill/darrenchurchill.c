@@ -178,11 +178,13 @@ bool get_default_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LKC_L:
-        case LKC_SC:
+        case KC_LBRC:
+        case KC_RBRC:
+            // I have these symbols' shifted varients on their own keys in the
+            // _LOWER layer, so I don't want to auto-shift them.
             return false;
-        case LKC_H:
-        case LKC_X:
+        case LKC_H: // TODO: remove if you keep ampersand on it's own key
+        case LKC_X: // TODO: remove is you keep backslash on it's own key
             return true;
     }
     return get_default_auto_shifted_key(keycode, record);
@@ -237,9 +239,12 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
         to add to the Auto Shift pipeline functions above.
 */
 const custom_shift_key_t custom_shift_keys[] = {
-    {LKC_H, KC_AMPR},
-    {LKC_L, LKC_L},
-    {LKC_SC, LKC_SC},
+    // I have these symbols' shifted variants on their own keys in the
+    // _LOWER layer, so I don't want to shift them.
+    {KC_LBRC, KC_LBRC},
+    {KC_RBRC, KC_RBRC},
+    // Remaining custom shift keys
+    {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
