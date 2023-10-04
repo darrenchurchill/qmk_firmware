@@ -165,6 +165,7 @@ bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record) {
     return false;
 }
 
+// TODO: consider reorganizing the state machine, things are a bit messy and confusing
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     if (caps_word_on || xcase_state) {
         if ((QK_MOD_TAP <= keycode && keycode <= QK_MOD_TAP_MAX)
@@ -182,7 +183,8 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
 
         if (xcase_state == XCASE_WAIT) {
             // grab the next input to be the delimiter
-            if (use_default_xcase_separator(keycode, record)) {
+            if (record->event.pressed
+                    && use_default_xcase_separator(keycode, record)) {
                 enable_xcase_with(DEFAULT_XCASE_SEPARATOR);
             }
             else if (record->event.pressed) {
