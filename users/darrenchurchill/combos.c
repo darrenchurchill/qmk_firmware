@@ -56,7 +56,7 @@ combo_t key_combos[] = {
     COMBO(combo_cv, KC_ESC),
     COMBO(combo_cvb, UKC_OS_COPY),
     COMBO(combo_vb, UKC_OS_PASTE),
-    COMBO(combo_hj, QK_LEAD),
+    COMBO(combo_hj, UKC_LEAD),
     COMBO(combo_jk, KC_DQUO),
     COMBO(combo_jkl, UKC_DB_MINS),
     COMBO(combo_kl, KC_MINS),

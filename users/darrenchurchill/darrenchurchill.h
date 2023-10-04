@@ -32,6 +32,7 @@ enum userspace_custom_keycodes {
   UKC_REP,  // Repeat Key
   UKC_AREP,  // Alt Repeat Key
   UKC_CW_TOGG,
+  UKC_LEAD,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
