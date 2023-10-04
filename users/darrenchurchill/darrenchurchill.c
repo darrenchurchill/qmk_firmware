@@ -40,6 +40,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 #ifdef QUICK_TAP_TERM_PER_KEY
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case QKC_A:
+        case QKC_SC:
         case BKC_V:
         case BKC_N:
             // Disable tap-hold repeat
@@ -461,6 +463,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             return true;
 
         // _LOWER layer keycodes
+        case LKC_A:
         case LKC_D:
         case LKC_K:
             if (!process_repeated_keycode(keycode, record)) { return false; }
