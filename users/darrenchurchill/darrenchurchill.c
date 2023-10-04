@@ -267,8 +267,8 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
 const custom_shift_key_t custom_shift_keys[] = {
     // I have these symbols' shifted variants on their own keys in the
     // _LOWER layer, so I don't want to shift them.
-    {KC_EQUAL, KC_EQUAL},
-    {KC_LBRC, KC_LBRC},
+    {LKC_EQUAL, KC_EQUAL},
+    {LKC_LBRC, KC_LBRC},
     {KC_RBRC, KC_RBRC},
     // Remaining custom shift keys
     {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here

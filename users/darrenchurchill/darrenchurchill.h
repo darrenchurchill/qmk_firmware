@@ -120,6 +120,8 @@ enum userspace_custom_keycodes {
    !    -    +    =    #
    \    /    *    ^
 */
+#define LKC_EQUAL LGUI_T(KC_EQUAL) // To be referenced in custom_shift_keys[]
+
 #define LKC_Q KC_7
 #define LKC_W KC_8
 #define LKC_E KC_9
@@ -128,7 +130,7 @@ enum userspace_custom_keycodes {
 #define LKC_A LWR_T(KC_EXLM)
 #define LKC_S KC_MINS
 #define LKC_D LSFT_T(KC_PLUS) // Know this is indistinguishable from LSFT_T(KC_EQL)
-#define LKC_F KC_EQUAL
+#define LKC_F LKC_EQUAL
 #define LKC_G KC_HASH
 #define LKC_Z KC_BSLS
 #define LKC_X UKC_LWR_SLSH
@@ -142,13 +144,15 @@ enum userspace_custom_keycodes {
    |    [    (    )    ]
    &    $    {    }    %
 */
+#define LKC_LBRC RGUI_T(KC_LBRC)
+
 #define LKC_Y KC_6
 #define LKC_U KC_1
 #define LKC_I KC_2
 #define LKC_O KC_3
 #define LKC_P KC_4
 #define LKC_H KC_PIPE
-#define LKC_J KC_LBRC
+#define LKC_J LKC_LBRC
 #define LKC_K LSFT_T(KC_LPRN) // Know this is indistinguishable from LSFT_T(KC_9)
 #define LKC_L KC_RPRN
 #define LKC_SC LWR_T(KC_RBRC)
