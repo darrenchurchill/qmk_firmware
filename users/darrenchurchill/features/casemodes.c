@@ -72,8 +72,6 @@ void disable_caps_word(void) {
     if (host_keyboard_led_state().caps_lock) {
         tap_code(KC_CAPS);
     }
-#else
-    unregister_mods(MOD_LSFT);
 #endif
 }
 
