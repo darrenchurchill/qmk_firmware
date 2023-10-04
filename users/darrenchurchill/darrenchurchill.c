@@ -1,11 +1,11 @@
 #include QMK_KEYBOARD_H
-#include "leader.h"
 #include "os_detection.h"
 
 #include "darrenchurchill.h"
 #include "features/achordion.h"
 #include "features/casemodes.h"
 #include "features/custom_shift_keys.h"
+#include "features/leader.h"
 #include "features/repeat_key.h"
 
 
@@ -338,31 +338,46 @@ void toggle_screaming_snake_case(void) {
 
 
 /*
-  Leader Key
-  https://docs.qmk.fm/#/feature_leader_key
+  Custom Userspace Leader Key
+  https://github.com/andrewjrae/kyria-keymap/tree/master#userspace-leader-sequences
 */
-void leader_end_user(void) {
-    // You only need the tap portion of Mod-Tap or Layer-Tap keys here.
-    // If you want to require the full keycode instead, see link here:
-    // https://docs.qmk.fm/#/feature_leader_key?id=strict-key-processing
-    if (leader_sequence_one_key(KC_ESC)) {
-        // do nothing, but capture the KC_ESC tap
-    } else if (leader_sequence_two_keys(KC_Q, KC_R)) {
-        // "Q" for QMK, "R" for reboot
-        soft_reset_keyboard();
-    } else if (leader_sequence_two_keys(KC_Q, KC_B)) {
-        // "Q" for QMK, "R" for reboot
-        reset_keyboard();
-    } else if (leader_sequence_one_key(KC_X)) {
-        // "X" for generic X-Case, see use_default_xcase_separator() above
-        enable_xcase();
-    } else if (leader_sequence_one_key(KC_C)) {
-        // "C" for camelCase
-        enable_xcase_with(OSM(MOD_LSFT));
-    } else if (leader_sequence_one_key(KC_S)) {
-        // "S" for SCREAMING_SNAKE_CASE
-        toggle_screaming_snake_case();
+void* leader_qmk_func(uint16_t keycode) {
+    switch (keycode) {
+        case KC_R:
+            // "R" for reboot
+            soft_reset_keyboard();
+            break;
+        case KC_B:
+            // "B" for bootloader
+            reset_keyboard();
+            break;
+        default:
+            break;
     }
+    return NULL;
+}
+
+void* leader_start_func(uint16_t keycode) {
+    switch (keycode) {
+        case KC_Q:
+            // "Q" for QMK
+            return leader_qmk_func;
+        case KC_S:
+            // "S" for SCREAMING_SNAKE_CASE
+            toggle_screaming_snake_case();
+            break;
+        case KC_X:
+            // "X" for generic X-Case, see use_default_xcase_separator() above
+            enable_xcase();
+            break;
+        case KC_C:
+            // "C" for camelCase
+            enable_xcase_with(OSM(MOD_LSFT));
+            break;
+        default:
+            break;
+    }
+    return NULL;
 }
 
 
@@ -406,6 +421,8 @@ bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
 // There's also a good description of process_record_user() at link below:
 // https://getreuer.info/posts/keyboards/macros/index.html#process_record_user-in-depth
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    // https://github.com/andrewjrae/kyria-keymap/tree/master#userspace-leader-sequences
+    if (!process_leader(keycode, record)) { return false; }
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
     if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
@@ -566,6 +583,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case UKC_CW_TOGG:
             if (record->event.pressed) {
                 toggle_screaming_snake_case();
+            }
+            return false;
+
+        case UKC_LEAD:
+            if (record->event.pressed) {
+                start_leading();
             }
             return false;
     }

@@ -3,6 +3,7 @@ SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/features/achordion.c
 SRC += $(USER_PATH)/features/casemodes.c
 SRC += $(USER_PATH)/features/custom_shift_keys.c
+SRC += $(USER_PATH)/features/leader.c
 SRC += $(USER_PATH)/features/repeat_key.c
 
 LTO_ENABLE = yes
@@ -11,7 +12,6 @@ LTO_ENABLE = yes
 # See rules at https://docs.qmk.fm/#/config_options?id=the-rulesmk-file
 SPACE_CADET_ENABLE = no
 AUTO_SHIFT_ENABLE = yes
-LEADER_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 
 DYNAMIC_TAPPING_TERM_ENABLE = yes
