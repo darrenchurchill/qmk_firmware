@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________QWERTY_L2_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R2_________________,
         _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________,
         _____________BASE_4_L4_____________,          KC_HYPR,       KC_MEH,          _____________BASE_4_R4_____________,
-                                     BKC_B, KC_LSFT,                          KC_BSPC, BKC_N
+                                     BKC_B, KC_BSPC,                          KC_BSPC, BKC_N
     ),
 
     [_QWERTY_NO_MODS] = LAYOUT_moonlander_custom_wrapper(
@@ -134,7 +134,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_SFT},  {HSV_ON}, // piano keys
+        {HSV_LYR}, {HSV_BSPC}, {HSV_ON}, // piano keys
         {HSV_ON}, // thumb key
 
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, // right outside column, top to bottom
@@ -156,7 +156,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_SFT},  {HSV_ON},
+        {HSV_LYR}, {HSV_BSPC}, {HSV_ON},
         {HSV_ON},
 
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
