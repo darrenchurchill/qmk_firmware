@@ -10,16 +10,7 @@
 #include "features/select_word.h"
 
 
-// helper function for some macros in process_record_user()
-os_variant_t get_host_os(void) {
-    static os_variant_t host_os = OS_UNSURE;
-
-    if (host_os == OS_UNSURE) {
-        host_os = detected_host_os();
-    }
-
-    return host_os;
-}
+#define IS_APPLE_OS(host_os) (host_os == OS_MACOS || host_os == OS_IOS)
 
 __attribute__ ((weak))
 void keyboard_post_init_keymap(void) {
@@ -436,12 +427,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_case_modes(keycode, record)) { return false; }
 
     // TODO: add macros to explicitly set the host_os, in case it can't be detected
-    static os_variant_t host_os = OS_UNSURE;
-    host_os = detected_host_os();
+    // these OS detection things might be better in a separate features file
+    os_variant_t host_os = detected_host_os();
     uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
     uint8_t mod_tap_mods = QK_MOD_TAP_GET_MODS(keycode);
 
+    // TODO: see if you can move the `record->event.pressed`'s to a single one,
+    // outside the switch statement
+    // Example:
+    // https://github.com/getreuer/qmk-keymap/blob/8ed33269/keymap.c#L536C19-L536C19
     switch (keycode) {
         // _QWERTY layer keycodes
         case KC_ESC:
@@ -495,63 +490,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case UKC_OS_COPY:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(LGUI(KC_C));
-                } else {
-                    tap_code16(LCTL(KC_C));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_C));
+                else tap_code16(LCTL(KC_C));
             }
             return false;
 
         case UKC_OS_PASTE:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(LGUI(KC_V));
-                } else {
-                    tap_code16(LCTL(KC_V));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_V));
+                else tap_code16(LCTL(KC_V));
             }
             return false;
 
         case UKC_OS_PREV_TAB:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(SGUI(KC_LBRC));
-                } else {
-                    tap_code16(LCTL(KC_PGUP));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(SGUI(KC_LBRC));
+                else tap_code16(LCTL(KC_PGUP));
             }
             return false;
 
         case UKC_OS_NEXT_TAB:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(SGUI(KC_RBRC));
-                } else {
-                    tap_code16(LCTL(KC_PGDN));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(SGUI(KC_RBRC));
+                else tap_code16(LCTL(KC_PGDN));
             }
             return false;
 
         case UKC_OS_PREV_SPACE:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(LCTL(KC_LEFT));
-                } else {
-                    // TODO: confirm this is correct for Ubuntu
-                    tap_code16(LCA(KC_UP));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(LCTL(KC_LEFT));
+                else tap_code16(LCA(KC_UP)); // TODO: confirm this is correct for Ubuntu
             }
             return false;
 
         case UKC_OS_NEXT_SPACE:
             if (record->event.pressed) {
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(LCTL(KC_RIGHT));
-                } else {
-                    // TODO: confirm this is correct for Ubuntu
-                    tap_code16(LCA(KC_DOWN));
-                }
+                if (IS_APPLE_OS(host_os)) tap_code16(LCTL(KC_RIGHT));
+                else tap_code16(LCA(KC_DOWN)); // TODO: confirm this is correct for Ubuntu
             }
             return false;
 
