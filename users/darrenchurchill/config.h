@@ -22,6 +22,9 @@
 #define LEADER_TIMEOUT 500 // ms, the timeout for the remaining key sequence
 #define LEADER_PER_KEY_TIMING // Reset the timer after each keypress
 
+// Select Word
+#define SELECT_WORD_TIMEOUT 2000 // ms; When idle, clear state after this duration
+
 // One Shot Keys
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 500
