@@ -33,6 +33,7 @@ enum userspace_custom_keycodes {
   UKC_AREP,  // Alt Repeat Key
   UKC_CW_TOGG,
   UKC_LEAD,
+  SELWORD,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
@@ -204,7 +205,7 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
-#define _________________RAISE_L1__________________       __________________BLANK_5__________________
+#define _________________RAISE_L1__________________       _______, SELWORD, _______, _______, _______
 #define _________________RAISE_L2__________________       __________________BLANK_5__________________
 #define _________________RAISE_L3__________________       _______, _______, _______, _______, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
@@ -302,6 +303,7 @@ enum userspace_custom_keycodes {
 #define HSV_PRV_NXT         HSV_SYM
 
 #define HSV_PG              69, 253, 143   // Planter green
+#define HSV_SELWD           HSV_PG
 #define HSV_ARROW           163, 253, 255  // Blinking Blue blue
 #define HSV_PNTAB           164, 218, 204  // Blue blue
 #define HSV_PNTAB_LINUX     11, 219, 233   // Ubuntu orange

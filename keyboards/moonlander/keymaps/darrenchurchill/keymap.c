@@ -193,16 +193,17 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_RAISE] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_ALT}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_SFT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_CTL}, {HSV_OFF},
+        {HSV_OFF}, {HSV_SELWD}, {HSV_CTL}, {HSV_ALT}, {HSV_LYR_ESC},
+        {HSV_OFF}, {HSV_OFF},   {HSV_SFT}, {HSV_SFT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_GUI}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},   {HSV_OFF},
         {HSV_OFF},
 
+        // TODO: add rgb's for prev/next space macros
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_GUI}, {HSV_OFF},
         {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},

@@ -7,6 +7,7 @@
 #include "features/custom_shift_keys.h"
 #include "features/leader.h"
 #include "features/repeat_key.h"
+#include "features/select_word.h"
 
 
 // helper function for some macros in process_record_user()
@@ -427,6 +428,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_leader(keycode, record)) { return false; }
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
+    if (!process_select_word(keycode, record, SELWORD)) { return false; }
     if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
         return false;
     }
@@ -604,6 +606,7 @@ void matrix_scan_keymap(void) {}
 
 void matrix_scan_user(void) {
     achordion_task();
+    select_word_task();
 
     matrix_scan_keymap();
 }
