@@ -19,11 +19,12 @@
  * For full documentation, see
  * <https://getreuer.info/posts/keyboards/select-word>
  */
+#include "os_detection.h"
 
 #include "select_word.h"
 
-// Mac users, uncomment this line:
-#define MAC_HOTKEYS
+// To help enable functionality for Mac-type OS users:
+#define IS_APPLE_OS(host_os) host_os == OS_MACOS || host_os == OS_IOS
 
 // clang-format off
 enum {
@@ -67,11 +68,12 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
 #endif  // NO_ACTION_ONESHOT
 
     if (!shifted) {  // Select word.
-#ifdef MAC_HOTKEYS
-      set_mods(MOD_BIT(KC_LALT));  // Hold Left Alt (Option).
-#else
-      set_mods(MOD_BIT(KC_LCTL));  // Hold Left Ctrl.
-#endif  // MAC_HOTKEYS
+      if (IS_APPLE_OS(detected_host_os())) {
+        set_mods(MOD_BIT(KC_LALT));  // Hold Left Alt (Option).
+      } else {
+        set_mods(MOD_BIT(KC_LCTL));  // Hold Left Ctrl.
+      }
+
       if (state == STATE_NONE) {
         // On first use, tap Ctrl+Right then Ctrl+Left (or with Alt on Mac) to
         // ensure the cursor is positioned at the beginning of the word.
@@ -84,21 +86,21 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
       state = STATE_WORD;
     } else {  // Select line.
       if (state == STATE_NONE) {
-#ifdef MAC_HOTKEYS
-        // Tap GUI (Command) + Left, then Shift + GUI + Right.
-        set_mods(MOD_BIT(KC_LGUI));
-        send_keyboard_report();
-        tap_code(KC_LEFT);
-        register_mods(MOD_BIT(KC_LSFT));
-        tap_code(KC_RGHT);
-#else
-        // Tap Home, then Shift + End.
-        clear_mods();
-        send_keyboard_report();
-        tap_code(KC_HOME);
-        register_mods(MOD_BIT(KC_LSFT));
-        tap_code(KC_END);
-#endif  // MAC_HOTKEYS
+        if (IS_APPLE_OS(detected_host_os())) {
+          // Tap GUI (Command) + Left, then Shift + GUI + Right.
+          set_mods(MOD_BIT(KC_LGUI));
+          send_keyboard_report();
+          tap_code(KC_LEFT);
+          register_mods(MOD_BIT(KC_LSFT));
+          tap_code(KC_RGHT);
+        } else {
+          // Tap Home, then Shift + End.
+          clear_mods();
+          send_keyboard_report();
+          tap_code(KC_HOME);
+          register_mods(MOD_BIT(KC_LSFT));
+          tap_code(KC_END);
+        }
         set_mods(mods);
         state = STATE_FIRST_LINE;
       } else {
@@ -113,11 +115,11 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
   switch (state) {
     case STATE_WORD:
       unregister_code(KC_RGHT);
-#ifdef MAC_HOTKEYS
-      unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT));
-#else
-      unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
-#endif  // MAC_HOTKEYS
+      if (IS_APPLE_OS(detected_host_os())) {
+        unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT));
+      } else {
+        unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
+      }
       state = STATE_SELECTED;
       break;
 
