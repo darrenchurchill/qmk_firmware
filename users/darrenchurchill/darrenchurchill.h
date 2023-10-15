@@ -87,12 +87,12 @@ enum userspace_custom_keycodes {
 #define QKC_P KC_P
 #define QKC_H KC_H
 #define QKC_J RGUI_T(KC_J)
-#define QKC_K LSFT_T(KC_K)
+#define QKC_K RSFT_T(KC_K)
 #define QKC_L RCTL_T(KC_L)
 #define QKC_SC LWR_T(KC_SCLN)
 #define QKC_N KC_N
 #define QKC_M KC_M
-#define QKC_COM LSFT_T(KC_COMM)
+#define QKC_COM RSFT_T(KC_COMM)
 #define QKC_DOT RALT_T(KC_DOT)
 #define QKC_SL RCTL_T(KC_SLSH)
 
@@ -105,7 +105,7 @@ enum userspace_custom_keycodes {
 #define BKC_V QNM_T(KC_TAB)
 #define BKC_B LWR
 // Right Hand
-#define BKC_N LSFT_T(KC_SPACE)
+#define BKC_N RSFT_T(KC_SPACE)
 #define BKC_M RSE
 #define BKC_COM KC_ENT
 #define BKC_DOT KC_QUOT
@@ -154,7 +154,7 @@ enum userspace_custom_keycodes {
 #define LKC_P KC_4
 #define LKC_H KC_PIPE
 #define LKC_J LKC_LBRC
-#define LKC_K LSFT_T(KC_LPRN) // Know this is indistinguishable from LSFT_T(KC_9)
+#define LKC_K RSFT_T(KC_LPRN) // Know this is indistinguishable from RSFT_T(KC_9)
 #define LKC_L KC_RPRN
 #define LKC_SC LWR_T(KC_RBRC)
 #define LKC_N KC_AMPR
