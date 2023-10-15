@@ -431,7 +431,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     os_variant_t host_os = detected_host_os();
     uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
-    uint8_t mod_tap_mods = QK_MOD_TAP_GET_MODS(keycode);
 
     // TODO: see if you can move the `record->event.pressed`'s to a single one,
     // outside the switch statement
@@ -467,12 +466,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
             // Handle non-basic mod-tap keycode
             if (record->tap.count && record->event.pressed) {
-                set_last_mods(mod_tap_mods);
+                set_last_mods(MOD_BIT_LSHIFT);
                 set_last_keycode(mod_tap_kc);
 
-                register_weak_mods(mod_tap_mods);
+                register_weak_mods(MOD_BIT_LSHIFT);
                 tap_code16(mod_tap_kc);
-                unregister_weak_mods(mod_tap_mods);
+                unregister_weak_mods(MOD_BIT_LSHIFT);
                 return false;
             }
             return true;
