@@ -203,12 +203,11 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_OFF},   {HSV_OFF},
         {HSV_OFF},
 
-        // TODO: add rgb's for prev/next space macros
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_GUI}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF},     {HSV_OFF},
+        {HSV_OFF}, {HSV_GUI}, {HSV_CTL},   {HSV_PNSPACE}, {HSV_OFF},
+        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNSPACE}, {HSV_OFF},
+        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB},   {HSV_OFF},
+        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB},   {HSV_OFF},
         {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
