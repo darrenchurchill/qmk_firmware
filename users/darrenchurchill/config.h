@@ -41,11 +41,6 @@
 // Caps Word, from features/casemodes.[h|c]
 #define CAPSWORD_USE_SHIFT
 
-// Auto Shift
-#define NO_AUTO_SHIFT_ALPHA
-#define AUTO_SHIFT_MODIFIERS
-#define AUTO_SHIFT_REPEAT
-
 // Mouse Keys
 #define MOUSEKEY_INTERVAL           20
 #define MOUSEKEY_DELAY              0
