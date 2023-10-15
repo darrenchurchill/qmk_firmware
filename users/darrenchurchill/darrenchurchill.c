@@ -451,6 +451,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return false;
 
+        case UKC_LWR_SLSH:
+            // The only way to get here is if process_custom_shift_keys()
+            // returns true, so we know Shift is not held.
+            if (record->event.pressed) {
+                tap_code16(KC_SLSH);
+            }
+            return false;
+
         case UKC_CW_TOGG:
             if (record->event.pressed) {
                 toggle_screaming_snake_case();
