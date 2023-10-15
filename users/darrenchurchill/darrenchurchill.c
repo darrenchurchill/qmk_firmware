@@ -460,9 +460,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             return true;
 
         // _LOWER layer keycodes
-        case LKC_A:
         case LKC_D:
         case LKC_K:
+        case LKC_L:
             if (!process_repeated_keycode(keycode, record)) { return false; }
 
             // Handle non-basic mod-tap keycode
