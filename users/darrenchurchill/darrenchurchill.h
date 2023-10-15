@@ -306,7 +306,7 @@ enum userspace_custom_keycodes {
 #define HSV_SELWD           HSV_PG
 #define HSV_ARROW           163, 253, 255  // Blinking Blue blue
 #define HSV_PNTAB           164, 218, 204  // Blue blue
-#define HSV_PNTAB_LINUX     11, 219, 233   // Ubuntu orange
+#define HSV_PNSPACE         11, 219, 233   // Ubuntu orange
 #define HSV_MS              37, 246, 235   // Golden Crescent yellow
 #define HSV_MS_WHEEL        HSV_GUI
 
