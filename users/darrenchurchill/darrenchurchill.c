@@ -58,8 +58,9 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
     if (tap_hold_keycode_mods & MOD_MASK_GUI) {
         switch (other_keycode) {
-            case QKC_Q:
-                return false; // Any Cmd + Q should wait for achordion's timeout
+            case QKC_Q: // Cmd + Q -> quit
+            case QKC_M: // Cmd + M -> minimize window
+                return false; // Should wait for achordion's timeout
             case QKC_C:
             case QKC_V:
             case QKC_B:
