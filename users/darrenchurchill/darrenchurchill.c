@@ -156,9 +156,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_RBRC, KC_RBRC},
     // Remaining custom shift keys
     {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here
-    {LKC_M, KC_EQUAL},
-    {LKC_COM, KC_LABK},
-    {LKC_DOT, KC_RABK},
+    {LKC_E, KC_LABK},
+    {LKC_R, KC_RABK},
     {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
