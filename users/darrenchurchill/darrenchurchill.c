@@ -5,6 +5,7 @@
 #include "features/achordion.h"
 #include "features/casemodes.h"
 #include "features/custom_shift_keys.h"
+#include "features/layer_lock.h"
 #include "features/leader.h"
 #include "features/repeat_key.h"
 #include "features/select_word.h"
@@ -105,6 +106,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         switch (other_keycode) {
             case KC_BSPC:
             case BKC_N: // Space
+            case BKC_M: // For layer lock w/ RHand
                 return true;
         }
     }
@@ -310,6 +312,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_leader(keycode, record)) { return false; }
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
+    if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
     if (!process_select_word(keycode, record, SELWORD)) { return false; }
     if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
         return false;

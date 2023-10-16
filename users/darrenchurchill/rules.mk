@@ -3,6 +3,7 @@ SRC += $(USER_PATH)/darrenchurchill.c
 SRC += $(USER_PATH)/features/achordion.c
 SRC += $(USER_PATH)/features/casemodes.c
 SRC += $(USER_PATH)/features/custom_shift_keys.c
+SRC += $(USER_PATH)/features/layer_lock.c
 SRC += $(USER_PATH)/features/leader.c
 SRC += $(USER_PATH)/features/repeat_key.c
 SRC += $(USER_PATH)/features/select_word.c
