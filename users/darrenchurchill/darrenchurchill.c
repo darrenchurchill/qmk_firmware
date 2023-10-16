@@ -72,7 +72,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
     if (tap_hold_keycode_mods & MOD_MASK_SHIFT) {
         switch (other_keycode) {
-            case LWR: // Shift + Tab
+            case BKC_B: // Shift + Tab
             case UKC_ARRW:
                 return true;
         }

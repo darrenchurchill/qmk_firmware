@@ -43,7 +43,6 @@ enum userspace_custom_keycodes {
   Layer Macros
 */
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
-#define LWR LT(_LOWER, KC_TAB)
 #define LWR_T(KC) LT(_LOWER, KC)
 #define RSE OSL(_RAISE)
 #define EXT_T(KC) LT(_EXTEND, KC)
@@ -104,7 +103,7 @@ enum userspace_custom_keycodes {
 #define BKC_X LALT_T(KC_ESC)
 #define BKC_C KC_LGUI
 #define BKC_V QNM_T(KC_TAB)
-#define BKC_B LWR
+#define BKC_B LWR_T(KC_TAB)
 // Right Hand
 #define BKC_N RSFT_T(KC_SPACE)
 #define BKC_M RSE
