@@ -33,6 +33,7 @@ enum userspace_custom_keycodes {
   UKC_AREP,  // Alt Repeat Key
   UKC_CW_TOGG,
   UKC_LEAD,
+  LLOCK,
   SELWORD,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
@@ -201,7 +202,7 @@ enum userspace_custom_keycodes {
 #define _________________LOWER_R1__________________       LKC_Y,   LKC_U,   LKC_I,    LKC_O,   LKC_P
 #define _________________LOWER_R2__________________       LKC_H,   LKC_J,   LKC_K,    LKC_L,   LKC_SC
 #define _________________LOWER_R3__________________       LKC_N,   LKC_M,   LKC_COM,  LKC_DOT, LKC_SL
-#define ____________LOWER_4_R4_____________                        _______, _______, _______, _______
+#define ____________LOWER_4_R4_____________                        LLOCK,   _______,  _______, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
@@ -209,7 +210,7 @@ enum userspace_custom_keycodes {
 #define _________________RAISE_L2__________________       __________________BLANK_5__________________
 #define _________________RAISE_L3__________________       _______, _______, _______, _______, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
-#define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, _______
+#define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, LLOCK
 
 #define _________________RAISE_R1__________________       KC_HOME, KC_PGDN, KC_PGUP, KC_END,   LGUI(KC_GRV)
 #define _________________RAISE_R2__________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, LCTL(KC_GRV)
@@ -240,6 +241,8 @@ enum userspace_custom_keycodes {
 #define _________________MOUSE_R1__________________       KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______
 #define _________________MOUSE_R2__________________       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______
 #define _________________MOUSE_R3__________________       _______, KC_BTN1, KC_BTN2, _______, _______
+#define _____________MOUSE_4_R4____________                        LLOCK,   _______, _______, _______
+#define _________________MOUSE_5_R4________________       _______, _____________MOUSE_4_R4____________
 
 
 #define ________________KB_LED_L1__________________       RGB_TOG, _______, _______, _______, TOGGLE_LAYER_COLOR
