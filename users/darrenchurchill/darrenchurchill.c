@@ -251,12 +251,14 @@ void* leader_start_func(uint16_t keycode) {
             // "Q" for QMK
             return leader_qmk_func;
         case KC_S:
-            // "S" for SCREAMING_SNAKE_CASE
-            toggle_screaming_snake_case();
-            break;
-        case KC_X:
-            // "X" for generic X-Case, see use_default_xcase_separator() above
+            // "S" for snake_case
+            // Also generic X-Case, see use_default_xcase_separator() above. You
+            // can begin by typing a symbol to use that as the separator char.
             enable_xcase();
+            break;
+        case KC_D:
+            // "D" is home row shift -> SCREAMING_SNAKE_CASE
+            toggle_screaming_snake_case();
             break;
         case KC_C:
             // "C" for camelCase
