@@ -329,14 +329,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
 
-    // TODO: see if you can move the `record->event.pressed`'s to a single one,
-    // outside the switch statement
-    // Example:
-    // https://github.com/getreuer/qmk-keymap/blob/8ed33269/keymap.c#L536C19-L536C19
-    switch (keycode) {
-        // _QWERTY layer keycodes
-        case KC_ESC:
-            if (record->event.pressed) {
+    // We generally only need to handle the key down event, and can let QMK
+    // implicitly handle the key up events.
+    if (record->event.pressed) {
+        switch (keycode) {
+            // _QWERTY layer keycodes
+            case KC_ESC:
                 if (caps_word_enabled() || get_xcase_state() == XCASE_ON) {
                     disable_caps_word();
                     disable_xcase();
@@ -352,17 +350,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     layer_move(_QWERTY);
                     return false;
                 }
-            }
-            return true;
+                return true;
 
-        // _LOWER layer keycodes
-        case LKC_D:
-        case LKC_K:
-        case LKC_L:
-            if (!process_repeated_keycode(keycode, record)) { return false; }
+            // _LOWER layer keycodes
+            case LKC_D:
+            case LKC_K:
+            case LKC_L:
+                // FIXME: the L/R parens register as <,> when repeated, b/c of
+                // the custom shift key codes for 9 & 0. You might need to
+                // change the non-basic mod-tap handling to a tap dance instead.
+                // https://docs.qmk.fm/#/feature_tap_dance?id=example-5
+                if (!process_repeated_keycode(keycode, record)) { return false; }
 
-            // Handle non-basic mod-tap keycode
-            if (record->tap.count && record->event.pressed) {
+                // Let QMK process the hold action
+                if (!record->tap.count) { return true; }
+
+                // Handle the tap of a non-basic mod-tap keycode
                 set_last_mods(MOD_BIT_LSHIFT);
                 set_last_keycode(mod_tap_kc);
 
@@ -370,65 +373,49 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 tap_code16(mod_tap_kc);
                 unregister_weak_mods(MOD_BIT_LSHIFT);
                 return false;
-            }
-            return true;
 
-        // My custom keycodes
-        case UKC_BASE:
-            if (!record->event.pressed) return false; // already processed
-            // It's normally recommended to use layer_move() rather than
-            // layer_state_set()
-            // See: https://docs.qmk.fm/#/feature_layers?id=functions
-            // but the default_layer_state variable is already a layer_mask, so
-            // it's easy enough this way.
-            layer_state_set(default_layer_state); // move back to cur default layer
-            return false;
+            // My custom keycodes
+            case UKC_BASE:
+                // It's normally recommended to use layer_move() rather than
+                // layer_state_set()
+                // See: https://docs.qmk.fm/#/feature_layers?id=functions
+                // but the default_layer_state variable is already a layer_mask, so
+                // it's easy enough this way.
+                layer_state_set(default_layer_state); // move back to cur default layer
+                return false;
 
-        case UKC_OS_COPY:
-            if (record->event.pressed) {
+            case UKC_OS_COPY:
                 if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_C));
                 else tap_code16(LCTL(KC_C));
-            }
-            return false;
+                return false;
 
-        case UKC_OS_PASTE:
-            if (record->event.pressed) {
+            case UKC_OS_PASTE:
                 if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_V));
                 else tap_code16(LCTL(KC_V));
-            }
-            return false;
+                return false;
 
-        case UKC_OS_PREV_TAB:
-            if (record->event.pressed) {
+            case UKC_OS_PREV_TAB:
                 if (IS_APPLE_OS(host_os)) tap_code16(SGUI(KC_LBRC));
                 else tap_code16(LCTL(KC_PGUP));
-            }
-            return false;
+                return false;
 
-        case UKC_OS_NEXT_TAB:
-            if (record->event.pressed) {
+            case UKC_OS_NEXT_TAB:
                 if (IS_APPLE_OS(host_os)) tap_code16(SGUI(KC_RBRC));
                 else tap_code16(LCTL(KC_PGDN));
-            }
-            return false;
+                return false;
 
-        case UKC_OS_PREV_SPACE:
-            if (record->event.pressed) {
+            case UKC_OS_PREV_SPACE:
                 if (IS_APPLE_OS(host_os)) tap_code16(LCTL(KC_LEFT));
                 else tap_code16(LCA(KC_UP)); // TODO: confirm this is correct for Ubuntu
-            }
-            return false;
+                return false;
 
-        case UKC_OS_NEXT_SPACE:
-            if (record->event.pressed) {
+            case UKC_OS_NEXT_SPACE:
                 if (IS_APPLE_OS(host_os)) tap_code16(LCTL(KC_RIGHT));
                 else tap_code16(LCA(KC_DOWN)); // TODO: confirm this is correct for Ubuntu
-            }
-            return false;
+                return false;
 
-        case UKC_ARRW:
-            // Handle my custom keycode for a single arrow
-            if (record->event.pressed) {
+            case UKC_ARRW:
+                // Handle my custom keycode for a single arrow
                 if (cur_mods & MOD_MASK_SHIFT) {
                     del_mods(MOD_MASK_SHIFT);
                     tap_code16(KC_EQUAL);
@@ -437,44 +424,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     tap_code16(KC_MINS);
                 }
                 tap_code16(KC_RABK);
-            }
-            return false;
+                return false;
 
-        case UKC_DB_MINS:
-            // Handle my custom keycode for a double minus/dash
-            if (record->event.pressed) {
+            case UKC_DB_MINS:
+                // Handle my custom keycode for a double minus/dash
                 tap_code16(KC_MINS);
                 tap_code16(KC_MINS);
-            }
-            return false;
+                return false;
 
-        case UKC_DB_UNDS:
-            // Handle my custom keycode for a double underscore
-            if (record->event.pressed) {
+            case UKC_DB_UNDS:
+                // Handle my custom keycode for a double underscore
                 tap_code16(KC_UNDS);
                 tap_code16(KC_UNDS);
-            }
-            return false;
+                return false;
 
-        case UKC_LWR_SLSH:
-            // The only way to get here is if process_custom_shift_keys()
-            // returns true, so we know Shift is not held.
-            if (record->event.pressed) {
+            case UKC_LWR_SLSH:
+                // The only way to get here is if process_custom_shift_keys()
+                // returns true, so we know Shift is not held.
                 tap_code16(KC_SLSH);
-            }
-            return false;
+                return false;
 
-        case UKC_CW_TOGG:
-            if (record->event.pressed) {
+            case UKC_CW_TOGG:
                 toggle_screaming_snake_case();
-            }
-            return false;
+                return false;
 
-        case UKC_LEAD:
-            if (record->event.pressed) {
+            case UKC_LEAD:
                 start_leading();
-            }
-            return false;
+                return false;
+        }
     }
 
     return process_record_keymap(keycode, record);
