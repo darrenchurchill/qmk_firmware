@@ -54,9 +54,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
     // consider the following keycodes as holds
+    bool is_tap_hold_mod_tap = tap_hold_keycode & QK_MOD_TAP;
     uint8_t tap_hold_keycode_mods = QK_MODS_GET_MODS(tap_hold_keycode);
 
-    if (tap_hold_keycode_mods & MOD_MASK_GUI) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_GUI) {
         switch (other_keycode) {
             case QKC_Q: // Cmd + Q -> quit
             case QKC_M: // Cmd + M -> minimize window
@@ -70,7 +71,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         }
     }
 
-    if (tap_hold_keycode_mods & MOD_MASK_SHIFT) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_SHIFT) {
         switch (other_keycode) {
             case BKC_B: // Shift + Tab
             case UKC_ARRW:
@@ -78,14 +79,14 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         }
     }
 
-    if (tap_hold_keycode_mods & MOD_MASK_ALT) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_ALT) {
         switch (other_keycode) {
             case BKC_B: // Alt + Tab
                 return true;
         }
     }
 
-    if (tap_hold_keycode_mods & MOD_MASK_CTRL) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_CTRL) {
         switch (other_keycode) {
             // Left Hand
             case QKC_E:
