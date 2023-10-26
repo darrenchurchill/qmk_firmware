@@ -16,9 +16,6 @@
 
 
 // Left Hand
-// Top Row
-const uint16_t PROGMEM combo_qwer[] = { QKC_Q, QKC_W, QKC_E, QKC_R, COMBO_END };
-const uint16_t PROGMEM combo_qwert[] = { QKC_Q, QKC_W, QKC_E, QKC_R, QKC_T, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_sd[] = { QKC_S, QKC_D, COMBO_END };
 const uint16_t PROGMEM combo_sdf[] = { QKC_S, QKC_D, QKC_F, COMBO_END };
@@ -47,8 +44,6 @@ const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
 
 
 combo_t key_combos[] = {
-    COMBO(combo_qwer, QK_REBOOT),
-    COMBO(combo_qwert, QK_BOOTLOADER),
     COMBO(combo_sd, KC_MINS),
     COMBO(combo_sdf, UKC_DB_MINS),
     COMBO(combo_df, KC_ESC),
