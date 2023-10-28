@@ -107,10 +107,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_RAISE] = {
-        {HSV_OFF}, {HSV_SELWD},   {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},      {HSV_GUI},
-        {HSV_CTL}, {HSV_OFF},     {HSV_SFT}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW},   {HSV_CTL},
-        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_PNSPACE}, {HSV_PNSPACE},
-        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},     {HSV_OFF}
+        {HSV_OFF}, {HSV_SELWD},   {HSV_OFF}, {HSV_SELWD}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_PG},    {HSV_PG},    {HSV_PG},    {HSV_PG},      {HSV_GUI},
+        {HSV_CTL}, {HSV_OFF},     {HSV_SFT}, {HSV_GUI},   {HSV_OFF}, {HSV_OFF}, {HSV_BSPC}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW}, {HSV_ARROW},   {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT},     {HSV_SFT}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF},   {HSV_PNTAB}, {HSV_PNTAB}, {HSV_PNSPACE}, {HSV_PNSPACE},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},             {HSV_OFF},   {HSV_OFF},   {HSV_OFF},   {HSV_OFF},     {HSV_OFF}
     },
 
     [_EXTEND] = {

@@ -317,7 +317,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // https://getreuer.info/posts/keyboards/achordion/
     if (!process_achordion(keycode, record)) { return false; }
     if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
-    if (!process_select_word(keycode, record, SELWORD)) { return false; }
+    if (!process_select_word_or_line(keycode, record, SELWORD, SELLINE)) { return false; }
     if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
         return false;
     }
