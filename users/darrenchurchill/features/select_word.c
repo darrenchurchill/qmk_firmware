@@ -52,6 +52,19 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
                          uint16_t sel_keycode) {
   if (keycode == KC_LSFT || keycode == KC_RSFT) {
     return true;
+  // Ignore the following keycodes:
+  switch (keycode) {
+    case QK_MODS...QK_MODS_MAX:
+    case QK_MOD_TAP...QK_MOD_TAP_MAX:
+    case QK_LAYER_TAP...QK_LAYER_TAP_MAX:
+    case QK_LAYER_MOD...QK_LAYER_MOD_MAX:
+    case QK_TO...QK_TO_MAX:
+    case QK_MOMENTARY...QK_MOMENTARY_MAX:
+    case QK_TOGGLE_LAYER...QK_TOGGLE_LAYER_MAX:
+    case QK_ONE_SHOT_LAYER...QK_ONE_SHOT_LAYER_MAX:
+    case QK_ONE_SHOT_MOD...QK_ONE_SHOT_MOD_MAX:
+    case QK_LAYER_TAP_TOGGLE...QK_LAYER_TAP_TOGGLE_MAX:
+      return true;
   }
 
 #if SELECT_WORD_TIMEOUT > 0
