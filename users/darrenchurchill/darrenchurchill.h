@@ -35,6 +35,7 @@ enum userspace_custom_keycodes {
   UKC_LEAD,
   LLOCK,
   SELWORD,
+  SELLINE,
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
@@ -205,7 +206,7 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
-#define _________________RAISE_L1__________________       _______, SELWORD, _______, _______, _______
+#define _________________RAISE_L1__________________       _______, SELWORD, _______, SELLINE, _______
 #define _________________RAISE_L2__________________       __________________BLANK_5__________________
 #define _________________RAISE_L3__________________       _______, _______, _______, _______, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
