@@ -50,8 +50,13 @@ void select_word_task(void) {
 
 bool process_select_word(uint16_t keycode, keyrecord_t* record,
                          uint16_t sel_keycode) {
-  if (keycode == KC_LSFT || keycode == KC_RSFT) {
-    return true;
+  return process_select_word_or_line(keycode, record, sel_keycode, KC_NO);
+}
+
+bool process_select_word_or_line(uint16_t keycode,
+                                 keyrecord_t* record,
+                                 uint16_t sel_keycode,
+                                 uint16_t sel_line_keycode) {
   // Ignore the following keycodes:
   switch (keycode) {
     case QK_MODS...QK_MODS_MAX:
@@ -71,8 +76,18 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
   idle_timer = record->event.time + SELECT_WORD_TIMEOUT;
 #endif  // SELECT_WORD_TIMEOUT > 0
 
-  if (keycode == sel_keycode && record->event.pressed) {  // On key press.
-    const uint8_t mods = get_mods();
+  if ((keycode == sel_keycode || keycode == sel_line_keycode)
+      && record->event.pressed) {  // On key press.
+    const uint8_t real_mods = get_mods();
+    uint8_t mods = real_mods;
+
+    if (keycode == sel_line_keycode) {
+      keycode = sel_keycode;
+      record->keycode = sel_keycode;
+      add_mods(MOD_BIT(KC_LSFT));
+      mods = get_mods();
+    }
+
 #ifndef NO_ACTION_ONESHOT
     const bool shifted = (mods | get_oneshot_mods()) & MOD_MASK_SHIFT;
     clear_oneshot_mods();
@@ -114,12 +129,12 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
           register_mods(MOD_BIT(KC_LSFT));
           tap_code(KC_END);
         }
-        set_mods(mods);
         state = STATE_FIRST_LINE;
       } else {
         register_code(KC_DOWN);
         state = STATE_LINE;
       }
+      set_mods(real_mods);
     }
     return false;
   }
