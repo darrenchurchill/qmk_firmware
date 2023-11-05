@@ -20,6 +20,13 @@ void keyboard_post_init_keymap(void) {
 }
 
 void keyboard_post_init_user(void) {
+    // https://docs.qmk.fm/#/faq_debug?id=debugging
+    // Uncomment any of the debug_* variables to enable debug modes at boot
+    // You need CONSOLE_ENABLE = yes in your rules.mk to use these
+    // debug_enable = true;
+    // debug_matrix = true;
+    // debug_keyboard = true;
+    // debug_mouse = true;
     keyboard_post_init_keymap();
 }
 
