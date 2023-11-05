@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "print.h"
 #include "os_detection.h"
 
 #include "darrenchurchill.h"
@@ -308,10 +309,28 @@ bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
 }
 
 
+void debug_process_record(uint16_t keycode, keyrecord_t* record) {
+    dprintln("\n**** Process Record User ****");
+
+    // Print statements modified from debug_event() and debug_record() in
+    // action.c
+    dprintf("RECORD: %04X%c(%u)",
+            (record->event.key.row << 8 | record->event.key.col),
+            (record->event.pressed ? 'd' : 'u'), record->event.time);
+#ifndef NO_ACTION_TAPPING
+    dprintf(":%u%c", record->tap.count, (record->tap.interrupted ? '-' : ' '));
+#endif
+    dprintf("\nKEYCODE: 0x%04X\n", keycode);
+    dprintln("Mod Bits: GASC(R)GASC(L)");
+    IGNORE_FORMAT_WARNING(dprintf("Cur Mods: 0b%08b\n", get_mods()));
+}
+
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md
 // There's also a good description of process_record_user() at link below:
 // https://getreuer.info/posts/keyboards/macros/index.html#process_record_user-in-depth
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    debug_process_record(keycode, record);
+
     // https://github.com/andrewjrae/kyria-keymap/tree/master#userspace-leader-sequences
     if (!process_leader(keycode, record)) { return false; }
     // https://getreuer.info/posts/keyboards/achordion/
@@ -454,6 +473,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 return false;
         }
     }
+
+    dprintln("**** End Process Record User ****\n");
 
     return process_record_keymap(keycode, record);
 }
