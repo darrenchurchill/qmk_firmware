@@ -301,11 +301,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
     return true;  // Other keys can be repeated.
 }
 
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
-    return true;
-}
-
 bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
     if (get_repeat_key_count() > 0) {
         if (record->event.pressed) {
@@ -333,6 +328,11 @@ void debug_process_record(uint16_t keycode, keyrecord_t* record) {
     dprintf("\nKEYCODE: 0x%04X\n", keycode);
     dprintln("Mod Bits: GASC(R)GASC(L)");
     IGNORE_FORMAT_WARNING(dprintf("Cur Mods: 0b%08b\n", get_mods()));
+}
+
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
+    return true;
 }
 
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md
