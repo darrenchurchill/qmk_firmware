@@ -170,7 +170,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here
     {LKC_E, KC_LABK},
     {LKC_R, KC_RABK},
-    {UKC_LWR_SLSH, KC_BSLS},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
@@ -463,12 +462,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 // Handle my custom keycode for a double underscore
                 tap_code16(KC_UNDS);
                 tap_code16(KC_UNDS);
-                return false;
-
-            case UKC_LWR_SLSH:
-                // The only way to get here is if process_custom_shift_keys()
-                // returns true, so we know Shift is not held.
-                tap_code16(KC_SLSH);
                 return false;
 
             case UKC_CW_TOGG:

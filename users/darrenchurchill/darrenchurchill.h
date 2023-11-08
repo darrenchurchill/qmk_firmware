@@ -28,7 +28,6 @@ enum userspace_custom_keycodes {
   UKC_ARRW,
   UKC_DB_MINS,
   UKC_DB_UNDS,
-  UKC_LWR_SLSH,
   UKC_REP,  // Repeat Key
   UKC_AREP,  // Alt Repeat Key
   UKC_CW_TOGG,
@@ -137,7 +136,7 @@ enum userspace_custom_keycodes {
 #define LKC_F LKC_EQUAL
 #define LKC_G KC_HASH
 #define LKC_Z KC_BSLS
-#define LKC_X UKC_LWR_SLSH
+#define LKC_X KC_SLSH
 #define LKC_C KC_ASTR
 #define LKC_V KC_CIRC
 #define LKC_B _______
