@@ -97,6 +97,7 @@ enum userspace_custom_keycodes {
 #define QKC_COM RSFT_T(KC_COMM)
 #define QKC_DOT RALT_T(KC_DOT)
 #define QKC_SL RCTL_T(KC_SLSH)
+#define QKC_SPC RSFT_T(KC_SPC)
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
 // These are named by the Qwerty key they sit below
@@ -107,7 +108,7 @@ enum userspace_custom_keycodes {
 #define BKC_V RSE
 #define BKC_B LWR_T(KC_TAB)
 // Right Hand
-#define BKC_N RSFT_T(KC_SPACE)
+#define BKC_N QKC_SPC
 #define BKC_M RSE_T(KC_MINS)
 #define BKC_COM KC_UNDS
 #define BKC_DOT KC_DQUO
