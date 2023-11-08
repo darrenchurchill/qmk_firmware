@@ -86,7 +86,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LSFT) {
         switch (other_keycode) {
             case BKC_B: // Shift + Tab
-            case UKC_ARRW:
                 return true;
         }
     }
@@ -407,7 +406,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // TODO: add macros to explicitly set the host_os, in case it can't be detected
     // these OS detection things might be better in a separate features file
     os_variant_t host_os = detected_host_os();
-    uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
     static bool is_processing_tap_dance = false;
 
@@ -468,6 +466,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 layer_state_set(default_layer_state); // move back to cur default layer
                 return false;
 
+            case UKC_OS_CUT:
+                if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_C));
+                else tap_code16(LCTL(KC_X));
+                return false;
+
             case UKC_OS_COPY:
                 if (IS_APPLE_OS(host_os)) tap_code16(LGUI(KC_C));
                 else tap_code16(LCTL(KC_C));
@@ -498,16 +501,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 else tap_code16(LCA(KC_DOWN)); // TODO: confirm this is correct for Ubuntu
                 return false;
 
-            case UKC_ARRW:
-                // Handle my custom keycode for a single arrow
-                if (cur_mods & MOD_MASK_SHIFT) {
-                    del_mods(MOD_MASK_SHIFT);
-                    tap_code16(KC_EQUAL);
-                    set_mods(cur_mods);
-                } else {
-                    tap_code16(KC_MINS);
-                }
-                tap_code16(KC_RABK);
+            case UKC_LARRW:
+                SEND_STRING("<-");
+                return false;
+
+            case UKC_RARRW:
+                SEND_STRING("->");
+                return false;
+
+            case UKC_DBRARRW:
+                SEND_STRING("=>");
+                return false;
+
+            case UKC_LEQ:
+                SEND_STRING("<=");
+                return false;
+
+            case UKC_GEQ:
+                SEND_STRING(">=");
                 return false;
 
             case UKC_DB_MINS:
