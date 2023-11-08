@@ -121,7 +121,7 @@ enum userspace_custom_keycodes {
 /*
    7    8    9    0    5
    !    -    +    =    #
-   \    /    *    ^
+   \    /    *    ^    @
 */
 #define LKC_EQUAL LGUI_T(KC_EQUAL) // To be referenced in custom_shift_keys[]
 
@@ -139,7 +139,7 @@ enum userspace_custom_keycodes {
 #define LKC_X KC_SLSH
 #define LKC_C KC_ASTR
 #define LKC_V KC_CIRC
-#define LKC_B _______
+#define LKC_B KC_AT
 
 // Right Hand
 /*
