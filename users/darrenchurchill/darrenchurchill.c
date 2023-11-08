@@ -65,7 +65,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     bool is_tap_hold_mod_tap = tap_hold_keycode & QK_MOD_TAP;
     uint8_t tap_hold_keycode_mods = QK_MODS_GET_MODS(tap_hold_keycode);
 
-    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_GUI) {
+    // A mod-tap tap-hold keycode stores the modifier in the 5 bit form, so in
+    // the following 4 tests, we can & with the Left Hand MOD_L* values to check
+    // for either the Left or Right hand version. The left/right flag is stored
+    // in its own bit.
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LGUI) {
         switch (other_keycode) {
             case QKC_Q: // Cmd + Q -> quit
             case QKC_M: // Cmd + M -> minimize window
@@ -79,7 +83,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         }
     }
 
-    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_SHIFT) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LSFT) {
         switch (other_keycode) {
             case BKC_B: // Shift + Tab
             case UKC_ARRW:
@@ -87,14 +91,14 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         }
     }
 
-    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_ALT) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LALT) {
         switch (other_keycode) {
             case BKC_B: // Alt + Tab
                 return true;
         }
     }
 
-    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_MASK_CTRL) {
+    if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LCTL) {
         switch (other_keycode) {
             // Left Hand
             case QKC_E:
