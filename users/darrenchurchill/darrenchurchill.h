@@ -46,6 +46,7 @@ enum userspace_custom_keycodes {
 #define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
 #define LWR_T(KC) LT(_LOWER, KC)
 #define RSE MO(_RAISE)
+#define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
 #define MS_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
@@ -68,7 +69,7 @@ enum userspace_custom_keycodes {
 #define QKC_Q FN_T(KC_Q)
 #define QKC_W MS_T(KC_W)
 #define QKC_E EXT_T(KC_E)
-#define QKC_R KC_R
+#define QKC_R RSE_T(KC_R)
 #define QKC_T KC_T
 #define QKC_A LCTL_T(KC_A)
 #define QKC_S LWR_T(KC_S)
