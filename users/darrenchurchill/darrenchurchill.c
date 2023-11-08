@@ -314,6 +314,57 @@ bool process_repeated_keycode(uint16_t keycode, keyrecord_t* record) {
 }
 
 
+/*
+  Tap Dance
+*/
+typedef struct {
+    uint16_t tap;
+    uint16_t hold;
+    uint16_t held;
+} td_tap_hold_t;
+
+void td_tap_hold_finished(tap_dance_state_t* state, void* user_data) {
+    td_tap_hold_t* tap_hold = (td_tap_hold_t*)user_data;
+
+    if (state->pressed) {
+        if (state->count == 1
+#ifndef PERMISSIVE_HOLD
+            && !state->interrupted
+#endif
+        ) {
+            register_code16(tap_hold->hold);
+            tap_hold->held = tap_hold->hold;
+        } else {
+            register_code16(tap_hold->tap);
+            tap_hold->held = tap_hold->tap;
+        }
+    }
+}
+
+void td_tap_hold_reset(tap_dance_state_t* state, void* user_data) {
+    td_tap_hold_t* tap_hold = (td_tap_hold_t*)user_data;
+
+    if (tap_hold->held) {
+        unregister_code16(tap_hold->held);
+        tap_hold->held = 0;
+    }
+}
+
+#define ACTION_TD_TAP_HOLD(tap, hold) \
+    { .fn = {NULL, td_tap_hold_finished, td_tap_hold_reset}, \
+      .user_data = (void*)&((td_tap_hold_t){tap, hold, 0}), }
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_LCTL_T_OS_PREV_SPACE] = ACTION_TD_TAP_HOLD(UKC_OS_PREV_SPACE, KC_LCTL),
+    [TD_LALT_T_OS_NEXT_SPACE] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_SPACE, KC_LALT),
+    [TD_LSFT_T_OS_PREV_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_PREV_TAB, KC_LSFT),
+    [TD_LGUI_T_OS_NEXT_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_TAB, KC_LGUI),
+};
+
+
+/*
+  Process Record
+*/
 void debug_process_record(uint16_t keycode, keyrecord_t* record) {
     dprintln("\n**** Process Record User ****");
 
@@ -358,10 +409,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     os_variant_t host_os = detected_host_os();
     uint8_t cur_mods = get_mods();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+    static bool is_processing_tap_dance = false;
 
     // We generally only need to handle the key down event, and can let QMK
     // implicitly handle the key up events.
-    if (record->event.pressed) {
+    // An exception is when we're recursively processing a keycode fired from
+    // a tap dance tap-hold key. In that case, we need to handle the key up.
+    if (record->event.pressed || is_processing_tap_dance) {
         switch (keycode) {
             // _QWERTY layer keycodes
             case KC_ESC:
@@ -475,6 +529,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             case UKC_LEAD:
                 start_leading();
                 return false;
+        }
+    }
+
+    // Tap Dance keycodes
+    switch (keycode) {
+        // tap-hold custom tap dance keycodes:
+        case TD_OS_PTAB:
+        case TD_OS_NTAB:
+        case TD_OS_PSPC:
+        case TD_OS_NSPC:
+        {
+            tap_dance_action_t* action = &tap_dance_actions[TD_INDEX(keycode)];
+            if (!record->event.pressed &&
+                action->state.count &&
+                !action->state.finished
+            ) {
+                td_tap_hold_t* tap_hold = (td_tap_hold_t*)action->user_data;
+                record->keycode = tap_hold->tap;
+                is_processing_tap_dance = true;
+                process_record_user(record->keycode, record);
+                is_processing_tap_dance = false;
+            }
         }
     }
 
