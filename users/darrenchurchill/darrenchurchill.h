@@ -108,10 +108,10 @@ enum userspace_custom_keycodes {
 #define BKC_B LWR_T(KC_TAB)
 // Right Hand
 #define BKC_N RSFT_T(KC_SPACE)
-#define BKC_M RSE
-#define BKC_COM KC_ENT
-#define BKC_DOT KC_QUOT
-#define BKC_SL KC_DQUO
+#define BKC_M RSE_T(KC_MINS)
+#define BKC_COM KC_UNDS
+#define BKC_DOT KC_DQUO
+#define BKC_SL KC_QUOT
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
 // Mostly inspired by:
