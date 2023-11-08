@@ -131,7 +131,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
         {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
         {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
-        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
+        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
         {HSV_LYR}, {HSV_BSPC}, {HSV_ON}, // piano keys
@@ -153,7 +153,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
         {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
         {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
-        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON}, {HSV_ON},
+        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
         {HSV_LYR}, {HSV_BSPC}, {HSV_ON},

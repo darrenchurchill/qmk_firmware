@@ -103,7 +103,7 @@ enum userspace_custom_keycodes {
 #define BKC_Z LCTL_T(KC_GRV)
 #define BKC_X LALT_T(KC_ESC)
 #define BKC_C KC_LGUI
-#define BKC_V QNM_T(KC_TAB)
+#define BKC_V RSE
 #define BKC_B LWR_T(KC_TAB)
 // Right Hand
 #define BKC_N RSFT_T(KC_SPACE)
