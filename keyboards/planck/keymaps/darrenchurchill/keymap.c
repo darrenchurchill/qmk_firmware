@@ -89,14 +89,14 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_LYR}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_LYR},  {HSV_CTL},
         {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
-        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_ON},  {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
+        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_LYR}, {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
     },
 
     [_QWERTY_NO_MODS] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_LYR}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
-        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_ON},  {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
+        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_LYR}, {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
     },
 
     [_LOWER] = {
