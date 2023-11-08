@@ -38,6 +38,13 @@ enum userspace_custom_keycodes {
   KEYMAP_SAFE_RANGE  //use "KEYMAP_SAFE_RANGE" for keymap specific codes
 };
 
+enum tap_dance_codes {
+    TD_LCTL_T_OS_PREV_SPACE,
+    TD_LALT_T_OS_NEXT_SPACE,
+    TD_LSFT_T_OS_PREV_TAB,
+    TD_LGUI_T_OS_NEXT_TAB,
+};
+
 
 /*
   Layer Macros
@@ -62,6 +69,10 @@ enum userspace_custom_keycodes {
 #define OS_NTAB UKC_OS_NEXT_TAB
 #define OS_PSPC UKC_OS_PREV_SPACE
 #define OS_NSPC UKC_OS_NEXT_SPACE
+#define TD_OS_PTAB TD(TD_LSFT_T_OS_PREV_TAB)
+#define TD_OS_NTAB TD(TD_LGUI_T_OS_NEXT_TAB)
+#define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
+#define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
@@ -207,9 +218,9 @@ enum userspace_custom_keycodes {
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
-#define _________________RAISE_L1__________________       _______, SELWORD, _______, SELLINE, _______
-#define _________________RAISE_L2__________________       __________________BLANK_5__________________
-#define _________________RAISE_L3__________________       _______, _______, _______, _______, _______
+#define _________________RAISE_L1__________________       _______,      SELWORD, KC_UP,   SELLINE, KC_PGUP
+#define _________________RAISE_L2__________________       LCTL(KC_GRV), KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN
+#define _________________RAISE_L3__________________       TD_OS_PSPC, TD_OS_NSPC, TD_OS_PTAB, TD_OS_NTAB, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, LLOCK
 
