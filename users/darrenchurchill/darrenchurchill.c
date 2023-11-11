@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "print.h"
 #include "os_detection.h"
+#include "repeat_key.h"
 
 #include "darrenchurchill.h"
 #include "features/achordion.h"
@@ -8,7 +9,6 @@
 #include "features/custom_shift_keys.h"
 #include "features/layer_lock.h"
 #include "features/leader.h"
-#include "features/repeat_key.h"
 #include "features/select_word.h"
 
 
@@ -284,7 +284,7 @@ void* leader_start_func(uint16_t keycode) {
 
 /*
   Repeat Key
-  https://getreuer.info/posts/keyboards/repeat-key/index.html
+  https://docs.qmk.fm/#/feature_repeat_key
   TODO: are you still using repeat key?
 */
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
@@ -397,9 +397,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_achordion(keycode, record)) { return false; }
     if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
     if (!process_select_word_or_line(keycode, record, SELWORD, SELLINE)) { return false; }
-    if (!process_repeat_key_with_alt(keycode, record, UKC_REP, UKC_AREP)) {
-        return false;
-    }
     if (!process_custom_shift_keys(keycode, record)) { return false; }
     if (!process_case_modes(keycode, record)) { return false; }
 
