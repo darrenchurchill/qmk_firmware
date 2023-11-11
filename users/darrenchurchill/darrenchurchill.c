@@ -291,9 +291,16 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
     switch (keycode) {
         // Ignore the following keys
-        case UKC_BASE ... UKC_OS_NEXT_TAB:  // My custom keycodes
         case KC_BACKSPACE:
         case KC_DELETE:
+        case QK_LAYER_TAP    ... QK_LAYER_TAP_MAX:
+        case QK_LAYER_MOD    ... QK_LAYER_MOD_MAX:
+        case QK_TO           ... QK_TO_MAX:
+        case QK_MOMENTARY    ... QK_MOMENTARY_MAX:
+        case QK_DEF_LAYER    ... QK_DEF_LAYER_MAX:
+        case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+        case QK_TAP_DANCE    ... QK_TAP_DANCE_MAX:
+        case UKC_BASE        ... UKC_OS_NEXT_TAB:  // My custom keycodes
             return false;
     }
 
