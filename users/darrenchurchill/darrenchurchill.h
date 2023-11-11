@@ -33,8 +33,6 @@ enum userspace_custom_keycodes {
   UKC_GEQ, // >=
   UKC_DB_MINS,
   UKC_DB_UNDS,
-  UKC_REP,  // Repeat Key
-  UKC_AREP,  // Alt Repeat Key
   UKC_CW_TOGG,
   UKC_LEAD,
   LLOCK,
@@ -243,8 +241,8 @@ enum tap_dance_codes {
 #define ________________EXTEND_5_L4________________       ____________EXTEND_4_L4____________, _______
 
 #define _________________EXTEND_R1_________________       KC_MPRV, VOL_DN,  VOL_UP,  KC_MNXT, KC_MPLY
-#define _________________EXTEND_R2_________________       KC_BSPC, _______, _______, KC_DEL,  UKC_REP
-#define _________________EXTEND_R3_________________       _______, KC_MUTE, UKC_AREP, UKC_REP, _______
+#define _________________EXTEND_R2_________________       KC_BSPC, _______, _______, KC_DEL,  QK_REP
+#define _________________EXTEND_R3_________________       _______, KC_MUTE, QK_AREP, QK_REP, _______
 #define ____________EXTEND_4_R4____________                        ______________BLANK_4______________
 #define ________________EXTEND_5_R4________________       _______, ____________EXTEND_4_R4____________
 

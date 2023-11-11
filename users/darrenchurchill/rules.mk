@@ -5,7 +5,6 @@ SRC += $(USER_PATH)/features/casemodes.c
 SRC += $(USER_PATH)/features/custom_shift_keys.c
 SRC += $(USER_PATH)/features/layer_lock.c
 SRC += $(USER_PATH)/features/leader.c
-SRC += $(USER_PATH)/features/repeat_key.c
 SRC += $(USER_PATH)/features/select_word.c
 
 LTO_ENABLE = yes
@@ -18,6 +17,7 @@ OS_DETECTION_ENABLE = yes
 
 DYNAMIC_TAPPING_TERM_ENABLE = yes
 COMBO_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
 # https://github.com/qmk/qmk_firmware/issues/21137
 # Using INTROSPECTION_KEYMAP_C isn't recommended, but it works for this purpose
