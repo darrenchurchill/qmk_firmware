@@ -110,7 +110,7 @@ enum tap_dance_codes {
 #define QKC_COM RSFT_T(KC_COMM)
 #define QKC_DOT RALT_T(KC_DOT)
 #define QKC_SL RCTL_T(KC_SLSH)
-#define QKC_SPC RSFT_T(KC_SPC)
+#define QKC_SPC RSE_T(KC_SPC)
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
 // These are named by the Qwerty key they sit below
@@ -118,11 +118,11 @@ enum tap_dance_codes {
 #define BKC_Z LCTL_T(KC_GRV)
 #define BKC_X LALT_T(KC_ESC)
 #define BKC_C KC_LGUI
-#define BKC_V RSE
+#define BKC_V QK_REP
 #define BKC_B LWR_T(KC_TAB)
 // Right Hand
 #define BKC_N QKC_SPC
-#define BKC_M RSE_T(KC_MINS)
+#define BKC_M QK_AREP
 #define BKC_COM KC_UNDS
 #define BKC_DOT KC_DQUO
 #define BKC_SL KC_QUOT
