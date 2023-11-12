@@ -301,6 +301,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
 
         case KC_BACKSPACE:
         case KC_DELETE:
+        case KC_ENTER:
 
         // Custom keycodes I want to ignore
         case UKC_OS_CUT ... UKC_OS_PASTE:
