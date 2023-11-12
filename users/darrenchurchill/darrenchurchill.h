@@ -124,9 +124,9 @@ enum tap_dance_codes {
 // Right Hand
 #define BKC_N QKC_SPC
 #define BKC_M QK_AREP
-#define BKC_COM KC_UNDS
+#define BKC_COM KC_QUOT
 #define BKC_DOT KC_DQUO
-#define BKC_SL KC_QUOT
+#define BKC_SL KC_MINS
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
 // Mostly inspired by:
