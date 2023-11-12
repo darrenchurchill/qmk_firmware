@@ -227,12 +227,13 @@ bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
 }
 
 void toggle_screaming_snake_case(void) {
-    if (get_xcase_state() == XCASE_ON) {
-        disable_xcase();
+    if (caps_word_enabled() || get_xcase_state() == XCASE_ON) {
+        if (caps_word_enabled()) disable_caps_word();
+        if (get_xcase_state() == XCASE_ON) disable_xcase();
     } else {
         enable_xcase();
+        enable_caps_word();
     }
-    toggle_caps_word();
 }
 
 
