@@ -39,6 +39,7 @@
 #define COMBO_MUST_TAP_PER_COMBO
 
 // Caps Word, from features/casemodes.[h|c]
+#define DEFAULT_CAMEL_CASE_ON_SPACE
 #define CAPSWORD_USE_SHIFT
 
 // Mouse Keys

@@ -98,7 +98,14 @@ void enable_xcase(void) {
 // Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter) {
     xcase_state = XCASE_ON;
+#ifdef DEFAULT_CAMEL_CASE_ON_SPACE
+    if (QK_MODS_GET_BASIC_KEYCODE(delimiter) == KC_SPACE)
+        xcase_delimiter = OSM(MOD_LSFT);
+    else
+        xcase_delimiter = delimiter;
+#else
     xcase_delimiter = delimiter;
+#endif
     distance_to_last_delim = -1;
 }
 
