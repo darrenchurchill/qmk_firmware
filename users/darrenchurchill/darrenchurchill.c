@@ -167,7 +167,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     // I have these symbols' shifted variants on their own keys in the
     // _LOWER layer, so I don't want to shift them.
     {LKC_EQUAL, KC_EQUAL},
-    {LKC_LBRC, KC_LBRC},
+    {KC_LBRC, KC_LBRC},
     {KC_RBRC, KC_RBRC},
     // Remaining custom shift keys
     {LKC_H, KC_AMPR}, // TODO: change LKC_H to KC_PIPE if you keep it here
@@ -448,6 +448,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
             // _LOWER layer keycodes
             case LKC_D:
+            case LKC_J:
             case LKC_K:
             case LKC_L:
                 // FIXME: the L/R parens register as <,> when repeated, b/c of
