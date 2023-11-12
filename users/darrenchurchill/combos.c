@@ -107,6 +107,11 @@ const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
     - Vertical combos mirrored vertically on left hand.
     - This is so "<=", or "double left arrow", mirrors "=>" on the right hand.
 
+  XCASE:
+    - This is a left hand mnemonic combo "XC" for "XCase"
+    - Having the combo on the left hand and most word-separating symbols on the
+      right hand makes it easy to hit the XCase combo and then type the symbol.
+
   Minus/underscore:
     - These are used as separators in variable names, depending on language, so
       I hope they'll be easy to type once and return to typing letters.
@@ -150,7 +155,7 @@ combo_t key_combos[] = {
     COMBO(combo_fg, KC_MINS),
     // Bottom Row
     COMBO(combo_zxcv, UKC_OS_PASTE),
-    COMBO(combo_xc, KC_SLASH),
+    COMBO(combo_xc, UKC_XCASE),
     COMBO(combo_cv, KC_GRV),
     COMBO(combo_cvb, XXXXXXX), // triple backtick?
     COMBO(combo_vb, XXXXXXX),

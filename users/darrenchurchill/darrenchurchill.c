@@ -307,6 +307,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
         case UKC_OS_CUT ... UKC_OS_PASTE:
         case UKC_LARRW ... UKC_DB_UNDS:
         case UKC_CW_TOGG:
+        case UKC_XCASE:
             return false;
     }
 
@@ -549,6 +550,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
             case UKC_LEAD:
                 start_leading();
+                return false;
+
+            case UKC_XCASE:
+                enable_xcase();
                 return false;
         }
     }
