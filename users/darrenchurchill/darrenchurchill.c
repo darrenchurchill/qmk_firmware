@@ -291,16 +291,21 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
     switch (keycode) {
         // Ignore the following keys
+
+        // You might want to add other ranges from keycodes.h as necessary. I'm
+        // trying to limit them here to the ones I use, to hopefully avoid
+        // unexpected issues.
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            if (record->tap.count == 0) return false; // ignore the hold event
+            break;
+
         case KC_BACKSPACE:
         case KC_DELETE:
-        case QK_LAYER_TAP    ... QK_LAYER_TAP_MAX:
-        case QK_LAYER_MOD    ... QK_LAYER_MOD_MAX:
-        case QK_TO           ... QK_TO_MAX:
-        case QK_MOMENTARY    ... QK_MOMENTARY_MAX:
-        case QK_DEF_LAYER    ... QK_DEF_LAYER_MAX:
-        case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
-        case QK_TAP_DANCE    ... QK_TAP_DANCE_MAX:
-        case UKC_BASE        ... UKC_OS_NEXT_TAB:  // My custom keycodes
+
+        // Custom keycodes I want to ignore
+        case UKC_OS_CUT ... UKC_OS_PASTE:
+        case UKC_LARRW ... UKC_DB_UNDS:
+        case UKC_CW_TOGG:
             return false;
     }
 
