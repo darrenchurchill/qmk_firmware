@@ -159,10 +159,11 @@ enum tap_dance_codes {
 // Right Hand
 /*
    6    1    2    3    4
-   |    [    (    )    ]
-   &    $    {    }    %
+   |    :    (    )    %
+   &    $    [    ]
+             {    }
 */
-#define LKC_LBRC RGUI_T(KC_LBRC)
+#define LKC_COLN RGUI_T(KC_COLN)
 
 #define LKC_Y KC_6
 #define LKC_U KC_1
@@ -170,15 +171,17 @@ enum tap_dance_codes {
 #define LKC_O KC_3
 #define LKC_P KC_4
 #define LKC_H KC_PIPE
-#define LKC_J LKC_LBRC
+#define LKC_J LKC_COLN
 #define LKC_K RSFT_T(KC_LPRN) // Know this is indistinguishable from RSFT_T(KC_9)
 #define LKC_L LWR_T(KC_RPRN)
-#define LKC_SC KC_RBRC
+#define LKC_SC KC_PERC
 #define LKC_N KC_AMPR
 #define LKC_M KC_DLR
-#define LKC_COM KC_LCBR
-#define LKC_DOT KC_RCBR
-#define LKC_SL KC_PERC
+#define LKC_COM KC_LBRC
+#define LKC_DOT KC_RBRC
+#define LKC_SL _______
+#define LBKC_COM KC_LCBR
+#define LBKC_DOT KC_RCBR
 
 /*
   Keycode wrappers
@@ -218,7 +221,7 @@ enum tap_dance_codes {
 #define _________________LOWER_R1__________________       LKC_Y,   LKC_U,   LKC_I,    LKC_O,   LKC_P
 #define _________________LOWER_R2__________________       LKC_H,   LKC_J,   LKC_K,    LKC_L,   LKC_SC
 #define _________________LOWER_R3__________________       LKC_N,   LKC_M,   LKC_COM,  LKC_DOT, LKC_SL
-#define ____________LOWER_4_R4_____________                        _______, _______,  _______, _______
+#define ____________LOWER_4_R4_____________                        _______, LBKC_COM, LBKC_DOT, _______
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
 
 
