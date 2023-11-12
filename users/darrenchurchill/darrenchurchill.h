@@ -35,6 +35,7 @@ enum userspace_custom_keycodes {
   UKC_DB_UNDS,
   UKC_CW_TOGG,
   UKC_LEAD,
+  UKC_XCASE,
   LLOCK,
   SELWORD,
   SELLINE,
