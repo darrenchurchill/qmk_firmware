@@ -4,7 +4,6 @@
 
 enum userspace_layers {
     _QWERTY,
-    _QWERTY_NO_MODS, // top-level "default" layout so can override others temporarily
     _LOWER,
     _RAISE,
     _EXTEND,
@@ -54,7 +53,6 @@ enum tap_dance_codes {
 /*
   Layer Macros
 */
-#define QNM_T(KC) LT(_QWERTY_NO_MODS, KC)
 #define LWR_T(KC) LT(_LOWER, KC)
 #define RSE MO(_RAISE)
 #define RSE_T(KC) LT(_RAISE, KC)
@@ -196,8 +194,6 @@ enum tap_dance_codes {
 #define _________________QWERTY_R2_________________       QKC_H,   QKC_J,   QKC_K,   QKC_L,   QKC_SC
 #define _________________QWERTY_R3_________________       QKC_N,   QKC_M,   QKC_COM, QKC_DOT, QKC_SL
 
-#define _____________QWERTY_NO_MODS_R2_____________       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
-#define _____________QWERTY_NO_MODS_R3_____________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
 #define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B
