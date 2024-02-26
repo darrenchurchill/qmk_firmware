@@ -40,14 +40,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef QUICK_TAP_TERM_PER_KEY
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QKC_A:
-        case QKC_SC:
-        case BKC_V:
-        case BKC_N:
-            // Disable tap-hold repeat
+    // Disable tap-hold repeat for layer-tap keys to the below layers
+    switch (QK_LAYER_TAP_GET_LAYER(keycode)) {
+        case _LOWER: // This LT key is usually on the home row
+        case _ARROWS: // This LT key is usually on the R thumb
             return 0;
     }
+
     return QUICK_TAP_TERM;
 }
 #endif // QUICK_TAP_TERM_PER_KEY
