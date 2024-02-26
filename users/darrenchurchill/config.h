@@ -31,6 +31,8 @@
 
 // Combos
 #define COMBO_TERM 70
+#define COMBO_TERM_FAST 20 // My own personal macro definition, not in QMK
+#define COMBO_TERM_PER_COMBO
 // Define COMBO_HOLD_TERM such that my tap-only combos don't have to be pressed
 // too quickly in order to fire. The value defaults to TAPPING_TERM, but my
 // TAPPING_TERM is short so home-row shift works quickly.

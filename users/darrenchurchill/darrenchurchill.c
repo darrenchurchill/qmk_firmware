@@ -534,16 +534,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 SEND_STRING(">=");
                 return false;
 
+            case UKC_TRP_GRAVE:
+                SEND_STRING("```");
+                return false;
+
             case UKC_DB_MINS:
-                // Handle my custom keycode for a double minus/dash
-                tap_code16(KC_MINS);
-                tap_code16(KC_MINS);
+                SEND_STRING("--");
                 return false;
 
             case UKC_DB_UNDS:
-                // Handle my custom keycode for a double underscore
-                tap_code16(KC_UNDS);
-                tap_code16(KC_UNDS);
+                SEND_STRING("__");
                 return false;
 
             case UKC_CW_TOGG:

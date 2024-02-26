@@ -31,6 +31,7 @@ enum userspace_custom_keycodes {
   UKC_DBRARRW, // =>
   UKC_LEQ, // <=
   UKC_GEQ, // >=
+  UKC_TRP_GRAVE,
   UKC_DB_MINS,
   UKC_DB_UNDS,
   UKC_CW_TOGG,
