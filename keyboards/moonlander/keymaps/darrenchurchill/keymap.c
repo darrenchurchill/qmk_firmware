@@ -32,14 +32,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                      BKC_B, KC_BSPC,                          KC_BSPC, BKC_N
     ),
 
-    [_QWERTY_NO_MODS] = LAYOUT_moonlander_custom_wrapper(
-        _________________QWERTY_L1_________________,  _______,       _______, _________________QWERTY_R1_________________,
-        _________________QWERTY_L2_________________,  _______,       _______, _____________QWERTY_NO_MODS_R2_____________,
-        _________________QWERTY_L3_________________,                          _____________QWERTY_NO_MODS_R3_____________,
-        _____________BASE_4_L4_____________,          _______,       _______,         _____________BASE_4_R4_____________,
-                                   _______, _______,                          _______, _______
-    ),
-
     [_LOWER] = LAYOUT_moonlander_custom_wrapper(
         _________________LOWER_L1__________________, _______,         _______, _________________LOWER_R1__________________,
         _________________LOWER_L2__________________, _______,         _______, _________________LOWER_R2__________________,
@@ -144,28 +136,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
         {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
         {HSV_OFF}, {HSV_QUOT}, {HSV_SYM},
-        {HSV_ON},  {HSV_BSPC}, {HSV_ON},
-        {HSV_ON}
-    },
-
-    [_QWERTY_NO_MODS] = {
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
-        {HSV_OFF}, {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
-        {HSV_OFF}, {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
-        {HSV_OFF}, {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
-        {HSV_OFF}, {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_BSPC}, {HSV_ON},
-        {HSV_ON},
-
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_LYR},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_ON},  {HSV_QUOT}, {HSV_SYM},
         {HSV_ON},  {HSV_BSPC}, {HSV_ON},
         {HSV_ON}
     },
@@ -376,9 +346,6 @@ bool rgb_matrix_indicators_user(void) {
     switch (biton32(layer_state)) {
         case _QWERTY:
             set_layer_color(_QWERTY);
-            break;
-        case _QWERTY_NO_MODS:
-            set_layer_color(_QWERTY_NO_MODS);
             break;
         case _LOWER:
             set_layer_color(_LOWER);

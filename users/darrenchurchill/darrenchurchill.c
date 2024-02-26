@@ -434,8 +434,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     disable_xcase();
                     return false;
                 }
-                if (get_highest_layer(layer_state) > _QWERTY_NO_MODS) {
-                    // If we're on a layer higher than _QWERTY_NO_MODS, return to the
+                if (get_highest_layer(layer_state) > _QWERTY) {
+                    // If we're on a layer higher than _QWERTY, return to the
                     // _QWERTY layer instead of tapping KC_ESC. This includes cancelling
                     // the current One Shot mods & layer state.
                     clear_oneshot_mods();
