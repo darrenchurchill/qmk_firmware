@@ -17,6 +17,11 @@ enum required_idx_combos {
     COMBO_DEL_LH,
     COMBO_BSPC_RH,
     COMBO_DEL_RH,
+    COMBO_DF,
+    COMBO_JK,
+    COMBO_JKL,
+    COMBO_KL,
+    COMBO_DK,
 };
 
 
@@ -28,26 +33,19 @@ const uint16_t PROGMEM combo_wer[] = { QKC_W, QKC_E, QKC_R, COMBO_END };
 const uint16_t PROGMEM combo_rt[] = { QKC_R, QKC_T, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_asdf[] = { QKC_A, QKC_S, QKC_D, QKC_F, COMBO_END };
-const uint16_t PROGMEM combo_sd[] = { QKC_S, QKC_D, COMBO_END };
-const uint16_t PROGMEM combo_sdf[] = { QKC_S, QKC_D, QKC_F, COMBO_END };
 const uint16_t PROGMEM combo_df[] = { QKC_D, QKC_F, COMBO_END };
-const uint16_t PROGMEM combo_dfg[] = { QKC_D, QKC_F, QKC_G, COMBO_END };
 const uint16_t PROGMEM combo_fg[] = { QKC_F, QKC_G, COMBO_END };
 // Bottom Row
 const uint16_t PROGMEM combo_zxcv[] = { QKC_Z, QKC_X, QKC_C, QKC_V, COMBO_END };
-const uint16_t PROGMEM combo_xc[] = { QKC_X, QKC_C, COMBO_END };
+const uint16_t PROGMEM combo_xcv[] = { QKC_X, QKC_C, QKC_V, COMBO_END };
 const uint16_t PROGMEM combo_cv[] = { QKC_C, QKC_V, COMBO_END };
-const uint16_t PROGMEM combo_cvb[] = { QKC_C, QKC_V, QKC_B, COMBO_END };
-const uint16_t PROGMEM combo_vb[] = { QKC_V, QKC_B, COMBO_END };
 
 // Vertical combos
 // Top + Home Rows
-const uint16_t PROGMEM combo_ws[] = { QKC_W, QKC_S, COMBO_END };
 const uint16_t PROGMEM combo_ed[] = { QKC_E, QKC_D, COMBO_END };
 const uint16_t PROGMEM combo_rf[] = { QKC_R, QKC_F, COMBO_END };
 const uint16_t PROGMEM combo_tg[] = { QKC_T, QKC_G, COMBO_END };
 // Home + Bottom Rows
-const uint16_t PROGMEM combo_dc[] = { QKC_D, QKC_C, COMBO_END };
 const uint16_t PROGMEM combo_fv[] = { QKC_F, QKC_V, COMBO_END };
 const uint16_t PROGMEM combo_gb[] = { QKC_G, QKC_B, COMBO_END };
 
@@ -59,13 +57,10 @@ const uint16_t PROGMEM combo_yu[] = { QKC_Y, QKC_U, COMBO_END };
 const uint16_t PROGMEM combo_uio[] = { QKC_U, QKC_I, QKC_O, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_hj[] = { QKC_H, QKC_J, COMBO_END };
-const uint16_t PROGMEM combo_hjk[] = { QKC_H, QKC_J, QKC_K, COMBO_END };
 const uint16_t PROGMEM combo_jk[] = { QKC_J, QKC_K, COMBO_END };
 const uint16_t PROGMEM combo_jkl[] = { QKC_J, QKC_K, QKC_L, COMBO_END };
 const uint16_t PROGMEM combo_kl[] = { QKC_K, QKC_L, COMBO_END };
 // Bottom Row
-const uint16_t PROGMEM combo_nm[] = { QKC_N, QKC_M, COMBO_END };
-const uint16_t PROGMEM combo_nm_comma[] = { QKC_N, QKC_M, QKC_COM, COMBO_END };
 const uint16_t PROGMEM combo_m_comma[] = { QKC_M, QKC_COM, COMBO_END };
 const uint16_t PROGMEM combo_m_comma_dot[] = { QKC_M, QKC_COM, QKC_DOT, COMBO_END };
 const uint16_t PROGMEM combo_comma_dot[] = { QKC_COM, QKC_DOT, COMBO_END };
@@ -75,7 +70,6 @@ const uint16_t PROGMEM combo_comma_dot[] = { QKC_COM, QKC_DOT, COMBO_END };
 const uint16_t PROGMEM combo_yh[] = { QKC_Y, QKC_H, COMBO_END };
 const uint16_t PROGMEM combo_uj[] = { QKC_U, QKC_J, COMBO_END };
 const uint16_t PROGMEM combo_ik[] = { QKC_I, QKC_K, COMBO_END };
-const uint16_t PROGMEM combo_ol[] = { QKC_O, QKC_L, COMBO_END };
 
 // Home + Bottom Rows
 const uint16_t PROGMEM combo_hn[] = { QKC_H, QKC_N, COMBO_END };
@@ -89,49 +83,6 @@ const uint16_t PROGMEM combo_dk[] = { QKC_D, QKC_K, COMBO_END };
 const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
 #endif
 
-/*
-  Combo -> keycode definitions
-
-  A few justifications for my placements:
-
-  Backspace/delete:
-    - left hand & right hand combos mirror each other.
-    - They are convenient to access when the thumb is occupied holding down a
-      layer key.
-
-  Cut/copy/paste:
-    - These are all 4-key combos arranged vertically on the left hand, so
-      they're usable when the mouse is in the right hand.
-
-  Less-than/greater-than:
-    - Vertical combos mirrored vertically on left hand.
-    - This is so "<=", or "double left arrow", mirrors "=>" on the right hand.
-
-  XCASE:
-    - This is a left hand mnemonic combo "XC" for "XCase"
-    - Having the combo on the left hand and most word-separating symbols on the
-      right hand makes it easy to hit the XCase combo and then type the symbol.
-
-  Minus/underscore:
-    - These are used as separators in variable names, depending on language, so
-      I hope they'll be easy to type once and return to typing letters.
-        - I've also tried them on SD/KL, CV/MComma, and KL/CommaDot (all RHand)
-        - Hopefully the benefits of other combos makes their placement
-          acceptable.
-
-  Colon/semicolon:
-    - Semicolon is Vim repeat motion in same direction. Comma is Vim repeat
-      motion in opposite direction.
-        - The overlap between combo & regular key is convenient.
-    - Both symbols are often followed by a new line, and I think both of these
-      combos are easy to follow with jk -> KC_ENT.
-    - Colon/semicolon shifted/un-shifted combo keycodes overlap.
-
-  Remaining symbols:
-    - The remaining combos are arranged in mirrored pairs, when applicable, left
-      hand & right hand, either shifted/unshifted, or "directional", as in
-      left/right arrow.
-*/
 
 combo_t key_combos[] = {
     // Required indexed combos:
@@ -139,34 +90,31 @@ combo_t key_combos[] = {
     [COMBO_DEL_LH] = COMBO(combo_rt, KC_DEL),
     [COMBO_BSPC_RH] = COMBO(combo_yh, KC_BSPC),
     [COMBO_DEL_RH] = COMBO(combo_yu, KC_DEL),
+    [COMBO_DF] = COMBO(combo_df, RSE_T(KC_ESC)),
+    [COMBO_JK] = COMBO(combo_jk, KC_ENT),
+    [COMBO_JKL] = COMBO(combo_jkl, UKC_DB_UNDS),
+    [COMBO_KL] = COMBO(combo_kl, KC_UNDS),
+    [COMBO_DK] = COMBO(combo_dk, UKC_CW_TOGG),
 
 
     // Left Hand
     // Horizontal combos
     // Top Row
     COMBO(combo_qwer, UKC_OS_CUT),
-    COMBO(combo_wer, XXXXXXX),
+    COMBO(combo_wer, LLOCK),
     // Home Row
     COMBO(combo_asdf, UKC_OS_COPY),
-    COMBO(combo_sd, KC_QUOT),
-    COMBO(combo_sdf, XXXXXXX), // triple single quote?
-    COMBO(combo_df, KC_ESC),
-    COMBO(combo_dfg, UKC_DB_MINS),
-    COMBO(combo_fg, KC_MINS),
+    COMBO(combo_fg, KC_QUES),
     // Bottom Row
     COMBO(combo_zxcv, UKC_OS_PASTE),
-    COMBO(combo_xc, UKC_XCASE),
-    COMBO(combo_cv, KC_GRV),
-    COMBO(combo_cvb, XXXXXXX), // triple backtick?
-    COMBO(combo_vb, XXXXXXX),
+    COMBO(combo_xcv, UKC_TRP_GRAVE),
+    COMBO(combo_cv, KC_GRAVE),
 
     // Vertical combos
     // Top + Home Rows
-    COMBO(combo_ws, LLOCK),
     COMBO(combo_ed, UKC_LARRW), // "<-"
     COMBO(combo_rf, UKC_LEQ), // "<="
     // Home + Bottom Rows
-    COMBO(combo_dc, XXXXXXX),
     COMBO(combo_fv, UKC_GEQ), // ">="
     COMBO(combo_gb, UKC_LEAD),
 
@@ -174,25 +122,18 @@ combo_t key_combos[] = {
     // Right Hand
     // Horizontal combos
     // Top Row
-    COMBO(combo_uio, XXXXXXX),
+    COMBO(combo_uio, LLOCK),
     // Home Row
-    COMBO(combo_hj, KC_UNDS),
-    COMBO(combo_hjk, UKC_DB_UNDS),
-    COMBO(combo_jk, KC_ENT),
-    COMBO(combo_jkl, XXXXXXX), // triple double quote?
-    COMBO(combo_kl, KC_DQUO),
+    COMBO(combo_hj, KC_SLASH),
     // Bottom Row
-    COMBO(combo_nm, XXXXXXX),
-    COMBO(combo_nm_comma, XXXXXXX),
-    COMBO(combo_m_comma, KC_SEMICOLON),
-    COMBO(combo_m_comma_dot, KC_COLON),
-    COMBO(combo_comma_dot, KC_QUES),
+    COMBO(combo_m_comma, KC_DQUO),
+    COMBO(combo_m_comma_dot, UKC_DB_MINS),
+    COMBO(combo_comma_dot, KC_MINS),
 
     // Vertical combos
     // Top + Home Rows
     COMBO(combo_uj, UKC_DBRARRW), // "=>"
     COMBO(combo_ik, UKC_RARRW), // "->"
-    COMBO(combo_ol, LLOCK), // "LO" for "Lock"
     // Home + Bottom Rows
     COMBO(combo_hn, UKC_LEAD),
     COMBO(combo_jm, KC_CIRCUMFLEX), // "^", for vim
@@ -200,11 +141,25 @@ combo_t key_combos[] = {
 
 
     // Both Hands
-    COMBO(combo_dk, UKC_CW_TOGG),
 #ifdef RGB_MATRIX_ENABLE
     COMBO(combo_lyr, TG(_LAYERS)),
 #endif
 };
+
+
+// https://docs.qmk.fm/#/feature_combo?id=per-combo-timing-holding-tapping-and-key-press-order
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    switch (index) {
+        case COMBO_DF:
+        case COMBO_JK:
+        case COMBO_JKL:
+        case COMBO_KL:
+        case COMBO_DK:
+            return COMBO_TERM_FAST;
+    }
+
+    return COMBO_TERM;
+}
 
 
 // This function returns true if a given combo should only fire when tapped
