@@ -63,72 +63,74 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     // consider the following keycodes as holds
     bool is_tap_hold_mod_tap = tap_hold_keycode & QK_MOD_TAP;
     uint8_t tap_hold_keycode_mods = QK_MODS_GET_MODS(tap_hold_keycode);
+    uint8_t other_keycode_basic_kc = QK_MODS_GET_BASIC_KEYCODE(other_keycode);
 
     // A mod-tap tap-hold keycode stores the modifier in the 5 bit form, so in
     // the following 4 tests, we can & with the Left Hand MOD_L* values to check
     // for either the Left or Right hand version. The left/right flag is stored
     // in its own bit.
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LGUI) {
-        switch (other_keycode) {
-            case QKC_Q: // Cmd + Q -> quit
-            case QKC_M: // Cmd + M -> minimize window
+        switch (other_keycode_basic_kc) {
+            // TODO: swap with cases for CKC_* macros, and leave any QKC_* cases
+            // that don't overlap
+            // case CKC_Q:
+            // case CKC_M:
+            // case CKC_C:
+            // case CKC_V:
+            // case CKC_B:
+            case KC_Q: // Cmd + Q -> quit
+            case KC_M: // Cmd + M -> minimize window
                 return false; // Should wait for achordion's timeout
-            case QKC_C:
-            case QKC_V:
-            case QKC_B:
-            case BKC_N: // Cmd + Space
-            case BKC_B: // Cmd + Tab
+            case KC_C:
+            case KC_V:
+            case KC_B:
+            case KC_SPC: // Cmd + Space
+            case KC_TAB: // Cmd + Tab
                 return true;
         }
     }
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LSFT) {
-        switch (other_keycode) {
-            case BKC_B: // Shift + Tab
+        switch (other_keycode_basic_kc) {
+            case KC_TAB: // Shift + Tab
                 return true;
         }
     }
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LALT) {
-        switch (other_keycode) {
-            case BKC_B: // Alt + Tab
+        switch (other_keycode_basic_kc) {
+            case KC_TAB: // Alt + Tab
                 return true;
         }
     }
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LCTL) {
-        switch (other_keycode) {
+        switch (other_keycode_basic_kc) {
+            case KC_SPC: // Ctrl + Space changes input source on MacOS (Avoid this)
+                return false;
+            // TODO: confirm the Vim-related keys below still work with a Colemak layout
             // Left Hand
-            case QKC_E:
-            case QKC_A:
-            case QKC_C:
-            case QKC_V:
-            case QKC_B:
-            case BKC_B: // Ctrl + Tab
+            case KC_E:
+            case KC_A:
+            case KC_C:
+            case KC_V:
+            case KC_B:
+            case KC_TAB: // Ctrl + Tab
             // Right Hand
-            case QKC_Y:
-            case QKC_U:
-            case QKC_I:
-            case QKC_O:
+            case KC_Y:
+            case KC_U:
+            case KC_I:
+            case KC_O:
                 return true;
         }
     }
 
     if (QK_LAYER_TAP_GET_LAYER(tap_hold_keycode) == _LOWER) {
-        switch (other_keycode) {
+        switch (other_keycode_basic_kc) {
             case KC_BSPC:
-            case BKC_N: // Space
-            case BKC_M: // For layer lock w/ RHand
+            case KC_SPC:
                 return true;
         }
-    }
-
-    switch (tap_hold_keycode) {
-        case HYPR_T(KC_GRV):
-        case MEH_T(KC_MINS):
-        case BKC_B:
-        case BKC_M:
-            return true;
     }
 
     // The default choice is to return true if the keys are on opposite hands
