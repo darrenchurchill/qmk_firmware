@@ -11,8 +11,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,  _________________QWERTY_L1_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R1_________________, KC_MINS,
         KC_TAB,  _________________QWERTY_L2_________________,  KC_GRV,        KC_DQUO, _________________QWERTY_R2_________________, KC_QUOT,
         KC_BSPC, _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________, KC_DEL,
-        KC_LCTL, _____________BASE_4_L4_____________,     LGUI_T(KC_DQT), LGUI_T(KC_UNDS),     _____________BASE_4_R4_____________, KC_RCTL,
-                                  LSFT_T(KC_ESC), KC_ENT, HYPR_T(KC_TAB), MEH_T(KC_TAB), KC_BSPC, CKC_SPC
+        KC_LCTL, _____________BASE_4_L4_____________,          TKC_L10,       TKC_R10,         _____________BASE_4_R4_____________, KC_RCTL,
+                                            TKC_L00, TKC_L01, TKC_L02,        TKC_R02, TKC_R01, TKC_R00
     ),
 
     [_LOWER] = LAYOUT_moonlander_wrapper(

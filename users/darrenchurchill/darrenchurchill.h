@@ -113,19 +113,37 @@ enum tap_dance_codes {
 #define QKC_SPC RSE_T(KC_SPC)
 
 // Base Keys (Bottom Row + Thumb Keys): BKC -> "Base KeyCode"
+// Not all keyboards will use all of these keys, but they should have at least
+// the outer 2-3 keys on each hand.
 // These are named by the Qwerty key they sit below
 // Left Hand
-#define BKC_Z LCTL_T(KC_GRV)
-#define BKC_X LALT_T(KC_ESC)
-#define BKC_C KC_LGUI
-#define BKC_V QK_REP
-#define BKC_B LWR_T(KC_TAB)
+#define BKC_Z KC_PAGE_UP
+#define BKC_X KC_PAGE_DOWN
+#define BKC_C KC_LEFT
+#define BKC_V KC_RIGHT
 // Right Hand
-#define BKC_N QKC_SPC
-#define BKC_M QK_AREP
-#define BKC_COM KC_QUOT
+#define BKC_M KC_DOWN
+#define BKC_COM KC_UP
 #define BKC_DOT KC_DQUO
 #define BKC_SL KC_MINS
+
+// Thumb Keys: TKC -> "Thumb KeyCode"
+// Not all keyboards will use all of these keys, but they should have at least
+// 1-2 thumb keys on each hand. (PlanckEZ has the fewest, with the middle
+// spacebar)
+// These are numbered ROWCOL, outside to inside, bottom to top
+// The key the thumbs rest on is "00"
+// Left Hand
+#define TKC_L00 LSFT_T(KC_ESC)
+#define TKC_L01 KC_ENTER
+#define TKC_L02 HYPR_T(KC_TAB)
+#define TKC_L10 LGUI_T(KC_DQT)
+
+// Right Hand
+#define TKC_R00 CKC_SPC
+#define TKC_R01 KC_BSPC
+#define TKC_R02 MEH_T(KC_TAB)
+#define TKC_R10 LGUI_T(KC_UNDS)
 
 // LOWER Layer Keys: LKC -> "Lower KeyCode"
 // Mostly inspired by:
@@ -196,10 +214,12 @@ enum tap_dance_codes {
 
 
 #define _____________BASE_4_L4_____________               BKC_Z,   BKC_X,   BKC_C,   BKC_V
-#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, BKC_B
+#define _________________BASE_5_L4_________________       _____________BASE_4_L4_____________, TKC_L00
+#define _____________________BASE_6_L4____________________       _________________BASE_5_L4_________________, TKC_L01
 
 #define _____________BASE_4_R4_____________                        BKC_M,   BKC_COM, BKC_DOT, BKC_SL
-#define _________________BASE_5_R4_________________       BKC_N, _____________BASE_4_R4_____________
+#define _________________BASE_5_R4_________________       TKC_R00, _____________BASE_4_R4_____________
+#define _____________________BASE_6_R4____________________       TKC_R01, _________________BASE_5_R4_________________
 
 
 #define ________________NUMBER_LEFT________________       KC_7,    KC_8,    KC_9,    KC_0,    KC_5
