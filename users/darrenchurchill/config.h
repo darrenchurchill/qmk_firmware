@@ -12,7 +12,10 @@
 
 // Tap Hold
 #undef TAPPING_TERM
-#define TAPPING_TERM 200 // good for moonlander right now, check others and decide whether they need their own
+// NOTE: If TAPPING_TERM is too short, rolling over home row keys like I,E,N can
+// allow you to enter the LOWER layer without intending to. I imagine this has
+// to do with the when the TAPPING_TERM timer is reset.
+#define TAPPING_TERM 240
 #define TAPPING_TERM_PER_KEY
 #define QUICK_TAP_TERM_PER_KEY
 #define PERMISSIVE_HOLD
@@ -31,12 +34,12 @@
 
 // Combos
 #define COMBO_TERM 70
-#define COMBO_TERM_FAST 20 // My own personal macro definition, not in QMK
+#define COMBO_TERM_FAST 30 // My own personal macro definition, not in QMK
 #define COMBO_TERM_PER_COMBO
 // Define COMBO_HOLD_TERM such that my tap-only combos don't have to be pressed
 // too quickly in order to fire. The value defaults to TAPPING_TERM, but my
 // TAPPING_TERM is short so home-row shift works quickly.
-#define COMBO_ONLY_FROM_LAYER 0  // layer 0 is _QWERTY. Macro isn't available here
+#define COMBO_ONLY_FROM_LAYER 1  // layer 1 is _QWERTY. Macro isn't available here
 #define COMBO_HOLD_TERM 300
 #define COMBO_MUST_TAP_PER_COMBO
 

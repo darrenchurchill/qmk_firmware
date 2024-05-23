@@ -7,6 +7,7 @@
 #include "combos.h"
 #include "darrenchurchill.h"
 
+// TODO: change these to evaluate from _COLEMAK instead
 // NOTE: Combos are defined to be evaluated from the _QWERTY layer
 // See config.h COMBO_ONLY_FROM_LAYER
 
