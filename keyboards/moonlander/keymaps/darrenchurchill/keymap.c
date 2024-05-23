@@ -6,6 +6,15 @@
 #define LAYOUT_moonlander_wrapper(...) LAYOUT_moonlander(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_COLEMAK] = LAYOUT_moonlander_wrapper(
+        KC_EQL,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
+        KC_GRV,  ________________COLEMAK_L1_________________,  KC_GRV,        KC_MINS, ________________COLEMAK_R1_________________, KC_MINS,
+        KC_TAB,  ________________COLEMAK_L2_________________,  KC_GRV,        KC_DQUO, ________________COLEMAK_R2_________________, KC_QUOT,
+        KC_BSPC, ________________COLEMAK_L3_________________,                          ________________COLEMAK_R3_________________, KC_DEL,
+        KC_LCTL, _____________BASE_4_L4_____________,          TKC_L10,       TKC_R10,         _____________BASE_4_R4_____________, KC_RCTL,
+                                            TKC_L00, TKC_L01, TKC_L02,        TKC_R02, TKC_R01, TKC_R00
+    ),
+
     [_QWERTY] = LAYOUT_moonlander_wrapper(
         KC_EQL,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
         KC_GRV,  _________________QWERTY_L1_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R1_________________, KC_MINS,
@@ -110,6 +119,28 @@ void keyboard_post_init_keymap(void) {
 
 // in columns, NOT rows
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    [_COLEMAK] = {
+        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // left outside column, top to bottom
+        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
+        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
+        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
+        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
+        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
+        {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
+        {HSV_LYR}, {HSV_BSPC}, {HSV_ON}, // piano keys
+        {HSV_ON}, // thumb key
+
+        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // right outside column, top to bottom
+        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_QUOT},
+        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_QUOT},
+        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_ON},
+        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
+        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
+        {HSV_OFF}, {HSV_QUOT}, {HSV_SYM},
+        {HSV_ON},  {HSV_BSPC}, {HSV_ON},
+        {HSV_ON}
+    },
+
     [_QWERTY] = {
         {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // left outside column, top to bottom
         {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
@@ -336,6 +367,9 @@ bool rgb_matrix_indicators_user(void) {
     }
     if (keyboard_config.disable_layer_led) { return false; }
     switch (biton32(layer_state)) {
+        case _COLEMAK:
+            set_layer_color(_COLEMAK);
+            break;
         case _QWERTY:
             set_layer_color(_QWERTY);
             break;

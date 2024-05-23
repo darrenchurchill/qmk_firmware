@@ -14,6 +14,13 @@
 // https://github.com/qmk/qmk_firmware/blob/14e14e9ab8420bf15929d07da389a08a6d79fe3c/keyboards/moonlander/keymaps/drashna/keymap.c#L26
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_COLEMAK] = LAYOUT_planck_wrapper(
+        ________________COLEMAK_L1_________________, KC_GRV,  KC_MINS, ________________COLEMAK_R1_________________,
+        ________________COLEMAK_L2_________________, KC_GRV,  KC_MINS, ________________COLEMAK_R2_________________,
+        ________________COLEMAK_L3_________________, TKC_L10, TKC_R10, ________________COLEMAK_R3_________________,
+        _________________BASE_5_L4_________________, TKC_R01, XXXXXXX, _________________BASE_5_R4_________________
+    ),
+
     [_QWERTY] = LAYOUT_planck_wrapper(
         _________________QWERTY_L1_________________, KC_GRV,  KC_MINS, _________________QWERTY_R1_________________,
         _________________QWERTY_L2_________________, KC_GRV,  KC_MINS, _________________QWERTY_R2_________________,
@@ -78,6 +85,13 @@ void keyboard_post_init_keymap(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    [_COLEMAK] = {
+        {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
+        {HSV_CTL}, {HSV_LYR}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_LYR},  {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT}, {HSV_SFT}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON}, {HSV_ON},  {HSV_SFT}, {HSV_ALT},  {HSV_CTL},
+        {HSV_CTL}, {HSV_ALT}, {HSV_GUI}, {HSV_LYR}, {HSV_LYR}, {HSV_BSPC},            {HSV_ON}, {HSV_LYR}, {HSV_ON},  {HSV_QUOT}, {HSV_QUOT}
+    },
+
     [_QWERTY] = {
         {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_ON},  {HSV_ON},  {HSV_ON},   {HSV_ON},
         {HSV_CTL}, {HSV_LYR}, {HSV_SFT}, {HSV_GUI}, {HSV_ON},  {HSV_ON},   {HSV_SYM}, {HSV_ON}, {HSV_GUI}, {HSV_SFT}, {HSV_LYR},  {HSV_CTL},
@@ -163,6 +177,9 @@ bool rgb_matrix_indicators_user(void) {
         return false;
     }
     switch (biton32(layer_state)) {
+        case _COLEMAK:
+            set_layer_color(_COLEMAK);
+            break;
         case _QWERTY:
             set_layer_color(_QWERTY);
             break;

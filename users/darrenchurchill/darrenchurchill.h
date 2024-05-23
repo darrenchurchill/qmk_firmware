@@ -3,7 +3,8 @@
 
 
 enum userspace_layers {
-    _QWERTY,
+    _COLEMAK,
+    _QWERTY,  // top-level "default" layout so can override others temporarily
     _LOWER,
     _RAISE,
     _EXTEND,
@@ -76,6 +77,41 @@ enum tap_dance_codes {
 #define TD_OS_NTAB TD(TD_LGUI_T_OS_NEXT_TAB)
 #define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
 #define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
+
+// COLEMAK Layer Keys: CKC -> "Colemak KeyCode"
+// Left Hand
+#define CKC_Q FN_T(KC_Q)
+#define CKC_W MS_T(KC_W)
+#define CKC_F EXT_T(KC_F)
+#define CKC_P RSE_T(KC_P)
+#define CKC_B KC_B
+#define CKC_A LCTL_T(KC_A)
+#define CKC_R NUM_T(KC_R)
+#define CKC_S LWR_T(KC_S)
+#define CKC_T LGUI_T(KC_T)
+#define CKC_G KC_G
+#define CKC_Z LGUI_T(KC_Z)
+#define CKC_X LALT_T(KC_X)
+#define CKC_C LSFT_T(KC_C)
+#define CKC_D LCTL_T(KC_D)
+#define CKC_V KC_V
+// Right Hand
+#define CKC_J KC_J
+#define CKC_L KC_L
+#define CKC_U KC_U
+#define CKC_Y KC_Y
+#define CKC_QUOT KC_QUOT
+#define CKC_M KC_M
+#define CKC_N RGUI_T(KC_N)
+#define CKC_E LWR_T(KC_E)
+#define CKC_I NUM_T(KC_I)
+#define CKC_O RCTL_T(KC_O)
+#define CKC_K KC_K
+#define CKC_H RCTL_T(KC_H)
+#define CKC_COM RSFT_T(KC_COMM)
+#define CKC_DOT RALT_T(KC_DOT)
+#define CKC_SLSH LGUI_T(KC_SLSH)  // You might be able to use RGUI_T(KC_SLSH) instead
+#define CKC_SPC ARW_T(KC_SPC)
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
@@ -204,6 +240,14 @@ enum tap_dance_codes {
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
 */
+#define ________________COLEMAK_L1_________________       CKC_Q,   CKC_W,   CKC_F,   CKC_P,   CKC_B
+#define ________________COLEMAK_L2_________________       CKC_A,   CKC_R,   CKC_S,   CKC_T,   CKC_G
+#define ________________COLEMAK_L3_________________       CKC_Z,   CKC_X,   CKC_C,   CKC_D,   CKC_V
+
+#define ________________COLEMAK_R1_________________       CKC_J,   CKC_L,   CKC_U,   CKC_Y,   CKC_QUOT
+#define ________________COLEMAK_R2_________________       CKC_M,   CKC_N,   CKC_E,   CKC_I,   CKC_O
+#define ________________COLEMAK_R3_________________       CKC_K,   CKC_H,   CKC_COM, CKC_DOT, CKC_SLSH
+
 #define _________________QWERTY_L1_________________       QKC_Q,   QKC_W,   QKC_E,   QKC_R,   QKC_T
 #define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   QKC_G
 #define _________________QWERTY_L3_________________       QKC_Z,   QKC_X,   QKC_C,   QKC_V,   QKC_B
