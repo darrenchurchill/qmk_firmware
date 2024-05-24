@@ -35,6 +35,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ________________LOWER_5_L4_________________, _______, XXXXXXX, ________________LOWER_5_R4_________________
     ),
 
+    [_NUMPAD] = LAYOUT_planck_wrapper(
+        _________________NUMPAD_L1_________________, _______, _______, _________________NUMPAD_R1_________________,
+        _________________NUMPAD_L2_________________, _______, _______, _________________NUMPAD_R2_________________,
+        _________________NUMPAD_L3_________________, _______, _______, _________________NUMPAD_R3_________________,
+        ________________NUMPAD_5_L4________________, _______, XXXXXXX, ________________NUMPAD_5_R4________________
+    ),
+
     [_RAISE] = LAYOUT_planck_wrapper(
         _________________RAISE_L1__________________, _______, _______, _________________RAISE_R1__________________,
         _________________RAISE_L2__________________, _______, KC_DEL,  _________________RAISE_R2__________________,
@@ -104,6 +111,13 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_SYM},
         {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
         {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_SYM}, {HSV_OFF}
+    },
+
+    [_NUMPAD] = {
+          {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
+          {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_BRKT},
+          {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
+          {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
     },
 
     // TODO: update colors to match bracket layout
@@ -185,6 +199,9 @@ bool rgb_matrix_indicators_user(void) {
             break;
         case _LOWER:
             set_layer_color(_LOWER);
+            break;
+        case _NUMPAD:
+            set_layer_color(_NUMPAD);
             break;
         case _RAISE:
             set_layer_color(_RAISE);

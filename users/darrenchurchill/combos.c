@@ -22,7 +22,9 @@ enum required_idx_combos {
     COMBO_JK,
     COMBO_JKL,
     COMBO_KL,
+    COMBO_SL,
     COMBO_DK,
+    COMBO_CCOMMA,
 };
 
 
@@ -79,7 +81,9 @@ const uint16_t PROGMEM combo_kcomma[] = { QKC_K, QKC_COM, COMBO_END };
 
 
 // Both Hands
+const uint16_t PROGMEM combo_sl[] = { QKC_S, QKC_L, COMBO_END };
 const uint16_t PROGMEM combo_dk[] = { QKC_D, QKC_K, COMBO_END };
+const uint16_t PROGMEM combo_ccomma[] = { QKC_C, QKC_COM, COMBO_END };
 #ifdef RGB_MATRIX_ENABLE
 const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
 #endif
@@ -95,7 +99,9 @@ combo_t key_combos[] = {
     [COMBO_JK] = COMBO(combo_jk, KC_ENT),
     [COMBO_JKL] = COMBO(combo_jkl, UKC_DB_UNDS),
     [COMBO_KL] = COMBO(combo_kl, KC_UNDS),
-    [COMBO_DK] = COMBO(combo_dk, UKC_CW_TOGG),
+    [COMBO_SL] = COMBO(combo_sl, TG(_NUMPAD)),
+    [COMBO_DK] = COMBO(combo_dk, TG(_LOWER)),
+    [COMBO_CCOMMA] = COMBO(combo_ccomma, UKC_CW_TOGG),
 
 
     // Left Hand
@@ -155,7 +161,9 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
         case COMBO_JK:
         case COMBO_JKL:
         case COMBO_KL:
+        case COMBO_SL:
         case COMBO_DK:
+        case COMBO_CCOMMA:
             return COMBO_TERM_FAST;
     }
 
