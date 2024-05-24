@@ -100,10 +100,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_LOWER] = {
-        {HSV_NUM}, {HSV_NUM},     {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_NUM},  {HSV_NUM},  {HSV_NUM},  {HSV_NUM},
-        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT},
-        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT},
-        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_SYM},  {HSV_OFF}
+        {HSV_OFF}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
+        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_SYM},
+        {HSV_SYM}, {HSV_SYM},     {HSV_SYM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF}, {HSV_OFF}, {HSV_SYM}, {HSV_SYM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_SYM}, {HSV_OFF}
     },
 
     // TODO: update colors to match bracket layout
