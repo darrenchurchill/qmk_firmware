@@ -94,25 +94,27 @@ bool achordion_chord(uint16_t tap_hold_keycode,
             case KC_Q: // Cmd + Q -> quit
             case KC_M: // Cmd + M -> minimize window
                 return false; // Should wait for achordion's timeout
-            case KC_C:
-            case KC_V:
-            case KC_B:
+            // I think C, V, & B were here to handle the case where GUI was the
+            // tap hold key on either the left bottom row or the left thumb
+            // case KC_C:
+            // case KC_V:
+            // case KC_B:
             case KC_SPC: // Cmd + Space
-            case KC_TAB: // Cmd + Tab
+            case KC_TAB: // Cmd + Tab, (combo TAB, which achordion can't determine handedness for)
                 return true;
         }
     }
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LSFT) {
         switch (other_keycode_basic_kc) {
-            case KC_TAB: // Shift + Tab
+            case KC_TAB: // Shift + Tab, (combo TAB, which achordion can't determine handedness for)
                 return true;
         }
     }
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LALT) {
         switch (other_keycode_basic_kc) {
-            case KC_TAB: // Alt + Tab
+            case KC_TAB: // Alt + Tab, (combo TAB, which achordion can't determine handedness for)
                 return true;
         }
     }
@@ -121,19 +123,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
         switch (other_keycode_basic_kc) {
             case KC_SPC: // Ctrl + Space changes input source on MacOS (Avoid this)
                 return false;
-            // TODO: confirm the Vim-related keys below still work with a Colemak layout
-            // Left Hand
-            case KC_E:
-            case KC_A:
-            case KC_C:
-            case KC_V:
-            case KC_B:
-            case KC_TAB: // Ctrl + Tab
-            // Right Hand
-            case KC_Y:
-            case KC_U:
-            case KC_I:
-            case KC_O:
+            case KC_TAB: // Ctrl + Tab, (combo TAB, which achordion can't determine handedness for)
                 return true;
         }
     }
