@@ -167,7 +167,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_FN] = {
         {HSV_OFF}, {HSV_OFF},     {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
         {HSV_OFF}, {HSV_ON},      {HSV_ON},  {HSV_ON},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
-        {HSV_OFF}, {HSV_ON},      {HSV_ON},  {HSV_ON},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_ON},      {HSV_ON},  {HSV_ON},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_FN},
         {HSV_OFF}, {HSV_LYR_ESC}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},            {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
     },
 
