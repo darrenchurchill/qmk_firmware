@@ -155,6 +155,7 @@ combo_t key_combos[] = {
 #endif
 };
 
+// TODO: add timer to restrict some combos to only fire after some MS of inactivity
 
 // https://docs.qmk.fm/#/feature_combo?id=per-combo-timing-holding-tapping-and-key-press-order
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {

@@ -320,6 +320,8 @@ enum tap_dance_codes {
 #define ____________EXTEND_4_L4____________               ____________LOWER_4_L4_____________
 #define ________________EXTEND_5_L4________________       ____________EXTEND_4_L4____________, _______
 
+// TODO: remove KC_BSPC and KC_DEL from _EXTEND layer & move top row to home row
+// if you keep the corresponding combos
 #define _________________EXTEND_R1_________________       KC_MPRV, VOL_DN,  VOL_UP,  KC_MNXT, KC_MPLY
 #define _________________EXTEND_R2_________________       KC_BSPC, _______, _______, KC_DEL,  QK_REP
 #define _________________EXTEND_R3_________________       _______, KC_MUTE, QK_AREP, QK_REP, _______
