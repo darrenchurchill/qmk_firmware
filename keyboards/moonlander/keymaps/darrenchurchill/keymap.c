@@ -26,10 +26,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT_moonlander_wrapper(
         _______, __________________BLANK_5__________________, _______,         _______, __________________BLANK_5__________________, _______,
-        _______, _______________LOWER_ALT_L1________________, _______,         _______, _______________LOWER_ALT_R1________________, _______,
-        _______, _______________LOWER_ALT_L2________________, _______,         _______, _______________LOWER_ALT_R2________________, _______,
-        _______, _______________LOWER_ALT_L3________________,                           _______________LOWER_ALT_R3________________, _______,
-        _______, __________LOWER_ALT_4_L4___________,         _______,         _______,         __________LOWER_ALT_4_R4___________, _______,
+        _______, _________________LOWER_L1__________________, _______,         _______, _________________LOWER_R1__________________, _______,
+        _______, _________________LOWER_L2__________________, _______,         _______, _________________LOWER_R2__________________, _______,
+        _______, _________________LOWER_L3__________________,                           _________________LOWER_R3__________________, _______,
+        _______, ____________LOWER_4_L4_____________,         _______,         _______,         ____________LOWER_4_R4_____________, _______,
                                             _______, _______, _______,         _______, _______, _______
     ),
 
@@ -164,24 +164,24 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [_LOWER] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM}, {HSV_SYM}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM}, {HSV_SYM},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_LYR_ESC},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
         {HSV_OFF},
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_SYM},
-        {HSV_OFF}, {HSV_NUM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_SYM},  {HSV_SYM},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},  {HSV_OFF},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
         {HSV_OFF}
     },
 
