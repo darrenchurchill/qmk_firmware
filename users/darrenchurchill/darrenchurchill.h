@@ -6,6 +6,7 @@ enum userspace_layers {
     _COLEMAK,
     _QWERTY,  // top-level "default" layout so can override others temporarily
     _LOWER,
+    _NUMPAD,
     _RAISE,
     _EXTEND,
     _MOUSE,
@@ -55,6 +56,7 @@ enum tap_dance_codes {
   Layer Macros
 */
 #define LWR_T(KC) LT(_LOWER, KC)
+#define NUM_T(KC) LT(_NUMPAD, KC)
 #define RSE MO(_RAISE)
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
@@ -282,6 +284,19 @@ enum tap_dance_codes {
 #define _________________LOWER_R3__________________       LKC_N,   LKC_M,   LKC_COM,  LKC_DOT, LKC_SL
 #define ____________LOWER_4_R4_____________                        ______________BLANK_4______________
 #define ________________LOWER_5_R4_________________       _______, ____________LOWER_4_R4_____________
+
+
+#define _________________NUMPAD_L1_________________       _________________LOWER_L1__________________
+#define _________________NUMPAD_L2_________________       _________________LOWER_L2__________________
+#define _________________NUMPAD_L3_________________       _________________LOWER_L3__________________
+#define ____________NUMPAD_4_L4____________               ____________LOWER_4_L4_____________
+#define ________________NUMPAD_5_L4________________       ________________LOWER_5_L4_________________
+
+#define _________________NUMPAD_R1_________________       _______,    KC_7,    KC_8,    KC_9, _______
+#define _________________NUMPAD_R2_________________          KC_0,    KC_1,    KC_2,    KC_3,  KC_DOT
+#define _________________NUMPAD_R3_________________       _______,    KC_4,    KC_5,    KC_6, _______
+#define ____________NUMPAD_4_R4____________                        ______________BLANK_4______________
+#define ________________NUMPAD_5_R4________________       _______, ______________BLANK_4______________
 
 
 #define _________________RAISE_L1__________________       _______,      SELWORD, KC_UP,   SELLINE, KC_PGUP

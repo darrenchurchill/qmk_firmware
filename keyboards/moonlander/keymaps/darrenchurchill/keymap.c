@@ -33,6 +33,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,         _______, _______, _______
     ),
 
+    [_NUMPAD] = LAYOUT_moonlander_wrapper(
+        _______, __________________BLANK_5__________________, _______,         _______, __________________BLANK_5__________________, _______,
+        _______, _________________NUMPAD_L1_________________, _______,         _______, _________________NUMPAD_R1_________________, _______,
+        _______, _________________NUMPAD_L2_________________, _______,         _______, _________________NUMPAD_R2_________________, _______,
+        _______, _________________NUMPAD_L3_________________,                           _________________NUMPAD_R3_________________, _______,
+        _______, ____________NUMPAD_4_L4____________,         _______,         _______,         ____________NUMPAD_4_R4____________, _______,
+                                            _______, _______, _______,         _______, _______, _______
+    ),
+
     [_RAISE] = LAYOUT_moonlander_wrapper(
         _______, __________________BLANK_5__________________, _______,         _______, __________________BLANK_5__________________, _______,
         _______, _________________RAISE_L1__________________, _______,         _______, _________________RAISE_R1__________________, _______,
@@ -182,6 +191,28 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
         {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}
+    },
+
+    [_NUMPAD] = {
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_LYR_ESC},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
+        {HSV_OFF},
+
+        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}
     },
 
@@ -375,6 +406,9 @@ bool rgb_matrix_indicators_user(void) {
             break;
         case _LOWER:
             set_layer_color(_LOWER);
+            break;
+        case _NUMPAD:
+            set_layer_color(_NUMPAD);
             break;
         case _RAISE:
             set_layer_color(_RAISE);
