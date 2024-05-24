@@ -51,6 +51,19 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 }
 #endif // QUICK_TAP_TERM_PER_KEY
 
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_ESC):
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+#endif // HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
 
 /*
   Achordion

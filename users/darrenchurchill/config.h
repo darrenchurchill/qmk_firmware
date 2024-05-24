@@ -19,6 +19,8 @@
 #define TAPPING_TERM_PER_KEY
 #define QUICK_TAP_TERM_PER_KEY
 #define PERMISSIVE_HOLD
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
 
 // Leader Key
 #define LEADER_NO_TIMEOUT // Disable the timeout for the leader key itself
