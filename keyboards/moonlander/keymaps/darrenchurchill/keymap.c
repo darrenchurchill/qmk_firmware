@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, __________________BLANK_5__________________, _______,         _______, __________________BLANK_5__________________, _______,
         _______, __________________BLANK_5__________________, _______,         _______, _________________ARROWS_R2_________________, _______,
         _______, __________________BLANK_5__________________,                           __________________BLANK_5__________________, _______,
-        _______, ______________BLANK_4______________,         _______,         _______,         ______________BLANK_4______________, _______,
+        _______, ____________ARROWS_4_L4____________,         _______,         _______,         ______________BLANK_4______________, _______,
                                             _______, _______, _______,         _______, _______, _______
     ),
 
@@ -260,6 +260,28 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         {HSV_OFF}
     },
 
+    [_ARROWS] = {
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF},
+
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
+        {HSV_OFF}
+    },
+
     [_MOUSE] = {
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
         {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
@@ -415,6 +437,9 @@ bool rgb_matrix_indicators_user(void) {
             break;
         case _EXTEND:
             set_layer_color(_EXTEND);
+            break;
+        case _ARROWS:
+            set_layer_color(_ARROWS);
             break;
         case _MOUSE:
             set_layer_color(_MOUSE);

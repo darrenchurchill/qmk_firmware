@@ -9,6 +9,7 @@ enum userspace_layers {
     _NUMPAD,
     _RAISE,
     _EXTEND,
+    _ARROWS,
     _MOUSE,
     _KB_LED,
     _FN,
@@ -60,6 +61,7 @@ enum tap_dance_codes {
 #define RSE MO(_RAISE)
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
+#define ARW_T(KC) LT(_ARROWS, KC)
 #define MS_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
 #define FN_T(KC) LT(_FN, KC)
@@ -323,6 +325,12 @@ enum tap_dance_codes {
 #define _________________EXTEND_R3_________________       _______, KC_MUTE, QK_AREP, QK_REP, _______
 #define ____________EXTEND_4_R4____________                        ______________BLANK_4______________
 #define ________________EXTEND_5_R4________________       _______, ____________EXTEND_4_R4____________
+
+
+#define ____________ARROWS_4_L4____________               _______, _______, KC_BSPC, KC_DEL
+#define ________________ARROWS_5_R4________________       ____________ARROWS_4_L4____________, _______
+
+#define _________________ARROWS_R2_________________       KC_LEFT, KC_DOWN,   KC_UP, KC_RIGHT, _______
 
 
 #define _________________MOUSE_L1__________________       __________________BLANK_5__________________
