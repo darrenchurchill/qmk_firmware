@@ -164,8 +164,8 @@ enum tap_dance_codes {
 // Right Hand
 #define BKC_M KC_DOWN
 #define BKC_COM KC_UP
-#define BKC_DOT KC_DQUO
-#define BKC_SL KC_MINS
+#define BKC_DOT KC_LBRC
+#define BKC_SL KC_RBRC
 
 // Thumb Keys: TKC -> "Thumb KeyCode"
 // Not all keyboards will use all of these keys, but they should have at least
