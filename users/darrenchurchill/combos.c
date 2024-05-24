@@ -57,6 +57,7 @@ const uint16_t PROGMEM combo_gb[] = { QKC_G, QKC_B, COMBO_END };
 // Horizontal combos
 // Top Row
 const uint16_t PROGMEM combo_yu[] = { QKC_Y, QKC_U, COMBO_END };
+const uint16_t PROGMEM combo_ui[] = { QKC_U, QKC_I, COMBO_END };
 const uint16_t PROGMEM combo_uio[] = { QKC_U, QKC_I, QKC_O, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_hj[] = { QKC_H, QKC_J, COMBO_END };
@@ -129,6 +130,7 @@ combo_t key_combos[] = {
     // Right Hand
     // Horizontal combos
     // Top Row
+    COMBO(combo_ui, KC_QUOT),
     COMBO(combo_uio, LLOCK),
     // Home Row
     COMBO(combo_hj, KC_SLASH),
