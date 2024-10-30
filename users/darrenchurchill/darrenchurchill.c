@@ -121,8 +121,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LCTL) {
         switch (other_keycode_basic_kc) {
-            case KC_SPC: // Ctrl + Space changes input source on MacOS (Avoid this)
-                return false;
             case KC_TAB: // Ctrl + Tab, (combo TAB, which achordion can't determine handedness for)
                 return true;
         }
