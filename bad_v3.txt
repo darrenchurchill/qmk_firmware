@@ -1,0 +1,164 @@
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0103d(62832)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Start with interfering other tap.
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0103d(62832):0
+ZSA Technology Labs:Moonlander Mark I:1: processed: 0103d(62832):0
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0103u(62920)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: First tap(0->1).
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0103d(62832):1
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0103d(62832):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4408
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[4:08] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: register_code
+ZSA Technology Labs:Moonlander Mark I:1: waiting_buffer_enq: { [3]=0103u(62920):1  }
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: process waiting_buffer -----
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Tap release(1)
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0103u(62920):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4408
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[4:08] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: unregister_code
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0103u(62920):1
+ZSA Technology Labs:Moonlander Mark I:1: processed: waiting_buffer[3] =0103u(62920):1
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0202d(63049)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: End(Timeout after releasing last tap): 0000u(63120)
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0000u(0):0
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Start(Press tap key).
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0202d(63049):0
+ZSA Technology Labs:Moonlander Mark I:1: processed: 0202d(63049):0
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0202u(63178)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: First tap(0->1).
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0202d(63049):1
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0202d(63049):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4216
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[2:16] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: register_code
+ZSA Technology Labs:Moonlander Mark I:1: waiting_buffer_enq: { [4]=0202u(63178):1  }
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: process waiting_buffer -----
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Tap release(1)
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0202u(63178):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4216
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[2:16] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: unregister_code
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0202u(63178):1
+ZSA Technology Labs:Moonlander Mark I:1: processed: waiting_buffer[4] =0202u(63178):1
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0202d(63230)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Tap press(2)
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0202d(63230):2
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4216
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[2:16] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: register_code
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0202d(63230):2
+ZSA Technology Labs:Moonlander Mark I:1: processed: 0202d(63230):2
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0804d(63329)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Start new tap with releasing last tap(>1).
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0202u(63329):2
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4216
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[2:16] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: unregister_code
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0804d(63329):0
+ZSA Technology Labs:Moonlander Mark I:1: processed: 0804d(63329):0
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0202u(63432)
+ZSA Technology Labs:Moonlander Mark I:1: waiting_buffer_enq: { [5]=0202u(63432):0  }
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: process waiting_buffer -----
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: start -----
+ZSA Technology Labs:Moonlander Mark I:1: EVENT: 0804u(63433)
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: First tap(0->1).
+ZSA Technology Labs:Moonlander Mark I:1: TAPPING_KEY=0804d(63329):1
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0804d(63329):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x420F
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: ACTION: ACT_LAYER_TAP[2:0F] layer_state: 00000000(0) default_layer_state: 00000000(0)
+ZSA Technology Labs:Moonlander Mark I:1: KEYMAP_TAP_KEY: Tap: register_code
+ZSA Technology Labs:Moonlander Mark I:1: waiting_buffer_enq: { [5]=0202u(63432):0  [6]=0804u(63433):1  }
+ZSA Technology Labs:Moonlander Mark I:1: ---- action_exec: process waiting_buffer -----
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: key event while last tap(>0).
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0202u(63432):0
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x4216
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: ERROR: Out of sequence key-up: 0x4216. Ignore and wait for key-down
+ZSA Technology Labs:Moonlander Mark I:1: processed: waiting_buffer[5] =0202u(63432):0
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: Tapping: Tap release(1)
+ZSA Technology Labs:Moonlander Mark I:1:
+ZSA Technology Labs:Moonlander Mark I:1: **** Process Record User ****
+ZSA Technology Labs:Moonlander Mark I:1: RECORD: 0804u(63433):1
+ZSA Technology Labs:Moonlander Mark I:1: KEYCODE: 0x420F
+ZSA Technology Labs:Moonlander Mark I:1: Mod Bits: GASC(R)GASC(L)
+ZSA Technology Labs:Moonlander Mark I:1: Cur Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: Post Achordion Mods: 0b00000000
+ZSA Technology Labs:Moonlander Mark I:1: !!!!!!!!!! FOUND ERROR !!!!!!!!!!
+ZSA Technology Labs:Moonlander Mark I:1: **** End Process Record User ****

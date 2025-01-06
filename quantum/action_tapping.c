@@ -69,6 +69,7 @@ static bool waiting_buffer_enq(keyrecord_t record);
 static void waiting_buffer_clear(void);
 static bool waiting_buffer_typed(keyevent_t event);
 static bool waiting_buffer_has_anykey_pressed(void);
+static bool waiting_buffer_has_anykey_stamped_before(keyrecord_t record);
 static void waiting_buffer_scan_tap(void);
 static void debug_tapping_key(void);
 static void debug_waiting_buffer(void);
@@ -78,9 +79,15 @@ static void debug_waiting_buffer(void);
  * FIXME: Needs doc
  */
 void action_tapping_process(keyrecord_t record) {
+    if (IS_EVENT(record.event)) {
+        ac_dprintf("\n---- action_tapping_process: process record -----\n");
+        debug_record(record);
+        ac_dprintf("\n");
+    }
+
     if (process_tapping(&record)) {
         if (IS_EVENT(record.event)) {
-            ac_dprintf("processed: ");
+            ac_dprintf("EVENT: processed: without buffer queue: ");
             debug_record(record);
             ac_dprintf("\n");
         }
@@ -95,12 +102,12 @@ void action_tapping_process(keyrecord_t record) {
     }
 
     // process waiting_buffer
-    if (IS_EVENT(record.event) && waiting_buffer_head != waiting_buffer_tail) {
-        ac_dprintf("---- action_exec: process waiting_buffer -----\n");
+    if (waiting_buffer_head != waiting_buffer_tail) {
+        ac_dprintf("\n---- action_tapping_process: process waiting_buffer -----\n");
     }
     for (; waiting_buffer_tail != waiting_buffer_head; waiting_buffer_tail = (waiting_buffer_tail + 1) % WAITING_BUFFER_SIZE) {
         if (process_tapping(&waiting_buffer[waiting_buffer_tail])) {
-            ac_dprintf("processed: waiting_buffer[%u] =", waiting_buffer_tail);
+            ac_dprintf("EVENT: processed: from waiting_buffer[%u] =", waiting_buffer_tail);
             debug_record(waiting_buffer[waiting_buffer_tail]);
             ac_dprintf("\n\n");
         } else {
@@ -179,9 +186,14 @@ bool process_tapping(keyrecord_t *keyp) {
             process_record_tap_hint(&tapping_key);
             waiting_buffer_scan_tap();
             debug_tapping_key();
+        } else if (!event.pressed && waiting_buffer_has_anykey_stamped_before(*keyp)) {
+            // enqueue
+            ac_dprintf("process_tapping: Event stamped after a waiting_buffered event. Enqueue event.\n");
+            return false;
         } else {
             // the current key is just a regular key, pass it on for regular
             // processing
+            ac_dprintf("process_tapping: Received non-tapping key -> process_record\n");
             process_record(keyp);
         }
 
@@ -487,6 +499,13 @@ __attribute__((unused)) bool waiting_buffer_has_anykey_pressed(void) {
     return false;
 }
 
+bool waiting_buffer_has_anykey_stamped_before(keyrecord_t record) {
+    for (uint8_t i = waiting_buffer_tail; i != waiting_buffer_head; i = (i + 1) % WAITING_BUFFER_SIZE) {
+        if (waiting_buffer[i].event.time < record.event.time) return true;
+    }
+    return false;
+}
+
 /** \brief Scan buffer for tapping
  *
  * FIXME: Needs docs
@@ -511,10 +530,10 @@ void waiting_buffer_scan_tap(void) {
             // clang-format on
             tapping_key.tap.count = 1;
             candidate->tap.count  = 1;
-            process_record(&tapping_key);
-
             ac_dprintf("waiting_buffer_scan_tap: found at [%u]\n", i);
             debug_waiting_buffer();
+
+            process_record(&tapping_key);
             return;
         }
     }
