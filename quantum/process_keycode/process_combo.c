@@ -148,6 +148,7 @@ static inline void release_combo(uint16_t combo_index, combo_t *combo) {
             .keycode = combo->keycode,
         };
 #ifndef NO_ACTION_TAPPING
+        ac_dprintf("release_combo -> action_tapping_process\n");
         action_tapping_process(record);
 #else
         process_record(&record);
@@ -227,6 +228,7 @@ static inline void dump_key_buffer(void) {
             process_combo_event(qrecord->combo_index, true);
         } else {
 #ifndef NO_ACTION_TAPPING
+            ac_dprintf("dump_key_buffer -> action_tapping_process\n");
             action_tapping_process(*record);
 #else
             process_record(record);
@@ -601,6 +603,9 @@ bool process_combo(uint16_t keycode, keyrecord_t *record) {
 #endif
             clear_combos();
         }
+    }
+    if (is_combo_key) {
+        dprintln("process_combo: is combo key. Skip remaining processing.");
     }
     return !is_combo_key;
 }
