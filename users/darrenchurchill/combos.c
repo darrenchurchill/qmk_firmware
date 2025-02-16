@@ -25,6 +25,8 @@ enum required_idx_combos {
     COMBO_SL,
     COMBO_DK,
     COMBO_CCOMMA,
+    COMBO_BSPC_H,
+    COMBO_BSPC_M,
 };
 
 
@@ -89,6 +91,13 @@ const uint16_t PROGMEM combo_ccomma[] = { QKC_C, QKC_COM, COMBO_END };
 const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
 #endif
 
+// Backspace combos, one or both hands
+// Note: These variables are already named for the Colemak layout
+const uint16_t PROGMEM combo_bspc_spc[] = { TKC_R01, TKC_R00, COMBO_END };
+const uint16_t PROGMEM combo_bspc_c[] = { TKC_R01, QKC_C, COMBO_END }; // Colemak C
+const uint16_t PROGMEM combo_bspc_h[] = { TKC_R01, QKC_M, COMBO_END }; // Colemak H
+const uint16_t PROGMEM combo_bspc_m[] = { TKC_R01, QKC_H, COMBO_END }; // Colemak M
+
 
 combo_t key_combos[] = {
     // Required indexed combos:
@@ -103,6 +112,9 @@ combo_t key_combos[] = {
     [COMBO_SL] = COMBO(combo_sl, TG(_NUMPAD)),
     [COMBO_DK] = COMBO(combo_dk, TG(_LOWER)),
     [COMBO_CCOMMA] = COMBO(combo_ccomma, UKC_CW_TOGG),
+    // Backspace combos, one or both hands
+    [COMBO_BSPC_H] = COMBO(combo_bspc_m, OSM(MOD_MEH)), // "M" for "Meh"
+    [COMBO_BSPC_M] = COMBO(combo_bspc_h, OSM(MOD_HYPR)), // "H" for "Hyper"
 
 
     // Left Hand
@@ -149,6 +161,10 @@ combo_t key_combos[] = {
     COMBO(combo_kcomma, KC_DOLLAR), // "$", for vim
 
 
+    // Backspace combos, one or both hands
+    COMBO(combo_bspc_c, UKC_CW_TOGG), // "C" for "Caps Word"
+
+
     // Both Hands
 #ifdef RGB_MATRIX_ENABLE
     COMBO(combo_lyr, TG(_LAYERS)),
@@ -183,6 +199,8 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
         case COMBO_DEL_LH:
         case COMBO_BSPC_RH:
         case COMBO_DEL_RH:
+        case COMBO_BSPC_M:
+        case COMBO_BSPC_H:
             return false;
     }
 
