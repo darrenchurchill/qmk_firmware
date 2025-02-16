@@ -21,6 +21,9 @@ enum userspace_layers {
 // inside of Repeat Key's remember_last_key_user()
 enum userspace_custom_keycodes {
   UKC_BASE = SAFE_RANGE,
+  UKC_ALT_TAB,
+  UKC_ALT_TAB_ESC,
+  UKC_SFT_ALT_TAB,
   UKC_OS_CUT,
   UKC_OS_COPY,
   UKC_OS_PASTE,
@@ -178,7 +181,7 @@ enum tap_dance_codes {
 // The key the thumbs rest on is "00"
 // Left Hand
 #define TKC_L00 LSFT_T(KC_ESC)
-#define TKC_L01 KC_DEL
+#define TKC_L01 RSE_T(KC_DEL)
 #define TKC_L02 HYPR_T(KC_TAB)
 #define TKC_L10 LGUI_T(KC_DQT)
 
@@ -304,8 +307,8 @@ enum tap_dance_codes {
 #define ________________NUMPAD_5_R4________________       _______, ______________BLANK_4______________
 
 
-#define _________________RAISE_L1__________________       _______,      SELWORD, KC_UP,   SELLINE, KC_PGUP
-#define _________________RAISE_L2__________________       LCTL(KC_GRV), KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN
+#define _________________RAISE_L1__________________       _______,      SELWORD, _______, SELLINE, _______
+#define _________________RAISE_L2__________________       LCTL(KC_GRV), UKC_ALT_TAB_ESC, UKC_SFT_ALT_TAB, UKC_ALT_TAB, _______
 #define _________________RAISE_L3__________________       TD_OS_PSPC, TD_OS_NSPC, TD_OS_PTAB, TD_OS_NTAB, _______
 #define ____________RAISE_4_L4_____________               ____________LOWER_4_L4_____________
 #define ________________RAISE_5_L4_________________       ____________RAISE_4_L4_____________, _______

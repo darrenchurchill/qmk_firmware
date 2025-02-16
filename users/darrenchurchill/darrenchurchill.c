@@ -441,6 +441,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     os_variant_t host_os = detected_host_os();
     uint8_t mod_tap_kc = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
     static bool is_processing_tap_dance = false;
+    static bool is_alt_tab_active = false;
 
     // We generally only need to handle the key down event, and can let QMK
     // implicitly handle the key up events.
@@ -578,6 +579,60 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             case UKC_XCASE:
                 enable_xcase();
                 return false;
+        }
+    }
+
+    // Alt-tab related behavior
+    switch (keycode) {
+        case UKC_SFT_ALT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    register_code(KC_LALT);
+                    tap_code16(KC_TAB);
+                    tap_code16(KC_LEFT);
+                }
+                register_code16(KC_LEFT);
+                is_alt_tab_active = true;
+            } else {
+                unregister_code16(KC_LEFT);
+            }
+            return false;
+
+        case UKC_ALT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    register_code(KC_LALT);
+                }
+                register_code16(KC_TAB);
+                is_alt_tab_active = true;
+            } else {
+                unregister_code16(KC_TAB);
+            }
+            return false;
+
+        case UKC_ALT_TAB_ESC:
+            if (record->event.pressed) {
+                if (is_alt_tab_active) {
+                    tap_code16(KC_ESC);
+                    unregister_code(KC_LALT);
+                    is_alt_tab_active = false;
+                }
+            }
+            return false;
+    }
+
+    if (!record->event.pressed) {
+        if (IS_QK_LAYER_TAP(keycode)) {
+            switch (QK_LAYER_TAP_GET_LAYER(keycode)) {
+                // Any layer-tap layer where UKC_ALT_TAB or UKC_SFT_ALT_TAB are
+                // accessible should be handled below.
+                case _RAISE:
+                    if (is_alt_tab_active) {
+                        unregister_code(KC_LALT);
+                        is_alt_tab_active = false;
+                        return true;
+                    }
+            }
         }
     }
 
