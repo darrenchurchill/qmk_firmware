@@ -349,7 +349,19 @@ void td_tap_hold_finished(tap_dance_state_t* state, void* user_data) {
             && !state->interrupted
 #endif
         ) {
-            register_code16(tap_hold->hold);
+            if (IS_QK_LAYER_MOD(tap_hold->hold)) {
+                layer_on(QK_LAYER_MOD_GET_LAYER(tap_hold->hold));
+                // FIXME: Using `register_weak_mods()` caused the modifiers to
+                // be released before another key's (ex: "l") up event. I don't
+                // know if I've done something wrong somewhere, but this is fine
+                // for now. The problem with using `register_mods()` is its
+                // meant to track the real key state, so you can lose a modifier
+                // if you press and release an overlapping real modifier while
+                // this tap_hold key is held down.
+                register_mods(QK_LAYER_MOD_GET_MODS(tap_hold->hold));
+            } else {
+                register_code16(tap_hold->hold);
+            }
             tap_hold->held = tap_hold->hold;
         } else {
             register_code16(tap_hold->tap);
@@ -362,7 +374,12 @@ void td_tap_hold_reset(tap_dance_state_t* state, void* user_data) {
     td_tap_hold_t* tap_hold = (td_tap_hold_t*)user_data;
 
     if (tap_hold->held) {
-        unregister_code16(tap_hold->held);
+        if (IS_QK_LAYER_MOD(tap_hold->held)) {
+            layer_off(QK_LAYER_MOD_GET_LAYER(tap_hold->held));
+            unregister_mods(QK_LAYER_MOD_GET_MODS(tap_hold->held));
+        } else {
+            unregister_code16(tap_hold->held);
+        }
         tap_hold->held = 0;
     }
 }
@@ -376,6 +393,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_LALT_T_OS_NEXT_SPACE] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_SPACE, KC_LALT),
     [TD_LSFT_T_OS_PREV_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_PREV_TAB, KC_LSFT),
     [TD_LGUI_T_OS_NEXT_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_TAB, KC_LGUI),
+    [TD_LT_QWERTY_ALT_SHIFT_F] = ACTION_TD_TAP_HOLD(KC_F, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
 };
 
 
@@ -570,6 +588,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case TD_OS_NTAB:
         case TD_OS_PSPC:
         case TD_OS_NSPC:
+        case TD_LT_QAS_F:
         {
             tap_dance_action_t* action = &tap_dance_actions[TD_INDEX(keycode)];
             if (!record->event.pressed &&
@@ -577,10 +596,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 !action->state.finished
             ) {
                 td_tap_hold_t* tap_hold = (td_tap_hold_t*)action->user_data;
-                record->keycode = tap_hold->tap;
-                is_processing_tap_dance = true;
-                process_record_user(record->keycode, record);
-                is_processing_tap_dance = false;
+                if (IS_QK_USER(tap_hold->tap)) {
+                    record->keycode = tap_hold->tap;
+                    is_processing_tap_dance = true;
+                    process_record_user(record->keycode, record);
+                    is_processing_tap_dance = false;
+                } else {
+                    tap_code16(tap_hold->tap);
+                }
             }
         }
     }

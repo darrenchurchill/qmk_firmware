@@ -50,6 +50,7 @@ enum tap_dance_codes {
     TD_LALT_T_OS_NEXT_SPACE,
     TD_LSFT_T_OS_PREV_TAB,
     TD_LGUI_T_OS_NEXT_TAB,
+    TD_LT_QWERTY_ALT_SHIFT_F,
 };
 
 
@@ -62,6 +63,7 @@ enum tap_dance_codes {
 #define RSE_T(KC) LT(_RAISE, KC)
 #define EXT_T(KC) LT(_EXTEND, KC)
 #define ARW_T(KC) LT(_ARROWS, KC)
+// TODO: keep or delete the mouse layer?
 #define MS_T(KC) LT(_MOUSE, KC)
 #define KB_LED MO(_KB_LED)
 #define FN_T(KC) LT(_FN, KC)
@@ -81,12 +83,13 @@ enum tap_dance_codes {
 #define TD_OS_NTAB TD(TD_LGUI_T_OS_NEXT_TAB)
 #define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
 #define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
+#define TD_LT_QAS_F TD(TD_LT_QWERTY_ALT_SHIFT_F)
 
 // COLEMAK Layer Keys: CKC -> "Colemak KeyCode"
 // Left Hand
 #define CKC_Q FN_T(KC_Q)
-#define CKC_W MS_T(KC_W)
-#define CKC_F EXT_T(KC_F)
+#define CKC_W EXT_T(KC_W)
+#define CKC_F TD_LT_QAS_F
 #define CKC_P RSE_T(KC_P)
 #define CKC_B KC_B
 #define CKC_A LCTL_T(KC_A)
@@ -120,8 +123,8 @@ enum tap_dance_codes {
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
 #define QKC_Q FN_T(KC_Q)
-#define QKC_W MS_T(KC_W)
-#define QKC_E EXT_T(KC_E)
+#define QKC_W EXT_T(KC_W)
+#define QKC_E TD_LT_QAS_F
 #define QKC_R RSE_T(KC_R)
 #define QKC_T KC_T
 #define QKC_A LCTL_T(KC_A)
