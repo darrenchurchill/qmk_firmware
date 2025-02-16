@@ -175,7 +175,7 @@ enum tap_dance_codes {
 // The key the thumbs rest on is "00"
 // Left Hand
 #define TKC_L00 LSFT_T(KC_ESC)
-#define TKC_L01 KC_ENTER
+#define TKC_L01 KC_DEL
 #define TKC_L02 HYPR_T(KC_TAB)
 #define TKC_L10 LGUI_T(KC_DQT)
 
