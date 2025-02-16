@@ -16,6 +16,10 @@
 #include QMK_KEYBOARD_H
 #include "darrenchurchill.h"
 
+// TODO: Try figuring out why flashing from command line doesn't work
+// You can still flash from QMK Toolbox for now
+// Try updating to the latest breaking changes tag
+// Review QMK's flashing documentation to see what's happening with AVRDude
 
 #define LAYOUT_atreus_wrapper(...) LAYOUT(__VA_ARGS__)
 
@@ -64,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ARROWS] = LAYOUT_atreus_wrapper(
         __________________BLANK_5__________________,                   __________________BLANK_5__________________,
-        __________________BLANK_5__________________,                   _________________ARROWS_R2_________________,
+        _________________ARROWS_L2_________________,                   _________________ARROWS_R2_________________,
         __________________BLANK_5__________________, _______, _______, __________________BLANK_5__________________,
         ________________ARROWS_5_R4________________, _______, _______, __________________BLANK_5__________________
     ),

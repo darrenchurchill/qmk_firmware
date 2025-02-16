@@ -320,10 +320,9 @@ enum tap_dance_codes {
 #define ____________EXTEND_4_L4____________               ____________LOWER_4_L4_____________
 #define ________________EXTEND_5_L4________________       ____________EXTEND_4_L4____________, _______
 
-// TODO: remove KC_BSPC and KC_DEL from _EXTEND layer & move top row to home row
-// if you keep the corresponding combos
+// TODO: move media controls to home row?
 #define _________________EXTEND_R1_________________       KC_MPRV, VOL_DN,  VOL_UP,  KC_MNXT, KC_MPLY
-#define _________________EXTEND_R2_________________       KC_BSPC, _______, _______, KC_DEL,  QK_REP
+#define _________________EXTEND_R2_________________       _______, _______, _______, _______,  QK_REP
 #define _________________EXTEND_R3_________________       _______, KC_MUTE, QK_AREP, QK_REP, _______
 #define ____________EXTEND_4_R4____________                        ______________BLANK_4______________
 #define ________________EXTEND_5_R4________________       _______, ____________EXTEND_4_R4____________
@@ -332,7 +331,8 @@ enum tap_dance_codes {
 #define ____________ARROWS_4_L4____________               _______, _______, KC_BSPC, KC_DEL
 #define ________________ARROWS_5_R4________________       ____________ARROWS_4_L4____________, _______
 
-#define _________________ARROWS_R2_________________       KC_LEFT, KC_DOWN,   KC_UP, KC_RIGHT, _______
+#define _________________ARROWS_L2_________________       _______, _______, KC_LEFT, KC_RIGHT, _______
+#define _________________ARROWS_R2_________________       KC_BSPC, KC_DOWN, KC_UP,    KC_DEL,  _______
 
 
 #define _________________MOUSE_L1__________________       __________________BLANK_5__________________
