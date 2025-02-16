@@ -18,6 +18,7 @@ enum required_idx_combos {
     COMBO_DEL_LH,
     COMBO_BSPC_RH,
     COMBO_DEL_RH,
+    COMBO_SD,
     COMBO_DF,
     COMBO_JK,
     COMBO_JKL,
@@ -38,6 +39,7 @@ const uint16_t PROGMEM combo_wer[] = { QKC_W, QKC_E, QKC_R, COMBO_END };
 const uint16_t PROGMEM combo_rt[] = { QKC_R, QKC_T, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_asdf[] = { QKC_A, QKC_S, QKC_D, QKC_F, COMBO_END };
+const uint16_t PROGMEM combo_sd[] = { QKC_S, QKC_D, COMBO_END };
 const uint16_t PROGMEM combo_df[] = { QKC_D, QKC_F, COMBO_END };
 const uint16_t PROGMEM combo_fg[] = { QKC_F, QKC_G, COMBO_END };
 // Bottom Row
@@ -105,6 +107,7 @@ combo_t key_combos[] = {
     [COMBO_DEL_LH] = COMBO(combo_rt, KC_DEL),
     [COMBO_BSPC_RH] = COMBO(combo_yh, KC_BSPC),
     [COMBO_DEL_RH] = COMBO(combo_yu, KC_DEL),
+    [COMBO_SD] = COMBO(combo_sd, LSFT(KC_TAB)),
     [COMBO_DF] = COMBO(combo_df, RSE_T(KC_TAB)),
     [COMBO_JK] = COMBO(combo_jk, KC_ENT),
     [COMBO_JKL] = COMBO(combo_jkl, UKC_DB_UNDS),
@@ -176,6 +179,7 @@ combo_t key_combos[] = {
 // https://docs.qmk.fm/#/feature_combo?id=per-combo-timing-holding-tapping-and-key-press-order
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index) {
+        case COMBO_SD:
         case COMBO_DF:
         case COMBO_JK:
         case COMBO_JKL:
