@@ -393,6 +393,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_LALT_T_OS_NEXT_SPACE] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_SPACE, KC_LALT),
     [TD_LSFT_T_OS_PREV_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_PREV_TAB, KC_LSFT),
     [TD_LGUI_T_OS_NEXT_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_TAB, KC_LGUI),
+    [TD_LT_QWERTY_ALT_SHIFT_E] = ACTION_TD_TAP_HOLD(KC_E, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
     [TD_LT_QWERTY_ALT_SHIFT_F] = ACTION_TD_TAP_HOLD(KC_F, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
 };
 
@@ -643,6 +644,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case TD_OS_NTAB:
         case TD_OS_PSPC:
         case TD_OS_NSPC:
+        case TD_LT_QAS_E:
         case TD_LT_QAS_F:
         {
             tap_dance_action_t* action = &tap_dance_actions[TD_INDEX(keycode)];

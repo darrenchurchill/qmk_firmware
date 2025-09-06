@@ -53,6 +53,7 @@ enum tap_dance_codes {
     TD_LALT_T_OS_NEXT_SPACE,
     TD_LSFT_T_OS_PREV_TAB,
     TD_LGUI_T_OS_NEXT_TAB,
+    TD_LT_QWERTY_ALT_SHIFT_E,
     TD_LT_QWERTY_ALT_SHIFT_F,
 };
 
@@ -86,6 +87,7 @@ enum tap_dance_codes {
 #define TD_OS_NTAB TD(TD_LGUI_T_OS_NEXT_TAB)
 #define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
 #define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
+#define TD_LT_QAS_E TD(TD_LT_QWERTY_ALT_SHIFT_E)
 #define TD_LT_QAS_F TD(TD_LT_QWERTY_ALT_SHIFT_F)
 
 // COLEMAK Layer Keys: CKC -> "Colemak KeyCode"
@@ -127,7 +129,7 @@ enum tap_dance_codes {
 // Left Hand
 #define QKC_Q FN_T(KC_Q)
 #define QKC_W EXT_T(KC_W)
-#define QKC_E TD_LT_QAS_F
+#define QKC_E TD_LT_QAS_E
 #define QKC_R RSE_T(KC_R)
 #define QKC_T KC_T
 #define QKC_A LCTL_T(KC_A)
