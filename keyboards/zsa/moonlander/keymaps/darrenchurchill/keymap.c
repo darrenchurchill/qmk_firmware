@@ -7,18 +7,18 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT_moonlander_wrapper(
-        KC_EQL,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
-        KC_GRV,  ________________COLEMAK_L1_________________,  KC_GRV,        KC_MINS, ________________COLEMAK_R1_________________, KC_MINS,
-        KC_TAB,  ________________COLEMAK_L2_________________,  KC_GRV,        KC_DQUO, ________________COLEMAK_R2_________________, KC_QUOT,
+        KC_GRV,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
+        KC_TAB,  ________________COLEMAK_L1_________________,  KC_GRV,        KC_MINS, ________________COLEMAK_R1_________________, S(KC_TAB),
+        KC_ESC,  ________________COLEMAK_L2_________________,  KC_GRV,        KC_DQUO, ________________COLEMAK_R2_________________, KC_ENT,
         KC_BSPC, ________________COLEMAK_L3_________________,                          ________________COLEMAK_R3_________________, KC_DEL,
         KC_LCTL, _____________BASE_4_L4_____________,          TKC_L10,       TKC_R10,         _____________BASE_4_R4_____________, KC_RCTL,
                                             TKC_L00, TKC_L01, TKC_L02,        TKC_R02, TKC_R01, TKC_R00
     ),
 
     [_QWERTY] = LAYOUT_moonlander_wrapper(
-        KC_EQL,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
-        KC_GRV,  _________________QWERTY_L1_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R1_________________, KC_MINS,
-        KC_TAB,  _________________QWERTY_L2_________________,  KC_GRV,        KC_DQUO, _________________QWERTY_R2_________________, KC_QUOT,
+        KC_GRV,  ________________NUMBER_LEFT________________,  _______,       _______, ________________NUMBER_RIGHT_______________, KC_BSLS,
+        KC_TAB,  _________________QWERTY_L1_________________,  KC_GRV,        KC_MINS, _________________QWERTY_R1_________________, S(KC_TAB),
+        KC_ESC,  _________________QWERTY_L2_________________,  KC_GRV,        KC_DQUO, _________________QWERTY_R2_________________, KC_ENT,
         KC_BSPC, _________________QWERTY_L3_________________,                          _________________QWERTY_R3_________________, KC_DEL,
         KC_LCTL, _____________BASE_4_L4_____________,          TKC_L10,       TKC_R10,         _____________BASE_4_R4_____________, KC_RCTL,
                                             TKC_L00, TKC_L01, TKC_L02,        TKC_R02, TKC_R01, TKC_R00
