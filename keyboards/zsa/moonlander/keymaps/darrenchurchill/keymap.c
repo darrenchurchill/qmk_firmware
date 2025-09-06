@@ -126,274 +126,236 @@ void keyboard_post_init_keymap(void) {
     rgb_matrix_enable();
 }
 
-// in columns, NOT rows
+#define LEDMAP_LAYOUT( \
+    C00, C01, C02, C03, C04, C05, C06, \
+    C10, C11, C12, C13, C14, C15, C16, \
+    C20, C21, C22, C23, C24, C25, C26, \
+    C30, C31, C32, C33, C34, C35,      \
+    C40, C41, C42, C43, C44,      C46, \
+                        C54, C55, C56, \
+    C07, C08, C09, C0A, C0B, C0C, C0D, \
+    C17, C18, C19, C1A, C1B, C1C, C1D, \
+    C27, C28, C29, C2A, C2B, C2C, C2D, \
+         C38, C39, C3A, C3B, C3C, C3D, \
+    C47,      C49, C4A, C4B, C4C, C4D, \
+    C57, C58, C59 \
+    ) \
+    { \
+        {C00}, {C10}, {C20}, {C30}, {C40}, /* left outside column, top to bottom */ \
+        {C01}, {C11}, {C21}, {C31}, {C41}, \
+        {C02}, {C12}, {C22}, {C32}, {C42}, \
+        {C03}, {C13}, {C23}, {C33}, {C43}, \
+        {C04}, {C14}, {C24}, {C34}, {C44}, \
+        {C05}, {C15}, {C25}, {C35}, \
+        {C06}, {C16}, {C26}, \
+        {C54}, {C55}, {C56}, /* piano keys */ \
+        {C46}, /* thumb key */ \
+        {C0D}, {C1D}, {C2D}, {C3D}, {C4D}, /* right outside column, top to bottom */ \
+        {C0C}, {C1C}, {C2C}, {C3C}, {C4C}, \
+        {C0B}, {C1B}, {C2B}, {C3B}, {C4B}, \
+        {C0A}, {C1A}, {C2A}, {C3A}, {C4A}, \
+        {C09}, {C19}, {C29}, {C39}, {C49}, \
+        {C08}, {C18}, {C28}, {C38}, \
+        {C07}, {C17}, {C27}, \
+        {C57}, {C58}, {C59}, \
+        {C47} \
+    }
+
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_COLEMAK] = {
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // left outside column, top to bottom
-        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
-        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
-        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
-        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_BSPC}, {HSV_ON}, // piano keys
-        {HSV_ON}, // thumb key
+    [_COLEMAK] = LEDMAP_LAYOUT(
+        HSV_ON, HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,   HSV_OFF,
+        HSV_ON, HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,   HSV_QUOT,
+        HSV_ON, HSV_CTL, HSV_LYR, HSV_LYR, HSV_GUI, HSV_ON,   HSV_ON,
+        HSV_ON, HSV_CTL, HSV_ALT, HSV_ALT, HSV_ON,  HSV_ON,
+        HSV_ON, HSV_CTL, HSV_ALT, HSV_ALT, HSV_LYR,           HSV_ON,
+                                           HSV_LYR, HSV_BSPC, HSV_ON,
 
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // right outside column, top to bottom
-        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_ON},
-        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_QUOT}, {HSV_SYM},
-        {HSV_ON},  {HSV_BSPC}, {HSV_ON},
-        {HSV_ON}
-    },
+        HSV_OFF,  HSV_ON,   HSV_ON,  HSV_ON,  HSV_ON,   HSV_ON,   HSV_ON,
+        HSV_QUOT, HSV_ON,   HSV_ON,  HSV_ON,  HSV_ON,   HSV_ON,   HSV_ON,
+        HSV_SYM,  HSV_ON,   HSV_GUI, HSV_SFT, HSV_LYR,  HSV_CTL,  HSV_ON,
+                  HSV_ON,   HSV_ON,  HSV_SFT, HSV_ALT,  HSV_CTL,  HSV_ON,
+        HSV_ON,             HSV_LYR, HSV_ON,  HSV_QUOT, HSV_QUOT, HSV_ON,
+        HSV_ON,   HSV_BSPC, HSV_ON
+    ),
 
-    [_QWERTY] = {
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // left outside column, top to bottom
-        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_CTL},
-        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_ALT},
-        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_GUI},
-        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_QUOT}, {HSV_ON},
-        {HSV_LYR}, {HSV_BSPC}, {HSV_ON}, // piano keys
-        {HSV_ON}, // thumb key
+    [_QWERTY] = LEDMAP_LAYOUT(
+        HSV_ON, HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,   HSV_OFF,
+        HSV_ON, HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,  HSV_ON,   HSV_QUOT,
+        HSV_ON, HSV_CTL, HSV_LYR, HSV_SFT, HSV_GUI, HSV_ON,   HSV_ON,
+        HSV_ON, HSV_CTL, HSV_ALT, HSV_SFT, HSV_ON,  HSV_ON,
+        HSV_ON, HSV_CTL, HSV_ALT, HSV_GUI, HSV_LYR,           HSV_ON,
+                                           HSV_LYR, HSV_BSPC, HSV_ON,
 
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},  {HSV_ON}, // right outside column, top to bottom
-        {HSV_ON},  {HSV_ON},   {HSV_CTL}, {HSV_CTL}, {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_LYR}, {HSV_ALT}, {HSV_QUOT},
-        {HSV_ON},  {HSV_ON},   {HSV_SFT}, {HSV_SFT}, {HSV_ON},
-        {HSV_ON},  {HSV_ON},   {HSV_GUI}, {HSV_ON},  {HSV_LYR},
-        {HSV_ON},  {HSV_ON},   {HSV_ON},  {HSV_ON},
-        {HSV_OFF}, {HSV_QUOT}, {HSV_SYM},
-        {HSV_ON},  {HSV_BSPC}, {HSV_ON},
-        {HSV_ON}
-    },
+        HSV_OFF,  HSV_ON,   HSV_ON,  HSV_ON,  HSV_ON,   HSV_ON,   HSV_ON,
+        HSV_QUOT, HSV_ON,   HSV_ON,  HSV_ON,  HSV_ON,   HSV_ON,   HSV_ON,
+        HSV_SYM,  HSV_ON,   HSV_GUI, HSV_SFT, HSV_LYR,  HSV_CTL,  HSV_ON,
+                  HSV_ON,   HSV_ON,  HSV_SFT, HSV_ALT,  HSV_CTL,  HSV_ON,
+        HSV_ON,             HSV_LYR, HSV_ON,  HSV_QUOT, HSV_QUOT, HSV_ON,
+        HSV_ON,   HSV_BSPC, HSV_ON
+    ),
 
-    [_LOWER] = {
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF},
+    [_LOWER] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_BRKT, HSV_BRKT, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_SYM, HSV_SYM,     HSV_SYM,  HSV_SYM,  HSV_SYM, HSV_OFF,
+        HSV_OFF, HSV_SYM, HSV_SYM,     HSV_SYM,  HSV_SYM,  HSV_SYM,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF,  HSV_OFF,           HSV_OFF,
+                                                 HSV_OFF,  HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},  {HSV_OFF},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_BRKT}, {HSV_BRKT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM},  {HSV_SYM},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_BRKT, HSV_BRKT, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_SYM, HSV_SYM, HSV_BRKT, HSV_BRKT, HSV_SYM, HSV_OFF,
+                 HSV_SYM, HSV_SYM, HSV_BRKT, HSV_BRKT, HSV_SYM, HSV_OFF,
+        HSV_OFF,          HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF
+    ),
 
-    [_NUMPAD] = {
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_BRKT}, {HSV_SYM}, {HSV_SYM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_SYM}, {HSV_SYM},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF},
+    [_NUMPAD] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_BRKT, HSV_BRKT, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_SYM, HSV_SYM,     HSV_SYM,  HSV_SYM,  HSV_SYM, HSV_OFF,
+        HSV_OFF, HSV_SYM, HSV_SYM,     HSV_SYM,  HSV_SYM,  HSV_SYM,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF,  HSV_OFF,           HSV_OFF,
+                                                 HSV_OFF,  HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_NUM}, {HSV_NUM}, {HSV_NUM}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_NUM}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_NUM, HSV_NUM, HSV_NUM, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_NUM, HSV_NUM, HSV_NUM, HSV_NUM, HSV_ON,  HSV_OFF,
+                 HSV_OFF, HSV_NUM, HSV_NUM, HSV_NUM, HSV_OFF, HSV_OFF,
+        HSV_OFF,          HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF
+    ),
 
-    [_RAISE] = {
-        {HSV_OFF}, {HSV_OFF},   {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},   {HSV_CTL},   {HSV_CTL}, {HSV_OFF},
-        {HSV_OFF}, {HSV_SELWD}, {HSV_ARROW}, {HSV_ALT}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_ARROW}, {HSV_ARROW}, {HSV_SFT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_SELWD}, {HSV_ARROW}, {HSV_GUI}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},    {HSV_PG},    {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},   {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},   {HSV_OFF},
-        {HSV_OFF},
+    [_RAISE] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,   HSV_OFF,   HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_SELWD,   HSV_ARROW, HSV_SELWD, HSV_PG,  HSV_OFF,
+        HSV_OFF, HSV_CTL, HSV_ARROW,   HSV_ARROW, HSV_ARROW, HSV_PG,  HSV_OFF,
+        HSV_OFF, HSV_CTL, HSV_ALT,     HSV_SFT,   HSV_GUI,   HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF,   HSV_OFF,            HSV_OFF,
+                                                  HSV_OFF,   HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF},     {HSV_OFF},
-        {HSV_OFF}, {HSV_GUI}, {HSV_CTL},   {HSV_PNSPACE}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNSPACE}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB},   {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_PNTAB},   {HSV_OFF},
-        {HSV_OFF}, {HSV_PG},  {HSV_ARROW}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF,  HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF,     HSV_OFF,     HSV_OFF,
+        HSV_OFF,  HSV_PG,    HSV_PG,    HSV_PG,    HSV_PG,      HSV_GUI,     HSV_OFF,
+        HSV_BSPC, HSV_ARROW, HSV_ARROW, HSV_ARROW, HSV_ARROW,   HSV_CTL,     HSV_OFF,
+                  HSV_OFF,   HSV_PNTAB, HSV_PNTAB, HSV_PNSPACE, HSV_PNSPACE, HSV_OFF,
+        HSV_OFF,             HSV_OFF,   HSV_OFF,   HSV_OFF,     HSV_OFF,     HSV_OFF,
+        HSV_OFF,  HSV_OFF,   HSV_OFF
+    ),
 
-    [_EXTEND] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_CTL}, {HSV_CTL}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_ALT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_SFT}, {HSV_SFT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_GUI}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_EXTEND] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_CTL, HSV_OFF, HSV_SFT, HSV_GUI, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_CTL, HSV_ALT, HSV_SFT, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,          HSV_OFF,
+                                            HSV_OFF, HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_PLAY},    {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_PRV_NXT}, {HSV_BSPC}, {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_VOL},     {HSV_OFF},  {HSV_OFF},  {HSV_OFF},
-        {HSV_OFF}, {HSV_VOL},     {HSV_OFF},  {HSV_MUTE}, {HSV_OFF},
-        {HSV_OFF}, {HSV_PRV_NXT}, {HSV_BSPC}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF},     {HSV_QUOT},
-        {HSV_OFF}, {HSV_OFF},     {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF,  HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,  HSV_OFF,
+        HSV_OFF,  HSV_PRV_NXT, HSV_VOL, HSV_VOL, HSV_PRV_NXT, HSV_PLAY, HSV_OFF,
+        HSV_QUOT, HSV_BSPC,    HSV_OFF, HSV_OFF, HSV_BSPC,    HSV_OFF,  HSV_OFF,
+                  HSV_MUTE,    HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,  HSV_OFF,
+        HSV_OFF,               HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF,  HSV_OFF,
+        HSV_OFF,  HSV_OFF,     HSV_OFF
+    ),
 
-    [_ARROWS] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BSPC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_ARROWS] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,  HSV_OFF,  HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_BSPC, HSV_BSPC,          HSV_OFF,
+                                             HSV_OFF,  HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},   {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ARROW}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_ARROW, HSV_ARROW, HSV_ARROW, HSV_ARROW, HSV_OFF, HSV_OFF,
+                 HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF, HSV_OFF,
+        HSV_OFF,            HSV_OFF,   HSV_OFF,   HSV_OFF,   HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF,   HSV_OFF
+    ),
 
-    [_MOUSE] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_MOUSE] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF, HSV_OFF,          HSV_OFF,
+                                                HSV_OFF, HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS}, {HSV_MS}, {HSV_OFF},
-        {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS}, {HSV_MS}, {HSV_OFF},
-        {HSV_OFF}, {HSV_MS_WHEEL}, {HSV_MS}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF,      HSV_OFF,      HSV_OFF,      HSV_OFF,      HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_MS_WHEEL, HSV_MS_WHEEL, HSV_MS_WHEEL, HSV_MS_WHEEL, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_MS,       HSV_MS,       HSV_MS,       HSV_MS,       HSV_OFF, HSV_OFF,
+                 HSV_OFF,      HSV_MS,       HSV_MS,       HSV_OFF,      HSV_OFF, HSV_OFF,
+        HSV_OFF,               HSV_OFF,      HSV_OFF,      HSV_OFF,      HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF,      HSV_OFF
+    ),
 
-    [_KB_LED] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_ON}, {HSV_OFF}, {HSV_OFF}, {HSV_RESET},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ANIM}, {HSV_OFF}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_ON}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_KB_LED] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF,   HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_ON,    HSV_OFF,     HSV_OFF, HSV_OFF, HSV_ON,  HSV_OFF,
+        HSV_OFF, HSV_OFF,   HSV_ANIM,    HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF,   HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_RESET, HSV_LYR_ESC, HSV_OFF, HSV_OFF,          HSV_OFF,
+                                                  HSV_OFF, HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_ON}, {HSV_OFF}, {HSV_OFF}, {HSV_ANIM},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_ANIM},
-        {HSV_OFF}, {HSV_KB_HUE}, {HSV_ON}, {HSV_KB_SAT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_KB_HUE}, {HSV_ON}, {HSV_KB_SAT}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF, HSV_OFF,    HSV_OFF,    HSV_OFF,  HSV_OFF,  HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_KB_HUE, HSV_KB_HUE, HSV_OFF,  HSV_ON,   HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_ON,     HSV_ON,     HSV_OFF,  HSV_OFF,  HSV_OFF,
+                 HSV_OFF, HSV_KB_SAT, HSV_KB_SAT, HSV_OFF,  HSV_OFF,  HSV_OFF,
+        HSV_OFF,          HSV_OFF,    HSV_OFF,    HSV_ANIM, HSV_ANIM, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF
+    ),
 
-    [_FN] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_ON},  {HSV_ON},  {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_FN] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_ON,      HSV_ON,  HSV_ON,  HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_ON,      HSV_ON,  HSV_ON,  HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF, HSV_OFF,          HSV_OFF,
+                                                HSV_OFF, HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN}, {HSV_OFF},
-        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF},
-        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},  {HSV_OFF},
-        {HSV_OFF}, {HSV_FN},  {HSV_FN},  {HSV_FN},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_OFF,
+        HSV_OFF, HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_OFF,
+                 HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_FN,  HSV_OFF,
+        HSV_OFF,          HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF
+    ),
 
-    [_LAYERS] = {
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_LYR_ESC},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_LYR}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF},
+    [_LAYERS] = LEDMAP_LAYOUT(
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_LYR, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_LYR, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF,     HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_LYR_ESC, HSV_OFF, HSV_OFF,          HSV_OFF,
+                                                HSV_OFF, HSV_OFF, HSV_OFF,
 
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_LYR}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-        {HSV_OFF}
-    },
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF, HSV_LYR, HSV_LYR, HSV_OFF, HSV_OFF,
+                 HSV_OFF, HSV_LYR, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF,          HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF, HSV_OFF,
+        HSV_OFF, HSV_OFF, HSV_OFF
+    ),
 };
 
 /*  Blank
 
-    [_LAYER_NAME] = {
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, // left outside column, top to bottom
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, // piano keys
-        {HSV_ON}, // thumb key
+    [_LAYER_NAME] = LEDMAP_LAYOUT(
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,         HSV_ON,
+                                        HSV_ON, HSV_ON, HSV_ON,
 
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, // right outside column, top to bottom
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_LYR},
-        {HSV_ON}, {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}, {HSV_ON}, {HSV_ON},
-        {HSV_ON}
-    },
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+                HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON,         HSV_ON, HSV_ON, HSV_ON, HSV_ON, HSV_ON,
+        HSV_ON, HSV_ON, HSV_ON
+    ),
 
 */
 
