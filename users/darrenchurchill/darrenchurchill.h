@@ -3,7 +3,7 @@
 
 
 enum userspace_layers {
-    _COLEMAK,
+    _HANDS_DOWN_GOLD,
     _QWERTY,  // top-level "default" layout so can override others temporarily
     _LOWER,
     _NUMPAD,
@@ -54,7 +54,7 @@ enum tap_dance_codes {
     TD_LSFT_T_OS_PREV_TAB,
     TD_LGUI_T_OS_NEXT_TAB,
     TD_LT_QWERTY_ALT_SHIFT_E,
-    TD_LT_QWERTY_ALT_SHIFT_F,
+    TD_LT_QWERTY_ALT_SHIFT_M,
 };
 
 
@@ -88,42 +88,45 @@ enum tap_dance_codes {
 #define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
 #define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
 #define TD_LT_QAS_E TD(TD_LT_QWERTY_ALT_SHIFT_E)
-#define TD_LT_QAS_F TD(TD_LT_QWERTY_ALT_SHIFT_F)
+#define TD_LT_QAS_M TD(TD_LT_QWERTY_ALT_SHIFT_M)
 
-// COLEMAK Layer Keys: CKC -> "Colemak KeyCode"
+
+// HANDS_DOWN_GOLD Layer Keys: HDKC -> "Hands Down gold KeyCode"
 // Left Hand
-#define CKC_Q FN_T(KC_Q)
-#define CKC_W EXT_T(KC_W)
-#define CKC_F TD_LT_QAS_F
-#define CKC_P RSE_T(KC_P)
-#define CKC_B KC_B
-#define CKC_A LCTL_T(KC_A)
-#define CKC_R NUM_T(KC_R)
-#define CKC_S LWR_T(KC_S)
-#define CKC_T LGUI_T(KC_T)
-#define CKC_G KC_G
-#define CKC_Z LGUI_T(KC_Z)
-#define CKC_X LALT_T(KC_X)
-#define CKC_C LSFT_T(KC_C)
-#define CKC_D LCTL_T(KC_D)
-#define CKC_V KC_V
+#define HDKC_J FN_T(KC_J)
+#define HDKC_G EXT_T(KC_G)
+#define HDKC_M TD_LT_QAS_M
+#define HDKC_P RSE_T(KC_P)
+#define HDKC_V KC_V
+#define HDKC_R LCTL_T(KC_R)
+#define HDKC_S NUM_T(KC_S)
+#define HDKC_N LWR_T(KC_N)
+#define HDKC_D LGUI_T(KC_D)
+#define HDKC_B KC_B
+#define HDKC_X LGUI_T(KC_X)
+#define HDKC_F LALT_T(KC_F)
+#define HDKC_L LSFT_T(KC_L)
+#define HDKC_C LCTL_T(KC_C)
+#define HDKC_W KC_W
+#define HDKC_T LSFT_T(KC_T)
 // Right Hand
-#define CKC_J KC_J
-#define CKC_L KC_L
-#define CKC_U KC_U
-#define CKC_Y KC_Y
-#define CKC_QUOT KC_QUOT
-#define CKC_M KC_M
-#define CKC_N RGUI_T(KC_N)
-#define CKC_E LWR_T(KC_E)
-#define CKC_I NUM_T(KC_I)
-#define CKC_O RCTL_T(KC_O)
-#define CKC_K KC_K
-#define CKC_H RCTL_T(KC_H)
-#define CKC_COM RSFT_T(KC_COMM)
-#define CKC_DOT RALT_T(KC_DOT)
-#define CKC_SLSH LGUI_T(KC_SLSH)  // You might be able to use RGUI_T(KC_SLSH) instead
-#define CKC_SPC ARW_T(KC_SPC)
+#define HDKC_SCLN KC_SCLN
+#define HDKC_DOT KC_DOT
+#define HDKC_SLSH KC_SLSH
+#define HDKC_DQT LSFT(KC_QUOT)
+#define HDKC_QUOT KC_QUOT
+#define HDKC_COM KC_COMM
+#define HDKC_A RGUI_T(KC_A)
+#define HDKC_E LWR_T(KC_E)
+#define HDKC_I NUM_T(KC_I)
+#define HDKC_H RCTL_T(KC_H)
+#define HDKC_MINS KC_MINS
+#define HDKC_U RCTL_T(KC_U)
+#define HDKC_O RSFT_T(KC_O)
+#define HDKC_Y RALT_T(KC_Y)
+#define HDKC_K LGUI_T(KC_K)
+#define HDKC_SPC ARW_T(KC_SPC)
+
 
 // QWERTY Layer Keys: QKC -> "Qwerty KeyCode"
 // Left Hand
@@ -188,7 +191,7 @@ enum tap_dance_codes {
 #define TKC_L10 LGUI_T(KC_DQT)
 
 // Right Hand
-#define TKC_R00 CKC_SPC
+#define TKC_R00 HDKC_SPC
 #define TKC_R01 KC_BSPC
 #define TKC_R02 MEH_T(KC_TAB)
 #define TKC_R10 LGUI_T(KC_UNDS)
@@ -250,13 +253,13 @@ enum tap_dance_codes {
   Keycode wrappers
   https://docs.qmk.fm/#/keycodes
 */
-#define ________________COLEMAK_L1_________________       CKC_Q,   CKC_W,   CKC_F,   CKC_P,   CKC_B
-#define ________________COLEMAK_L2_________________       CKC_A,   CKC_R,   CKC_S,   CKC_T,   CKC_G
-#define ________________COLEMAK_L3_________________       CKC_Z,   CKC_X,   CKC_C,   CKC_D,   CKC_V
+#define ____________HANDS_DOWN_GOLD_L1_____________       HDKC_J,   HDKC_G,   HDKC_M,   HDKC_P,   HDKC_V
+#define ____________HANDS_DOWN_GOLD_L2_____________       HDKC_R,   HDKC_S,   HDKC_N,   HDKC_D,   HDKC_B
+#define ____________HANDS_DOWN_GOLD_L3_____________       HDKC_X,   HDKC_F,   HDKC_L,   HDKC_C,   HDKC_W
 
-#define ________________COLEMAK_R1_________________       CKC_J,   CKC_L,   CKC_U,   CKC_Y,   CKC_QUOT
-#define ________________COLEMAK_R2_________________       CKC_M,   CKC_N,   CKC_E,   CKC_I,   CKC_O
-#define ________________COLEMAK_R3_________________       CKC_K,   CKC_H,   CKC_COM, CKC_DOT, CKC_SLSH
+#define ____________HANDS_DOWN_GOLD_R1_____________       HDKC_SCLN,  HDKC_DOT,  HDKC_SLSH,  HDKC_DQT,  HDKC_QUOT
+#define ____________HANDS_DOWN_GOLD_R2_____________       HDKC_COM,   HDKC_A,    HDKC_E,     HDKC_I,    HDKC_H
+#define ____________HANDS_DOWN_GOLD_R3_____________       HDKC_MINS,  HDKC_U,    HDKC_O,     HDKC_Y,    HDKC_K
 
 #define _________________QWERTY_L1_________________       QKC_Q,   QKC_W,   QKC_E,   QKC_R,   QKC_T
 #define _________________QWERTY_L2_________________       QKC_A,   QKC_S,   QKC_D,   QKC_F,   QKC_G

@@ -84,13 +84,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
     // in its own bit.
     if (is_tap_hold_mod_tap && tap_hold_keycode_mods & MOD_LGUI) {
         switch (other_keycode_basic_kc) {
-            // TODO: swap with cases for CKC_* macros, and leave any QKC_* cases
-            // that don't overlap
-            // case CKC_Q:
-            // case CKC_M:
-            // case CKC_C:
-            // case CKC_V:
-            // case CKC_B:
             case KC_Q: // Cmd + Q -> quit
             case KC_M: // Cmd + M -> minimize window
                 return false; // Should wait for achordion's timeout
@@ -144,6 +137,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
         case TKC_L00: // Bypass achordion for thumb keys
         case TKC_L01:
+        case HDKC_T:
         case TKC_L02:
         case TKC_L10:
         case TKC_R00:
@@ -394,7 +388,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_LSFT_T_OS_PREV_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_PREV_TAB, KC_LSFT),
     [TD_LGUI_T_OS_NEXT_TAB] = ACTION_TD_TAP_HOLD(UKC_OS_NEXT_TAB, KC_LGUI),
     [TD_LT_QWERTY_ALT_SHIFT_E] = ACTION_TD_TAP_HOLD(KC_E, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
-    [TD_LT_QWERTY_ALT_SHIFT_F] = ACTION_TD_TAP_HOLD(KC_F, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
+    [TD_LT_QWERTY_ALT_SHIFT_M] = ACTION_TD_TAP_HOLD(KC_M, LM(_QWERTY, MOD_LALT | MOD_LSFT)),
 };
 
 
@@ -458,13 +452,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     return false;
                 }
                 if (get_highest_layer(layer_state) > _COLEMAK) {
-                    // If we're on a layer higher than _COLEMAK, return to the
-                    // _COLEMAK layer instead of tapping KC_ESC. This includes
-                    // cancelling the current One Shot mods & layer state.
+                    // If we're on a layer higher than _HANDS_DOWN_GOLD, return
+                    // to the _HANDS_DOWN_GOLD layer instead of tapping KC_ESC.
+                    // This includes cancelling the current One Shot mods &
+                    // layer state.
                     clear_oneshot_mods();
                     clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
                     reset_oneshot_layer();
-                    layer_move(_COLEMAK);
+                    layer_move(_HANDS_DOWN_GOLD);
                     return false;
                 }
                 return true;
@@ -645,7 +640,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case TD_OS_PSPC:
         case TD_OS_NSPC:
         case TD_LT_QAS_E:
-        case TD_LT_QAS_F:
+        case TD_LT_QAS_M:
         {
             tap_dance_action_t* action = &tap_dance_actions[TD_INDEX(keycode)];
             if (!record->event.pressed &&

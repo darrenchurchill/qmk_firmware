@@ -24,11 +24,11 @@
 #define LAYOUT_atreus_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_COLEMAK] = LAYOUT_atreus_wrapper(
-        ________________COLEMAK_L1_________________,                   ________________COLEMAK_R1_________________,
-        ________________COLEMAK_L2_________________,                   ________________COLEMAK_R2_________________,
-        ________________COLEMAK_L3_________________, TKC_L10, TKC_R10, ________________COLEMAK_R3_________________,
-        _____________________BASE_6_L4____________________,      _____________________BASE_6_R4____________________
+    [_HANDS_DOWN_GOLD] = LAYOUT_atreus_wrapper(
+        ____________HANDS_DOWN_GOLD_L1_____________,                   ____________HANDS_DOWN_GOLD_R1_____________,
+        ____________HANDS_DOWN_GOLD_L2_____________,                   ____________HANDS_DOWN_GOLD_R2_____________,
+        ____________HANDS_DOWN_GOLD_L3_____________, TKC_L10, TKC_R10, ____________HANDS_DOWN_GOLD_R3_____________,
+        _____________BASE_4_L4_____________, HDKC_T, TKC_L01,   _____________________BASE_6_R4____________________
     ),
 
     [_QWERTY] = LAYOUT_atreus_wrapper(

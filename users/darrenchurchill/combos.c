@@ -7,13 +7,14 @@
 #include "combos.h"
 #include "darrenchurchill.h"
 
-// TODO: change these to evaluate from _COLEMAK instead
+// TODO: change these to evaluate from _HANDS_DOWN_GOLD instead
 // NOTE: Combos are defined to be evaluated from the _QWERTY layer
 // See config.h COMBO_ONLY_FROM_LAYER
 
 // Uncomment this enum and add a constant element if you need to reference a
 // combo's key_combos[] index elsewhere.
 enum required_idx_combos {
+    // TODO: remove the backspace and delete combos. I don't use them.
     COMBO_BSPC_LH,
     COMBO_DEL_LH,
     COMBO_BSPC_RH,
@@ -35,7 +36,9 @@ enum required_idx_combos {
 // Horizontal combos
 // Top Row
 const uint16_t PROGMEM combo_qwer[] = { QKC_Q, QKC_W, QKC_E, QKC_R, COMBO_END };
+const uint16_t PROGMEM combo_we[] = { QKC_W, QKC_E, COMBO_END };
 const uint16_t PROGMEM combo_wer[] = { QKC_W, QKC_E, QKC_R, COMBO_END };
+const uint16_t PROGMEM combo_wr[] = { QKC_W, QKC_R, COMBO_END };
 const uint16_t PROGMEM combo_rt[] = { QKC_R, QKC_T, COMBO_END };
 // Home Row
 const uint16_t PROGMEM combo_asdf[] = { QKC_A, QKC_S, QKC_D, QKC_F, COMBO_END };
@@ -94,11 +97,11 @@ const uint16_t PROGMEM combo_lyr[] = { QKC_L, QKC_Y, QKC_R, COMBO_END };
 #endif
 
 // Backspace combos, one or both hands
-// Note: These variables are already named for the Colemak layout
+// Note: These variables are already named for the Hands Down Gold layout
 const uint16_t PROGMEM combo_bspc_spc[] = { TKC_R01, TKC_R00, COMBO_END };
-const uint16_t PROGMEM combo_bspc_c[] = { TKC_R01, QKC_C, COMBO_END }; // Colemak C
-const uint16_t PROGMEM combo_bspc_h[] = { TKC_R01, QKC_M, COMBO_END }; // Colemak H
-const uint16_t PROGMEM combo_bspc_m[] = { TKC_R01, QKC_H, COMBO_END }; // Colemak M
+const uint16_t PROGMEM combo_bspc_c[] = { TKC_R01, QKC_V, COMBO_END };   // Hands Down Gold C
+const uint16_t PROGMEM combo_bspc_h[] = { TKC_R01, QKC_SC, COMBO_END };  // Hands Down Gold H
+const uint16_t PROGMEM combo_bspc_m[] = { TKC_R01, QKC_E, COMBO_END };   // Hands Down Gold M
 
 
 combo_t key_combos[] = {
@@ -107,8 +110,8 @@ combo_t key_combos[] = {
     [COMBO_DEL_LH] = COMBO(combo_rt, KC_DEL),
     [COMBO_BSPC_RH] = COMBO(combo_yh, KC_BSPC),
     [COMBO_DEL_RH] = COMBO(combo_yu, KC_DEL),
-    [COMBO_SD] = COMBO(combo_sd, LSFT(KC_TAB)),
-    [COMBO_DF] = COMBO(combo_df, RSE_T(KC_TAB)),
+    [COMBO_SD] = COMBO(combo_sd, KC_TAB),
+    [COMBO_DF] = COMBO(combo_df, KC_ESC),
     [COMBO_JK] = COMBO(combo_jk, KC_ENT),
     [COMBO_JKL] = COMBO(combo_jkl, UKC_DB_UNDS),
     [COMBO_KL] = COMBO(combo_kl, KC_UNDS),
@@ -124,7 +127,9 @@ combo_t key_combos[] = {
     // Horizontal combos
     // Top Row
     COMBO(combo_qwer, UKC_OS_CUT),
+    COMBO(combo_we, KC_Z),
     COMBO(combo_wer, LLOCK),
+    COMBO(combo_wr, KC_Q),
     // Home Row
     COMBO(combo_asdf, UKC_OS_COPY),
     COMBO(combo_fg, KC_QUES),
