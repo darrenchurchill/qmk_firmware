@@ -339,8 +339,10 @@ enum tap_dance_codes {
 #define ____________ARROWS_4_L4____________               _______, _______, KC_BSPC, KC_DEL
 #define ________________ARROWS_5_R4________________       ____________ARROWS_4_L4____________, _______
 
-#define _________________ARROWS_L2_________________       _______, _______, KC_LEFT, KC_RIGHT, _______
-#define _________________ARROWS_R2_________________       KC_BSPC, KC_DOWN, KC_UP,    KC_DEL,  _______
+#define _________________ARROWS_L2_________________       KC_PGUP, KC_PGDN, KC_LEFT, KC_RIGHT, _______
+#define _________________ARROWS_L3_________________       _______, _______, KC_BSPC,   KC_DEL, _______
+
+#define _________________ARROWS_R2_________________       KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______
 
 
 #define _________________MOUSE_L1__________________       __________________BLANK_5__________________
