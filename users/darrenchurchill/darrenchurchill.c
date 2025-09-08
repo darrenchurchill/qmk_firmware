@@ -238,15 +238,63 @@ void toggle_screaming_snake_case(void) {
   Custom Userspace Leader Key
   https://github.com/andrewjrae/kyria-keymap/tree/master#userspace-leader-sequences
 */
+// TODO: Add LED colors to illuminate the valid leader key sequences.
+void* leader_layer_default_func(uint16_t keycode) {
+    switch (keycode) {
+        case KC_H:
+            // "H" for Hands Down Gold
+            // NOTE: default_layer_set() expects a bitmask. Shifting an unsigned
+            // long is conventional here to avoid overflow issues.
+            default_layer_set(1UL<<_HANDS_DOWN_GOLD);
+            break;
+        case KC_Q:
+            // "Q" for QWERTY
+            default_layer_set(1UL<<_QWERTY);
+            break;
+        default:
+            break;
+    }
+    return NULL;
+}
+
+void* leader_layer_to_func(uint16_t keycode) {
+    switch (keycode) {
+        case KC_L:
+            // "L" for LED Colors
+            // Go to the _KB_LED layer to change keyboard LED colors
+            layer_on(_KB_LED);
+            break;
+        default:
+            break;
+    }
+    return NULL;
+}
+
+void* leader_layer_func(uint16_t keycode) {
+    switch (keycode) {
+        case KC_D:
+            // "D" for Default layer
+            return leader_layer_default_func;
+            break;
+        case KC_T:
+            // "T" for To layer
+            return leader_layer_to_func;
+            break;
+        default:
+            break;
+    }
+    return NULL;
+}
+
 void* leader_qmk_func(uint16_t keycode) {
     switch (keycode) {
-        case KC_R:
-            // "R" for reboot
-            soft_reset_keyboard();
-            break;
         case KC_B:
             // "B" for bootloader
             reset_keyboard();
+            break;
+        case KC_R:
+            // "R" for reboot
+            soft_reset_keyboard();
             break;
         default:
             break;
@@ -256,23 +304,27 @@ void* leader_qmk_func(uint16_t keycode) {
 
 void* leader_start_func(uint16_t keycode) {
     switch (keycode) {
-        case KC_Q:
-            // "Q" for QMK
-            return leader_qmk_func;
+        case KC_C:
+            // "C" for camelCase
+            enable_xcase_with(OSM(MOD_LSFT));
+            break;
+        case KC_D:
+            // "D" is home row shift -> SCREAMING_SNAKE_CASE
+            toggle_screaming_snake_case();
+            break;
+        case KC_L:
+            // "L" for layers
+            return leader_layer_func;
+            break;
         case KC_S:
             // "S" for snake_case
             // Also generic X-Case, see use_default_xcase_separator() above. You
             // can begin by typing a symbol to use that as the separator char.
             enable_xcase();
             break;
-        case KC_D:
-            // "D" is home row shift -> SCREAMING_SNAKE_CASE
-            toggle_screaming_snake_case();
-            break;
-        case KC_C:
-            // "C" for camelCase
-            enable_xcase_with(OSM(MOD_LSFT));
-            break;
+        case KC_Q:
+            // "Q" for QMK
+            return leader_qmk_func;
         default:
             break;
     }
@@ -462,15 +514,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     disable_xcase();
                     return false;
                 }
-                if (get_highest_layer(layer_state) > _COLEMAK) {
-                    // If we're on a layer higher than _HANDS_DOWN_GOLD, return
-                    // to the _HANDS_DOWN_GOLD layer instead of tapping KC_ESC.
+                if (get_highest_layer(layer_state) > get_highest_layer(default_layer_state)) {
+                    // If we're on a layer higher than the current default,
+                    // return to the default layer instead of tapping KC_ESC.
                     // This includes cancelling the current One Shot mods &
                     // layer state.
                     clear_oneshot_mods();
                     clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
                     reset_oneshot_layer();
-                    layer_move(_HANDS_DOWN_GOLD);
+                    layer_state_set(default_layer_state); // move back to cur default layer
                     return false;
                 }
                 return true;
