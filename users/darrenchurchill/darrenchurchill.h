@@ -5,6 +5,7 @@
 enum userspace_layers {
     _HANDS_DOWN_GOLD,
     _QWERTY,  // top-level "default" layout so can override others temporarily
+    _QWERTY_ALT_SHIFT,
     _LOWER,
     _NUMPAD,
     _RAISE,
@@ -53,14 +54,13 @@ enum tap_dance_codes {
     TD_LALT_T_OS_NEXT_SPACE,
     TD_LSFT_T_OS_PREV_TAB,
     TD_LGUI_T_OS_NEXT_TAB,
-    TD_LT_QWERTY_ALT_SHIFT_E,
-    TD_LT_QWERTY_ALT_SHIFT_M,
 };
 
 
 /*
   Layer Macros
 */
+#define QAS_T(KC) LT(_QWERTY_ALT_SHIFT, KC)
 #define LWR_T(KC) LT(_LOWER, KC)
 #define NUM_T(KC) LT(_NUMPAD, KC)
 #define RSE MO(_RAISE)
@@ -87,15 +87,13 @@ enum tap_dance_codes {
 #define TD_OS_NTAB TD(TD_LGUI_T_OS_NEXT_TAB)
 #define TD_OS_PSPC TD(TD_LCTL_T_OS_PREV_SPACE)
 #define TD_OS_NSPC TD(TD_LALT_T_OS_NEXT_SPACE)
-#define TD_LT_QAS_E TD(TD_LT_QWERTY_ALT_SHIFT_E)
-#define TD_LT_QAS_M TD(TD_LT_QWERTY_ALT_SHIFT_M)
 
 
 // HANDS_DOWN_GOLD Layer Keys: HDKC -> "Hands Down gold KeyCode"
 // Left Hand
 #define HDKC_J FN_T(KC_J)
 #define HDKC_G EXT_T(KC_G)
-#define HDKC_M TD_LT_QAS_M
+#define HDKC_M QAS_T(KC_M)
 #define HDKC_P RSE_T(KC_P)
 #define HDKC_V KC_V
 #define HDKC_R LCTL_T(KC_R)
@@ -132,7 +130,7 @@ enum tap_dance_codes {
 // Left Hand
 #define QKC_Q FN_T(KC_Q)
 #define QKC_W EXT_T(KC_W)
-#define QKC_E TD_LT_QAS_E
+#define QKC_E QAS_T(KC_E)
 #define QKC_R RSE_T(KC_R)
 #define QKC_T KC_T
 #define QKC_A LCTL_T(KC_A)
