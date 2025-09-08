@@ -398,6 +398,8 @@ enum tap_dance_codes {
 // See color.h for example HSV and RGB macro definitions
 #ifdef RGB_MATRIX_ENABLE
 #define HSV_ON              HSV_WHITE
+#define __ON__              HSV_ON
+#define __xx__              HSV_OFF
 
 #define HSV_CTL             3, 252, 255    // Carolina Reaper red
 #define HSV_ALT             218, 219, 209  // Magentella purple
